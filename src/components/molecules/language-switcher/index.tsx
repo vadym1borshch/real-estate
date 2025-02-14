@@ -29,9 +29,9 @@ const LanguageSwitcher = () => {
     <Dropdown open={open} setOpen={setOpen} label={currentLanguage.toUpperCase()}>
       <div
         className="flex flex-col justify-center items-center w-fit border-transparent outline-none ring-0 focus:outline-none focus:ring-0 ">
-        <Button size="sm" variant="outlined" onClick={changeLanguage}>EN</Button>
-        <Button size="sm" variant="outlined" onClick={changeLanguage}>DE</Button>
-        <Button size="sm" variant="outlined" onClick={changeLanguage}>UA</Button>
+        <Button size="sm" variant="text" onClick={changeLanguage}>EN</Button>
+        <Button size="sm" variant="text" onClick={changeLanguage}>DE</Button>
+        <Button size="sm" variant="text" onClick={changeLanguage}>UA</Button>
       </div>
     </Dropdown>
   )

@@ -24,7 +24,7 @@ const Dropdown = ({ children, label, open, setOpen, withIcon, triggerButtonClass
         <Button
           onClick={() => {
           }}
-          variant="outlined"
+          variant="text"
           className={cn('text-base', triggerButtonClassName)}
           iconId={withIcon ? 'chevronDownIcon' : undefined}
           iconClassName={cn('transition-transform', { 'rotate-180 transition-transform': open })}

@@ -1,5 +1,9 @@
 {
   "translation": {
+    "buttons": {
+      "prev": "Prev",
+      "next": "Next"
+    },
     "title": "FIND YOUR PROPERTY IN AUSTRIA"
   }
 }

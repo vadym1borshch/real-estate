@@ -1,5 +1,9 @@
 {
   "translation": {
+    "buttons": {
+      "prev": "Zurück",
+      "next": "Weiter"
+    },
     "title": "FINDEN SIE IHRE IMMOBILIE IN ÖSTERREICH"
   }
 }
