@@ -5,13 +5,16 @@ interface Props {
   className?: string
   src?: string
   userName: string
+  userLastName?: string
   size?: number
 }
 
-const Avatar = ({ className, src, userName, size = 5 }: Props) => {
+const Avatar = ({ className, src, userName, userLastName, size = 5 }: Props) => {
   if (size > 10) {
     throw new Error('size should be less than 10')
   }
+
+  const symbol = userName[0].toUpperCase() + (userLastName ? userLastName[0].toUpperCase() : '')
 
   return (
     <>
@@ -32,7 +35,7 @@ const Avatar = ({ className, src, userName, size = 5 }: Props) => {
             height: `${size}rem`,
           }}
         >
-          VB
+          {symbol}
         </div>}
     </>
   )

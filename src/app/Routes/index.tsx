@@ -9,6 +9,8 @@ import { useEffect } from 'react'
 import { Details } from '../Pages/About/Details'
 import { DEFAULT_LANG, STORAGE_KEY } from '../../common/constants.ts'
 import { MainWrapper } from '../../components/wrappers/main-wrapper'
+import { MainLayout } from '../../components/templates/layouts/main'
+import { HomePageLayout } from '../../components/templates/layouts/home-page'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -68,7 +70,15 @@ const routes: RouteObject[] = [
     path: '/:lang',
     element: <MainWrapper />,
     children: [
-      { path: '', element: <HomePage /> },
+      {
+        path: '', element: <HomePageLayout />,
+        children: [
+          {
+            path: '',
+            element: <HomePage />,
+          },
+        ],
+      },
       {
         path: 'about',
         element: <About />,

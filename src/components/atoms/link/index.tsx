@@ -1,11 +1,11 @@
 import { Link as RLink, useParams } from 'react-router-dom'
 import Icon from '../icon'
 import { cn } from '../../../helpers/ui.ts'
-import { HTMLAttributes, useState } from 'react'
+import { HTMLAttributes, ReactNode, useState } from 'react'
 
 interface Props extends HTMLAttributes<HTMLLinkElement> {
   href: string;
-  children: string;
+  children: ReactNode;
   iconId?: string;
   className?: string;
   iconClassName?: string;

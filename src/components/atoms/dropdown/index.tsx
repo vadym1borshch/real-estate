@@ -14,18 +14,18 @@ interface Props {
   setOpen: (open: boolean) => void
   withIcon?: boolean
   triggerButtonClassName?: string
+  variant?: 'outlined' | 'text' | 'filled',
 }
 
-const Dropdown = ({ children, label, open, setOpen, withIcon, triggerButtonClassName }: Props) => {
+const Dropdown = ({ children, label, open, setOpen, withIcon, triggerButtonClassName, variant = 'text' }: Props) => {
 
   return (
     <Menu open={open} handler={() => setOpen(!open)}>
       <MenuHandler>
         <Button
-          onClick={() => {
-          }}
-          variant="text"
-          className={cn('text-base', triggerButtonClassName)}
+          onClick={() => {}}
+          variant={variant}
+          className={cn('text-base z-1000', triggerButtonClassName)}
           iconId={withIcon ? 'chevronDownIcon' : undefined}
           iconClassName={cn('transition-transform', { 'rotate-180 transition-transform': open })}
         >

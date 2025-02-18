@@ -18,7 +18,7 @@ const Input = ({ label, size = 'md', onChange, placeholder, value, iconId, error
     <div className="w-full relative flex flex-col z-0">
       <div className="flex w-full items-center justify-between">
         {label && <label className="pb-1.5">{label}</label>}
-        {error && <span className=" flex items-center gap-[0.1875rem] text-red self-end">
+        {error && <span className=" flex w-full items-center gap-[0.1875rem] text-red self-end justify-end">
           <Icon
             id="errorIconRed"
             className="w-4 h-6"

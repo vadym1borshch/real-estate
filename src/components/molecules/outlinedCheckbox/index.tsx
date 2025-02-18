@@ -22,7 +22,8 @@ const OutlinedCheckbox = (
     <div
       className={cn('w-full h-12 border border-blue-gray rounded-sm flex items-center px-3 justify-between cursor-pointer',
         { 'border-0': variant === 'text' },
-        { 'justify-start gap-2 h-fit': checkboxSide === 'left' },
+        { 'justify-start gap-2 h-fit': checkboxSide === 'left' && variant === 'text' },
+        { 'justify-start gap-2': checkboxSide === 'left' },
       )}
       onClick={() => setChecked(!checked)}
     >

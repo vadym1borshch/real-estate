@@ -2,7 +2,47 @@
   "translation": {
     "buttons": {
       "prev": "Zurück",
-      "next": "Weiter"
+      "next": "Weiter",
+      "sign-in": "Sign in",
+      "logout": "Logout",
+      "place-advertisement": "Inserat schalten"
+    },
+    "real-estate": {
+      "type": {
+        "apartment": "Wohnung"
+      },
+      "operations": {
+        "buy": "Kaufen",
+        "sell": "Verkaufen",
+        "rent": "Mieten",
+        "rent-out": "Vermieten"
+      },
+      "rooms": "Zimmer",
+      "bathroom": "Bad"
+    },
+    "services": {
+      "buy": {
+        "title": "Kaufen",
+        "descriptions": "Auch wenn Sie mit dem Immobilienmarkt und seinen lokalen Besonderheiten nicht vertraut sind, finden Sie hier die richtige Immobilie und investieren souverän und kompetent."
+      },
+      "sell": {
+        "title": "Verkaufen",
+        "descriptions": "Egal, welchen Weg Sie wählen, Ihr Objekt zu verkaufen — fylpi hilft Ihnen, das Prozess zu navigieren und bringt Sie zu Ihrem erfolgreichen Immobiliendeal."
+      },
+      "rent": {
+        "title": "Mieten",
+        "descriptions": "Erleben Sie eine nahtlose Online-Suche und finden Sie das passende Mietobjekt in unserer umfassenden Datenbank."
+      },
+      "rent-out": {
+        "title": "Vermieten",
+        "descriptions": "Erreichen Sie mehr potenzielle Mieter und verwalten Sie den Vermietungsprozess effizient mit unseren benutzerfreundlichen Tools und Ressourcen."
+      }
+    },
+    "home": {
+      "operations": {
+        "main-title": "WUNSCHIMMOBILIE FINDEN KOMPETENT INVESTIEREN",
+        "descriptions": "Fylpi - ist ihr zuverlässiger Partner, der sie souverän und professionell durch den Dschungel des Immobilienmarktes zu ihrem erfolgreichen Immobiliendeal führt."
+      }
     },
     "title": "FINDEN SIE IHRE IMMOBILIE IN ÖSTERREICH"
   }

@@ -2,7 +2,47 @@
   "translation": {
     "buttons": {
       "prev": "Prev",
-      "next": "Next"
+      "next": "Next",
+      "sign-in": "Sign in",
+      "logout": "Logout",
+      "place-advertisement": "Place an advertisement"
+    },
+    "real-estate": {
+      "type": {
+        "apartment": "Apartment"
+      },
+      "operations": {
+        "buy": "Buy",
+        "sell": "Sell",
+        "rent": "Rent",
+        "rent-out": "Rent out"
+      },
+      "rooms": "Rooms",
+      "bathroom": "Bathroom"
+    },
+    "services": {
+      "buy": {
+        "title": "Buy",
+        "descriptions": "Even if you are not familiar with the real estate market and its local characteristics, you can find the right property here and invest confidently and competently."
+      },
+      "sell": {
+        "title": "Sell",
+        "descriptions": "No matter which route you choose to sell your property, fylpi will help you navigate the process and get you to a successful real estate deal."
+      },
+      "rent": {
+        "title": "Rent",
+        "descriptions": "Experience a seamless online search and find the right rental property in our comprehensive database."
+      },
+      "rent-out": {
+        "title": "Rent out",
+        "descriptions": "Reach more potential renters and manage the leasing process efficiently with our easy-to-use tools and resources."
+      }
+    },
+    "home": {
+      "operations": {
+        "main-title": "FIND YOUR DESIRE PROPERTY INVEST COMPETENTLY",
+        "descriptions": "Fylpi - is your reliable partner who will guide you confidently and professionally through the jungle of the real estate market to your successful real estate deal."
+      }
     },
     "title": "FIND YOUR PROPERTY IN AUSTRIA"
   }

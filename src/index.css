@@ -13,6 +13,7 @@
     --color-gray: #D8DDE0;
     --color-blue-gray: #748790;
     --color-light-gray: #E0DBD8;
+    --color-light-gray2: #F0F2F3;
 
     --font-primary: 'Outfit', sans-serif;
 
@@ -31,5 +32,37 @@
 @layer base {
     body {
         font-family: var(--font-primary), serif;
+        max-width: 90rem;
+        margin: 0 auto;
+
     }
+}
+
+.r-estate-descriptions {
+    display: flex;
+}
+
+.r-estate-descriptions span {
+    position: relative;
+    color: var(--color-charcoal);
+    font-size: .75rem;
+    line-height: 1.125rem;
+    padding: 0 .25rem;
+}
+
+.r-estate-descriptions span::after {
+    position: absolute;
+    content: '';
+    background: var(--color-charcoal);
+    right: 0;
+    top: .1875rem;
+    width: .0625rem;
+    height: .75rem;
+}
+
+.r-estate-descriptions span:last-child::after {
+    display: none;
+}
+.header-buttons_container button {
+    font-size: 1rem;
 }
