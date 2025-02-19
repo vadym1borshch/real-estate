@@ -6,13 +6,17 @@ import config from './i18n/config.ts'
 import App from './app/App.tsx'
 import { ThemeProvider } from '@material-tailwind/react'
 import { theme } from './theme.ts'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider value={theme}>
-      <I18nextProvider i18n={config}>
-        <App />
-      </I18nextProvider>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider value={theme}>
+        <I18nextProvider i18n={config}>
+          <App />
+        </I18nextProvider>
+      </ThemeProvider>
+    </Provider>
   </StrictMode>,
 )

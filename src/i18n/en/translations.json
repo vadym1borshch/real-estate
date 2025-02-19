@@ -9,7 +9,8 @@
     },
     "real-estate": {
       "type": {
-        "apartment": "Apartment"
+        "apartment": "Apartment",
+        "house": "House"
       },
       "operations": {
         "buy": "Buy",
@@ -42,6 +43,10 @@
       "operations": {
         "main-title": "FIND YOUR DESIRE PROPERTY INVEST COMPETENTLY",
         "descriptions": "Fylpi - is your reliable partner who will guide you confidently and professionally through the jungle of the real estate market to your successful real estate deal."
+      },
+      "top-ads": {
+        "main-title": "TOP ADS",
+        "descriptions": "Discover our top offers! Variety of real estate properties — from luxurious villas to commercial properties, modern city apartments and investment properties."
       }
     },
     "title": "FIND YOUR PROPERTY IN AUSTRIA"

@@ -1,10 +1,11 @@
 import Link from '../../atoms/link'
 import Chip from '../../atoms/chip'
 import Icon from '../../atoms/icon'
-import { RealEstate } from '../../../common/mock.ts'
 import { useTranslation } from 'react-i18next'
 import H3 from '../../atoms/typography/h3'
 import { cn } from '../../../helpers/ui.ts'
+import { RealEstate, setFavorite } from '../../../store/estateSlice'
+import { useAppDispatch } from '../../../store'
 
 interface Props {
   realEstate: RealEstate
@@ -12,7 +13,7 @@ interface Props {
 
 const HouseCard = ({ realEstate }: Props) => {
   const { t } = useTranslation()
-
+  const dispatch = useAppDispatch()
   const {
     label,
     isTop,
@@ -29,34 +30,38 @@ const HouseCard = ({ realEstate }: Props) => {
     favorite,
     selectedOnMap,
   } = realEstate
-
   return (
     <Link
       href={''}
-      className={cn('max-w-[22.5rem] min-h-[26.75rem] hover:border-0 focus:border-0 group flex flex-col gap-0 ',
+      className={cn('max-w-[22.5rem] min-h-[26.75rem] hover:border-0 focus:border-0 group flex flex-col gap-0 z-0',
         { 'border-2 border-charcoal hover:border-2 rounded-lg': selectedOnMap },
       )}
     >
       <div
         className="relative "
+        onClick={(e) => e.stopPropagation()}
       >
         <div
-          className="absolute p-6 top-0 h-fit flex justify-between w-full "
-          onClick={(e) => e.stopPropagation()}>
+          className="absolute p-6 top-0 flex justify-between w-full"
+
+        >
           {isTop && <Chip value="Top" />}
           <Icon
             id={favorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
-            className={cn('h-5 w-5 ml-auto text-white',
+            className={cn('h-5 w-5 ml-auto text-white z-100',
               { 'text-coral': favorite },
             )}
+            onClick={() => {
+              dispatch(setFavorite({ id } ))
+            }}
           />
         </div>
-        <img src={image} alt="house" className="object-cover " />
+        <img src={image} alt="house" className="object-cover h-[15rem]" />
       </div>
       <div
         className="min-h-[11.75rem] w-full bg-light-gray2 flex flex-col gap-3 px-6 py-5 rounded-b-lg group-hover:bg-gray transition-hover duration-300"
       >
-        <label className="font-700 text-charcoal">{t(label)}</label>
+        <label className="house-card__label font-700 text-charcoal">{label}</label>
         <div className="flex flex-col gap-1.5">
           <p className="r-estate-descriptions">
             <span>ID: {id}</span>

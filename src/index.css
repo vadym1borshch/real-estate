@@ -63,6 +63,15 @@
 .r-estate-descriptions span:last-child::after {
     display: none;
 }
+
 .header-buttons_container button {
     font-size: 1rem;
+}
+
+.house-card__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }

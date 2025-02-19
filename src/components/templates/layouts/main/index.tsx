@@ -1,13 +1,11 @@
-import Header from '../../../organisms/header'
 import { Outlet } from 'react-router-dom'
-
+import Footer from '../../../organisms/footer'
 
 export const MainLayout = () => {
   return (
     <>
-      <Header />
       <Outlet />
-      <div>Footer</div>
+      <Footer />
     </>
   )
 }

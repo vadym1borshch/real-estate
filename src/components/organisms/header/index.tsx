@@ -11,7 +11,7 @@ interface Props {
 const Header = ({ className }: Props) => {
   const { t } = useTranslation()
   return (
-    <div className={cn('z-100 w-full bg-transparent flex justify-between py-[3.125rem]', className)}>
+    <header className={cn('z-100 w-full bg-transparent flex justify-between py-[3.125rem]', className)}>
       <Logo />
       <div className="header-buttons_container flex items-center gap-6">
         <Button
@@ -48,7 +48,7 @@ const Header = ({ className }: Props) => {
         </Button>
         <LanguageSwitcher />
       </div>
-    </div>
+    </header>
   )
 }
 

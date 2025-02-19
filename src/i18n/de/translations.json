@@ -9,7 +9,8 @@
     },
     "real-estate": {
       "type": {
-        "apartment": "Wohnung"
+        "apartment": "Wohnung",
+        "house": "Haus"
       },
       "operations": {
         "buy": "Kaufen",
@@ -42,6 +43,10 @@
       "operations": {
         "main-title": "WUNSCHIMMOBILIE FINDEN KOMPETENT INVESTIEREN",
         "descriptions": "Fylpi - ist ihr zuverlässiger Partner, der sie souverän und professionell durch den Dschungel des Immobilienmarktes zu ihrem erfolgreichen Immobiliendeal führt."
+      },
+      "top-ads": {
+        "main-title": "TOP-ANZEIGEN",
+        "descriptions": "Entdecken Sie unsere Top-Angebote! Vielfalt von Immobilienobjekten — von luxuriösen Villen über gewerbliche und wirtschaftliche Objekte bis hin zu modernen Stadtwohnungen und Anlageobjekten."
       }
     },
     "title": "FINDEN SIE IHRE IMMOBILIE IN ÖSTERREICH"

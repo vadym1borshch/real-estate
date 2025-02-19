@@ -2,7 +2,7 @@ import buy from '/Buy.png?url'
 import sell from '/sell.png?url'
 import rent from '/rent.png?url'
 import rentOut from '/rent-out.png?url'
-import house from '/house1.png?url'
+
 
 export const assistant = {
   name: 'Johanna',
@@ -42,38 +42,3 @@ export const services = [
 
 ]
 
-export type RealEstate = {
-  id: string,
-  label: string,
-  isTop: true,
-  type: string,
-  address: string,
-  rooms: number,
-  bathroom: number,
-  operation: string,
-  m2: string,
-  price: string,
-  views: number,
-  image: string,
-  favorite: boolean,
-  selectedOnMap: boolean,
-}
-
-export const houses: RealEstate[] = [
-  {
-    id: '10025',
-    image: house,
-    label: 'EXKLUSIVE WOHNPROJEKTE IM ZENTRUM WIENS',
-    isTop: true,
-    favorite: false,
-    selectedOnMap: false,
-    type: 'real-estate.type.apartment',
-    address: '3400 Klosterneuburg',
-    rooms: 6,
-    bathroom: 3,
-    operation: 'real-estate.operations.buy',
-    m2: '215.96 m²',
-    price: '650.000,00 €',
-    views: 152,
-  },
-]

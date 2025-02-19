@@ -11,8 +11,10 @@ const Icon = ({ id, className, onClick }: IIconBaseProps) => {
     <svg
       onClick={(e) => {
         e.stopPropagation()
+        e.preventDefault();
         onClick && onClick()
       }}
+      onMouseDown={(e) => e.stopPropagation()}
       className={cn('w-full h-full', className)}
     >
       <use href={`../../../../public/icons/sprite.svg#${id}`} />
