@@ -47,6 +47,62 @@
       "top-ads": {
         "main-title": "TOP-ANZEIGEN",
         "descriptions": "Entdecken Sie unsere Top-Angebote! Vielfalt von Immobilienobjekten — von luxuriösen Villen über gewerbliche und wirtschaftliche Objekte bis hin zu modernen Stadtwohnungen und Anlageobjekten."
+      },
+      "popular": {
+        "main-title": "POPULÄRE",
+        "filters": {
+          "buy": {
+            "residential-real-estate": "Wohnimmobilien",
+            "apt-buildings": "Zinshäuser",
+            "investment-obj": "Anlageobjekte",
+            "commercial-real-estate": "Gewerbeimmobilien",
+            "other": "Sonstiges"
+          },
+          "rent": {
+            "houses": "Häuser",
+            "apt": "Wohnungen",
+            "commercial-real-estate": "Gewerbeimmobilien",
+            "other": "Sonstiges"
+          }
+        }
+      },
+      "faq": {
+        "main-title": "FAQ",
+        "descriptions": "Haben Sie Fragen? Wir haben die Antworten. Entdecken Sie die Antworten auf häufig gestellte Fragen in unserem umfangreichen FAQ-Bereich, der Ihnen alle benötigten Informationen bietet.",
+        "how-buy-property": {
+          "question": "Wie kann ich eine Immobilie kaufen?",
+          "answer": "Für den Verkauf Ihrer Immobilie benötigen Sie in der Regel einen aktuellen Grundbuchauszug, einen Energieausweis, Baupläne und Grundrisse, sowie gegebenenfalls Mietverträge und Nachweise über durchgeführte Renovierungen. Diese Dokumente helfen, den Verkaufsprozess reibungslos zu gestalten. So sind Sie bestens vorbereitet."
+        },
+        "documents-need-to-sell-property": {
+          "question": "Welche Dokumente benötige ich für den Verkauf meiner Immobilie?",
+          "answer": "Für den Verkauf Ihrer Immobilie benötigen Sie einige wichtige Dokumente. Dazu gehört ein aktueller Grundbuchauszug, der Ihr Eigentum nachweist. Außerdem ist ein Energieausweis gesetzlich vorgeschrieben, um die Energieeffizienz der Immobilie zu dokumentieren. Falls vorhanden, sollten Sie auch Baupläne und Grundrisse bereithalten, da sie potenziellen Käufern einen besseren Überblick über die Immobilie geben.\n\nWenn Sie in der Vergangenheit Renovierungen oder Modernisierungen durchgeführt haben, ist es hilfreich, entsprechende Nachweise über durchgeführte Arbeiten vorzulegen. Falls die Immobilie vermietet ist, benötigen Sie zudem die aktuellen Mietverträge sowie eine Übersicht über die Nebenkostenabrechnungen.\n\nUm sicherzustellen, dass Sie alle erforderlichen Unterlagen haben, ist es ratsam, sich frühzeitig bei den zuständigen Behörden oder einem Immobilienmakler zu informieren."
+        },
+        "how-find-best-rental-offers": {
+          "question": "Wie finde ich die besten Mietangebote in meiner Nähe?",
+          "answer": "Um die besten Mietangebote in Ihrer Nähe zu finden, gibt es mehrere effektive Möglichkeiten. Eine der einfachsten Methoden ist die Nutzung von Online-Immobilienportalen, auf denen Sie nach bestimmten Kriterien wie Preis, Größe und Ausstattung filtern können. Beliebte Plattformen sind beispielsweise ImmobilienScout24, ImmoWelt oder eBay Kleinanzeigen.\n\nDarüber hinaus kann es hilfreich sein, sich direkt an lokale Immobilienmakler zu wenden, da diese oft exklusive Mietangebote haben, die nicht online veröffentlicht werden. Auch das Durchsuchen von lokalen Zeitungsanzeigen oder das Achten auf \"Zu vermieten\"-Schilder in Ihrer Umgebung kann sich lohnen.\n\nEin weiterer Tipp ist, sich in sozialen Netzwerken oder lokalen Facebook-Gruppen umzusehen, da dort oft kurzfristig verfügbare Mietobjekte gepostet werden. Zudem kann es vorteilhaft sein, Ihr eigenes Gesuch aufzugeben, in dem Sie Ihre Wunschkriterien angeben.\n\nWenn Sie schnell eine Wohnung finden möchten, sollten Sie regelmäßig nach neuen Angeboten suchen und bei Interesse sofort den Vermieter kontaktieren, um eine Besichtigung zu vereinbaren."
+        },
+        "costs-associated-property": {
+          "question": "Welche Kosten sind mit dem Kauf einer Immobilie verbunden?",
+          "answer": "Beim Kauf einer Immobilie fallen neben dem Kaufpreis noch weitere Kosten an, die oft unterschätzt werden. Zu den wichtigsten gehören die Grunderwerbsteuer, die je nach Bundesland zwischen 3,5 % und 6,5 % des Kaufpreises beträgt, sowie die Notar- und Grundbuchkosten, die in der Regel 1,5 % bis 2 % ausmachen.\n\nFalls Sie einen Makler beauftragt haben, fällt eine Maklerprovision an, die je nach Region und Vereinbarung meist zwischen 3 % und 7 % des Kaufpreises liegt. Außerdem sollten Sie zusätzliche Nebenkosten für Renovierungen, Modernisierungen oder Umzugskosten einplanen.\n\nAuch die Finanzierung kann mit zusätzlichen Kosten verbunden sein, beispielsweise durch Bearbeitungsgebühren der Bank oder eine Vorfälligkeitsentschädigung bei vorzeitiger Kreditablösung. Nach dem Kauf kommen regelmäßige Kosten wie Grundsteuer, Versicherungen und Instandhaltungskosten hinzu.\n\nEs ist daher ratsam, alle Kosten im Voraus genau zu kalkulieren und gegebenenfalls eine Beratung durch einen Finanzexperten oder Immobilienmakler in Anspruch zu nehmen."
+        },
+        "how-arrange-viewing-appointment": {
+          "question": "Wie kann ich einen Besichtigungstermin vereinbaren?",
+          "answer": "Um einen Besichtigungstermin für eine Immobilie zu vereinbaren, gibt es verschiedene Möglichkeiten. In den meisten Fällen können Sie den Anbieter direkt über die Immobilienplattform kontaktieren, auf der das Inserat veröffentlicht wurde. Viele Online-Portale bieten ein Kontaktformular oder eine direkte Telefonnummer des Verkäufers oder Maklers an.\n\nFalls Sie die Immobilie über einen Makler gefunden haben, können Sie diesen telefonisch oder per E-Mail kontaktieren, um einen passenden Termin abzustimmen. Es ist ratsam, mehrere Terminvorschläge zu machen, um die Chancen auf eine schnelle Besichtigung zu erhöhen.\n\nSollten Sie eine Immobilie in einer Zeitung oder durch ein \"Zu vermieten\" oder \"Zu verkaufen\"-Schild entdeckt haben, können Sie den Eigentümer direkt anrufen oder vorbeigehen, um sich nach einem Termin zu erkundigen.\n\nVor dem Besichtigungstermin sollten Sie sich gut vorbereiten und eine Liste mit wichtigen Fragen zur Immobilie erstellen. Falls es sich um ein Mietobjekt handelt, empfiehlt es sich, relevante Unterlagen wie eine Mieterselbstauskunft, Gehaltsnachweise oder eine SCHUFA-Auskunft bereitzuhalten, um Ihre Chancen zu verbessern.\n\n"
+        }
+      }
+    },
+    "footer": {
+      "links": {
+        "about-us": "Über uns",
+        "contact-us": "Kontaktieren Sie uns",
+        "my-account": "Mein Konto",
+        "buy": "Kaufen",
+        "rent": "Mieten",
+        "faq": "FAQ",
+        "service-property": "Service rund um die Immobilie",
+        "practical-instr": "Praktische Anleitungen",
+        "knowledge-property": "Wissen rund um die Immobilie",
+        "advisory-services": "Beratungsdienste"
       }
     },
     "title": "FINDEN SIE IHRE IMMOBILIE IN ÖSTERREICH"

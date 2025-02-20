@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { houses } from './data.ts'
+import { sleep } from '../../helpers/common.ts'
+import { buyFilters, FilterOption, rentFilters } from '../../components/organisms/home-page/popular-block/mock.ts'
 
 
 export interface RealEstate {
@@ -19,13 +21,6 @@ export interface RealEstate {
   selectedOnMap: boolean,
 }
 
-export const sleep = async (ms: number) =>
-  new Promise<void>((resolve) => {
-    const id = setTimeout(() => {
-      resolve()
-      clearTimeout(id)
-    }, ms)
-  })
 
 export const fetchEstate = createAsyncThunk<RealEstate[], void>('estate', async () => {
   // simulate api call
@@ -36,12 +31,16 @@ export const fetchEstate = createAsyncThunk<RealEstate[], void>('estate', async 
 
 export interface IState {
   data: RealEstate[] | null,
+  buyFilter: FilterOption,
+  rentFilter: FilterOption,
   loading: boolean,
   error: Error | null,
 }
 
 const initialState: IState = {
   data: null,
+  buyFilter: buyFilters[0],
+  rentFilter: rentFilters[0],
   loading: false,
   error: null,
 }
@@ -52,12 +51,19 @@ export const realEstateSlice = createSlice({
   reducers: {
     setFavorite: (state, action: PayloadAction<{ id: string }>) => {
       if (!state.data) return
-      console.log('Favorite state: ', action.payload.id)
       state.data = state.data.map((item) =>
         item.id === action.payload.id
           ? { ...item, favorite: !item.favorite }
           : item,
       )
+    },
+
+    setBuyFilter: (state, action: PayloadAction<{ filter: { key: string, title: string } }>) => {
+      state.buyFilter = action.payload.filter
+
+    },
+    setRentFilter: (state, action: PayloadAction<{ filter: { key: string, title: string } }>) => {
+      state.rentFilter = action.payload.filter
     },
   },
   extraReducers: (builder) => {
@@ -77,6 +83,6 @@ export const realEstateSlice = createSlice({
   },
 })
 
-export const { setFavorite } = realEstateSlice.actions
+export const { setFavorite, setBuyFilter, setRentFilter } = realEstateSlice.actions
 
 export default realEstateSlice.reducer

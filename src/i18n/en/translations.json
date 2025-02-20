@@ -47,6 +47,62 @@
       "top-ads": {
         "main-title": "TOP ADS",
         "descriptions": "Discover our top offers! Variety of real estate properties — from luxurious villas to commercial properties, modern city apartments and investment properties."
+      },
+      "popular": {
+        "main-title": "Popular",
+        "filters": {
+          "buy": {
+            "residential-real-estate": "Residential real estate",
+            "apt-buildings": "Apartment buildings",
+            "investment-obj": "Investment objects",
+            "commercial-real-estate": "Commercial real estate",
+            "other": "Other"
+          },
+          "rent": {
+            "houses": "Houses",
+            "apt": "Apartments",
+            "commercial-real-estate": "Commercial real estate",
+            "other": "Other"
+          }
+        }
+      },
+      "faq": {
+        "main-title": "FAQ",
+        "descriptions": "Do you have questions? We have the answers. Discover the answers to frequently asked questions in our extensive FAQ section, which provides you with all the information you need",
+        "how-buy-property": {
+          "question": "How can I buy a property?",
+          "answer": "To sell your property, you will generally need a current land register extract, an energy certificate, building plans and floor plans, as well as, if necessary, rental agreements and evidence of renovations carried out. These documents help make the sales process smooth. So you are well prepared."
+        },
+        "documents-need-to-sell-property": {
+          "question": "What documents do I need to sell my property?",
+          "answer": "When selling your property, you need several important documents. One of the key documents is an extract from the land register, which proves your ownership. Additionally, an energy certificate is legally required to provide information about the property's energy efficiency. If available, you should also have construction plans and floor plans, as they help potential buyers better understand the layout of the property.\n\nIf you have carried out any renovations or modernizations in the past, it is useful to provide proof of these works. If the property is currently rented, you will also need rental agreements and an overview of the utility bills.\n\nTo ensure you have all the necessary documents, it is advisable to check with the relevant authorities or consult a real estate agent in advance."
+        },
+        "how-find-best-rental-offers": {
+          "question": "How do I find the best rental offers near me?",
+          "answer": "To find the best rental offers in your area, there are several effective strategies. One of the easiest ways is to use online real estate portals, where you can filter listings based on price, size, and amenities. Popular platforms include Zillow, Apartments.com, and Craigslist.\n\nAdditionally, contacting local real estate agents can be very useful, as they often have exclusive rental listings that are not publicly advertised online. Checking local newspaper ads or looking for \"For Rent\" signs in your neighborhood can also help you discover hidden gems.\n\nAnother great option is to explore social media platforms or local Facebook groups, where landlords often post available rentals. You can also create your own post stating what kind of property you are looking for, which might attract potential landlords.\n\nIf you want to secure a rental quickly, it's important to check new listings frequently and contact the landlord as soon as possible to schedule a viewing."
+        },
+        "costs-associated-property": {
+          "question": "What costs are associated with buying a property?",
+          "answer": "When purchasing a property, there are additional costs beyond the purchase price that buyers should be aware of. One of the most significant is the real estate transfer tax, which varies by region and typically ranges between 3.5% and 6.5% of the purchase price. Additionally, notary and land registry fees usually amount to 1.5% to 2% of the total cost.\n\nIf you hire a real estate agent, you may need to pay a broker's commission, which is typically between 3% and 7% of the property's price, depending on the agreement and location. You should also factor in potential renovation, modernization, or moving expenses.\n\nFinancing a property can also come with extra costs, such as bank processing fees or early repayment penalties if you decide to pay off a loan ahead of schedule. After the purchase, ongoing expenses like property taxes, insurance, and maintenance costs should also be considered.\n\nIt is advisable to calculate all these costs in advance and seek advice from a financial expert or real estate professional to ensure a well-planned investment."
+        },
+        "how-arrange-viewing-appointment": {
+          "question": "How can I arrange a viewing appointment?",
+          "answer": "There are several ways to schedule a property viewing. In most cases, you can contact the seller or landlord directly through the real estate platform where the listing was published. Many online portals provide a contact form or a direct phone number for the seller or real estate agent.\n\nIf the property is listed through an agent, you can reach out via phone or email to arrange a suitable appointment. It’s advisable to suggest multiple time slots to increase the chances of securing a viewing.\n\nIf you found a property through a newspaper ad or a \"For Sale\" or \"For Rent\" sign, you can call the owner directly or visit the location to inquire about a viewing.\n\nBefore the appointment, it's a good idea to prepare a list of important questions about the property. If you’re looking to rent, having documents such as a tenant self-disclosure form, proof of income, or a credit report ready can improve your chances of getting the property."
+        }
+      }
+    },
+    "footer": {
+      "links": {
+        "about-us": "About Us",
+        "contact-us": "Contact us",
+        "my-account": "My account",
+        "buy": "Buy",
+        "rent": "Rent",
+        "faq": "FAQ",
+        "service-property": "Service around the property",
+        "practical-instr": "Practical instructions",
+        "knowledge-property": "Knowledge about the property",
+        "advisory-services": "Advisory Services"
       }
     },
     "title": "FIND YOUR PROPERTY IN AUSTRIA"

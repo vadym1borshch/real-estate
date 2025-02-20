@@ -1,25 +1,33 @@
 import { OperationFilter } from './OperationFilter.tsx'
-import HouseCard from '../../../molecules/house-card'
+import EstateCard from '../../../molecules/estate-card'
 import { cn } from '../../../../helpers/ui.ts'
-import { useAppSelector } from '../../../../store'
-import { selectEstates } from '../../../../store/estateSlice/selectors.ts'
 import { RealEstate } from '../../../../store/estateSlice'
+import { FilterOption } from './mock.ts'
+import { useWindowDimensions } from '../../../../helpers/hooks/useWindowDimensions.ts'
+import { BREAKPOINTS } from '../../../../helpers/common.ts'
 
 interface Props {
   label: string
-  filters: string[]
+  filters: FilterOption[]
   estates: RealEstate[]
   className?: string
 }
 
 export const Operation = ({ label, filters, estates, className }: Props) => {
+  const { width } = useWindowDimensions()
+  const isMedium = width <= BREAKPOINTS.xl
+  const isMobile = width <= BREAKPOINTS['pre-md']
 
   return (
-    <div className={cn('flex flex-col gap-[90px]', className)}>
+    <div className={cn('flex flex-col items-center gap-[90px]', className)}>
       <OperationFilter label={label} filters={filters} />
-      <div className="grid grid-cols-3 gap-10">
+      <div className={cn('grid grid-cols-3 gap-10', {
+        'grid-cols-2': isMedium || estates.length < 3,
+        'grid-cols-1 mx-auto': isMobile || !estates.length || estates.length < 2,
+      })}>
+        {!estates.length && (<div className="text-center w-full">No objects found...</div>)}
         {estates.map((house) => (
-          <HouseCard key={house.id} realEstate={house} />
+          <EstateCard key={house.id} realEstate={house} />
         ))}
       </div>
     </div>

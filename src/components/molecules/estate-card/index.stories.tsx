@@ -1,15 +1,16 @@
 import React from 'react'
 import { Meta, StoryFn } from '@storybook/react'
-import HouseCard from './index'
-import { houses } from '../../../common/mock.ts'
+import EstateCard from './index'
+import { houses } from '../../../store/estateSlice/data.ts'
+
 
 export default {
-  component: HouseCard,
+  component: EstateCard,
 } as Meta
 
-const Template: StoryFn<typeof HouseCard> = (args) => {
+const Template: StoryFn<typeof EstateCard> = (args) => {
   return (
-    <HouseCard {...args} />
+    <EstateCard {...args} />
   )
 }
 

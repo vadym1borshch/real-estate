@@ -11,7 +11,7 @@ interface Props {
   realEstate: RealEstate
 }
 
-const HouseCard = ({ realEstate }: Props) => {
+const EstateCard = ({ realEstate }: Props) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const {
@@ -30,6 +30,7 @@ const HouseCard = ({ realEstate }: Props) => {
     favorite,
     selectedOnMap,
   } = realEstate
+
   return (
     <Link
       href={''}
@@ -48,7 +49,7 @@ const HouseCard = ({ realEstate }: Props) => {
           {isTop && <Chip value="Top" />}
           <Icon
             id={favorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
-            className={cn('h-5 w-5 ml-auto text-white z-100',
+            className={cn('h-[20px] w-[20px] lg:h-5 lg:w-5 ml-auto text-white z-100 ',
               { 'text-coral': favorite },
             )}
             onClick={() => {
@@ -77,9 +78,9 @@ const HouseCard = ({ realEstate }: Props) => {
         </div>
         <div className="flex justify-between w-full">
           <H3 text={price} className="text-charcoal" />
-          <span className="flex self-end text-blue-gray gap-1.5">
+          <span className="flex self-end text-blue-gray gap-1.5 items-center">
             {views}
-            <Icon id="eyeIcon" className="h-6 w-6" />
+            <Icon id="eyeIcon" className="h-[24px] w-[24px] lg:w-6 lg:h-6 " />
           </span>
         </div>
       </div>
@@ -87,4 +88,4 @@ const HouseCard = ({ realEstate }: Props) => {
   )
 }
 
-export default HouseCard
+export default EstateCard

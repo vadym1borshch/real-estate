@@ -60,7 +60,22 @@
     height: .75rem;
 }
 
+.footer-link::after {
+    position: absolute;
+    content: '';
+    background: white;
+    right: 0;
+    top: .375rem;
+    width: .0625rem;
+    height: .75rem;
+}
+
+
 .r-estate-descriptions span:last-child::after {
+    display: none;
+}
+
+.footer-link:last-child::after {
     display: none;
 }
 
@@ -74,4 +89,22 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
 }

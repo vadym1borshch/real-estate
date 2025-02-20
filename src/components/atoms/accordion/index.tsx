@@ -28,8 +28,8 @@ const Accordion = ({ label, children, open, setOpen }: Props) => {
         {label}
         <Icon
           id="chevronDownIcon"
-          className={cn('w-6 h-6 self-end text-charcoal transition-transform',
-            { 'rotate-180 transition-transform': open })}
+          className={cn('h-[24px] w-[24px] lg:w-6 lg:h-6 self-end text-charcoal transition-transform',
+            { 'rotate-180 transition-transform ': open })}
         />
       </AccordionHeader>
       <AccordionBody className="text-md font-400 py-[1.3125rem]">

@@ -50,10 +50,10 @@ const Button = (
       onPointerLeave={() => setPressed(false)}
       {...rest}
     >
-      <span className="capitalize flex gap-[0.125rem] w-full max-h-10 items-center justify-center">
+      <span className="capitalize flex gap-[0.125rem] w-full max-h-10 items-center justify-between">
         {children}
         {iconId && (
-          <Icon id={iconId} className={cn('w-6 h-6', { 'order-first': iconSide === 'left' }, iconClassName)} />
+          <Icon id={iconId} className={cn('w-[24px] h-[24px] md:w-6 md:h-6', { 'order-first': iconSide === 'left' }, iconClassName)} />
         )}
       </span>
     </TButton>
