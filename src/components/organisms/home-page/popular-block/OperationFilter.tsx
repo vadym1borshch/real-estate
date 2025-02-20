@@ -29,13 +29,13 @@ export const OperationFilter = ({ label, filters }: Props) => {
   return (
     <div className="flex items-center w-full justify-center gap-6 max-w-[35rem]">
       <label>{label}:</label>
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 flex-wrap md:flex-nowrap">
         {filters.map((filter) => {
           const initFilter = filter.key === currentFilter.key
           return (
             <span
               onClick={() => setFilterHandler(filter)}
-              className={cn('cursor-pointer', {
+              className={cn('text-nowrap cursor-pointer hover:text-blue-gray transition-hover duration-300', {
                 'underline': initFilter,
               })}
               key={filter.key}
