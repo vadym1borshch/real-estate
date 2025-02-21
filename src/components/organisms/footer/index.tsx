@@ -10,7 +10,7 @@ const Footer = () => {
   const { width } = useWindowDimensions()
   const isMedium = width <= BREAKPOINTS.xl
   return (
-    <footer className="bg-jungle-green min-h-[27.8125rem] mb-5 mx-5 rounded-lg px-6 lg:px-[7.5rem] py-[1.875rem] flex flex-col">
+    <footer className="bg-jungle-green min-h-[27.8125rem] rounded-lg px-6 lg:px-[7.5rem] py-[1.875rem] flex flex-col">
       <div>
         <Logo variant="white" />
       </div>

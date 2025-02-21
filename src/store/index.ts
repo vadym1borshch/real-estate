@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 import realEstateSlice from './estateSlice/index.ts'
+import findFilterSlice from './findFilterSlice/index.ts'
 
 export const store = configureStore({
   reducer: {
     estates: realEstateSlice,
+    filters: findFilterSlice,
   },
 })
 

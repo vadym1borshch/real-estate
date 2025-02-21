@@ -1,12 +1,14 @@
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Logo from '../../atoms/logo'
 import Button from '../../atoms/button'
 import LanguageSwitcher from '../../molecules/language-switcher'
-import { useTranslation } from 'react-i18next'
 import { cn } from '../../../helpers/ui.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
+import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
 import Dropdown from '../../atoms/dropdown'
-import { useEffect, useState } from 'react'
 
 interface Props {
   className?: string
@@ -17,6 +19,15 @@ const Header = ({ className }: Props) => {
   const { width } = useWindowDimensions()
   const [open, setOpen] = useState(false)
   const isMedium = width > BREAKPOINTS.md
+  const navigation = useNavigate()
+  const pathname = usePathname()
+
+  console.log(pathname)
+
+  const goToHomePage = () => {
+    if (pathname === '/' || pathname === '') return
+    navigation('/')
+  }
 
   useEffect(() => {
     if (isMedium) {
@@ -25,8 +36,8 @@ const Header = ({ className }: Props) => {
   }, [isMedium])
 
   return (
-    <header className={cn('z-100 w-full bg-transparent flex justify-between py-[3.125rem]', className)}>
-      <div className="flex items-center gap-6">
+    <header className={cn('z-100 w-full bg-transparent flex justify-between py-[1.875rem]', className)}>
+      <div className="flex items-center gap-6 cursor-pointer" onClick={goToHomePage}>
         <Logo />
         <span className="font-600 uppercase tracking-[3px]">Immobilien Suche</span>
       </div>

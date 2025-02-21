@@ -10,6 +10,24 @@ export const selectEstates = createSelector(
   (data) => data ?? [],
 )
 
+
+export const selectCurrentPage = (state: RootState) => state.estates.currentPage
+
+export const selectPaginatedEstates = (itemsPerPage: number) => createSelector(
+  [selectEstates, selectCurrentPage],
+  (estates, currentPage) => {
+    const startIndex = (currentPage - 1) * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+    return estates.slice(startIndex, endIndex)
+  },
+)
+
+export const selectTotalPages = (itemsPerPage: number) => createSelector(
+  [selectEstates],
+  (estates) => Math.ceil(estates.length / itemsPerPage),
+)
+
+
 export const selectTopEstates = createSelector(
   [selectEstates],
   (data) => data.filter(el => el.isTop),

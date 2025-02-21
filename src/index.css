@@ -70,6 +70,12 @@
     height: .75rem;
 }
 
+.rooms-filter__button:last-child {
+    margin-right: 12px;
+}
+.rooms-filter__button:first-child {
+    margin-left: 12px;
+}
 
 .r-estate-descriptions span:last-child::after {
     display: none;

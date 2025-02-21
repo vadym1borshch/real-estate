@@ -35,6 +35,7 @@ export interface IState {
   rentFilter: FilterOption,
   loading: boolean,
   error: Error | null,
+  currentPage: number
 }
 
 const initialState: IState = {
@@ -43,6 +44,7 @@ const initialState: IState = {
   rentFilter: rentFilters[0],
   loading: false,
   error: null,
+  currentPage: 1,
 }
 
 export const realEstateSlice = createSlice({
@@ -65,6 +67,9 @@ export const realEstateSlice = createSlice({
     setRentFilter: (state, action: PayloadAction<{ filter: { key: string, title: string } }>) => {
       state.rentFilter = action.payload.filter
     },
+    setCurrentPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -83,6 +88,6 @@ export const realEstateSlice = createSlice({
   },
 })
 
-export const { setFavorite, setBuyFilter, setRentFilter } = realEstateSlice.actions
+export const { setFavorite, setBuyFilter, setRentFilter, setCurrentPage } = realEstateSlice.actions
 
 export default realEstateSlice.reducer

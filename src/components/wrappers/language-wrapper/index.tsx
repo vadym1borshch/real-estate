@@ -1,21 +1,22 @@
 import { Fragment, ReactNode, useEffect, useState } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import i18next from 'i18next'
 import { DEFAULT_LANG, STORAGE_KEY, SUPPORTED_LANGUAGES } from '../../../common/constants.ts'
+import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 
 export const LanguageWrapper = ({ children }: { children: ReactNode }) => {
   const { lang } = useParams<{ lang: string }>()
-  const location = useLocation()
+  const pathname = usePathname()
   const navigate = useNavigate()
   const [currentLang, setCurrentLang] = useState(i18next.language)
 
   useEffect(() => {
     const savedLang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG
     const isLangValid = SUPPORTED_LANGUAGES.some(item => item === lang)
-    const cleanPath = location.pathname.replace(/^\/(en|ua|de)/, '')
+
 
     if (!isLangValid) {
-      navigate(`/${savedLang}/${cleanPath || '/'}`, { replace: true })
+      navigate(`/${savedLang}/${pathname || '/'}`, { replace: true })
       return
     }
 
@@ -25,7 +26,7 @@ export const LanguageWrapper = ({ children }: { children: ReactNode }) => {
 
     localStorage.setItem(STORAGE_KEY, lang)
     setCurrentLang(lang)
-  }, [lang, location.pathname, navigate])
+  }, [lang, pathname, navigate])
 
   useEffect(() => {
     i18next.on('languageChanged', setCurrentLang)

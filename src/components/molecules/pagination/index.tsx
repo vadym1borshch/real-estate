@@ -10,9 +10,10 @@ interface Props {
   count: number
   page: number
   setPage: (page: number) => void
+  className?: string
 }
 
-const Pagination = ({ count, page, setPage }: Props) => {
+const Pagination = ({ count, page, setPage, className }: Props) => {
   const { t } = useTranslation()
 
   const setPageHandler = (e: MouseEvent<HTMLButtonElement>, index?: number) => {
@@ -57,7 +58,7 @@ const Pagination = ({ count, page, setPage }: Props) => {
   }
 
   return (
-    <div className="flex items-center gap-4">
+    <div className={cn("flex items-center gap-4", className)}>
       <Button
         variant="outlined"
         size="sm"

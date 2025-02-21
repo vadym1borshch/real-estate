@@ -11,6 +11,8 @@ import { DEFAULT_LANG, STORAGE_KEY } from '../../common/constants.ts'
 import { MainWrapper } from '../../components/wrappers/main-wrapper'
 import { MainLayout } from '../../components/templates/layouts/main'
 import { HomePageLayout } from '../../components/templates/layouts/home-page'
+import { DefaultPageLayout } from '../../components/templates/layouts/default-pages'
+import { EstatesList } from '../Pages/EstatesList'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -83,20 +85,29 @@ const routes: RouteObject[] = [
             ],
           },
           {
-            path: 'about',
-            element: <About />,
+            path: '',
+            element: <DefaultPageLayout />,
             children: [
               {
-                path: ':id',
-                element: <Details />,
+                path: 'about',
+                element: <About />,
+                children: [
+                  {
+                    path: ':id',
+                    element: <Details />,
+                  },
+                ],
               },
+              {
+                path: 'estates',
+                element: <EstatesList />,
+              },
+              { path: 'not-found', element: <>❌ 404 Page Not Found</> },
+              { path: '*', element: <RedirectToErrorPage /> },
             ],
           },
-          { path: 'not-found', element: <>❌ 404 Page Not Found</> },
-          { path: '*', element: <RedirectToErrorPage /> },
         ],
       },
-
     ],
   },
 ]
