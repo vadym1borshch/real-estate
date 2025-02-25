@@ -26,19 +26,19 @@ export const HomePage = () => {
       >
         <div
           className={cn('pt-[5.625rem] grid grid-cols-4 gap-10', {
-            'grid-cols-2': isMedium ,
-            'grid-cols-1 mx-auto': isMobile ,
+            'grid-cols-2': isMedium,
+            'grid-cols-1 mx-auto': isMobile,
           })}
         >
-             {services.map((service) => (
-               <LinkCard
-                 key={service.label}
-                 src={service.src}
-                 label={t(service.label)}
-                 descriptions={t(service.descriptions)}
-                 href=""
-               />
-             ))}
+          {services.map((service) => (
+            <LinkCard
+              key={service.label}
+              src={service.src}
+              label={t(service.label)}
+              descriptions={t(service.descriptions)}
+              href=""
+            />
+          ))}
         </div>
       </MainBlock>
       <MainBlock
@@ -47,9 +47,9 @@ export const HomePage = () => {
       >
         <div
           className={cn('pt-[5.625rem] grid grid-cols-3 gap-10', {
-          'grid-cols-2': isMedium ,
-          'grid-cols-1 mx-auto': preMedium ,
-        })}>
+            'grid-cols-2': isMedium,
+            'grid-cols-1 mx-auto': preMedium,
+          })}>
           {topEstate.map((house) => (
             <EstateCard realEstate={house} key={house.id} />
           ))}

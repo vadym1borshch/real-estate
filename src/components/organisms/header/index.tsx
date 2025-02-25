@@ -22,8 +22,6 @@ const Header = ({ className }: Props) => {
   const navigation = useNavigate()
   const pathname = usePathname()
 
-  console.log(pathname)
-
   const goToHomePage = () => {
     if (pathname === '/' || pathname === '') return
     navigation('/')

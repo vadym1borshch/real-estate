@@ -1,6 +1,6 @@
 import { cn } from '../../../helpers/ui.ts'
 import Icon from '../icon'
-import { ChangeEvent } from 'react'
+import { ChangeEvent, Ref } from 'react'
 
 interface Props {
   label?: string
@@ -13,9 +13,10 @@ interface Props {
   error?: string
   className?: string
   iconSide?: 'left' | 'right'
+  ref?: Ref<HTMLInputElement | null>
 }
 
-const Input = ({ label, size = 'md', onChange, placeholder, value, iconId, error, iconClassName, className, iconSide = 'right', ...rest }: Props) => {
+const Input = ({ label, size = 'md', onChange, placeholder, value, iconId, error, iconClassName, className, iconSide = 'right', ref, ...rest }: Props) => {
   return (
     <div className="relative w-full flex flex-col z-0">
       {label && <div className="flex items-center justify-between">
@@ -29,6 +30,7 @@ const Input = ({ label, size = 'md', onChange, placeholder, value, iconId, error
         </span>}
       </div>}
       <input
+        ref={ref}
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e)}
@@ -40,13 +42,12 @@ const Input = ({ label, size = 'md', onChange, placeholder, value, iconId, error
         )}
         {...rest}
       />
-      {iconId && <span className={cn('z-20 bg-white h-[24px] w-[24px] lg:w-6 lg:h-6 absolute bottom-3 right-3 text-blue-gray',
+      {iconId && <span className={cn('z-20 bg-white h-[24px] w-[24px] lg:w-6 lg:h-6 absolute bottom-3 right-3 text-blue-gray flex items-center justify-center',
         { 'bottom-2': size === 'sm' },
         { 'left-3': iconSide === 'left' },
         iconClassName,
       )}>
-        <Icon id={iconId}
-        />
+        <Icon id={iconId} />
       </span>
       }
     </div>

@@ -1,4 +1,4 @@
-import { Filter } from '../../../components/molecules/filter'
+import {  Filters } from '../../../components/molecules/filters'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import {
   selectCurrentPage,
@@ -11,6 +11,7 @@ import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.
 import { BREAKPOINTS } from '../../../helpers/common.ts'
 import Pagination from '../../../components/molecules/pagination'
 import { setCurrentPage } from '../../../store/estateSlice'
+import Button from '../../../components/atoms/button'
 
 export const EstatesList = () => {
   const itemsPerPage = 9
@@ -27,8 +28,12 @@ export const EstatesList = () => {
   }
 
   return (
-    <div className="w-full max-w-[1160px] flex flex-col items-center ">
-      <Filter className="bg-transparent m-0 px-0" />
+    <div className="w-full max-w-[1160px] flex flex-col items-center z-0">
+      <Filters className="bg-transparent m-0 px-0 ">
+        <Button variant="outlined" onClick={()=>{}}>
+          M
+        </Button>
+      </Filters>
       <div className={cn('grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-10 mt-[1.125rem]', {
         'grid-cols-1': isMobile,
       })}>

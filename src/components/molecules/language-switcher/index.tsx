@@ -12,11 +12,15 @@ const LanguageSwitcher = () => {
   const [open, setOpen] = useState(false)
 
   const changeLanguage = (e: MouseEvent<HTMLButtonElement>) => {
-    const lang = e.currentTarget.innerText.toLowerCase() as Language
-    i18n.changeLanguage(lang)
-    window.history.pushState(null, '', `/${lang}`)
-    setCurrentLanguage(lang as Language)
-  }
+    const lang = e.currentTarget.innerText.toLowerCase() as Language;
+    i18n.changeLanguage(lang);
+
+    const currentParams = new URLSearchParams(window.location.search).toString();
+    const newUrl = `/${lang}${currentParams ? `?${currentParams}` : ''}`;
+
+    window.history.pushState(null, '', newUrl);
+    setCurrentLanguage(lang);
+  };
 
   useEffect(() => {
     const lang = localStorage.getItem('i18nextLng')
@@ -27,12 +31,9 @@ const LanguageSwitcher = () => {
 
   return (
     <Dropdown open={open} setOpen={setOpen} label={currentLanguage.toUpperCase()}>
-      <div
-        className="flex z-100000 flex-col justify-center items-center w-fit border-transparent outline-none ring-0 focus:outline-none focus:ring-0 ">
-        <Button size="sm" variant="text" onClick={changeLanguage}>EN</Button>
-        <Button size="sm" variant="text" onClick={changeLanguage}>DE</Button>
-        <Button size="sm" variant="text" onClick={changeLanguage}>UA</Button>
-      </div>
+      <Button size="sm" variant="text" onClick={changeLanguage}>EN</Button>
+      <Button size="sm" variant="text" onClick={changeLanguage}>DE</Button>
+      <Button size="sm" variant="text" onClick={changeLanguage}>UA</Button>
     </Dropdown>
   )
 }

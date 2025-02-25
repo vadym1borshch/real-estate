@@ -1,30 +1,23 @@
-import { useAppDispatch } from '../../../store'
-import { setFilterValue } from '../../../store/findFilterSlice'
+import { ReactNode } from 'react'
+import { cn } from '../../../helpers/ui.ts'
 
 interface Props {
-  list: string[]
-  id: string
-  setValue?: (value: string) => void
+  children: ReactNode
+  className?: string
 }
 
-export const DropdownMenu = ({ list, id, setValue }: Props) => {
-
-  const dispatch = useAppDispatch()
+export const DropdownMenu = ({ children, className }: Props) => {
 
   return (
-    <div className="w-full flex flex-col ">
-      {list.map((item, idx) => (
-        <span
-          key={`${item}` + `${idx}`}
-          className="hover:bg-blue-gray py-2 px-4 text-base"
-          onClick={() => {
-            dispatch(setFilterValue({value: item, id}))
-            setValue && setValue(item)
-          }}
-        >
-          {item}
-        </span>
-      ))}
+    <div
+      className={cn('absolute z-1001 flex flex-col cursor-pointer top-full left-0 w-full min-w-fit bg-white border-transparent border-[0px] mt-1 rounded-md max-h-[150px] overflow-y-auto', className)}
+      style={{
+        position: 'absolute',
+        top: '4rem',
+        left: '0',
+      }}
+    >
+      {children}
     </div>
   )
 }

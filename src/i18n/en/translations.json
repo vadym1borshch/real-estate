@@ -1,16 +1,24 @@
 {
   "translation": {
+    "errors": {
+      "invalid-number": "Invalid input: \"{{value}}\". Only numbers are allowed.",
+      "min-greater-max": "Min value cannot be greater than Max value"
+    },
     "buttons": {
       "prev": "Prev",
       "next": "Next",
       "sign-in": "Sign in",
       "logout": "Logout",
-      "place-advertisement": "Place an advertisement"
+      "place-advertisement": "Place an advertisement",
+      "find": "Find",
+      "view-on-map": "VIEW ON MAP"
     },
     "real-estate": {
       "type": {
         "apartment": "Apartment",
-        "house": "House"
+        "house": "House",
+        "semi-detached-house": "Semi-detached house",
+        "retail-property": "Retail property"
       },
       "operations": {
         "buy": "Buy",
@@ -49,22 +57,7 @@
         "descriptions": "Discover our top offers! Variety of real estate properties — from luxurious villas to commercial properties, modern city apartments and investment properties."
       },
       "popular": {
-        "main-title": "Popular",
-        "filters": {
-          "buy": {
-            "residential-real-estate": "Residential real estate",
-            "apt-buildings": "Apartment buildings",
-            "investment-obj": "Investment objects",
-            "commercial-real-estate": "Commercial real estate",
-            "other": "Other"
-          },
-          "rent": {
-            "houses": "Houses",
-            "apt": "Apartments",
-            "commercial-real-estate": "Commercial real estate",
-            "other": "Other"
-          }
-        }
+        "main-title": "Popular"
       },
       "faq": {
         "main-title": "FAQ",
@@ -104,6 +97,25 @@
         "knowledge-property": "Knowledge about the property",
         "advisory-services": "Advisory Services"
       }
+    },
+    "filters": {
+      "buy": {
+        "residential-real-estate": "Residential real estate",
+        "apt-buildings": "Apartment buildings",
+        "investment-obj": "Investment objects",
+        "commercial-real-estate": "Commercial real estate",
+        "other": "Other"
+      },
+      "rent": {
+        "houses": "Houses",
+        "apt": "Apartments",
+        "commercial-real-estate": "Commercial real estate",
+        "other": "Other"
+      },
+      "type": "Type",
+      "price": "Price",
+      "area": "Area",
+      "address": "State, city or zip code"
     },
     "title": "FIND YOUR PROPERTY IN AUSTRIA"
   }

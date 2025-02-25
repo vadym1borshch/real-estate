@@ -8,36 +8,36 @@ export interface FilterOption {
 export const buyFilters: FilterOption[] = [
   {
     key: BuyKeys.housing,
-    title: 'home.popular.filters.buy.residential-real-estate',
+    title: 'filters.buy.residential-real-estate',
   }, {
     key: BuyKeys.multifamilyHousing,
-    title: 'home.popular.filters.buy.apt-buildings',
+    title: 'filters.buy.apt-buildings',
   }, {
     key: BuyKeys.assets,
-    title: 'home.popular.filters.buy.investment-obj',
+    title: 'filters.buy.investment-obj',
   }, {
     key: BuyKeys.businessProperty,
-    title: 'home.popular.filters.buy.commercial-real-estate',
+    title: 'filters.buy.commercial-real-estate',
   }, {
     key: BuyKeys.other,
-    title: 'home.popular.filters.buy.other',
+    title: 'filters.buy.other',
   },
 ] as const
 
 export const rentFilters: FilterOption[] = [
   {
     key: RentKeys.houses,
-    title: 'home.popular.filters.rent.houses',
+    title: 'filters.rent.houses',
   },
   {
     key: RentKeys.apartments,
-    title: 'home.popular.filters.rent.apt',
+    title: 'filters.rent.apt',
   },
   {
     key: RentKeys.businessProperty,
-    title: 'home.popular.filters.rent.commercial-real-estate',
+    title: 'filters.rent.commercial-real-estate',
   }, {
     key: RentKeys.other,
-    title: 'home.popular.filters.rent.other',
+    title: 'filters.rent.other',
   },
 ] as const

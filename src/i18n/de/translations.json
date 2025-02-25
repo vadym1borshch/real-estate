@@ -1,16 +1,24 @@
 {
   "translation": {
+    "errors": {
+      "invalid-number": "Ungültige Eingabe: \"{{value}}\". Es sind nur Zahlen erlaubt.",
+      "min-greater-max": "Der Mindestwert kann nicht größer sein als der Höchstwert"
+    },
     "buttons": {
       "prev": "Zurück",
       "next": "Weiter",
       "sign-in": "Sign in",
       "logout": "Logout",
-      "place-advertisement": "Inserat schalten"
+      "place-advertisement": "Inserat schalten",
+      "find": "Finde",
+      "view-on-map": "AUF DER KARTE ANZEIGEN"
     },
     "real-estate": {
       "type": {
         "apartment": "Wohnung",
-        "house": "Haus"
+        "house": "Haus",
+        "semi-detached-house": "Doppelhaushälfte",
+        "retail-property": "Einzelhandelsimmobilie"
       },
       "operations": {
         "buy": "Kaufen",
@@ -104,6 +112,25 @@
         "knowledge-property": "Wissen rund um die Immobilie",
         "advisory-services": "Beratungsdienste"
       }
+    },
+    "filters": {
+      "buy": {
+        "residential-real-estate": "Wohnimmobilien",
+        "apt-buildings": "Zinshäuser",
+        "investment-obj": "Anlageobjekte",
+        "commercial-real-estate": "Gewerbeimmobilien",
+        "other": "Sonstiges"
+      },
+      "rent": {
+        "houses": "Häuser",
+        "apt": "Wohnungen",
+        "commercial-real-estate": "Gewerbeimmobilien",
+        "other": "Sonstiges"
+      },
+      "type": "Typ",
+      "price": "Preis",
+      "area": "Fläche",
+      "address": "Bundesland, Ort oder Postleitzahl"
     },
     "title": "FINDEN SIE IHRE IMMOBILIE IN ÖSTERREICH"
   }

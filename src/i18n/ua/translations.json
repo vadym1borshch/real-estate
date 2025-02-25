@@ -1,16 +1,24 @@
 {
   "translation": {
+    "errors": {
+      "invalid-number": "Невірний ввід: \"{{value}}\". Дозволяються лише цифри.",
+      "min-greater-max": "Мінімальне значення не може перевищувати максимальне значення"
+    },
     "buttons": {
       "prev": "Назад",
       "next": "Вперед",
       "sign-in": "Увійти",
       "logout": "Вийти",
-      "place-advertisement": "Розмістити оголошення"
+      "place-advertisement": "Розмістити оголошення",
+      "find": "Пошук",
+      "view-on-map": "ПЕРЕГЛЯНУТИ НА КАРТІ"
     },
     "real-estate": {
       "type": {
         "apartment": "Квартира",
-        "house": "Дім"
+        "house": "Дім",
+        "semi-detached-house": "Півквартирний будинок",
+        "retail-property": "Роздрібна нерухомість"
       },
       "operations": {
         "buy": "Купити",
@@ -49,22 +57,7 @@
         "descriptions": "Відкрийте для себе наші найкращі пропозиції! Різноманітність об’єктів нерухомості — від розкішних вілл до комерційних об’єктів, сучасних міських квартир та інвестиційних об’єктів."
       },
       "popular": {
-        "main-title": "Популярне",
-        "filters": {
-          "buy": {
-            "residential-real-estate": "Житлова нерухомість",
-            "apt-buildings": "Багатоквартирні будинки",
-            "investment-obj": "Об'єкти інвестування",
-            "commercial-real-estate": "Комерційна нерухомість",
-            "other": "Інше"
-          },
-          "rent": {
-            "houses": "Будинки",
-            "apt": "Квартири",
-            "commercial-real-estate": "Комерційна нерухомість",
-            "other": "Інше"
-          }
-        }
+        "main-title": "Популярне"
       },
       "faq": {
         "main-title": "Часті запитання",
@@ -104,6 +97,25 @@
         "knowledge-property": "Про майно",
         "advisory-services": "Консультаційні послуги"
       }
+    },
+    "filters": {
+      "buy": {
+        "residential-real-estate": "Residential real estate",
+        "apt-buildings": "Apartment buildings",
+        "investment-obj": "Investment objects",
+        "commercial-real-estate": "Commercial real estate",
+        "other": "Other"
+      },
+      "rent": {
+        "houses": "Houses",
+        "apt": "Apartments",
+        "commercial-real-estate": "Commercial real estate",
+        "other": "Other"
+      },
+      "type": "Тип",
+      "price": "Ціна",
+      "area": "Квадратура",
+      "address": "Місто або поштовий індекс"
     },
     "title": "ЗНАЙДІТЬ СВОЮ НЕРУХОМІСТЬ В АВСТРІЇ"
   }
