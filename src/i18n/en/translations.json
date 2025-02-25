@@ -1,5 +1,9 @@
 {
   "translation": {
+    "404": {
+      "title": " Error 404 - This page does not exist. Try starting from the main page.",
+      "button": "To the main page"
+    },
     "errors": {
       "invalid-number": "Invalid input: \"{{value}}\". Only numbers are allowed.",
       "min-greater-max": "Min value cannot be greater than Max value"
@@ -84,6 +88,19 @@
         }
       }
     },
+    "about-us": {
+      "title": "About Us",
+      "main-descr": "Fylpi is a real estate search platform focused on transparency, efficiency, innovation, and sustainability. Our goal is to help people find and acquire the right property, even if they are unfamiliar with the real estate market and its local specifics.",
+      "communication-title": "CUSTOMER-ORIENTED COMMUNICATION",
+      "communication-descr": "We firmly believe that honest and open communication is the key to long-term relationships. Our customers can rely on us to always act in their best interests and provide them with the information and support they need.",
+      "services-descr": "OUTSTANDING REAL ESTATE SERVICES WITH TRUST, TRANSPARENCY, AND EXPERTISE. SEAMLESS AND STRESS-FREE EXPERIENCE FOR BUYERS AND SELLERS. INNOVATIVE SOLUTIONS AND PERSONAL COMMITMENT.",
+      "advantages": {
+        "knows": "Comprehensive expertise and specialist knowledge.",
+        "all-info": "Complete information along with all necessary resources.",
+        "social-media": "Strong international social media presence.",
+        "satisfaction": "98% customer satisfaction based on feedback."
+      }
+    },
     "footer": {
       "links": {
         "about-us": "About Us",
@@ -95,8 +112,19 @@
         "service-property": "Service around the property",
         "practical-instr": "Practical instructions",
         "knowledge-property": "Knowledge about the property",
-        "advisory-services": "Advisory Services"
+        "advisory-services": "Advisory Services",
+        "contacts": "Contacts",
+        "terms-of-use": "Terms of Use"
       }
+    },
+    "contacts": {
+      "title": "Contacts",
+      "register-entry": "Register entry",
+      "bank-details": "Bank details",
+      "tel": "Phone",
+      "state": "State",
+      "uid": "UID-Number",
+      "company-register-number": "Company register number"
     },
     "filters": {
       "buy": {

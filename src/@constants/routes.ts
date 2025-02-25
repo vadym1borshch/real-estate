@@ -3,4 +3,5 @@ export const ROUTES = {
   about: '/about',
   notFound: '/not-found',
   estates: '/estates',
+  contacts: '/contacts',
 } as const;

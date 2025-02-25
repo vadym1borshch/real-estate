@@ -4,6 +4,7 @@ import { links } from './common.ts'
 import { useTranslation } from 'react-i18next'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
+import { ROUTES } from '../../../@constants/routes.ts'
 
 const Footer = () => {
   const { t } = useTranslation()
@@ -40,8 +41,12 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row items-center justify-between border-t border-seafoam-green py-6">
         <p className="text-seafoam-green">© 2024 Fylpi. Alle Rechte vorbehalten.</p>
         <p className="flex items-center gap-6 pt-6 md:pt-0">
-          <Link href="" className="text-seafoam-green">Impressum</Link>
-          <Link href="" className="text-seafoam-green">Nutzungsbedingungen</Link>
+          <Link href={ROUTES.contacts} className="text-seafoam-green hover:text-white">
+            {t('contacts.title')}
+          </Link>
+          <Link href="" className="text-seafoam-green hover:text-white">
+            {t('footer.links.terms-of-use')}
+          </Link>
         </p>
       </div>
     </footer>

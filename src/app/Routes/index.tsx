@@ -6,13 +6,14 @@ import {
 import { HomePage } from '../Pages/Home'
 import { About } from '../Pages/About'
 import { useEffect } from 'react'
-import { Details } from '../Pages/About/Details'
 import { DEFAULT_LANG, STORAGE_KEY } from '../../common/constants.ts'
 import { MainWrapper } from '../../components/wrappers/main-wrapper'
 import { MainLayout } from '../../components/templates/layouts/main'
 import { HomePageLayout } from '../../components/templates/layouts/home-page'
 import { DefaultPageLayout } from '../../components/templates/layouts/default-pages'
 import { EstatesList } from '../Pages/EstatesList'
+import { NotFoundPage } from '../Pages/NotFound'
+import { Contacts } from '../Pages/Contacts'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -91,18 +92,22 @@ const routes: RouteObject[] = [
               {
                 path: 'about',
                 element: <About />,
-                children: [
+               /* children: [
                   {
                     path: ':id',
                     element: <Details />,
                   },
-                ],
+                ],*/
               },
               {
                 path: 'estates',
                 element: <EstatesList />,
               },
-              { path: 'not-found', element: <>❌ 404 Page Not Found</> },
+              {
+                path: 'contacts',
+                element: <Contacts />,
+              },
+              { path: 'not-found', element: <NotFoundPage/> },
               { path: '*', element: <RedirectToErrorPage /> },
             ],
           },

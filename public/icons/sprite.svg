@@ -479,4 +479,9 @@
               fill="currentColor"/>
     </symbol>
 
+    <symbol id="playTriangleIcon" width="36" height="42" viewBox="0 0 36 42" fill="none">
+        <path d="M36 21L-1.9576e-06 41.7846L-1.40549e-07 0.21539L36 21Z" fill="#FAFAFA"/>
+    </symbol>
+
+
 </svg>

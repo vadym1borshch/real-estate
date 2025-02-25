@@ -1,6 +1,8 @@
+import { ROUTES } from '../../../@constants/routes.ts'
+
 export const links = [
   {
-    href: '',
+    href: ROUTES.about,
     label: 'footer.links.about-us',
   },
   {

@@ -1,5 +1,9 @@
 {
   "translation": {
+    "404": {
+      "title": " Error 404 - Diese Seite existiert nicht. Versuchen Sie, von der Hauptseite aus zu starten.",
+      "button": " Zur Hauptseite"
+    },
     "errors": {
       "invalid-number": "Ungültige Eingabe: \"{{value}}\". Es sind nur Zahlen erlaubt.",
       "min-greater-max": "Der Mindestwert kann nicht größer sein als der Höchstwert"
@@ -99,6 +103,19 @@
         }
       }
     },
+    "about-us": {
+      "title": "Über uns",
+      "main-descr": "Fylpi ist eine Immobiliensuchplattform, die sich auf Transparenz, Effizienz, Innovation und Nachhaltigkeit konzentriert. Unser Ziel ist es, Menschen dabei zu helfen, die richtige Immobilie zu finden und zu erwerben, selbst wenn sie mit dem Immobilienmarkt und seinen lokalen Besonderheiten nicht vertraut sind.",
+      "communication-title": "KUNDENORIENTIERTE KOMMUNIKATION",
+      "communication-descr": "Wir glauben fest daran, dass ehrliche und offene Kommunikation der Schlüssel zu langfristigen Beziehungen ist. Unsere Kunden können sich darauf verlassen, dass wir stets in ihrem besten Interesse handeln und ihnen die Informationen und Unterstützung bieten, die sie benötigen.",
+      "services-descr": "HERAUSRAGENDE IMMOBILIENSERVICES MIT VERTRAUEN, TRANSPARENZ UND FACHKOMPETENZ. NAHTLOSE UND STRESSFREIE ERFAHRUNG FÜR KÄUFER UND VERKÄUFER. INNOVATIVE LÖSUNGEN UND PERSÖNLICHES ENGAGEMENT.",
+      "advantages": {
+        "knows": "Umfassende Fachkompetenz und Expertenwissen.",
+        "all-info": "Vollständige Informationen samt allen benötigten Ressourcen.",
+        "social-media": "Starke internationale Social-Media-Präsenz.",
+        "satisfaction": "98% Kundenzufriedenheit, basierend auf Feedback."
+      }
+    },
     "footer": {
       "links": {
         "about-us": "Über uns",
@@ -110,8 +127,18 @@
         "service-property": "Service rund um die Immobilie",
         "practical-instr": "Praktische Anleitungen",
         "knowledge-property": "Wissen rund um die Immobilie",
-        "advisory-services": "Beratungsdienste"
+        "advisory-services": "Beratungsdienste",
+        "terms-of-use": "Nutzungsbedingungen"
       }
+    },
+    "contacts": {
+      "title": "Impressum",
+      "register-entry": "Registereintrag",
+      "bank-details": "Bankverbindung",
+      "tel": "Telefon",
+      "state": "Landesgericht",
+      "uid": "UID-Nummer",
+      "company-register-number": "Firmenbuchnummer"
     },
     "filters": {
       "buy": {
