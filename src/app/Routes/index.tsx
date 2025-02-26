@@ -14,6 +14,8 @@ import { DefaultPageLayout } from '../../components/templates/layouts/default-pa
 import { EstatesList } from '../Pages/EstatesList'
 import { NotFoundPage } from '../Pages/NotFound'
 import { Contacts } from '../Pages/Contacts'
+import { FAQPage } from '../Pages/FAQ'
+import { ContactUsPage } from '../Pages/ContactUs'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -106,6 +108,14 @@ const routes: RouteObject[] = [
               {
                 path: 'contacts',
                 element: <Contacts />,
+              },
+              {
+                path: 'faq',
+                element: <FAQPage />,
+              },
+              {
+                path: 'contact-us',
+                element: <ContactUsPage />,
               },
               { path: 'not-found', element: <NotFoundPage/> },
               { path: '*', element: <RedirectToErrorPage /> },

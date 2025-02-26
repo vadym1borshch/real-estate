@@ -11,6 +11,7 @@ const Icon = ({ id, className, onClick }: IIconBaseProps) => {
     <svg
       onClick={(e) => {
         e.stopPropagation()
+        e.preventDefault()
         onClick && onClick()
       }}
       onMouseDown={(e) => e.stopPropagation()}

@@ -73,6 +73,7 @@
 .rooms-filter__button:last-child {
     margin-right: 12px;
 }
+
 .rooms-filter__button:first-child {
     margin-left: 12px;
 }
@@ -89,12 +90,22 @@
     font-size: 1rem;
 }
 
+.breadcrumb {
+    padding: 0
+}
+
 .house-card__label {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+input::placeholder {
+    color: var(--color-gray);
+}
+textarea::placeholder {
+    color: var(--color-gray);
 }
 
 @media (min-width: 420px) and (max-width: 768px) {

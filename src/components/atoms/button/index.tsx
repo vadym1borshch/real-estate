@@ -5,7 +5,7 @@ import Icon from '../icon'
 
 interface Props extends ButtonProps {
   children?: ReactNode
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   size?: 'sm' | 'md'
   className?: string
   iconClassName?: string
@@ -44,7 +44,7 @@ const Button = (
         },
         className,
       )}
-      onClick={(e) => onClick(e)}
+      onClick={(e) => onClick && onClick(e)}
       onPointerDown={() => setPressed(true)}
       onPointerUp={() => setPressed(false)}
       onPointerLeave={() => setPressed(false)}

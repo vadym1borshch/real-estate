@@ -1,7 +1,8 @@
 {
   "translation": {
-    "404": {
-      "title": " Error 404 - This page does not exist. Try starting from the main page.",
+    "not-found": {
+      "title": "404",
+      "description": " Error 404 - This page does not exist. Try starting from the main page.",
       "button": "To the main page"
     },
     "errors": {
@@ -62,10 +63,25 @@
       },
       "popular": {
         "main-title": "Popular"
-      },
-      "faq": {
-        "main-title": "FAQ",
-        "descriptions": "Do you have questions? We have the answers. Discover the answers to frequently asked questions in our extensive FAQ section, which provides you with all the information you need",
+      }
+    },
+    "about": {
+      "title": "About Us",
+      "main-descr": "Fylpi is a real estate search platform focused on transparency, efficiency, innovation, and sustainability. Our goal is to help people find and acquire the right property, even if they are unfamiliar with the real estate market and its local specifics.",
+      "communication-title": "CUSTOMER-ORIENTED COMMUNICATION",
+      "communication-descr": "We firmly believe that honest and open communication is the key to long-term relationships. Our customers can rely on us to always act in their best interests and provide them with the information and support they need.",
+      "services-descr": "OUTSTANDING REAL ESTATE SERVICES WITH TRUST, TRANSPARENCY, AND EXPERTISE. SEAMLESS AND STRESS-FREE EXPERIENCE FOR BUYERS AND SELLERS. INNOVATIVE SOLUTIONS AND PERSONAL COMMITMENT.",
+      "advantages": {
+        "knows": "Comprehensive expertise and specialist knowledge.",
+        "all-info": "Complete information along with all necessary resources.",
+        "social-media": "Strong international social media presence.",
+        "satisfaction": "98% customer satisfaction based on feedback."
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "descriptions": "Do you have questions? We have the answers. Discover the answers to frequently asked questions in our extensive FAQ section, which provides you with all the information you need",
+      "buy": {
         "how-buy-property": {
           "question": "How can I buy a property?",
           "answer": "To sell your property, you will generally need a current land register extract, an energy certificate, building plans and floor plans, as well as, if necessary, rental agreements and evidence of renovations carried out. These documents help make the sales process smooth. So you are well prepared."
@@ -86,19 +102,124 @@
           "question": "How can I arrange a viewing appointment?",
           "answer": "There are several ways to schedule a property viewing. In most cases, you can contact the seller or landlord directly through the real estate platform where the listing was published. Many online portals provide a contact form or a direct phone number for the seller or real estate agent.\n\nIf the property is listed through an agent, you can reach out via phone or email to arrange a suitable appointment. It’s advisable to suggest multiple time slots to increase the chances of securing a viewing.\n\nIf you found a property through a newspaper ad or a \"For Sale\" or \"For Rent\" sign, you can call the owner directly or visit the location to inquire about a viewing.\n\nBefore the appointment, it's a good idea to prepare a list of important questions about the property. If you’re looking to rent, having documents such as a tenant self-disclosure form, proof of income, or a credit report ready can improve your chances of getting the property."
         }
-      }
-    },
-    "about-us": {
-      "title": "About Us",
-      "main-descr": "Fylpi is a real estate search platform focused on transparency, efficiency, innovation, and sustainability. Our goal is to help people find and acquire the right property, even if they are unfamiliar with the real estate market and its local specifics.",
-      "communication-title": "CUSTOMER-ORIENTED COMMUNICATION",
-      "communication-descr": "We firmly believe that honest and open communication is the key to long-term relationships. Our customers can rely on us to always act in their best interests and provide them with the information and support they need.",
-      "services-descr": "OUTSTANDING REAL ESTATE SERVICES WITH TRUST, TRANSPARENCY, AND EXPERTISE. SEAMLESS AND STRESS-FREE EXPERIENCE FOR BUYERS AND SELLERS. INNOVATIVE SOLUTIONS AND PERSONAL COMMITMENT.",
-      "advantages": {
-        "knows": "Comprehensive expertise and specialist knowledge.",
-        "all-info": "Complete information along with all necessary resources.",
-        "social-media": "Strong international social media presence.",
-        "satisfaction": "98% customer satisfaction based on feedback."
+      },
+      "gen-questions": {
+        "register-on-platform": {
+          "question": "How can I register on the platform?",
+          "answer": "You can register by clicking the \"Sign Up\" button and entering your email address and a secure password."
+        },
+        "costs-for-using-platform": {
+          "question": "Are there any costs for using the platform?",
+          "answer": "The basic functions of the platform are free. However, additional premium services may be charged."
+        },
+        "reset-password": {
+          "question": "How can I reset my password?",
+          "answer": "Click on \"Forgot password\" on the login page and follow the instructions to create a new password."
+        },
+        "edit-delete-listing": {
+          "question": "Is it possible to edit or delete a listing?",
+          "answer": "Yes, you can edit or delete your listings anytime in your user account."
+        },
+        "customer-support": {
+          "question": "How can I contact customer support?",
+          "answer": "You can reach us via email at support@fylpi.at or by phone at +43 699 1700 20045."
+        }
+      },
+      "rent": {
+        "find-rental-property": {
+          "question": "How can I find a rental property on this platform?",
+          "answer":" You can use the search filters to find properties based on location, price, size, and amenities. Click on a listing to view details and contact the landlord."
+        },
+        "contact-landlord": {
+          "question": "How do I contact a landlord about a property?",
+          "answer":"Once you find a suitable rental, you can contact the landlord directly through the contact form on the listing page."
+        },
+        "register-rent": {
+          "question": "Do I need to register to rent a property?",
+          "answer":"Yes, registration is required to contact landlords and save favorites. Signing up is free."
+        },
+        "costs-involved-renting": {
+          "question": "What costs are involved in renting through this platform?",
+          "answer":"Using the platform is free. However, you may have to pay a security deposit and possibly an agent fee if applicable."
+        },
+        "safe-rent-property ": {
+          "question": "How safe is it to rent a property through this website?",
+          "answer":"All listings are verified, and we recommend reviewing all documents carefully before signing a contract and never making advance payments."
+        }
+      },
+      "sell": {
+        "sell-property": {
+          "question": "How can I sell a property on this platform?",
+          "answer": "You can create a listing through your user account by adding all relevant details, photos, and the price."
+        },
+        "documents-to-sell": {
+          "question": "What documents do I need to sell my property?",
+          "answer": " Common documents include the title deed, energy certificate, floor plans, and rental agreements (if applicable)."
+        },
+        "how-long-sell": {
+          "question": "How long does it take to sell a property?",
+          "answer": "The duration depends on demand, pricing, and location. A professional listing can speed up the sale."
+        },
+        "edit-remove-listing": {
+          "question": "Can I edit or remove my listing after posting?",
+          "answer": "Yes, you can edit or delete your listing at any time in your user account."
+        },
+        "costs-involved-selling": {
+          "question": "Are there any costs involved in selling my property?",
+          "answer": "Using the platform is free, but fees for real estate agents or notary services may apply."
+        }
+      },
+      "rent-out": {
+        "rent-out-property": {
+          "question": "How can I rent out a property on this platform?",
+          "answer":"You can create a listing through your user account by adding all relevant details, photos, and rental conditions."
+        },
+        "documents-to-rent-out": {
+          "question": "What documents do I need to rent out a property?",
+          "answer":"Typically, you need proof of ownership, an energy certificate, and a rental agreement for the tenant."
+        },
+        "quickly-find-tenant": {
+          "question": "How can I quickly find a suitable tenant?",
+          "answer":"A detailed listing, high-quality photos, and a competitive rental price help attract tenants faster."
+        },
+        "edit-remove-listing": {
+          "question": "Can I edit or remove my listing after posting?",
+          "answer":"Yes, you can edit or delete your listing at any time in your user account."
+        },
+        "any-costs-landlords": {
+          "question": "Are there any costs for landlords?",
+          "answer":"Using the platform is free, but you may incur costs for real estate agents or legal services."
+        }
+      },
+      "tech-support": {
+        "can-not-log-account": {
+          "question": "I can't log into my account. What should I do?",
+          "answer": "Make sure you entered your email and password correctly. If you forgot your password, click on “Forgot password” and follow the instructions."
+        },
+        "listing-not-displaying": {
+          "question": "My listing is not displaying correctly. How can I fix this?",
+          "answer": "Check if all required information is provided. If the issue persists, contact our support team."
+        },
+        "can-change-account-settings": {
+          "question": "How can I change my account settings?",
+          "answer": "You can update your personal details, email, and password in the account settings under \"My Account.\""
+        },
+        "not-receiving-emails-from-platform": {
+          "question": "I’m not receiving emails from the platform. What can I do?",
+          "answer": "Check your spam folder and make sure our email address is not blocked."
+        },
+        "contact-support": {
+          "question": "How can I contact customer support?",
+          "answer": "You can reach us via email at support@fylpi.at or by phone at +43 699 1700 20045."
+        }
+      },
+      "filters": {
+        "gen-questions": "General questions",
+        "buy": "Buy",
+        "rent": "Rent",
+        "sell": "Sell",
+        "rent-out": "Rent out",
+        "tech-support": "Technical support"
       }
     },
     "footer": {
@@ -126,6 +247,29 @@
       "uid": "UID-Number",
       "company-register-number": "Company register number"
     },
+    "contact-us": {
+      "title": "CONTACT US",
+      "descriptions": "For quick and efficient communication, we recommend that you use our user-friendly contact form.",
+      "form": {
+        "name": "Name",
+        "last-name": "Last Name",
+        "email": "Email",
+        "tel": "Phone",
+        "message": "Message",
+        "message-placeholder": "Write your message here",
+        "agree-terms": "I agree to the terms of the privacy policy",
+        "send": "Send Message"
+      },
+      "assistance": {
+        "descriptions": "We are happy to assist you with any questions, feedback or further information. You can reach us via the following channels:",
+        "address": "Address:",
+        "email": "E-Mail:",
+        "open-hours": "Opening hours:",
+        "mon-to-fri": "Monday - Friday:: {{value}} o'clock",
+        "sat": "Saturday: {{value}} o'clock",
+        "sun": "Sunday: Closed"
+      }
+    },
     "filters": {
       "buy": {
         "residential-real-estate": "Residential real estate",
@@ -145,6 +289,15 @@
       "area": "Area",
       "address": "State, city or zip code"
     },
-    "title": "FIND YOUR PROPERTY IN AUSTRIA"
+    "title": "FIND YOUR PROPERTY IN AUSTRIA",
+    "links": {
+      "home": "Home page"
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Invalid email address",
+      "phone": "Invalid phone number",
+      "message_min": "Message must be at least \"{{value}}\" characters long"
+    }
   }
 }

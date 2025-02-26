@@ -7,7 +7,6 @@ import Button from '../../atoms/button'
 import { cn, textEllipsis } from '../../../helpers/ui.ts'
 import DropdownInput from '../input-dropdown'
 import Dropdown from '../../atoms/dropdown'
-import { useAppDispatch } from '../../../store'
 
 interface Props {
   filter: IFilter
@@ -108,7 +107,7 @@ export const Filter = ({ filter }: Props) => {
                 updateParams(filter.key, newValues.length ? newValues : [])
               }}
             >
-              {t(value, { lng: i18n.language })}
+              {value}
             </Button>
           )
         })
@@ -150,7 +149,7 @@ export const Filter = ({ filter }: Props) => {
               setOpen(false)
             }}
           >
-            {t(item.value)}
+            {item.value}
           </span>
         ))}
       </DropdownInput>

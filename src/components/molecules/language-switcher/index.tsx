@@ -2,11 +2,13 @@ import { useTranslation } from 'react-i18next'
 import { MouseEvent, useEffect, useState } from 'react'
 import Dropdown from '../../atoms/dropdown'
 import Button from '../../atoms/button'
+import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 
 type Language = 'en' | 'de' | 'ua'
 
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation()
+  const path = usePathname()
 
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en')
   const [open, setOpen] = useState(false)
@@ -16,7 +18,7 @@ const LanguageSwitcher = () => {
     i18n.changeLanguage(lang);
 
     const currentParams = new URLSearchParams(window.location.search).toString();
-    const newUrl = `/${lang}${currentParams ? `?${currentParams}` : ''}`;
+    const newUrl = `/${lang}${path}${currentParams ? `?${currentParams}` : ''}`;
 
     window.history.pushState(null, '', newUrl);
     setCurrentLanguage(lang);

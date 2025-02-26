@@ -20,9 +20,9 @@ export const About = () => {
   return (
     <div className="flex flex-col gap-[90px] items-center ">
       <div className="flex flex-col items-center max-w-[760px] gap-6">
-        <H2 text={t('about-us.title')} />
+        <H2 text={t('about.title')} />
         <p className="text-center">
-          {t('about-us.main-descr')}
+          {t('about.main-descr')}
         </p>
       </div>
       <div className="grid grid-cols-[2fr_1fr] gap-10 max-w-[1160px]">
@@ -50,15 +50,15 @@ export const About = () => {
         </div>
 
         <div className="flex flex-col items-center gap-6 justify-center">
-          <H3 text={t('about-us.communication-title')} />
+          <H3 text={t('about.communication-title')} />
           <p>
-            {t('about-us.communication-descr')}
+            {t('about.communication-descr')}
           </p>
         </div>
       </div>
       <H2
         className=" text-center mt-[60px] max-w-[1160px]"
-        text={t('about-us.services-descr')}
+        text={t('about.services-descr')}
       />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-[60px] mb-[150px] max-w-[1160px] justify-between">
         {advantages.map((advantage) => (

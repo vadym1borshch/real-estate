@@ -1,32 +1,31 @@
-import { cn } from '../../../helpers/ui.ts'
 import Icon from '../icon'
+import { cn } from '../../../helpers/ui.ts'
 import { ChangeEvent, Ref } from 'react'
 
 interface Props {
   label?: string
   value: string
   placeholder?: string
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
-  size?: 'sm' | 'md'
+  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
   iconId?: string
   iconClassName?: string
   error?: string
   errorPosition?: 'top' | 'bottom'
   className?: string
   iconSide?: 'left' | 'right'
-  ref?: Ref<HTMLInputElement | null>
+  ref?: Ref<HTMLTextAreaElement | null>
 }
 
-const Input = (
+
+const TextArea = (
   {
     label,
-    size = 'md',
     onChange,
     placeholder,
     value,
+    errorPosition = 'top',
     iconId,
     error,
-    errorPosition = 'top',
     iconClassName,
     className,
     iconSide = 'right',
@@ -49,13 +48,13 @@ const Input = (
           }
         </div>)
       }
-      <input
+      <textarea
+        rows={8}
         ref={ref}
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e)}
-        className={cn('z-10 w-full min-h-[40px] md:h-12 border border-blue-gray hover:border-charcoal px-6 rounded-sm focus:outline-none focus:ring-1 focus:ring-charcoal focus:border-charcoal',
-          { 'h-10': size === 'sm' },
+        className={cn('z-10 resize-none w-full min-h-[220px] h-full border border-blue-gray hover:border-charcoal px-6 py-3 rounded-sm focus:outline-none focus:ring-1 focus:ring-charcoal focus:border-charcoal',
           { 'border-red focus:outline focus:outline-1 focus:outline-red': error },
           { 'pl-[36px]': iconSide === 'left' },
           className,
@@ -73,7 +72,6 @@ const Input = (
       }
       {iconId && <span
         className={cn('z-20 bg-white h-[24px] w-[24px] lg:w-6 lg:h-6 absolute bottom-3 right-3 text-blue-gray flex items-center justify-center',
-          { 'bottom-2': size === 'sm' },
           { 'left-3': iconSide === 'left' },
           iconClassName,
         )}>
@@ -84,4 +82,4 @@ const Input = (
   )
 }
 
-export default Input
+export default TextArea

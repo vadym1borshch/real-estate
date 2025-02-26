@@ -1,7 +1,8 @@
 import { Link as RLink, useParams } from 'react-router-dom'
 import Icon from '../icon'
 import { cn } from '../../../helpers/ui.ts'
-import { HTMLAttributes, ReactNode, useState } from 'react'
+import { HTMLAttributes, ReactNode, useState, MouseEvent, MouseEventHandler } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface Props extends HTMLAttributes<HTMLLinkElement> {
   href: string;
@@ -13,9 +14,10 @@ interface Props extends HTMLAttributes<HTMLLinkElement> {
 }
 
 const Link = ({ href, children, iconId, iconClassName, disabled, className, ...rest }: Props) => {
-  const { lang } = useParams()
+  const { i18n } = useTranslation()
   const [pressed, setPressed] = useState(false)
-  const link = disabled ? undefined : `/${lang}${href}`
+  const link = disabled ? "#" : `/${i18n.language}${href}`
+
 
   return (
     <RLink
@@ -30,6 +32,12 @@ const Link = ({ href, children, iconId, iconClassName, disabled, className, ...r
       onPointerDown={() => setPressed(true)}
       onPointerUp={() => setPressed(false)}
       onPointerLeave={() => setPressed(false)}
+      onClick={(e)=>{
+        if (disabled) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }}
       {...rest}
     >
       {iconId && <Icon id={iconId} className={cn('h-6 w-6', iconClassName)} />}

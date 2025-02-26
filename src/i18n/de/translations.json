@@ -1,7 +1,8 @@
 {
   "translation": {
-    "404": {
-      "title": " Error 404 - Diese Seite existiert nicht. Versuchen Sie, von der Hauptseite aus zu starten.",
+    "not-found": {
+      "title": "404",
+      "description": " Error 404 - Diese Seite existiert nicht. Versuchen Sie, von der Hauptseite aus zu starten.",
       "button": " Zur Hauptseite"
     },
     "errors": {
@@ -61,7 +62,7 @@
         "descriptions": "Entdecken Sie unsere Top-Angebote! Vielfalt von Immobilienobjekten — von luxuriösen Villen über gewerbliche und wirtschaftliche Objekte bis hin zu modernen Stadtwohnungen und Anlageobjekten."
       },
       "popular": {
-        "main-title": "POPULÄRE",
+        "title": "POPULÄRE",
         "filters": {
           "buy": {
             "residential-real-estate": "Wohnimmobilien",
@@ -77,10 +78,12 @@
             "other": "Sonstiges"
           }
         }
-      },
-      "faq": {
-        "main-title": "FAQ",
-        "descriptions": "Haben Sie Fragen? Wir haben die Antworten. Entdecken Sie die Antworten auf häufig gestellte Fragen in unserem umfangreichen FAQ-Bereich, der Ihnen alle benötigten Informationen bietet.",
+      }
+    },
+    "faq": {
+      "title": "FAQ",
+      "descriptions": "Haben Sie Fragen? Wir haben die Antworten. Entdecken Sie die Antworten auf häufig gestellte Fragen in unserem umfangreichen FAQ-Bereich, der Ihnen alle benötigten Informationen bietet.",
+      "buy": {
         "how-buy-property": {
           "question": "Wie kann ich eine Immobilie kaufen?",
           "answer": "Für den Verkauf Ihrer Immobilie benötigen Sie in der Regel einen aktuellen Grundbuchauszug, einen Energieausweis, Baupläne und Grundrisse, sowie gegebenenfalls Mietverträge und Nachweise über durchgeführte Renovierungen. Diese Dokumente helfen, den Verkaufsprozess reibungslos zu gestalten. So sind Sie bestens vorbereitet."
@@ -101,9 +104,127 @@
           "question": "Wie kann ich einen Besichtigungstermin vereinbaren?",
           "answer": "Um einen Besichtigungstermin für eine Immobilie zu vereinbaren, gibt es verschiedene Möglichkeiten. In den meisten Fällen können Sie den Anbieter direkt über die Immobilienplattform kontaktieren, auf der das Inserat veröffentlicht wurde. Viele Online-Portale bieten ein Kontaktformular oder eine direkte Telefonnummer des Verkäufers oder Maklers an.\n\nFalls Sie die Immobilie über einen Makler gefunden haben, können Sie diesen telefonisch oder per E-Mail kontaktieren, um einen passenden Termin abzustimmen. Es ist ratsam, mehrere Terminvorschläge zu machen, um die Chancen auf eine schnelle Besichtigung zu erhöhen.\n\nSollten Sie eine Immobilie in einer Zeitung oder durch ein \"Zu vermieten\" oder \"Zu verkaufen\"-Schild entdeckt haben, können Sie den Eigentümer direkt anrufen oder vorbeigehen, um sich nach einem Termin zu erkundigen.\n\nVor dem Besichtigungstermin sollten Sie sich gut vorbereiten und eine Liste mit wichtigen Fragen zur Immobilie erstellen. Falls es sich um ein Mietobjekt handelt, empfiehlt es sich, relevante Unterlagen wie eine Mieterselbstauskunft, Gehaltsnachweise oder eine SCHUFA-Auskunft bereitzuhalten, um Ihre Chancen zu verbessern.\n\n"
         }
+      },
+      "gen-questions": {
+        "register-on-platform": {
+          "question": "Wie kann ich mich auf der Plattform registrieren?",
+          "answer": "Sie können sich registrieren, indem Sie auf die Schaltfläche „Registrieren“ klicken und Ihre E-Mail-Adresse sowie ein sicheres Passwort eingeben."
+        },
+        "costs-for-using-platform": {
+          "question": "Welche Kosten entstehen bei der Nutzung der Plattform?",
+          "answer": "Die Grundfunktionen der Plattform sind kostenlos. Zusätzliche Premium-Dienste können jedoch kostenpflichtig sein."
+        },
+        "reset-password": {
+          "question": "Wie kann ich mein Passwort zurücksetzen?",
+          "answer": "Klicken Sie auf „Passwort vergessen“ auf der Anmeldeseite und folgen Sie den Anweisungen, um ein neues Passwort zu erstellen."
+        },
+        "edit-delete-listing": {
+          "question": "Ist es möglich, eine Anzeige zu bearbeiten oder zu löschen?",
+          "answer": "Ja, in Ihrem Benutzerkonto können Sie Ihre Anzeigen jederzeit bearbeiten oder löschen."
+        },
+        "customer-support": {
+          "question": "Wie kann ich den Kundenservice kontaktieren?",
+          "answer": "Sie können uns per E-Mail unter support@fylpi.at oder telefonisch unter +43 699 1700 20045 erreichen."
+        }
+      },
+      "rent": {
+        "find-rental-property": {
+          "question": "Wie kann ich auf dieser Plattform eine Mietwohnung finden?",
+          "answer":"Sie können die Suchfilter nutzen, um Immobilien nach Standort, Preis, Größe und Ausstattung zu finden. Klicken Sie auf ein Inserat, um weitere Details zu sehen und den Vermieter zu kontaktieren."
+        },
+         "contact-landlord": {
+          "question": "Wie kontaktiere ich den Vermieter einer Immobilie?",
+          "answer":"Sobald Sie eine passende Wohnung gefunden haben, können Sie den Vermieter direkt über das Kontaktformular auf der Inseratsseite anschreiben."
+        },
+         "register-rent": {
+          "question": "Muss ich mich registrieren, um eine Immobilie zu mieten?",
+          "answer":"Ja, eine Registrierung ist erforderlich, um Kontakt mit Vermietern aufzunehmen und Favoriten zu speichern. Die Anmeldung ist kostenlos."
+        },
+         "costs-involved-renting": {
+          "question": "Welche Kosten fallen bei der Anmietung über diese Plattform an?",
+          "answer":"Die Nutzung der Plattform ist kostenlos. Bei erfolgreicher Anmietung können jedoch Kaution und eventuell eine Maklerprovision anfallen."
+        },
+         "safe-rent-property": {
+          "question": "Wie sicher ist es, eine Immobilie über diese Website zu mieten?",
+          "answer":"Alle Inserate werden geprüft, und wir empfehlen, vor Vertragsabschluss alle Dokumente sorgfältig zu überprüfen und keine Zahlungen im Voraus zu leisten."
+        }
+      },
+      "sell": {
+        "sell-property": {
+          "question": "Wie kann ich eine Immobilie auf dieser Plattform verkaufen?",
+          "answer": "Sie können Ihr Angebot über Ihr Benutzerkonto erstellen, indem Sie alle relevanten Informationen, Fotos und den Preis hinzufügen."
+        },
+        "documents-to-sell": {
+          "question": "Welche Unterlagen benötige ich, um meine Immobilie zu verkaufen?",
+          "answer": "Typische Dokumente sind der Grundbuchauszug, der Energieausweis, Grundrisse und ggf. Mietverträge."
+        },
+        "how-long-sell": {
+          "question": "Wie lange dauert es, bis meine Immobilie verkauft ist?",
+          "answer": "Die Dauer hängt von der Nachfrage, dem Preis und der Lage ab. Eine professionelle Präsentation kann den Verkauf beschleunigen."
+        },
+        "edit-remove-listing": {
+          "question": "Kann ich mein Inserat nachträglich bearbeiten oder entfernen?",
+          "answer": "Ja, Sie können Ihr Inserat jederzeit in Ihrem Benutzerkonto bearbeiten oder löschen."
+        },
+        "costs-involved-selling": {
+          "question": "Welche Kosten fallen beim Verkauf meiner Immobilie an?",
+          "answer": "Die Nutzung der Plattform ist kostenlos, aber es können Kosten für Makler oder Notargebühren anfallen."
+        }
+      },
+      "rent-out": {
+        "rent-out-property": {
+          "question": "Wie kann ich eine Immobilie auf dieser Plattform vermieten?",
+          "answer":"Sie können Ihr Inserat in Ihrem Benutzerkonto erstellen, indem Sie alle relevanten Informationen, Fotos und die Mietkonditionen angeben."
+        },
+        "documents-to-rent-out": {
+          "question": "Welche Dokumente benötige ich, um eine Immobilie zu vermieten?",
+          "answer":"In der Regel benötigen Sie einen gültigen Eigentumsnachweis, einen Energieausweis und einen Mietvertrag für den zukünftigen Mieter."
+        },
+        "quickly-find-tenant": {
+          "question": "Wie finde ich schnell einen passenden Mieter?",
+          "answer":"Eine detaillierte Beschreibung, hochwertige Bilder und eine realistische Mietpreisgestaltung helfen dabei, schneller einen Mieter zu finden."
+        },
+        "edit-remove-listing": {
+          "question": "Kann ich mein Inserat später ändern oder löschen?",
+          "answer":"Ja, Sie können Ihr Inserat jederzeit in Ihrem Benutzerkonto bearbeiten oder entfernen."
+        },
+        "any-costs-landlords": {
+          "question": "Welche Kosten entstehen für mich als Vermieter?",
+          "answer":"Die Nutzung der Plattform ist kostenlos, jedoch können Kosten für Maklergebühren oder rechtliche Dienstleistungen anfallen."
+        }
+      },
+      "tech-support": {
+        "can-not-log-account": {
+          "question": "Ich kann mich nicht in mein Konto einloggen. Was soll ich tun?",
+          "answer": "Überprüfen Sie, ob Ihre E-Mail-Adresse und Ihr Passwort korrekt eingegeben wurden. Falls Sie Ihr Passwort vergessen haben, klicken Sie auf „Passwort vergessen“ und folgen Sie den Anweisungen."
+        },
+        "listing-not-displaying": {
+          "question": "Meine Anzeige wird nicht richtig angezeigt. Wie kann ich das beheben?",
+          "answer": "Prüfen Sie, ob alle erforderlichen Informationen ausgefüllt wurden. Falls das Problem weiterhin besteht, kontaktieren Sie unser Support-Team."
+        },
+        "can-change-account-settings": {
+          "question": "Wie kann ich meine Kontoeinstellungen ändern?",
+          "answer": "Sie können Ihre persönlichen Daten, E-Mail-Adresse und Passwort in den Kontoeinstellungen unter „Mein Konto“ aktualisieren."
+        },
+        "not-receiving-emails-from-platform": {
+          "question": "Ich erhalte keine E-Mails von der Plattform. Was kann ich tun?",
+          "answer": "Überprüfen Sie Ihren Spam-Ordner und stellen Sie sicher, dass unsere E-Mail-Adresse nicht blockiert ist."
+        },
+        "contact-support": {
+          "question": "Wie kann ich den Kundenservice kontaktieren?",
+          "answer": "Sie können uns per E-Mail unter support@fylpi.at oder telefonisch unter +43 699 1700 20045 erreichen."
+        }
+      },
+      "filters": {
+        "gen-questions": "Allgemeine Fragen",
+        "buy": "Kaufen",
+        "rent": "Mieten",
+        "sell": "Verkaufen",
+        "rent-out": "Vermieten",
+        "tech-support": "Technische Unterstützung"
       }
     },
-    "about-us": {
+    "about": {
       "title": "Über uns",
       "main-descr": "Fylpi ist eine Immobiliensuchplattform, die sich auf Transparenz, Effizienz, Innovation und Nachhaltigkeit konzentriert. Unser Ziel ist es, Menschen dabei zu helfen, die richtige Immobilie zu finden und zu erwerben, selbst wenn sie mit dem Immobilienmarkt und seinen lokalen Besonderheiten nicht vertraut sind.",
       "communication-title": "KUNDENORIENTIERTE KOMMUNIKATION",
@@ -140,6 +261,29 @@
       "uid": "UID-Nummer",
       "company-register-number": "Firmenbuchnummer"
     },
+    "contact-us": {
+      "title": "KONTAKTIEREN SIE UNS",
+      "descriptions": "Für eine schnelle und effiziente Kommunikation empfehlen wir Ihnen, unser benutzerfreundliches Kontaktformular zu verwenden.",
+      "form": {
+        "name": "Vorname",
+        "last-name": "Nachname",
+        "email": "Email",
+        "tel": "Telefon",
+        "message": "Nachricht",
+        "message-placeholder": "Schreiben Sie Ihre Nachricht hier",
+        "agree-terms": "Ich stimme den Bedingungen der Datenschutzerklärung zu",
+        "send": "Nachricht senden"
+      },
+      "assistance": {
+        "descriptions": "Für Fragen, Feedback oder weitere Informationen stehen wir Ihnen gerne zur Verfügung. Sie können uns über die folgenden Kanäle erreichen:",
+        "address": "Adresse:",
+        "email": "E-Mail:",
+        "open-hours": "Öffnungszeiten:",
+        "mon-to-fri": "Montag - Freitag: {{value}} Uhr",
+        "sat": "Samstag: {{value}} Uhr",
+        "sun": "Sonntag: Geschlossen"
+      }
+    },
     "filters": {
       "buy": {
         "residential-real-estate": "Wohnimmobilien",
@@ -159,6 +303,15 @@
       "area": "Fläche",
       "address": "Bundesland, Ort oder Postleitzahl"
     },
-    "title": "FINDEN SIE IHRE IMMOBILIE IN ÖSTERREICH"
+    "title": "FINDEN SIE IHRE IMMOBILIE IN ÖSTERREICH",
+    "links": {
+      "home": "Startseite"
+    },
+    "validation": {
+      "required": "Dieses Feld ist erforderlich",
+      "email": "Ungültige E-Mail-Adresse",
+      "phone": "Ungültige Telefonnummer",
+      "message_min": "Die Nachricht muss mindestens \"{{value}}\" Zeichen lang sein"
+    }
   }
 }

@@ -14,9 +14,7 @@ const MainBlock = ({ children, title, description }: Props) => {
         <H2 text={title} className="text-center max-w-[35rem]" />
         <p className="text-center w-full">{description}</p>
       </div>
-      <div>
-        {children}
-      </div>
+      {children}
     </div>
   )
 }

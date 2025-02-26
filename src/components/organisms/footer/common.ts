@@ -6,7 +6,7 @@ export const links = [
     label: 'footer.links.about-us',
   },
   {
-    href: '',
+    href: ROUTES.contactUs,
     label: 'footer.links.contact-us',
   },
   {
@@ -22,7 +22,7 @@ export const links = [
     label: 'footer.links.rent',
   },
   {
-    href: '',
+    href: ROUTES.faq,
     label: 'footer.links.faq',
   },
   {

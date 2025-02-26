@@ -483,5 +483,9 @@
         <path d="M36 21L-1.9576e-06 41.7846L-1.40549e-07 0.21539L36 21Z" fill="#FAFAFA"/>
     </symbol>
 
+    <symbol id="caretRightIcon" width="5" height="8" viewBox="0 0 5 8" fill="none">
+        <path d="M1 1L4 4L1 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
 
 </svg>
