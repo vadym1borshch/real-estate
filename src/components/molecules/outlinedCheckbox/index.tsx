@@ -6,6 +6,7 @@ interface Props extends CheckboxProps {
   variant?: 'text' | 'outlined'
   checkboxSide?: 'left' | 'right'
   labelClassName?: string
+  containerClassName?: string
 }
 
 const OutlinedCheckbox = (
@@ -17,6 +18,7 @@ const OutlinedCheckbox = (
     variant = 'outlined',
     checkboxSide = 'right',
     labelClassName,
+    containerClassName
   }: Props) => {
   return (
     <div
@@ -24,6 +26,7 @@ const OutlinedCheckbox = (
         { 'border-0': variant === 'text' },
         { 'justify-start gap-2 h-fit': checkboxSide === 'left' && variant === 'text' },
         { 'justify-start gap-2': checkboxSide === 'left' },
+        containerClassName
       )}
       onClick={() => setChecked(!checked)}
     >

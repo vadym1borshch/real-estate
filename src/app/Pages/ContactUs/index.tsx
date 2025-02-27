@@ -1,11 +1,13 @@
 import H2 from '../../../components/atoms/typography/h2'
 import { useTranslation } from 'react-i18next'
-import { Formik, Form, Field, FormikValues } from 'formik'
+import { Formik, Form, Field, FormikValues, FormikErrors, FieldProps } from 'formik'
 import Input from '../../../components/atoms/input'
 import TextArea from '../../../components/atoms/text-area'
 import * as Yup from 'yup'
 import Checkbox from '../../../components/atoms/checkbox'
 import Button from '../../../components/atoms/button'
+import Modal from '../../../components/molecules/modal'
+import { useState } from 'react'
 
 const useValidationSchema = () => {
   const { t } = useTranslation()
@@ -27,32 +29,27 @@ const useValidationSchema = () => {
       .min(10, t('validation.message_min', { value: '10' }))
       .required(t('validation.required')),
     agree: Yup.boolean()
-      .oneOf([true], t('validation.required'))
+      .oneOf([true], t('validation.required')),
   })
 }
 
 
 export const ContactUsPage = () => {
   const { t } = useTranslation()
+  const [openModal, setOpenModal] = useState(false)
 
-
-  const handleSubmit = (values: FormikValues) => {
-    if (!values.agree) {
-      console.error("error log");
-    } else {
-
-    }
+  const handleSubmit = (values: FormikValues, errors?: FormikErrors<FormikValues>) => {
+    setOpenModal(true)
   }
 
 
-
   return (
-    <div className="w-full flex flex-col items-center max-w-[1160px]">
-      <div className="flex flex-col items-center w-full max-w-[760px]">
+    <div className="w-full flex flex-col items-center max-w-[72.5rem]">
+      <div className="flex flex-col items-center w-full max-w-[47.5rem]">
         <H2 text={t('contact-us.title')} />
-        <p className="text-center mt-6 mb-[90px]">{t('contact-us.descriptions')}</p>
+        <p className="text-center mt-6 mb-[5.625rem]">{t('contact-us.descriptions')}</p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 w-full pb-[150px]">
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 w-full pb-[9.375rem]">
         <Formik
           initialValues={{
             name: '',
@@ -60,100 +57,106 @@ export const ContactUsPage = () => {
             email: '',
             phone: '',
             message: '',
-            agree: false
+            agree: false,
           }}
-          onSubmit={async (values) => {
-            handleSubmit(values)
+          onSubmit={async (values, { resetForm }) => {
+           /* handleSubmit(values)*/
+            resetForm()
           }}
           validationSchema={useValidationSchema()}
         >
-          {({ errors, touched, values }) => (
+          {({ errors, values, isValid, dirty }) => (
             <Form className="flex flex-col w-full gap-3">
-              <div className="flex gap-10">
+              <div className="flex flex-col md:flex-row gap-4 md:gap-10">
                 <Field name={'name'}>
-                  {({ field, meta }: any) => (
+                  {({ field, meta }: FieldProps) => (
                     <Input
                       {...field}
                       placeholder="John"
                       label={`${t('contact-us.form.name')} *`}
                       id="email"
-                      error={meta.touched && meta.error}
-                      className="min-h-[40px]"
+                      error={meta.touched && meta.error ? meta.error: undefined}
+                      className="min-h-[40px] placeholder-gray"
                       errorPosition="bottom"
                     />
                   )}
                 </Field>
                 <Field name={'lastName'}>
-                  {({ field, meta }: any) => (
+                  {({ field, meta }: FieldProps) => (
                     <Input
                       {...field}
                       placeholder="Smith"
                       label={`${t('contact-us.form.last-name')} *`}
                       id="lastName"
-                      error={meta.touched && meta.error}
-                      className="min-h-[40px]"
+                      error={meta.touched && meta.error ? meta.error: undefined}
+                      className="min-h-[40px] placeholder-gray"
                       errorPosition="bottom"
                     />
                   )}
                 </Field>
               </div>
-              <div className="flex gap-10">
+              <div className="flex flex-col md:flex-row gap-4 md:gap-10">
                 <Field name={'email'}>
-                  {({ field, meta }: any) => (
+                  {({ field, meta }: FieldProps) => (
                     <Input
                       {...field}
                       placeholder="johnsmith@email.at"
                       label={`${t('contact-us.form.email')} *`}
                       id="email"
-                      error={meta.touched && meta.error}
-                      className="min-h-[40px]"
+                      error={meta.touched && meta.error ? meta.error: undefined}
+                      className="min-h-[40px] placeholder-gray"
                       errorPosition="bottom"
                     />
                   )}
                 </Field>
                 <Field name={'phone'}>
-                  {({ field, meta }: any) => (
+                  {({ field, meta }: FieldProps) => (
                     <Input
                       {...field}
                       placeholder="+43 676 920 74 99"
                       label={`${t('contact-us.form.tel')} *`}
                       id="phone"
-                      error={meta.touched && meta.error}
-                      className="min-h-[40px]"
+                      error={meta.touched && meta.error ? meta.error: undefined}
+                      className="min-h-[40px] placeholder-gray"
                       errorPosition="bottom"
                     />
                   )}
                 </Field>
               </div>
               <Field name={'message'}>
-                {({ field, meta }: any) => (
+                {({ field, meta }: FieldProps) => (
                   <TextArea
                     {...field}
                     placeholder={t('contact-us.form.message-placeholder')}
                     label={`${t('contact-us.form.message')} *`}
                     id="message"
-                    error={meta.touched && meta.error}
-                    className="min-h-[40px]"
+                    error={meta.touched && meta.error ? meta.error: undefined}
+                    className="min-h-[40px] placeholder-gray"
                     errorPosition="bottom"
                   />
                 )}
               </Field>
-                <div className="w-full">
-                  <span className="w-full flex items-center gap-1.5 mb-6 mt-3">
-                    <Field name={'agree'}>
-                      {({ field, form }: any) => (
+              <div className="w-full">
+                <Field name={'agree'}>
+                  {({ field, form }: FieldProps) => (
+                    <span className="w-full flex items-center gap-1.5 mb-6 mt-3">
                         <Checkbox
                           {...field}
                           checked={field.value}
-                          setChecked={(v) => form.setFieldValue("agree", v)}
+                          setChecked={(v) => form.setFieldValue('agree', v)}
                         />
-                      )}
-                    </Field>
-                    {t("contact-us.form.agree-terms")}
+                      {t('contact-us.form.agree-terms')}
                   </span>
-                  <Button onClick={()=>handleSubmit(values)} type="submit">
-                    {t('contact-us.form.send')}
-                  </Button>
+                  )}
+                </Field>
+
+                <Button
+                  onClick={() => handleSubmit(values)}
+                  type="submit"
+                  disabled={!isValid || !dirty}
+                >
+                  {t('contact-us.form.send')}
+                </Button>
               </div>
             </Form>
           )}
@@ -181,6 +184,16 @@ export const ContactUsPage = () => {
           </div>
         </div>
       </div>
+      <Modal
+        open={openModal}
+        setOpen={setOpenModal}
+        title={t('contact-us.modal.title')}
+        className="max-w-[35rem]"
+      >
+        <p className="text-center">
+          {t('contact-us.modal.message')}
+        </p>
+      </Modal>
     </div>
   )
 }

@@ -44,7 +44,7 @@ const Footer = () => {
           <Link href={ROUTES.contacts} className="text-seafoam-green hover:text-white">
             {t('contacts.title')}
           </Link>
-          <Link href="" className="text-seafoam-green hover:text-white">
+          <Link href={ROUTES.termsOfUse} className="text-seafoam-green hover:text-white">
             {t('footer.links.terms-of-use')}
           </Link>
         </p>

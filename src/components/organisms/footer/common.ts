@@ -26,7 +26,7 @@ export const links = [
     label: 'footer.links.faq',
   },
   {
-    href: '',
+    href: ROUTES.serviceAround,
     label: 'footer.links.service-property',
   },
   {

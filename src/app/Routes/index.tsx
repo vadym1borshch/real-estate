@@ -16,6 +16,8 @@ import { NotFoundPage } from '../Pages/NotFound'
 import { Contacts } from '../Pages/Contacts'
 import { FAQPage } from '../Pages/FAQ'
 import { ContactUsPage } from '../Pages/ContactUs'
+import { TermsOfUse } from '../Pages/TermsOfUse'
+import { ServiceAround } from '../Pages/ServiceAround'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -116,6 +118,14 @@ const routes: RouteObject[] = [
               {
                 path: 'contact-us',
                 element: <ContactUsPage />,
+              },
+              {
+                path: 'terms-of-use',
+                element: <TermsOfUse />,
+              },
+              {
+                path: 'service-around',
+                element: <ServiceAround />,
               },
               { path: 'not-found', element: <NotFoundPage/> },
               { path: '*', element: <RedirectToErrorPage /> },

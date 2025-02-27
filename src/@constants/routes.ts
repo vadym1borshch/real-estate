@@ -6,4 +6,6 @@ export const ROUTES = {
   contacts: '/contacts',
   faq: '/faq',
   contactUs: '/contact-us',
+  termsOfUse: '/terms-of-use',
+  serviceAround: '/service-around',
 } as const;

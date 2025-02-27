@@ -41,7 +41,7 @@ const TextArea = (
             <span className=" flex  items-center gap-[0.1875rem] text-red self-end justify-end">
             <Icon
               id="errorIconRed"
-              className="w-4 h-6"
+              className="w-[16px] h-[24px]"
             />
               {error}
           </span>
@@ -65,7 +65,7 @@ const TextArea = (
         <span className=" flex  items-center gap-[0.1875rem] text-red self-end justify-end">
           <Icon
             id="errorIconRed"
-            className="w-4 h-6"
+            className="w-[16px] h-[24px]"
           />
           {error}
         </span>

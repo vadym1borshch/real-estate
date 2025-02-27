@@ -42,7 +42,7 @@ const Input = (
             <span className=" flex  items-center gap-[0.1875rem] text-red self-end justify-end">
             <Icon
               id="errorIconRed"
-              className="w-4 h-6"
+              className="w-[16px] h-[24px]"
             />
               {error}
           </span>
@@ -54,7 +54,7 @@ const Input = (
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e)}
-        className={cn('z-10 w-full min-h-[40px] md:h-12 border border-blue-gray hover:border-charcoal px-6 rounded-sm focus:outline-none focus:ring-1 focus:ring-charcoal focus:border-charcoal',
+        className={cn('z-10 w-full min-h-[40px] md:h-12 border border-blue-gray hover:border-charcoal px-6 rounded-sm focus:outline-none focus:ring-1 focus:ring-charcoal focus:border-charcoal autofill:shadow-[inset_0_0_0px_1000px_white]',
           { 'h-10': size === 'sm' },
           { 'border-red focus:outline focus:outline-1 focus:outline-red': error },
           { 'pl-[36px]': iconSide === 'left' },
@@ -66,7 +66,7 @@ const Input = (
         <span className=" flex  items-center gap-[0.1875rem] text-red self-end justify-end">
           <Icon
             id="errorIconRed"
-            className="w-4 h-6"
+            className="w-[16px] h-[24px]"
           />
           {error}
         </span>

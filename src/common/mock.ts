@@ -4,7 +4,7 @@ import rent from '/rent.png?url'
 import rentOut from '/rent-out.png?url'
 
 
-export const assistant = {
+export let assistant = {
   name: 'Johanna',
   lastName: 'Schneider',
   profession: 'Steuerberatung für Immobilien',
