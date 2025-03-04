@@ -7,6 +7,7 @@ import Button from '../../atoms/button'
 import { cn, textEllipsis } from '../../../helpers/ui.ts'
 import DropdownInput from '../input-dropdown'
 import Dropdown from '../../atoms/dropdown'
+import { useListing } from '../../../contexts/ListingContext.tsx'
 
 interface Props {
   filter: IFilter
@@ -17,6 +18,7 @@ export const Filter = ({ filter }: Props) => {
   const { t, i18n } = useTranslation()
   const [query, setQuery] = useState(searchParams.get(filter.key) || '')
   const [open, setOpen] = useState(false)
+  const {setListingType} = useListing()
 
   const getLabel = () => {
     const value = searchParams.get(filter.key)
@@ -117,6 +119,9 @@ export const Filter = ({ filter }: Props) => {
             key={item.id}
             className="hover:bg-blue-gray py-2 px-4 text-base"
             onClick={() => {
+              if (filter.key === 'operation') {
+                setListingType(item.id)
+              }
               updateParams(filter.key, item.id)
               setOpen(false)
             }}

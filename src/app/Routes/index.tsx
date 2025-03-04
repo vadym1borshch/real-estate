@@ -18,6 +18,7 @@ import { FAQPage } from '../Pages/FAQ'
 import { ContactUsPage } from '../Pages/ContactUs'
 import { TermsOfUse } from '../Pages/TermsOfUse'
 import { ServiceAround } from '../Pages/ServiceAround'
+import { EstatesDetails } from '../Pages/EstatesList/EstateDetails'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -96,16 +97,31 @@ const routes: RouteObject[] = [
               {
                 path: 'about',
                 element: <About />,
-               /* children: [
-                  {
-                    path: ':id',
-                    element: <Details />,
-                  },
-                ],*/
+                /* children: [
+                   {
+                     path: ':id',
+                     element: <Details />,
+                   },
+                 ],*/
+              },
+
+              {
+                path: 'rent',
+                element: <EstatesList />,
               },
               {
-                path: 'estates',
+                path: 'buy',
                 element: <EstatesList />,
+
+              },
+              {
+                path: 'rent/details',
+                element: <EstatesDetails />,
+              },
+
+              {
+                path: 'buy/details',
+                element: <EstatesDetails />,
               },
               {
                 path: 'contacts',
@@ -127,7 +143,7 @@ const routes: RouteObject[] = [
                 path: 'service-around',
                 element: <ServiceAround />,
               },
-              { path: 'not-found', element: <NotFoundPage/> },
+              { path: 'not-found', element: <NotFoundPage /> },
               { path: '*', element: <RedirectToErrorPage /> },
             ],
           },

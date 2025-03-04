@@ -4,6 +4,7 @@ import { BuyKeys, RentKeys } from '../../components/organisms/home-page/popular-
 
 export const selectBuyFilter = (state: RootState) => state.estates.buyFilter
 export const selectRentFilter = (state: RootState) => state.estates.rentFilter
+export const selectCurrentEstate = (state: RootState) => state.estates.currentEstate
 
 export const selectEstates = createSelector(
   [(state: RootState) => state.estates.data],
@@ -37,13 +38,13 @@ export const selectBuyEstates = createSelector(
   [selectEstates, selectBuyFilter],
   (data, buyFilter) =>
     data
-      .filter(el => el.operation === 'real-estate.operations.buy' && !el.isTop)
+      .filter(el => el.operation.key === 'buy' && !el.isTop)
       .filter(el => {
         if (buyFilter.key === BuyKeys.housing) {
-          return el.type === 'real-estate.type.house'
+          return el.type.key === 'house'
         }
         if (buyFilter.key === BuyKeys.multifamilyHousing) {
-          return el.type === 'real-estate.type.apartment'
+          return el.type.key === 'apartment'
         }
 
         if (buyFilter.key === BuyKeys.other) {
@@ -57,13 +58,13 @@ export const selectRentEstates = createSelector(
   [selectEstates, selectRentFilter],
   (data, rentFilter) =>
     data
-      .filter(el => el.operation === 'real-estate.operations.rent')
+      .filter(el => el.operation.key === 'rent')
       .filter(el => {
         if (rentFilter.key === RentKeys.houses) {
-          return el.type === 'real-estate.type.house'
+          return el.type.key === 'house'
         }
         if (rentFilter.key === RentKeys.apartments) {
-          return el.type === 'real-estate.type.apartment'
+          return el.type.key === 'apartment'
         }
         if (rentFilter.key === RentKeys.other) {
           return el

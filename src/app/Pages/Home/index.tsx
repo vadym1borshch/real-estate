@@ -36,7 +36,7 @@ export const HomePage = () => {
               src={service.src}
               label={t(service.label)}
               descriptions={t(service.descriptions)}
-              href=""
+              href="#"
             />
           ))}
         </div>

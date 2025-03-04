@@ -3,6 +3,15 @@
     "common": {
       "postal-code": "Поштовий індекс"
     },
+    "rent": {
+      "title": "Оренда "
+    },
+    "buy": {
+      "title": "Купити "
+    },
+    "details": {
+      "title": " Деталі"
+    },
     "not-found": {
       "title": "404",
       "tdescriptionitle": " Error 404 - Ця сторінка не існує. Спробуйте почати з головної сторінки.",

@@ -3,6 +3,15 @@
     "common": {
       "postal-code": "Postleitzahl"
     },
+    "rent": {
+      "title": "Mieten "
+    },
+    "buy": {
+      "title": "Kaufen "
+    },
+    "details": {
+      "title": " details"
+    },
     "not-found": {
       "title": "404",
       "description": " Error 404 - Diese Seite existiert nicht. Versuchen Sie, von der Hauptseite aus zu starten.",

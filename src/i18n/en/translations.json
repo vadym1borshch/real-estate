@@ -3,6 +3,15 @@
     "common": {
       "postal-code": "Postal code"
     },
+    "rent": {
+      "title": "Rent "
+    },
+    "buy": {
+      "title": "Buy "
+    },
+    "details": {
+      "title": " details"
+    },
     "not-found": {
       "title": "404",
       "description": " Error 404 - This page does not exist. Try starting from the main page.",

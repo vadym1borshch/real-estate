@@ -34,7 +34,7 @@ const Button = (
     <TButton
       ripple={false}
       className={cn(
-              'flex justify-center items-center cursor-pointer bg-coral text-xl text-white py-0 px-6 w-fit font-normal shadow-none hover:shadow-none hover:bg-light-coral focus:border-4 focus:border-charcoal !focus:py-0 rounded-sm focus:rounded-lg h-12 disabled:bg-gray',
+        'flex justify-center items-center cursor-pointer bg-coral text-xl text-white py-0 px-6 w-fit font-normal shadow-none hover:shadow-none hover:bg-light-coral focus:border-4 focus:border-charcoal !focus:py-0 rounded-sm focus:rounded-lg h-12 disabled:bg-gray',
         {
           'h-10 text-center py-0 text-base': size === 'sm',
           'bg-dark-coral hover:bg-dark-coral ': pressed,
@@ -50,12 +50,13 @@ const Button = (
       onPointerLeave={() => setPressed(false)}
       {...rest}
     >
-      <span className={cn("capitalize flex gap-[0.125rem] w-full max-h-[48px] items-center justify-between", {
-        'justify-center': !iconId
+      <span className={cn('capitalize flex gap-[0.125rem] w-full max-h-[48px] items-center justify-between', {
+        'justify-center': !iconId,
       })}>
         {children}
         {iconId && (
-          <Icon id={iconId} className={cn('w-[24px] h-[24px] md:w-6 md:h-6', { 'order-first': iconSide === 'left' }, iconClassName)} />
+          <Icon id={iconId}
+                className={cn('w-[24px] h-[24px] md:w-6 md:h-6', { 'order-first': iconSide === 'left' }, iconClassName)} />
         )}
       </span>
     </TButton>

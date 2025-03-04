@@ -4,11 +4,12 @@ import Icon from '../../atoms/icon'
 import { useTranslation } from 'react-i18next'
 import H3 from '../../atoms/typography/h3'
 import { cn } from '../../../helpers/ui.ts'
-import { RealEstate, setFavorite } from '../../../store/estateSlice'
+import { RealEstate, setCurrentEstate, setFavorite } from '../../../store/estateSlice'
 import { useAppDispatch } from '../../../store'
 
 interface Props {
   realEstate: RealEstate
+
 }
 
 const EstateCard = ({ realEstate }: Props) => {
@@ -31,16 +32,17 @@ const EstateCard = ({ realEstate }: Props) => {
     selectedOnMap,
   } = realEstate
 
+
   return (
     <Link
-      href={''}
+      href={`/${operation.key}/details`}
       className={cn('max-w-[22.5rem] min-h-[26.75rem] hover:border-0 focus:border-0 group flex flex-col gap-0 z-0',
         { 'border-2 border-charcoal hover:border-2 rounded-lg': selectedOnMap },
       )}
+      onClick={()=>  dispatch(setCurrentEstate(id))}
     >
       <div
-        className="relative "
-        onClick={(e) => e.stopPropagation()}
+        className="relative"
       >
         <div
           className="absolute p-6 top-0 flex justify-between w-full"
@@ -53,7 +55,7 @@ const EstateCard = ({ realEstate }: Props) => {
               { 'text-coral': favorite },
             )}
             onClick={() => {
-              dispatch(setFavorite({ id } ))
+              dispatch(setFavorite({ id }))
             }}
           />
         </div>
@@ -66,14 +68,14 @@ const EstateCard = ({ realEstate }: Props) => {
         <div className="flex flex-col gap-1.5">
           <p className="r-estate-descriptions">
             <span>ID: {id}</span>
-            <span>{t(type)}</span>
+            <span>{t(type.value)}</span>
             <span>{address}</span>
           </p>
           <p className="r-estate-descriptions">
             <span>{rooms} {t('real-estate.rooms')}</span>
             <span>{bathroom} {t('real-estate.bathroom')}</span>
             <span>{m2}</span>
-            <span>{t(operation)}</span>
+            <span>{t(operation.value)}</span>
           </p>
         </div>
         <div className="flex justify-between w-full">

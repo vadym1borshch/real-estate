@@ -8,11 +8,17 @@ export interface RealEstate {
   id: string,
   label: string,
   isTop: true,
-  type: string,
+  type: {
+    key: string,
+    value: string,
+  },
   address: string,
   rooms: number,
   bathroom: number,
-  operation: string,
+  operation: {
+    key: string,
+    value: string,
+  },
   m2: string,
   price: string,
   views: number,
@@ -36,6 +42,7 @@ export interface IState {
   loading: boolean,
   error: Error | null,
   currentPage: number
+  currentEstate: RealEstate | null,
 }
 
 const initialState: IState = {
@@ -45,6 +52,7 @@ const initialState: IState = {
   loading: false,
   error: null,
   currentPage: 1,
+  currentEstate: null,
 }
 
 export const realEstateSlice = createSlice({
@@ -69,6 +77,13 @@ export const realEstateSlice = createSlice({
     },
     setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload
+    },
+
+    setCurrentEstate: (state, action: PayloadAction<string>) => {
+      const estate = state.data.find(est => est.id === action.payload)
+      if (estate) {
+        state.currentEstate = estate
+      }
     }
   },
   extraReducers: (builder) => {
@@ -88,6 +103,6 @@ export const realEstateSlice = createSlice({
   },
 })
 
-export const { setFavorite, setBuyFilter, setRentFilter, setCurrentPage } = realEstateSlice.actions
+export const { setFavorite, setBuyFilter, setRentFilter, setCurrentPage, setCurrentEstate } = realEstateSlice.actions
 
 export default realEstateSlice.reducer

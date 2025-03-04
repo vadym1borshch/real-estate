@@ -8,13 +8,16 @@ import { ThemeProvider } from '@material-tailwind/react'
 import { theme } from './theme.ts'
 import { Provider } from 'react-redux'
 import { store } from './store'
+import { ListingProvider } from './contexts/ListingContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <ThemeProvider value={theme}>
         <I18nextProvider i18n={config}>
-          <App />
+          <ListingProvider>
+            <App />
+          </ListingProvider>
         </I18nextProvider>
       </ThemeProvider>
     </Provider>

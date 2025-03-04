@@ -11,14 +11,15 @@ interface Props extends HTMLAttributes<HTMLLinkElement> {
   className?: string;
   iconClassName?: string;
   disabled?: boolean;
+  onClick?: () => void
 }
 
-const Link = ({ href, children, iconId, iconClassName, disabled, className, ...rest }: Props) => {
+const Link = ({ href, children, iconId, iconClassName, disabled, className, onClick, ...rest }: Props) => {
   const { i18n } = useTranslation()
   const [pressed, setPressed] = useState(false)
   const link = disabled ? "#" : `/${i18n.language}${href}`
 
-
+/*  console.log(href)*/
   return (
     <RLink
       to={link as string}
@@ -33,6 +34,7 @@ const Link = ({ href, children, iconId, iconClassName, disabled, className, ...r
       onPointerUp={() => setPressed(false)}
       onPointerLeave={() => setPressed(false)}
       onClick={(e)=>{
+        onClick && onClick()
         if (disabled) {
           e.preventDefault();
           e.stopPropagation();

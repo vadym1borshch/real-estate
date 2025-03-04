@@ -10,8 +10,10 @@ import { cn } from '../../../helpers/ui.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
 import Pagination from '../../../components/molecules/pagination'
-import { setCurrentPage } from '../../../store/estateSlice'
+import { RealEstate, setCurrentPage } from '../../../store/estateSlice'
 import Button from '../../../components/atoms/button'
+import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 
 export const EstatesList = () => {
   const itemsPerPage = 9
@@ -19,12 +21,17 @@ export const EstatesList = () => {
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
   const currentPage = useAppSelector(selectCurrentPage)
   const dispatch = useAppDispatch()
+  const [currentEstate, setCurrentEstate] = useState<RealEstate | null>(null)
 
   const { width } = useWindowDimensions()
   const isMobile = width < BREAKPOINTS.xmd
 
   if (!estates.length) {
     return <div>loading...</div>
+  }
+
+  const setCurrentEstateHandler = (estate: RealEstate) => {
+    setCurrentEstate(estate)
   }
 
   return (
@@ -37,9 +44,11 @@ export const EstatesList = () => {
       <div className={cn('grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-10 mt-[1.125rem]', {
         'grid-cols-1': isMobile,
       })}>
-        {estates.map((estate) => (
-          <EstateCard key={estate.id} realEstate={estate} />
-        ))}
+        {estates.map((estate) => {
+          return (
+            <EstateCard key={estate.id} realEstate={estate} />
+          )
+        })}
       </div>
       <Pagination
         count={totalPages}
