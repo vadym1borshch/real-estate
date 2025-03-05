@@ -7,7 +7,7 @@ import { buyFilters, FilterOption, rentFilters } from '../../components/organism
 export interface RealEstate {
   id: string,
   label: string,
-  isTop: true,
+  isTop: boolean,
   type: {
     key: string,
     value: string,
@@ -80,7 +80,7 @@ export const realEstateSlice = createSlice({
     },
 
     setCurrentEstate: (state, action: PayloadAction<string>) => {
-      const estate = state.data.find(est => est.id === action.payload)
+      const estate = state.data?.find(est => est.id === action.payload)
       if (estate) {
         state.currentEstate = estate
       }

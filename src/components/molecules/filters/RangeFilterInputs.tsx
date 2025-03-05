@@ -66,7 +66,7 @@ export const RangeFilterInputs = ({ minKey, maxKey, searchParams, updateParams, 
         className={cn(
           'min-w-[108px] min-h-[35px] px-0 pl-4',
           {
-            'border-red focus:outline focus:outline-1 focus:outline-red hover:border-red focus:ring-red focus:border-red': errors[minKey],
+            'border-red focus:outline focus:outline-red hover:border-red focus:ring-red focus:border-red': errors[minKey],
           })}
         value={searchParams.get(minKey) || ''}
         onChange={e => handleChange(minKey, e.target.value)}
@@ -77,7 +77,7 @@ export const RangeFilterInputs = ({ minKey, maxKey, searchParams, updateParams, 
         className={cn(
           'min-w-[108px] min-h-[35px]',
           {
-            'border-red focus:outline focus:outline-1 focus:outline-red hover:border-red focus:ring-red focus:border-red': errors[maxKey],
+            'border-red focus:outline  focus:outline-red hover:border-red focus:ring-red focus:border-red': errors[maxKey],
           })}
         value={searchParams.get(maxKey) || ''}
         onChange={e => handleChange(maxKey, e.target.value)}

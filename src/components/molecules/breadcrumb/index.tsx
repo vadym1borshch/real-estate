@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { Breadcrumbs as TBreadcrumbs } from '@material-tailwind/react'
+import { Breadcrumbs } from '@material-tailwind/react'
 import Link from '../../atoms/link'
 import Icon from '../../atoms/icon'
 import { useTranslation } from 'react-i18next'
@@ -17,13 +17,19 @@ interface Props {
 const Breadcrumb = ({ items }: Props) => {
   const { t } = useTranslation()
   return (
-    <div className="w-full mb-[30px]">
-      <TBreadcrumbs
+    <div className="mb-[30px] w-full">
+      <Breadcrumbs
         fullWidth
-        className="breadcrumb"
+        className="breadcrumb flex gap-1.5"
         separator={
-          <Icon id="caretRightIcon" className="text-blue-gray w-[5px] h-[8px]" />
+          <Icon
+            id="caretRightIcon"
+            className="text-blue-gray h-[8px] w-[5px]"
+          />
         }
+        placeholder={null}
+        onPointerEnterCapture={()=>{}}
+        onPointerLeaveCapture={()=>{}}
       >
         {items.map(({ id, href, label }, idx) => {
           const isDisabled = idx === items.length - 1
@@ -32,16 +38,15 @@ const Breadcrumb = ({ items }: Props) => {
               <Link
                 href={href}
                 disabled={isDisabled}
-                className="text-blue-gray lowercase capitalize"
+                className="text-blue-gray pr-1.5 capitalize"
               >
                 {t(label.toLocaleLowerCase())}
               </Link>
             </Fragment>
           )
         })}
-      </TBreadcrumbs>
+      </Breadcrumbs>
     </div>
-
   )
 }
 

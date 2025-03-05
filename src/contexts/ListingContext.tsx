@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react'
 
-type ListingType = 'buy' | 'rent';
+export type ListingType = 'buy' | 'rent';
 
 interface ListingContextProps {
   listingType: ListingType;

@@ -8,7 +8,7 @@ import { cn } from '../../../helpers/ui.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
-import Dropdown from '../../atoms/dropdown'
+import Drawer from '../../molecules/drawer'
 
 interface Props {
   className?: string
@@ -34,88 +34,97 @@ const Header = ({ className }: Props) => {
   }, [isMedium])
 
   return (
-    <header className={cn('z-100 w-full bg-transparent flex justify-between py-[1.875rem]', className)}>
-      <div className="flex items-center gap-6 cursor-pointer" onClick={goToHomePage}>
+    <header
+      className={cn(
+        'z-1001 flex w-full justify-between bg-transparent py-[1.875rem]',
+        className
+      )}
+    >
+      <div
+        className="flex cursor-pointer items-center gap-6"
+        onClick={goToHomePage}
+      >
         <Logo />
-        <span className="font-600 uppercase tracking-[3px]">Immobilien Suche</span>
+        <span className="font-600 tracking-[3px] uppercase">
+          Immobilien Suche
+        </span>
       </div>
-      <div className={cn('hidden', {
-        'header-buttons_container flex items-center gap-6': isMedium,
-      })}>
-        <Button
-          size="sm"
-          variant="text"
-          onClick={() => {
-          }}
-        >
+      <div
+        className={cn('hidden', {
+          'header-buttons_container flex items-center gap-6': isMedium,
+        })}
+      >
+        <Button size="sm" variant="text" onClick={() => {}}>
           {t('real-estate.operations.buy')}
         </Button>
-        <Button
-          size="sm"
-          variant="text"
-          onClick={() => {
-          }}
-        >
+        <Button size="sm" variant="text" onClick={() => {}}>
           {t('real-estate.operations.rent')}
         </Button>
-        <Button
-          size="sm"
-          variant="text"
-          onClick={() => {
-          }}
-        >
+        <Button size="sm" variant="text" onClick={() => {}}>
           {t('buttons.place-advertisement')}
         </Button>
         <Button
           size="sm"
-          className="bg-charcoal px-4 hover:bg-seafoam-green focus:border-4 focus:border-seafoam-green focus:outline-none"
-          onClick={() => {
-          }}
+          className="bg-charcoal hover:bg-seafoam-green focus:border-seafoam-green px-4 focus:border-4 focus:outline-none"
+          onClick={() => {}}
         >
           {t('buttons.sign-in')}
         </Button>
         <LanguageSwitcher />
       </div>
-      <div className={cn('flex items-center gap-6', {
-        'hidden': isMedium,
-      })}>
-        <LanguageSwitcher />
-        <Dropdown label="Menu" open={open} setOpen={setOpen}>
-          <div className="flex flex-col items-center gap-3">
+      <div
+        className={cn('flex items-center gap-6', {
+          hidden: isMedium,
+        })}
+      >
+        <Button onClick={() => setOpen(!open)}>MENU</Button>
+        <Drawer open={open} setOpen={setOpen}>
+          <div className="border-b-seafoam-green flex w-full justify-between border-b p-5">
+            <div className="flex items-center gap-6">
+              <Button
+                size="sm"
+                className="text-charcoal hover:bg-seafoam-green focus:border-seafoam-green h-[40px] min-w-[80px] bg-white px-4 focus:border-4 focus:outline-none"
+                onClick={() => {}}
+              >
+                {t('buttons.sign-in')}
+              </Button>
+              <LanguageSwitcher className="hover:text-gray text-white" />
+            </div>
+            <Button
+              className="hover:text-gray !border-0 text-white"
+              variant="outlined"
+              onClick={() => setOpen(!open)}
+            >
+              X
+            </Button>
+          </div>
+          <div className="z-100000 flex h-full w-full flex-col gap-3 p-5">
             <Button
               size="sm"
               variant="text"
-              onClick={() => {
-              }}
+              onClick={() => {}}
+              className="hover:text-gray text-white"
             >
               {t('real-estate.operations.buy')}
             </Button>
             <Button
               size="sm"
               variant="text"
-              onClick={() => {
-              }}
+              onClick={() => {}}
+              className="hover:text-gray text-white"
             >
               {t('real-estate.operations.rent')}
             </Button>
             <Button
               size="sm"
               variant="text"
-              onClick={() => {
-              }}
+              onClick={() => {}}
+              className="hover:text-gray text-white"
             >
               {t('buttons.place-advertisement')}
             </Button>
-            <Button
-              size="sm"
-              className="bg-charcoal px-4 hover:bg-seafoam-green focus:border-4 focus:border-seafoam-green focus:outline-none"
-              onClick={() => {
-              }}
-            >
-              {t('buttons.sign-in')}
-            </Button>
           </div>
-        </Dropdown>
+        </Drawer>
       </div>
     </header>
   )

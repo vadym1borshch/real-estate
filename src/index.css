@@ -102,10 +102,11 @@
     -webkit-box-orient: vertical;
 }
 
-@media (min-width: 420px) and (max-width: 768px) {
+@media (min-width: 340px) and (max-width: 768px) {
     html {
         font-size: 12px;
     }
+
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {

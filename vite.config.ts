@@ -16,9 +16,9 @@ export default defineConfig({
       styles: '/src/styles',
     },
   },
-  /* server: {
+   server: {
      //enable to test on mobile devices
      host: '0.0.0.0',
      port: 5173,
-   }*/
+   }
 })

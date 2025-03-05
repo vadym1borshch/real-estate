@@ -4,15 +4,21 @@ import { Filter } from './Filter.tsx'
 import { data } from './mock.ts'
 
 interface Props {
-  className?: string,
+  className?: string
   children?: ReactNode
 }
 
 export const Filters = ({ className, children }: Props) => {
   return (
     <div
-      className={cn('p-3 backdrop-blur-[20px] rounded-md w-full flex gap-3 flex-wrap lg:flex-nowrap justify-center z-1000', className)}>
-      {data.map((filter) => <Filter key={filter.id} filter={filter} />)}
+      className={cn(
+        'z-1000 grid w-full grid-cols-2 justify-center gap-3 rounded-md p-3 backdrop-blur-[20px] lg:flex lg:flex-nowrap',
+        className
+      )}
+    >
+      {data.map((filter) => (
+        <Filter key={filter.id} filter={filter} />
+      ))}
       {children}
     </div>
   )

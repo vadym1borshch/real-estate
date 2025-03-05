@@ -18,16 +18,17 @@ export const HomePage = () => {
   const preMedium = width <= BREAKPOINTS.xmd
   const isMobile = width <= BREAKPOINTS.xsm
   const topEstate = useAppSelector(selectTopEstates)
+
   return (
-    <div className="text-charcoal mt-[90px] w-full flex flex-col items-center gap-[9.375rem]">
+    <div className="text-charcoal mt-[90px] flex w-full flex-col items-center gap-[9.375rem]">
       <MainBlock
         title={t('home.operations.main-title')}
         description={t('home.operations.descriptions')}
       >
         <div
-          className={cn('pt-[5.625rem] grid grid-cols-4 gap-10', {
+          className={cn('grid grid-cols-4 gap-10 pt-[5.625rem]', {
             'grid-cols-2': isMedium,
-            'grid-cols-1 mx-auto': isMobile,
+            'mx-auto grid-cols-1': isMobile,
           })}
         >
           {services.map((service) => (
@@ -46,10 +47,11 @@ export const HomePage = () => {
         description={t('home.top-ads.descriptions')}
       >
         <div
-          className={cn('pt-[5.625rem] grid grid-cols-3 gap-10', {
+          className={cn('grid grid-cols-3 gap-10 pt-[5.625rem]', {
             'grid-cols-2': isMedium,
-            'grid-cols-1 mx-auto': preMedium,
-          })}>
+            'mx-auto grid-cols-1': preMedium,
+          })}
+        >
           {topEstate.map((house) => (
             <EstateCard realEstate={house} key={house.id} />
           ))}

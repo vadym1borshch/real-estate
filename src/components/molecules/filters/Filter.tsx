@@ -7,7 +7,10 @@ import Button from '../../atoms/button'
 import { cn, textEllipsis } from '../../../helpers/ui.ts'
 import DropdownInput from '../input-dropdown'
 import Dropdown from '../../atoms/dropdown'
-import { useListing } from '../../../contexts/ListingContext.tsx'
+import { ListingType, useListing } from '../../../contexts/ListingContext.tsx'
+import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
+import { usePathname } from '../../../helpers/hooks/usePathname.ts'
+import { ROUTES } from '../../../@constants/routes.ts'
 
 interface Props {
   filter: IFilter
@@ -18,12 +21,24 @@ export const Filter = ({ filter }: Props) => {
   const { t, i18n } = useTranslation()
   const [query, setQuery] = useState(searchParams.get(filter.key) || '')
   const [open, setOpen] = useState(false)
-  const {setListingType} = useListing()
+  const { listingType, setListingType } = useListing()
+  const navigate = useNavigate()
+  const path = usePathname()
+
+  const label = filter.values.find(
+    (val) => typeof val !== 'number' && val.id === listingType
+  )
 
   const getLabel = () => {
     const value = searchParams.get(filter.key)
-    const item = filter.values.find(v => v.id === value)
-    return item ? t(item.value) : t(filter.title)
+
+    const item = filter.values.find(
+      (v) => typeof v !== 'number' && v.id === value
+    )
+    if (item && typeof item !== 'number') {
+      return t(item.value)
+    }
+    return t(filter.title)
   }
 
   const updateParams = (key: string, value: string | string[]) => {
@@ -48,12 +63,17 @@ export const Filter = ({ filter }: Props) => {
     const params = new URLSearchParams(searchParams)
     let hasChanges = false
 
-    filter.values.forEach(value => {
+    filter.values.forEach((value) => {
       const key = filter.key
       const currentValue = searchParams.get(key)
       const translatedValue = t(value, { lng: i18n.language })
 
-      if (currentValue && filter.values.includes(currentValue) && currentValue !== translatedValue) {
+      const numericCurrentValue = Number(currentValue)
+      if (
+        currentValue &&
+        filter.values.includes(numericCurrentValue) &&
+        currentValue !== translatedValue
+      ) {
         params.set(key, translatedValue)
         hasChanges = true
       }
@@ -62,7 +82,7 @@ export const Filter = ({ filter }: Props) => {
     if (hasChanges) {
       setSearchParams(params, { replace: true })
     }
-  }, [i18n.language])
+  }, [filter.key, filter.values, i18n.language])
 
   const renderOptions = () => {
     switch (filter.key) {
@@ -75,7 +95,6 @@ export const Filter = ({ filter }: Props) => {
             maxKey="price_max"
             minKey="price_min"
           />
-
         )
       case 'm2':
         return (
@@ -87,48 +106,59 @@ export const Filter = ({ filter }: Props) => {
             minKey="area_min"
           />
         )
-      case 'rooms':
+      case 'rooms': {
         const selectedRooms = searchParams.get(filter.key)?.split('-') || []
 
-        return filter.values.map(value => {
+        return filter.values.map((value) => {
           const isSelected = selectedRooms.includes(String(value))
 
           return (
             <Button
-              key={value as string}
-              className={cn('rooms-filter__button w-10 h-10', {
-                'bg-blue-gray text-white border-blue-gray': isSelected,
+              key={value as unknown as string}
+              className={cn('rooms-filter__button h-10 w-10', {
+                'bg-blue-gray border-blue-gray text-white': isSelected,
               })}
               variant="outlined"
               selected={isSelected}
               onClick={() => {
-                let newValues = isSelected
-                  ? selectedRooms.filter(v => v !== String(value))
+                const newValues = isSelected
+                  ? selectedRooms.filter((v) => v !== String(value))
                   : [...selectedRooms, String(value)]
 
                 updateParams(filter.key, newValues.length ? newValues : [])
               }}
             >
-              {value}
+              {value as number}
             </Button>
           )
         })
+      }
       default:
-        return filter.values.map(item => (
-          <span
-            key={item.id}
-            className="hover:bg-blue-gray py-2 px-4 text-base"
-            onClick={() => {
-              if (filter.key === 'operation') {
-                setListingType(item.id)
-              }
-              updateParams(filter.key, item.id)
-              setOpen(false)
-            }}
-          >
-            {t(item.value)}
-          </span>
-        ))
+        return filter.values.map((item) => {
+          if (typeof item !== 'number') {
+            return (
+              <span
+                key={item.id}
+                className="hover:bg-blue-gray px-4 py-2 text-base"
+                onClick={() => {
+                  if (filter.key === 'operation') {
+                    setListingType(item.id as ListingType)
+                    setOpen(false)
+                    if (path !== ROUTES.home) {
+                      navigate(`/${item.id}`, true)
+                    }
+                    return
+                  }
+                  updateParams(filter.key, item.id)
+                  setOpen(false)
+                }}
+              >
+                {t(item.value)}
+              </span>
+            )
+          }
+          return null
+        })
     }
   }
 
@@ -139,24 +169,30 @@ export const Filter = ({ filter }: Props) => {
         setOpen={setOpen}
         key={filter.id}
         inputValue={query}
-        setInputValue={value => {
+        setInputValue={(value) => {
           setQuery(value)
           updateParams(filter.key, value)
         }}
+        dropdownClassName="top-14"
       >
-        {filter.values.map(item => (
-          <span
-            key={item.id}
-            className="hover:bg-blue-gray py-2 px-4 text-base text-nowrap"
-            onClick={() => {
-              updateParams(filter.key, item.id)
-              setQuery(item.value)
-              setOpen(false)
-            }}
-          >
-            {item.value}
-          </span>
-        ))}
+        {filter.values.map((item) => {
+          if (typeof item !== 'number') {
+            return (
+              <span
+                key={item.id}
+                className="hover:bg-blue-gray px-4 py-2 text-base text-nowrap"
+                onClick={() => {
+                  updateParams(filter.key, item.id)
+                  setQuery(item.value)
+                  setOpen(false)
+                }}
+              >
+                {item.value}
+              </span>
+            )
+          }
+          return null
+        })}
       </DropdownInput>
     )
   }
@@ -164,13 +200,22 @@ export const Filter = ({ filter }: Props) => {
   return (
     <Dropdown
       key={filter.id}
-      label={textEllipsis(getLabel(), 7)}
+      label={
+        filter.key === 'operation'
+          ? typeof label !== 'number' && t(label?.value)
+          : textEllipsis(getLabel(), 7)
+      }
       open={open}
       setOpen={setOpen}
       variant="outlined"
       withIcon
-      triggerButtonClassName="min-w-[8.25rem]"
-      dropdownClassName={filter.key === 'rooms' ? 'flex flex-row py-3 gap-1.5' : ''}
+      triggerButtonClassName="min-w-[8.25rem] w-full"
+      dropdownClassName={cn(
+        filter.key === 'rooms'
+          ? 'flex flex-row py-3 gap-1.5 w-fit !right-0'
+          : '',
+        filter.key === 'price' ? '!right-0 lg:!left-0' : ''
+      )}
     >
       {renderOptions()}
     </Dropdown>

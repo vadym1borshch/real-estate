@@ -106,6 +106,10 @@ const routes: RouteObject[] = [
               },
 
               {
+                path: 'estates',
+                element: <EstatesList />,
+              },
+              {
                 path: 'rent',
                 element: <EstatesList />,
               },

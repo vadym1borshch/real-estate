@@ -4,7 +4,7 @@ import { ReactNode, useState, MouseEvent } from 'react'
 import Icon from '../icon'
 
 interface Props extends ButtonProps {
-  children?: ReactNode
+  children: ReactNode
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   size?: 'sm' | 'md'
   className?: string
@@ -34,29 +34,46 @@ const Button = (
     <TButton
       ripple={false}
       className={cn(
-        'flex justify-center items-center cursor-pointer bg-coral text-xl text-white py-0 px-6 w-fit font-normal shadow-none hover:shadow-none hover:bg-light-coral focus:border-4 focus:border-charcoal !focus:py-0 rounded-sm focus:rounded-lg h-12 disabled:bg-gray',
+        'bg-coral hover:bg-light-coral focus:border-charcoal !focus:py-0 disabled:bg-gray flex h-12 w-fit cursor-pointer items-center justify-center rounded-sm px-6 py-0 text-xl font-normal text-white shadow-none hover:shadow-none focus:rounded-lg focus:border-4',
         {
-          'h-10 text-center py-0 text-base': size === 'sm',
-          'bg-dark-coral hover:bg-dark-coral ': pressed,
-          'bg-transparent text-charcoal hover:bg-transparent hover:text-seafoam-green px-[0.25rem] py-[0.25rem] focus:border-0': variant === 'text',
-          'bg-transparent text-charcoal hover:text-charcoal hover:bg-transparent hover:border-charcoal focus:border-1 focus:rounded-sm border border-blue-gray px-3': variant === 'outlined',
-          'bg-charcoal text-white hover:bg-charcoal hover:text-white border-charcoal focus:border-1 focus:opacity-[1] focus:rounded-sm': variant === 'outlined' && selected,
+          'h-10 py-0 text-center text-base': size === 'sm',
+          'bg-dark-coral hover:bg-dark-coral': pressed,
+          'text-charcoal hover:text-seafoam-green bg-transparent px-[0.25rem] py-[0.25rem] hover:bg-transparent focus:border-0':
+            variant === 'text',
+          'text-charcoal hover:text-charcoal hover:border-charcoal border-blue-gray border bg-transparent px-3 hover:bg-transparent focus:rounded-sm focus:border-1':
+            variant === 'outlined',
+          'bg-charcoal hover:bg-charcoal border-charcoal text-white hover:text-white focus:rounded-sm focus:border-1 focus:opacity-[1]':
+            variant === 'outlined' && selected,
         },
-        className,
+        className
       )}
       onClick={(e) => onClick && onClick(e)}
       onPointerDown={() => setPressed(true)}
       onPointerUp={() => setPressed(false)}
       onPointerLeave={() => setPressed(false)}
+      placeholder={null}
+      onPointerEnterCapture={()=>{}}
+      onPointerLeaveCapture={()=>{}}
       {...rest}
     >
-      <span className={cn('capitalize flex gap-[0.125rem] w-full max-h-[48px] items-center justify-between', {
-        'justify-center': !iconId,
-      })}>
+      <span
+        className={cn(
+          'flex max-h-[48px] w-full items-center justify-between gap-[0.125rem] capitalize',
+          {
+            'justify-center': !iconId,
+          }
+        )}
+      >
         {children}
         {iconId && (
-          <Icon id={iconId}
-                className={cn('w-[24px] h-[24px] md:w-6 md:h-6', { 'order-first': iconSide === 'left' }, iconClassName)} />
+          <Icon
+            id={iconId}
+            className={cn(
+              'h-[24px] w-[24px] md:h-6 md:w-6',
+              { 'order-first': iconSide === 'left' },
+              iconClassName
+            )}
+          />
         )}
       </span>
     </TButton>

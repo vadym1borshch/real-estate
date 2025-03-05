@@ -1,42 +1,53 @@
 import { useTranslation } from 'react-i18next'
-import { MouseEvent, useEffect, useState } from 'react'
-import Dropdown from '../../atoms/dropdown'
+import { useEffect, useState } from 'react'
 import Button from '../../atoms/button'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
+import { cn } from '../../../helpers/ui.ts'
 
 type Language = 'en' | 'de' | 'ua'
+const languages: Language[] = ['en', 'de', 'ua']
 
-const LanguageSwitcher = () => {
+interface Props {
+  className?: string
+}
+
+const LanguageSwitcher = ({ className }: Props) => {
   const { i18n } = useTranslation()
   const path = usePathname()
 
   const [currentLanguage, setCurrentLanguage] = useState<Language>('en')
-  const [open, setOpen] = useState(false)
-
-  const changeLanguage = (e: MouseEvent<HTMLButtonElement>) => {
-    const lang = e.currentTarget.innerText.toLowerCase() as Language;
-    i18n.changeLanguage(lang);
-
-    const currentParams = new URLSearchParams(window.location.search).toString();
-    const newUrl = `/${lang}${path}${currentParams ? `?${currentParams}` : ''}`;
-
-    window.history.pushState(null, '', newUrl);
-    setCurrentLanguage(lang);
-  };
 
   useEffect(() => {
-    const lang = localStorage.getItem('i18nextLng')
-    if (lang) {
-      setCurrentLanguage(lang as Language)
+    const savedLang = localStorage.getItem('i18nextLng')
+    if (savedLang && languages.includes(savedLang as Language)) {
+      setCurrentLanguage(savedLang as Language)
     }
   }, [])
 
+  const switchLanguage = () => {
+    const currentIndex = languages.indexOf(currentLanguage)
+    const nextIndex = (currentIndex + 1) % languages.length
+    const nextLanguage = languages[nextIndex]
+
+    i18n.changeLanguage(nextLanguage)
+    localStorage.setItem('i18nextLng', nextLanguage)
+
+    const currentParams = new URLSearchParams(window.location.search).toString()
+    const newUrl = `/${nextLanguage}${path}${currentParams ? `?${currentParams}` : ''}`
+    window.history.pushState(null, '', newUrl)
+
+    setCurrentLanguage(nextLanguage)
+  }
+
   return (
-    <Dropdown open={open} setOpen={setOpen} label={currentLanguage.toUpperCase()}>
-      <Button size="sm" variant="text" onClick={changeLanguage}>EN</Button>
-      <Button size="sm" variant="text" onClick={changeLanguage}>DE</Button>
-      <Button size="sm" variant="text" onClick={changeLanguage}>UA</Button>
-    </Dropdown>
+    <Button
+      size="sm"
+      variant="outlined"
+      onClick={switchLanguage}
+      className={cn('!border-0', className)}
+    >
+      {currentLanguage.toUpperCase()}
+    </Button>
   )
 }
 

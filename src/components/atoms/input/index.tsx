@@ -72,7 +72,7 @@ const Input = (
         </span>
       }
       {iconId && <span
-        className={cn('z-20 bg-white h-[24px] w-[24px] lg:w-6 lg:h-6 absolute bottom-3 right-3 text-blue-gray flex items-center justify-center',
+        className={cn('z-20 bg-white h-[24px] w-[24px] lg:w-6 lg:h-6 absolute  bottom-2 md:bottom-3  right-3 text-blue-gray flex items-center justify-center',
           { 'bottom-2': size === 'sm' },
           { 'left-3': iconSide === 'left' },
           iconClassName,

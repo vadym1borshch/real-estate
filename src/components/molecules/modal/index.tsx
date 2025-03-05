@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import Button from "../../atoms/button";
 import Icon from "../../atoms/icon";
 import H3 from "../../atoms/typography/h3";

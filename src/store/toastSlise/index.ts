@@ -2,9 +2,18 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type Toast = "info" | "success" | "warning" | "error";
 
+export interface IToast {
+  id: number;
+  message: string;
+  type: Toast;
+  visible: boolean;
+}
+
+const initialState: IToast[] = []
+
 const toastSlice = createSlice({
   name: "toasts",
-  initialState: [],
+  initialState,
   reducers: {
     addToast: (state, action: PayloadAction<{message: string, type: Toast }>) => {
       state.push({

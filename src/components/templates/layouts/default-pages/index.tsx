@@ -39,7 +39,7 @@ export const DefaultPageLayout = () => {
   return (
     <div className="w-full flex flex-col items-center ">
       <Header />
-      {path !== '/rent' && path !== '/buy' && <Breadcrumb items={links} />}
+      {path !== '/rent' && path !== '/buy' && path !== '/estates' && <Breadcrumb items={links} />}
       <Outlet />
     </div>
   )
