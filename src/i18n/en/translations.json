@@ -43,6 +43,10 @@
         "rent": "Rent",
         "rent-out": "Rent out"
       },
+      "real-estate-agent": {
+        "title": "Real estate agent",
+        "verified-title": "VERIFIED BY FYLPI"
+      },
       "rooms": "Rooms",
       "bathroom": "Bathroom"
     },

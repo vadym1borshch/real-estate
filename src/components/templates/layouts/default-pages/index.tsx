@@ -34,7 +34,7 @@ export const DefaultPageLayout = () => {
 
       setLinks([...initLinks, ...newLinks])
     }
-  }, [path])
+  }, [getTranslationByKey, path])
 
   return (
     <div className="w-full flex flex-col items-center ">

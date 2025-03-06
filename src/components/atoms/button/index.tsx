@@ -11,23 +11,22 @@ interface Props extends ButtonProps {
   iconClassName?: string
   iconId?: string
   iconSide?: 'left' | 'right'
-  variant?: 'outlined' | 'text' | 'filled',
+  variant?: 'outlined' | 'text' | 'filled'
   selected?: boolean
 }
 
-const Button = (
-  {
-    onClick,
-    className,
-    iconClassName,
-    size = 'md',
-    children,
-    iconId,
-    iconSide = 'right',
-    variant = 'filled',
-    selected,
-    ...rest
-  }: Props) => {
+const Button = ({
+  onClick,
+  className,
+  iconClassName,
+  size = 'md',
+  children,
+  iconId,
+  iconSide = 'right',
+  variant = 'filled',
+  selected,
+  ...rest
+}: Props) => {
   const [pressed, setPressed] = useState(false)
 
   return (
@@ -52,8 +51,8 @@ const Button = (
       onPointerUp={() => setPressed(false)}
       onPointerLeave={() => setPressed(false)}
       placeholder={null}
-      onPointerEnterCapture={()=>{}}
-      onPointerLeaveCapture={()=>{}}
+      onPointerEnterCapture={() => {}}
+      onPointerLeaveCapture={() => {}}
       {...rest}
     >
       <span

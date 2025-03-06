@@ -9,7 +9,7 @@ export const FAQPage = () => {
   const { t } = useTranslation()
   return (
     <FAQ filter={currentFilter}>
-      <div className="pt-[90px] flex flex-wrap max-w-[683px] gap-x-6 gap-y-3 w-full items-center text-center ju">
+      <div className="pt-[5.525rem] flex flex-wrap max-w-[42.6875rem] gap-x-6 gap-y-3 w-full items-center text-center justify-center">
         {faqFilters.map((filter) => (
           <span
             key={filter.id}

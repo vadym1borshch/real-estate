@@ -117,6 +117,139 @@ export const data = [
 ]
 
 
+export const realEstateAgents = [
+  {
+    id: "1",
+    name: "Johanna Schneider",
+    profession: {
+      title: "real-estate.real-estate-agent.title",
+      key: "real-estate-agent"
+    },
+    description: "Mit 12 Jahren Erfahrung als Immobilienmaklerin spezialisiert auf Luxusimmobilien in Wien.",
+    phone: "+43 295 730 846",
+    email: "j.schneider@immobilien-experten.at",
+    address: "1010 Wien",
+    photo: "https://i.pravatar.cc/300?img=10",
+    verified: {
+      value: true,
+      title: "real-estate.real-estate-agent.verified-title"
+    },
+    agency: {
+      name: "ImmoVision GmbH",
+      type: "real-estate-agency",
+      address: "1010 Wien, Kärntner Straße 12",
+      phone: "+43 1 987 6543",
+      email: "office@immovision.at",
+      website: "https://www.immovision.at",
+      verified: true
+    }
+  },
+  {
+    id: "2",
+    name: "Maximilian Hofer",
+    profession: {
+      title: "service-around.services.real-estate-agent",
+      key: "real-estate-agent"
+    },
+    description: "Experte für Gewerbeimmobilien und Wohnbauprojekte mit über 15 Jahren Erfahrung.",
+    phone: "+43 315 822 901",
+    email: "m.hofer@vienna-homes.at",
+    address: "1030 Wien",
+    photo: "https://i.pravatar.cc/300?img=20",
+    verified: {
+      value: true,
+      title: "real-estate.real-estate-agent.verified-title"
+    },
+    agency: {
+      name: "Vienna Homes OG",
+      type: "real-estate-agency",
+      address: "1030 Wien, Landstraßer Hauptstraße 99",
+      phone: "+43 1 223 4456",
+      email: "office@viennahomes.at",
+      website: "https://www.viennahomes.at",
+      verified: true
+    }
+  },
+  {
+    id: "3",
+    name: "Elisabeth Gruber",
+    profession: {
+      title: "service-around.services.real-estate-agent",
+      key: "real-estate-agent"
+    },
+    description: "Fokus auf nachhaltige Immobilienprojekte und moderne Stadtentwicklung.",
+    phone: "+43 224 672 119",
+    email: "e.gruber@green-realty.at",
+    address: "1040 Wien",
+    photo: "https://i.pravatar.cc/300?img=30",
+    verified: {
+      value: true,
+      title: "real-estate.real-estate-agent.verified-title"
+    },
+    agency: {
+      name: "Green Realty GmbH",
+      type: "real-estate-agency",
+      address: "1040 Wien, Wiedner Hauptstraße 42",
+      phone: "+43 1 456 7890",
+      email: "kontakt@green-realty.at",
+      website: "https://www.green-realty.at",
+      verified: true
+    }
+  },
+  {
+    id: "4",
+    name: "Sebastian Leitner",
+    profession: {
+      title: "service-around.services.real-estate-agent",
+      key: "real-estate-agent"
+    },
+    description: "Spezialist für exklusive Neubauwohnungen und hochwertige Anlageimmobilien.",
+    phone: "+43 621 884 755",
+    email: "s.leitner@elite-properties.at",
+    address: "1090 Wien",
+    photo: "https://i.pravatar.cc/300?img=40",
+    verified: {
+      value: true,
+      title: "real-estate.real-estate-agent.verified-title"
+    },
+    agency: {
+      name: "Elite Properties GmbH",
+      type: "real-estate-agency",
+      address: "1090 Wien, Alser Straße 21",
+      phone: "+43 1 112 3344",
+      email: "info@elite-properties.at",
+      website: "https://www.elite-properties.at",
+      verified: false
+    }
+  },
+  {
+    id: "5",
+    name: "Klara Wagner",
+    profession: {
+      title: "service-around.services.real-estate-agent",
+      key: "real-estate-agent"
+    },
+    description: "Ihre Maklerin für charmante Altbauwohnungen und einzigartige Immobilien in Wien.",
+    phone: "+43 411 990 563",
+    email: "k.wagner@altbau-traum.at",
+    address: "1010 Wien",
+    photo: "https://i.pravatar.cc/300?img=50",
+    verified: {
+      value: true,
+      title: "real-estate.real-estate-agent.verified-title"
+    },
+    agency: {
+      name: "Altbau Traum OG",
+      type: "real-estate-agency",
+      address: "1010 Wien, Herrengasse 15",
+      phone: "+43 1 998 7765",
+      email: "office@altbautraum.at",
+      website: "https://www.altbautraum.at",
+      verified: true
+    }
+  }
+]
+
 export const serviceMen = [
 
   {

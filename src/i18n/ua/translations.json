@@ -43,6 +43,10 @@
         "rent": "Оренда",
         "rent-out": "Орендувати"
       },
+      "real-estate-agent": {
+        "title": "Агент з нерухомості",
+        "verified-title": "ПЕРЕВІРЕНО FYLPI"
+      },
       "rooms": "Кімнати",
       "bathroom": "Ванні кімнати"
     },

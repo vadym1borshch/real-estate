@@ -43,6 +43,10 @@
         "rent": "Mieten",
         "rent-out": "Vermieten"
       },
+      "real-estate-agent": {
+        "title": "Immobilienmakler",
+        "verified-title": "VERIFIZIERT DURCH FYLPI"
+      },
       "rooms": "Zimmer",
       "bathroom": "Bad"
     },
