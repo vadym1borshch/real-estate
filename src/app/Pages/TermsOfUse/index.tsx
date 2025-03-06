@@ -8,7 +8,7 @@ export const TermsOfUse = () => {
 
   const { t } = useTranslation()
   return (
-    <div className="flex flex-col max-w-[1160px] items-center gap-6 mb-[150px]">
+    <div className="flex flex-col max-w-[72.5rem] items-center gap-6 mb-[9.375.rem]">
       <H2 text={t('terms-of-use.title')} />
       {termsOfUseData.map((item) => (
         <DescriptionBlock

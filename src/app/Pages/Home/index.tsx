@@ -10,6 +10,7 @@ import { selectTopEstates } from '../../../store/estateSlice/selectors.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
 import { cn } from '../../../helpers/ui.ts'
+import Slider from '../../../components/molecules/slider'
 
 export const HomePage = () => {
   const { t } = useTranslation()
@@ -26,7 +27,7 @@ export const HomePage = () => {
         description={t('home.operations.descriptions')}
       >
         <div
-          className={cn('grid grid-cols-4 gap-10 pt-[5.625rem]', {
+          className={cn('hidden grid-cols-4 gap-10 pt-[5.625rem] md:grid', {
             'grid-cols-2': isMedium,
             'mx-auto grid-cols-1': isMobile,
           })}
@@ -40,6 +41,19 @@ export const HomePage = () => {
               href="#"
             />
           ))}
+        </div>
+        <div className="w-screen md:hidden pt-[3.75rem]">
+          <Slider>
+            {services.map((service) => (
+              <LinkCard
+                key={service.label}
+                src={service.src}
+                label={t(service.label)}
+                descriptions={t(service.descriptions)}
+                href="#"
+              />
+            ))}
+          </Slider>
         </div>
       </MainBlock>
       <MainBlock

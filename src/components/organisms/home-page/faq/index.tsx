@@ -26,22 +26,23 @@ const FAQ = ({ children, filter = 'buy' }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       await sleep(1000)
-      setData(faqData.find(el => el.key === filter).data)
+      setData(faqData.find((el) => el.key === filter)?.data || [])
     }
     fetchData()
   }, [filter])
 
-
   return (
-    <MainBlock
-      title={t('faq.title')}
-      description={t('faq.descriptions')}
-    >
+    <MainBlock title={t('faq.title')} description={t('faq.descriptions')}>
       {children}
-      <div className="flex flex-col max-w-[760px] gap-3 pb-[150px] pt-[90px]">
+      <div className="flex max-w-[760px] flex-col gap-3 pt-[90px] pb-[150px]">
         {!data.length && <div>Loading ...</div>}
         {data.map(({ id, question, answer }: Data) => (
-          <Accordion key={id} label={t(question)} open={openId === id} setOpen={() => openHandler(id)}>
+          <Accordion
+            key={id}
+            label={t(question)}
+            open={openId === id}
+            setOpen={() => openHandler(id)}
+          >
             {t(answer)}
           </Accordion>
         ))}

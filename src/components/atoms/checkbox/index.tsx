@@ -1,4 +1,4 @@
-import { Checkbox as TCheckbox } from '@material-tailwind/react'
+import { Fragment } from 'react'
 import { cn } from '../../../helpers/ui.ts'
 
 export interface CheckboxProps {
@@ -9,20 +9,27 @@ export interface CheckboxProps {
 
 const Checkbox = ({ className, checked, setChecked }: CheckboxProps) => {
   return (
-    <TCheckbox
-      ripple={false}
-      checked={checked}
-      onChange={(e) => setChecked(e.target.checked)}
-      containerProps={{
-        className: "p-0",
-      }}
-      className={cn('border-2 border-blue-gray rounded-[0.3125rem] w-5 h-5',
-        {
-          'bg-charcoal border-charcoal': checked,
-        }, className)}
-    />
+    <Fragment>
+      <input
+        type="checkbox"
+        className="peer hidden"
+        checked={checked}
+        onChange={(e) => setChecked(e.target.checked)}
+      />
+      <div
+        role="checkbox"
+        aria-checked={checked}
+        className={cn(
+          'border-blue-gray relative flex h-5 w-5 items-center justify-center rounded-md border-[2.5px]',
+          {
+            'border-0 bg-[url(../../../../../public/doneBg.png)] bg-cover bg-no-repeat':
+              checked,
+          },
+          className,
+        )}
+      />
+    </Fragment>
   )
-
 }
 
 export default Checkbox

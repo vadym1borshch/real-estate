@@ -40,12 +40,12 @@ const Modal = ({ open, setOpen, children, title, className }: Props) => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "auto";
     };
-  }, [open]);
+  }, [open, setOpen]);
 
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="modal fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-charcoal opacity-50" />
       <div
         id="modal"

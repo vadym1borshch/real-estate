@@ -13,10 +13,9 @@ export const PopularBlock = () => {
   const rent = useAppSelector(selectRentEstates)
   const buy = useAppSelector(selectBuyEstates)
 
-
   return (
     <div className="flex flex-col items-center gap-6">
-      <H2 text={t('home.popular.main-title')} className="max-w-[35rem]"/>
+      <H2 text={t('home.popular.main-title')} className="max-w-[35rem]" />
       <Operation
         estates={buy}
         filters={buyFilters}

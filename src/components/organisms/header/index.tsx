@@ -8,7 +8,8 @@ import { cn } from '../../../helpers/ui.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
-import Drawer from '../../molecules/drawer'
+import Drawer from '../../atoms/drawer'
+import Icon from '../../atoms/icon'
 
 interface Props {
   className?: string
@@ -77,7 +78,13 @@ const Header = ({ className }: Props) => {
           hidden: isMedium,
         })}
       >
-        <Button onClick={() => setOpen(!open)}>MENU</Button>
+        <Button variant="outlined" className="h-fit w-fit !border-0 p-0">
+          <Icon
+            id="menuLineIcon"
+            className="text-charcoal hover:text-blue-gray h-[24px] w-[24px]"
+            onClick={() => setOpen(!open)}
+          />
+        </Button>
         <Drawer open={open} setOpen={setOpen}>
           <div className="border-b-seafoam-green flex w-full justify-between border-b p-5">
             <div className="flex items-center gap-6">

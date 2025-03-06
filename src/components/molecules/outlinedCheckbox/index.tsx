@@ -20,6 +20,7 @@ const OutlinedCheckbox = (
     labelClassName,
     containerClassName
   }: Props) => {
+
   return (
     <div
       className={cn('w-full h-12 border border-blue-gray rounded-sm flex items-center px-3 justify-between cursor-pointer',

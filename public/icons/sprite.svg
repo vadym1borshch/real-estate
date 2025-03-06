@@ -1,7 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
 
+    <symbol id="doneIcon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M2 12L9 19L22 5" stroke="currentColor" stroke-width="4" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </symbol>
 
-    <symbol id="bigShareIcon" width="48" height="48" viewBox="0 0 48 48" fill="none" >
+    <symbol id="menuLineIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M1 12C1 11.4477 1.44772 11 2 11H22C22.5523 11 23 11.4477 23 12C23 12.5523 22.5523 13 22 13H2C1.44772 13 1 12.5523 1 12Z"
+              fill="currentColor"/>
+        <path d="M1 4C1 3.44772 1.44772 3 2 3H22C22.5523 3 23 3.44772 23 4C23 4.55228 22.5523 5 22 5H2C1.44772 5 1 4.55228 1 4Z"
+              fill="currentColor"/>
+        <path d="M1 20C1 19.4477 1.44772 19 2 19H22C22.5523 19 23 19.4477 23 20C23 20.5523 22.5523 21 22 21H2C1.44772 21 1 20.5523 1 20Z"
+              fill="currentColor"/>
+    </symbol>
+
+    <symbol id="bigShareIcon" width="48" height="48" viewBox="0 0 48 48" fill="none">
         <path fill-rule="evenodd" clip-rule="evenodd"
               d="M36.7606 6C39.7438 6 42.1606 8.41684 42.1606 11.3999C42.1606 14.383 39.7438 16.7999 36.7606 16.7999C33.7776 16.7999 31.3608 14.383 31.3608 11.3999C31.3608 8.41684 33.7776 6 36.7606 6Z"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -11,7 +24,8 @@
         <path fill-rule="evenodd" clip-rule="evenodd"
               d="M36.7606 31.2002C39.7438 31.2002 42.1606 33.617 42.1606 36.6C42.1606 39.5812 39.7438 42 36.7606 42C33.7776 42 31.3608 39.5812 31.3608 36.6C31.3608 33.617 33.7776 31.2002 36.7606 31.2002Z"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M19.8222 26.7162L32.1166 33.8812M32.0972 14.1172L19.8203 21.2802" stroke="currentColor" stroke-width="1.5"
+        <path d="M19.8222 26.7162L32.1166 33.8812M32.0972 14.1172L19.8203 21.2802" stroke="currentColor"
+              stroke-width="1.5"
               stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
 
@@ -20,7 +34,6 @@
         <path d="M24.0034 11.8501C22.7958 10.4981 21.245 9.45456 19.533 8.85364C12.9304 6.51316 6.76094 11.1937 6.06314 17.7545C5.0862 27.6416 15.6702 33.7222 22.2732 39.144C23.0164 39.7638 24.1024 39.934 24.9978 39.563C25.4276 39.4 25.7732 39.0904 26.1232 38.8028C32.7828 33.345 43.3044 27.0716 41.8668 17.1134C40.802 10.1574 33.5406 6.25194 27.2778 9.35526C26.0406 9.96818 24.9212 10.8186 24.0034 11.8501Z"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
-
 
     <symbol id="standardHeartIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M12.0017 5.92507C11.3979 5.24903 10.6225 4.72728 9.76648 4.42682C6.4652 3.25658 3.38047 5.59684 3.03157 8.87727C2.5431 13.8208 7.83511 16.8611 11.1366 19.572C11.5082 19.8819 12.0512 19.967 12.4989 19.7815C12.7138 19.7 12.8866 19.5452 13.0616 19.4014C16.3914 16.6725 21.6522 13.5358 20.9334 8.55669C20.401 5.07868 16.7703 3.12597 13.6389 4.67763C13.0203 4.98409 12.4606 5.40932 12.0017 5.92507Z"
@@ -546,5 +559,6 @@
         <path d="M6 6L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M18 6L6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+
 
 </svg>

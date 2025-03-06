@@ -13,7 +13,7 @@ export const HomePageLayout = () => {
   const { listingType } = useListing()
   return (
     <div className="relative flex w-full flex-col items-center">
-      <div className="flex w-full flex-col items-center rounded-lg bg-[url(../../../../../public/HERO.png)] px-5 md:min-h-[720px]">
+      <div className="flex w-full flex-col items-center rounded-lg bg-[url(../../../../../public/HERO.png)] px-5 bg-no-repeat bg-cover">
         <Header className="px-6 lg:px-[6.25rem]" />
         <span className="font-200 max-w-[47.5rem] pt-[4.375rem] text-center text-[2rem] leading-[4.125rem] md:text-[3.75rem]">
           {t('title')}

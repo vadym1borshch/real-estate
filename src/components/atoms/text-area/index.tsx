@@ -1,8 +1,8 @@
 import Icon from '../icon'
 import { cn } from '../../../helpers/ui.ts'
-import { ChangeEvent, Ref } from 'react'
+import { ChangeEvent, HTMLProps, Ref } from 'react'
 
-interface Props {
+interface Props extends HTMLProps<HTMLTextAreaElement> {
   label?: string
   value: string
   placeholder?: string
@@ -16,68 +16,66 @@ interface Props {
   ref?: Ref<HTMLTextAreaElement | null>
 }
 
-
-const TextArea = (
-  {
-    label,
-    onChange,
-    placeholder,
-    value,
-    errorPosition = 'top',
-    iconId,
-    error,
-    iconClassName,
-    className,
-    iconSide = 'right',
-    ref,
-    ...rest
-  }: Props) => {
+const TextArea = ({
+  label,
+  onChange,
+  placeholder,
+  value,
+  errorPosition = 'top',
+  iconId,
+  error,
+  iconClassName,
+  className,
+  iconSide = 'right',
+  ref,
+  ...rest
+}: Props) => {
   return (
-    <div className="relative w-full flex flex-col z-0">
-      {label &&
-        (<div className="flex items-center justify-between w-full">
-          {label && <label className="pb-1.5 w-fit">{label}</label>}
-          {error && errorPosition === 'top' &&
-            <span className=" flex  items-center gap-[0.1875rem] text-red self-end justify-end">
-            <Icon
-              id="errorIconRed"
-              className="w-[16px] h-[24px]"
-            />
+    <div className="relative z-0 flex w-full flex-col">
+      {label && (
+        <div className="flex w-full items-center justify-between">
+          {label && <label className="w-fit pb-1.5">{label}</label>}
+          {error && errorPosition === 'top' && (
+            <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end">
+              <Icon id="errorIconRed" className="h-[24px] w-[16px]" />
               {error}
-          </span>
-          }
-        </div>)
-      }
+            </span>
+          )}
+        </div>
+      )}
       <textarea
         rows={8}
         ref={ref}
         value={value}
         placeholder={placeholder}
         onChange={(e) => onChange(e)}
-        className={cn('z-10 resize-none w-full min-h-[220px] h-full border border-blue-gray hover:border-charcoal px-6 py-3 rounded-sm focus:outline-none focus:ring-1 focus:ring-charcoal focus:border-charcoal',
-          { 'border-red focus:outline focus:outline-1 focus:outline-red': error },
+        className={cn(
+          'border-blue-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 h-full min-h-[220px] w-full resize-none rounded-sm border px-6 py-3 focus:ring-1 focus:outline-none',
+          {
+            'border-red focus:outline-red focus:outline focus:outline-1': error,
+          },
           { 'pl-[36px]': iconSide === 'left' },
-          className,
+          className
         )}
         {...rest}
       />
-      {error && errorPosition === 'bottom' &&
-        <span className=" flex  items-center gap-[0.1875rem] text-red self-end justify-end">
-          <Icon
-            id="errorIconRed"
-            className="w-[16px] h-[24px]"
-          />
+      {error && errorPosition === 'bottom' && (
+        <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end">
+          <Icon id="errorIconRed" className="h-[24px] w-[16px]" />
           {error}
         </span>
-      }
-      {iconId && <span
-        className={cn('z-20 bg-white h-[24px] w-[24px] lg:w-6 lg:h-6 absolute bottom-3 right-3 text-blue-gray flex items-center justify-center',
-          { 'left-3': iconSide === 'left' },
-          iconClassName,
-        )}>
-        <Icon id={iconId} />
-      </span>
-      }
+      )}
+      {iconId && (
+        <span
+          className={cn(
+            'text-blue-gray absolute right-3 bottom-3 z-20 flex h-[24px] w-[24px] items-center justify-center bg-white lg:h-6 lg:w-6',
+            { 'left-3': iconSide === 'left' },
+            iconClassName
+          )}
+        >
+          <Icon id={iconId} />
+        </span>
+      )}
     </div>
   )
 }

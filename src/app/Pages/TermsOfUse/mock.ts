@@ -229,4 +229,4 @@ export const termsOfUseData = [
     ],
   },
 
-] as const
+]

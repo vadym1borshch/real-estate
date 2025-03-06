@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import {
   Accordion as TAccordion,
-  AccordionHeader,
   AccordionBody,
+  AccordionHeader,
 } from '@material-tailwind/react'
 import { cn } from '../../../helpers/ui.ts'
 import Icon from '../icon'
@@ -15,21 +15,32 @@ interface Props {
 }
 
 const Accordion = ({ label, children, open, setOpen }: Props) => {
-
   return (
-    <TAccordion open={open} className=" rounded-lg border borer-charcoal px-6 ">
+    <TAccordion
+      open={open}
+      className="borer-charcoal rounded-lg border px-6 relative"
+      placeholder={null}
+      onPointerEnterCapture={() => {}}
+      onPointerLeaveCapture={() => {}}
+    >
+
       <AccordionHeader
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         icon={null}
-        className={cn('border-0 !font-400 text-xl py-[1.3125rem] cursor-pointer',
-          { 'border-b border-gray': open },
+        className={cn(
+          '!font-400 relative cursor-pointer border-0 py-[1.3125rem] text-xl  pr-8',
+          { 'border-gray border-b': open }
         )}
         onClick={() => setOpen(!open)}
       >
         {label}
         <Icon
           id="chevronDownIcon"
-          className={cn('h-[24px] w-[24px] lg:w-6 lg:h-6 self-end text-charcoal transition-transform',
-            { 'rotate-180 transition-transform ': open })}
+          className={cn(
+            'absolute right-0 top-1/2 -translate-y-1/2 text-charcoal h-[24px] w-[24px] self-end transition-transform lg:h-6 lg:w-6',
+            { 'rotate-180 transition-transform': open }
+          )}
         />
       </AccordionHeader>
       <AccordionBody className="text-md font-400 py-[1.3125rem]">
