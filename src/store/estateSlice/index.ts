@@ -39,11 +39,11 @@ export interface RealEstate {
   views: number
   details: {
     yearBuilt: number
-    floors: number
-    garage: boolean
+    floors: string
+    garage: string
     heating: string
     condition: string
-    commissionFree: boolean
+    commissionFree: string
   }
   rentDetails?: {
     additionalFeatures: string

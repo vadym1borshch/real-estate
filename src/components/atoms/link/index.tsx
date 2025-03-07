@@ -1,7 +1,7 @@
-import { Link as RLink, useParams } from 'react-router-dom'
+import { Link as RLink } from 'react-router-dom'
 import Icon from '../icon'
 import { cn } from '../../../helpers/ui.ts'
-import { HTMLAttributes, ReactNode, useState, MouseEvent, MouseEventHandler } from 'react'
+import { HTMLAttributes, ReactNode, useState} from 'react'
 import { useTranslation } from 'react-i18next'
 
 interface Props extends HTMLAttributes<HTMLLinkElement> {
@@ -19,7 +19,6 @@ const Link = ({ href, children, iconId, iconClassName, disabled, className, onCl
   const [pressed, setPressed] = useState(false)
   const link = disabled ? "#" : `/${i18n.language}${href}`
 
-/*  console.log(href)*/
   return (
     <RLink
       to={link as string}
@@ -30,11 +29,19 @@ const Link = ({ href, children, iconId, iconClassName, disabled, className, onCl
         },
         className,
       )}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       onPointerDown={() => setPressed(true)}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       onPointerUp={() => setPressed(false)}
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       onPointerLeave={() => setPressed(false)}
       onClick={(e)=>{
-        onClick && onClick()
+        if (onClick) {
+          onClick()
+        }
         if (disabled) {
           e.preventDefault();
           e.stopPropagation();
@@ -42,7 +49,7 @@ const Link = ({ href, children, iconId, iconClassName, disabled, className, onCl
       }}
       {...rest}
     >
-      {iconId && <Icon id={iconId} className={cn('h-6 w-6', iconClassName)} />}
+      {iconId && <Icon id={iconId} className={cn('h-[24px] w-[24px]', iconClassName)} />}
       {children}
     </RLink>)
 }

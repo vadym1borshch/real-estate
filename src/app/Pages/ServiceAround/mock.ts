@@ -116,142 +116,172 @@ export const data = [
   },
 ]
 
-
-export const realEstateAgents = [
-  {
-    id: "1",
-    name: "Johanna Schneider",
-    profession: {
-      title: "real-estate.real-estate-agent.title",
-      key: "real-estate-agent"
-    },
-    description: "Mit 12 Jahren Erfahrung als Immobilienmaklerin spezialisiert auf Luxusimmobilien in Wien.",
-    phone: "+43 295 730 846",
-    email: "j.schneider@immobilien-experten.at",
-    address: "1010 Wien",
-    photo: "https://i.pravatar.cc/300?img=10",
-    verified: {
-      value: true,
-      title: "real-estate.real-estate-agent.verified-title"
-    },
-    agency: {
-      name: "ImmoVision GmbH",
-      type: "real-estate-agency",
-      address: "1010 Wien, Kärntner Straße 12",
-      phone: "+43 1 987 6543",
-      email: "office@immovision.at",
-      website: "https://www.immovision.at",
-      verified: true
-    }
-  },
-  {
-    id: "2",
-    name: "Maximilian Hofer",
-    profession: {
-      title: "service-around.services.real-estate-agent",
-      key: "real-estate-agent"
-    },
-    description: "Experte für Gewerbeimmobilien und Wohnbauprojekte mit über 15 Jahren Erfahrung.",
-    phone: "+43 315 822 901",
-    email: "m.hofer@vienna-homes.at",
-    address: "1030 Wien",
-    photo: "https://i.pravatar.cc/300?img=20",
-    verified: {
-      value: true,
-      title: "real-estate.real-estate-agent.verified-title"
-    },
-    agency: {
-      name: "Vienna Homes OG",
-      type: "real-estate-agency",
-      address: "1030 Wien, Landstraßer Hauptstraße 99",
-      phone: "+43 1 223 4456",
-      email: "office@viennahomes.at",
-      website: "https://www.viennahomes.at",
-      verified: true
-    }
-  },
-  {
-    id: "3",
-    name: "Elisabeth Gruber",
-    profession: {
-      title: "service-around.services.real-estate-agent",
-      key: "real-estate-agent"
-    },
-    description: "Fokus auf nachhaltige Immobilienprojekte und moderne Stadtentwicklung.",
-    phone: "+43 224 672 119",
-    email: "e.gruber@green-realty.at",
-    address: "1040 Wien",
-    photo: "https://i.pravatar.cc/300?img=30",
-    verified: {
-      value: true,
-      title: "real-estate.real-estate-agent.verified-title"
-    },
-    agency: {
-      name: "Green Realty GmbH",
-      type: "real-estate-agency",
-      address: "1040 Wien, Wiedner Hauptstraße 42",
-      phone: "+43 1 456 7890",
-      email: "kontakt@green-realty.at",
-      website: "https://www.green-realty.at",
-      verified: true
-    }
-  },
-  {
-    id: "4",
-    name: "Sebastian Leitner",
-    profession: {
-      title: "service-around.services.real-estate-agent",
-      key: "real-estate-agent"
-    },
-    description: "Spezialist für exklusive Neubauwohnungen und hochwertige Anlageimmobilien.",
-    phone: "+43 621 884 755",
-    email: "s.leitner@elite-properties.at",
-    address: "1090 Wien",
-    photo: "https://i.pravatar.cc/300?img=40",
-    verified: {
-      value: true,
-      title: "real-estate.real-estate-agent.verified-title"
-    },
-    agency: {
-      name: "Elite Properties GmbH",
-      type: "real-estate-agency",
-      address: "1090 Wien, Alser Straße 21",
-      phone: "+43 1 112 3344",
-      email: "info@elite-properties.at",
-      website: "https://www.elite-properties.at",
-      verified: false
-    }
-  },
-  {
-    id: "5",
-    name: "Klara Wagner",
-    profession: {
-      title: "service-around.services.real-estate-agent",
-      key: "real-estate-agent"
-    },
-    description: "Ihre Maklerin für charmante Altbauwohnungen und einzigartige Immobilien in Wien.",
-    phone: "+43 411 990 563",
-    email: "k.wagner@altbau-traum.at",
-    address: "1010 Wien",
-    photo: "https://i.pravatar.cc/300?img=50",
-    verified: {
-      value: true,
-      title: "real-estate.real-estate-agent.verified-title"
-    },
-    agency: {
-      name: "Altbau Traum OG",
-      type: "real-estate-agency",
-      address: "1010 Wien, Herrengasse 15",
-      phone: "+43 1 998 7765",
-      email: "office@altbautraum.at",
-      website: "https://www.altbautraum.at",
-      verified: true
-    }
+export type Agent = {
+  id: string
+  name: string
+  profession: {
+    title: string
+    key: string
   }
+  description: string
+  phone: string
+  email: string
+  address: string
+  photo: string
+  verified: {
+    value: boolean
+    title: string
+  }
+  agency: {
+    name: string
+    type: string
+    address: string
+    phone: string
+    email: string
+    website: string
+    verified: boolean
+  }
+}
+
+export const realEstateAgents:Agent[] = [
+  {
+    id: '1',
+    name: 'Johanna Schneider',
+    profession: {
+      title: 'real-estate.real-estate-agent.title',
+      key: 'real-estate-agent',
+    },
+    description:
+      'Mit 12 Jahren Erfahrung als Immobilienmaklerin spezialisiert auf Luxusimmobilien in Wien.',
+    phone: '+43 295 730 846',
+    email: 'j.schneider@immobilien-experten.at',
+    address: '1010 Wien',
+    photo: 'https://i.pravatar.cc/300?img=10',
+    verified: {
+      value: true,
+      title: 'real-estate.real-estate-agent.verified-title',
+    },
+    agency: {
+      name: 'ImmoVision GmbH',
+      type: 'real-estate-agency',
+      address: '1010 Wien, Kärntner Straße 12',
+      phone: '+43 1 987 6543',
+      email: 'office@immovision.at',
+      website: 'https://www.immovision.at',
+      verified: true,
+    },
+  },
+  {
+    id: '2',
+    name: 'Maximilian Hofer',
+    profession: {
+      title: 'service-around.services.real-estate-agent',
+      key: 'real-estate-agent',
+    },
+    description:
+      'Experte für Gewerbeimmobilien und Wohnbauprojekte mit über 15 Jahren Erfahrung.',
+    phone: '+43 315 822 901',
+    email: 'm.hofer@vienna-homes.at',
+    address: '1030 Wien',
+    photo: 'https://i.pravatar.cc/300?img=20',
+    verified: {
+      value: true,
+      title: 'real-estate.real-estate-agent.verified-title',
+    },
+    agency: {
+      name: 'Vienna Homes OG',
+      type: 'real-estate-agency',
+      address: '1030 Wien, Landstraßer Hauptstraße 99',
+      phone: '+43 1 223 4456',
+      email: 'office@viennahomes.at',
+      website: 'https://www.viennahomes.at',
+      verified: true,
+    },
+  },
+  {
+    id: '3',
+    name: 'Elisabeth Gruber',
+    profession: {
+      title: 'service-around.services.real-estate-agent',
+      key: 'real-estate-agent',
+    },
+    description:
+      'Fokus auf nachhaltige Immobilienprojekte und moderne Stadtentwicklung.',
+    phone: '+43 224 672 119',
+    email: 'e.gruber@green-realty.at',
+    address: '1040 Wien',
+    photo: 'https://i.pravatar.cc/300?img=30',
+    verified: {
+      value: true,
+      title: 'real-estate.real-estate-agent.verified-title',
+    },
+    agency: {
+      name: 'Green Realty GmbH',
+      type: 'real-estate-agency',
+      address: '1040 Wien, Wiedner Hauptstraße 42',
+      phone: '+43 1 456 7890',
+      email: 'kontakt@green-realty.at',
+      website: 'https://www.green-realty.at',
+      verified: true,
+    },
+  },
+  {
+    id: '4',
+    name: 'Sebastian Leitner',
+    profession: {
+      title: 'service-around.services.real-estate-agent',
+      key: 'real-estate-agent',
+    },
+    description:
+      'Spezialist für exklusive Neubauwohnungen und hochwertige Anlageimmobilien.',
+    phone: '+43 621 884 755',
+    email: 's.leitner@elite-properties.at',
+    address: '1090 Wien',
+    photo: 'https://i.pravatar.cc/300?img=40',
+    verified: {
+      value: true,
+      title: 'real-estate.real-estate-agent.verified-title',
+    },
+    agency: {
+      name: 'Elite Properties GmbH',
+      type: 'real-estate-agency',
+      address: '1090 Wien, Alser Straße 21',
+      phone: '+43 1 112 3344',
+      email: 'info@elite-properties.at',
+      website: 'https://www.elite-properties.at',
+      verified: false,
+    },
+  },
+  {
+    id: '5',
+    name: 'Klara Wagner',
+    profession: {
+      title: 'service-around.services.real-estate-agent',
+      key: 'real-estate-agent',
+    },
+    description:
+      'Ihre Maklerin für charmante Altbauwohnungen und einzigartige Immobilien in Wien.',
+    phone: '+43 411 990 563',
+    email: 'k.wagner@altbau-traum.at',
+    address: '1010 Wien',
+    photo: 'https://i.pravatar.cc/300?img=50',
+    verified: {
+      value: true,
+      title: 'real-estate.real-estate-agent.verified-title',
+    },
+    agency: {
+      name: 'Altbau Traum OG',
+      type: 'real-estate-agency',
+      address: '1010 Wien, Herrengasse 15',
+      phone: '+43 1 998 7765',
+      email: 'office@altbautraum.at',
+      website: 'https://www.altbautraum.at',
+      verified: true,
+    },
+  },
 ]
 
 export const serviceMen = [
-
   {
     id: '1',
     name: 'Johanna Schneider',
@@ -259,7 +289,8 @@ export const serviceMen = [
       title: 'service-around.services.estate-taxation',
       key: 'estate-taxation',
     },
-    description: 'Seit 18 Jahren in der Steuerberatung tätig und spezialisiert auf steuerliche Fragen rund um Immobilien.',
+    description:
+      'Seit 18 Jahren in der Steuerberatung tätig und spezialisiert auf steuerliche Fragen rund um Immobilien.',
     phone: '+43 295 730 846',
     email: 'j.schneider@steuerberatung.at',
     address: '1010 Wien',
@@ -272,7 +303,8 @@ export const serviceMen = [
       title: 'service-around.services.law-firm-estate',
       key: 'law-firm-estate',
     },
-    description: 'Erfahrener Anwalt für Immobilienrecht mit 25 Jahren Berufserfahrung.',
+    description:
+      'Erfahrener Anwalt für Immobilienrecht mit 25 Jahren Berufserfahrung.',
     phone: '+43 198 456 321',
     email: 'm.huber@lawfirm.at',
     address: '4020 Linz',
@@ -285,7 +317,8 @@ export const serviceMen = [
       title: 'service-around.services.expert',
       key: 'expert',
     },
-    description: 'Sachverständige für Immobilienbewertung mit über 20 Jahren Erfahrung.',
+    description:
+      'Sachverständige für Immobilienbewertung mit über 20 Jahren Erfahrung.',
     phone: '+43 677 789 123',
     email: 'a.lehmann@gutachten.at',
     address: '5020 Salzburg',
@@ -298,7 +331,8 @@ export const serviceMen = [
       title: 'service-around.services.builder',
       key: 'builder',
     },
-    description: 'Baumeister mit Expertise in nachhaltigem Wohnbau und Sanierungen.',
+    description:
+      'Baumeister mit Expertise in nachhaltigem Wohnbau und Sanierungen.',
     phone: '+43 732 567 890',
     email: 't.berger@bau.at',
     address: '8010 Graz',
@@ -311,7 +345,8 @@ export const serviceMen = [
       title: 'service-around.services.architect',
       key: 'architect',
     },
-    description: 'Architektin spezialisiert auf moderne Wohnkonzepte und Innenraumgestaltung.',
+    description:
+      'Architektin spezialisiert auf moderne Wohnkonzepte und Innenraumgestaltung.',
     phone: '+43 512 334 556',
     email: 'e.wagner@architekt.at',
     address: '6020 Innsbruck',
@@ -324,7 +359,8 @@ export const serviceMen = [
       title: 'service-around.services.roofers',
       key: 'roofers',
     },
-    description: 'Dachdecker mit Spezialisierung auf energieeffiziente Dachlösungen.',
+    description:
+      'Dachdecker mit Spezialisierung auf energieeffiziente Dachlösungen.',
     phone: '+43 660 998 112',
     email: 'f.schmidt@dach.at',
     address: '9020 Klagenfurt',
@@ -350,7 +386,8 @@ export const serviceMen = [
       title: 'service-around.services.cleaning-staff',
       key: 'cleaning-staff',
     },
-    description: 'Reinigungskraft mit Schwerpunkt auf Haushalts- und Büroreinigung.',
+    description:
+      'Reinigungskraft mit Schwerpunkt auf Haushalts- und Büroreinigung.',
     phone: '+43 699 456 789',
     email: 'm.koenig@clean.at',
     address: '7000 Eisenstadt',
@@ -389,7 +426,8 @@ export const serviceMen = [
       title: 'service-around.services.housekeeper',
       key: 'housekeeper',
     },
-    description: 'Erfahrene Hausmeisterin mit Blick für Ordnung und Sicherheit.',
+    description:
+      'Erfahrene Hausmeisterin mit Blick für Ordnung und Sicherheit.',
     phone: '+43 699 234 567',
     email: 'k.bauer@haus.at',
     address: '6800 Feldkirch',
@@ -519,141 +557,142 @@ export const serviceMen = [
       title: 'service-around.services.housekeeper',
       key: 'housekeeper',
     },
-    description: 'Hausmeisterin mit technischem Wissen für kleinere Reparaturen.',
+    description:
+      'Hausmeisterin mit technischem Wissen für kleinere Reparaturen.',
     phone: '+43 660 555 321',
     email: 'n.weber@haus.at',
     address: '6020 Innsbruck',
     photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "54",
-    name: "Benjamin Hofmann",
+    id: '54',
+    name: 'Benjamin Hofmann',
     profession: {
-      title: "service-around.services.installer",
-      key: "installer"
+      title: 'service-around.services.installer',
+      key: 'installer',
     },
-    description: "Erfahrener Installateur für Heizungs- und Sanitärsysteme.",
-    phone: "+43 676 111 987",
-    email: "b.hofmann@install.at",
-    address: "3100 St. Pölten",
-    photo: "https://i.pravatar.cc/300"
+    description: 'Erfahrener Installateur für Heizungs- und Sanitärsysteme.',
+    phone: '+43 676 111 987',
+    email: 'b.hofmann@install.at',
+    address: '3100 St. Pölten',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "55",
-    name: "Klara Winkler",
+    id: '55',
+    name: 'Klara Winkler',
     profession: {
-      title: "service-around.services.doors",
-      key: "doors"
+      title: 'service-around.services.doors',
+      key: 'doors',
     },
-    description: "Spezialistin für Türenmontage und Reparatur.",
-    phone: "+43 660 765 432",
-    email: "k.winkler@tueren.at",
-    address: "4600 Wels",
-    photo: "https://i.pravatar.cc/300"
+    description: 'Spezialistin für Türenmontage und Reparatur.',
+    phone: '+43 660 765 432',
+    email: 'k.winkler@tueren.at',
+    address: '4600 Wels',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "56",
-    name: "Thomas Schuster",
+    id: '56',
+    name: 'Thomas Schuster',
     profession: {
-      title: "service-around.services.windows",
-      key: "windows"
+      title: 'service-around.services.windows',
+      key: 'windows',
     },
-    description: "Fensterexperte für Montage und Reparatur.",
-    phone: "+43 699 333 444",
-    email: "t.schuster@fenster.at",
-    address: "2700 Wiener Neustadt",
-    photo: "https://i.pravatar.cc/300"
+    description: 'Fensterexperte für Montage und Reparatur.',
+    phone: '+43 699 333 444',
+    email: 't.schuster@fenster.at',
+    address: '2700 Wiener Neustadt',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "57",
-    name: "Monika Leitner",
+    id: '57',
+    name: 'Monika Leitner',
     profession: {
-      title: "service-around.services.terrace-design",
-      key: "terrace-design"
+      title: 'service-around.services.terrace-design',
+      key: 'terrace-design',
     },
-    description: "Spezialistin für Terrassengestaltung und Außendekoration.",
-    phone: "+43 676 555 777",
-    email: "m.leitner@terrassen.at",
-    address: "8055 Graz",
-    photo: "https://i.pravatar.cc/300"
+    description: 'Spezialistin für Terrassengestaltung und Außendekoration.',
+    phone: '+43 676 555 777',
+    email: 'm.leitner@terrassen.at',
+    address: '8055 Graz',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "58",
-    name: "Alexander Meier",
+    id: '58',
+    name: 'Alexander Meier',
     profession: {
-      title: "service-around.services.louver",
-      key: "louver"
+      title: 'service-around.services.louver',
+      key: 'louver',
     },
-    description: "Experte für Jalousien und Sonnenschutzsysteme.",
-    phone: "+43 699 777 888",
-    email: "a.meier@jalousie.at",
-    address: "2340 Mödling",
-    photo: "https://i.pravatar.cc/300"
+    description: 'Experte für Jalousien und Sonnenschutzsysteme.',
+    phone: '+43 699 777 888',
+    email: 'a.meier@jalousie.at',
+    address: '2340 Mödling',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "59",
-    name: "Barbara Steiner",
+    id: '59',
+    name: 'Barbara Steiner',
     profession: {
-      title: "service-around.services.various",
-      key: "various"
+      title: 'service-around.services.various',
+      key: 'various',
     },
-    description: "Allround-Handwerkerin für verschiedene Tätigkeiten im Haus und Garten.",
-    phone: "+43 676 123 987",
-    email: "b.steiner@handwerk.at",
-    address: "4600 Wels",
-    photo: "https://i.pravatar.cc/300"
+    description:
+      'Allround-Handwerkerin für verschiedene Tätigkeiten im Haus und Garten.',
+    phone: '+43 676 123 987',
+    email: 'b.steiner@handwerk.at',
+    address: '4600 Wels',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "60",
-    name: "Michael Novak",
+    id: '60',
+    name: 'Michael Novak',
     profession: {
-      title: "service-around.services.notary",
-      key: "notary"
+      title: 'service-around.services.notary',
+      key: 'notary',
     },
-    description: "Notar mit über 30 Jahren Erfahrung in Immobilienrecht.",
-    phone: "+43 512 876 543",
-    email: "m.novak@notar.at",
-    address: "1010 Wien",
-    photo: "https://i.pravatar.cc/300"
+    description: 'Notar mit über 30 Jahren Erfahrung in Immobilienrecht.',
+    phone: '+43 512 876 543',
+    email: 'm.novak@notar.at',
+    address: '1010 Wien',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "61",
-    name: "Gerhard Bauer",
+    id: '61',
+    name: 'Gerhard Bauer',
     profession: {
-      title: "service-around.services.tiler",
-      key: "tiler"
+      title: 'service-around.services.tiler',
+      key: 'tiler',
     },
-    description: "Spezialist für Mosaikfliesen und Badsanierungen.",
-    phone: "+43 676 555 321",
-    email: "g.bauer@fliesen.at",
-    address: "2340 Mödling",
-    photo: "https://i.pravatar.cc/300"
+    description: 'Spezialist für Mosaikfliesen und Badsanierungen.',
+    phone: '+43 676 555 321',
+    email: 'g.bauer@fliesen.at',
+    address: '2340 Mödling',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "62",
-    name: "Felix Meier",
+    id: '62',
+    name: 'Felix Meier',
     profession: {
-      title: "service-around.services.interior-design",
-      key: "interior-design"
+      title: 'service-around.services.interior-design',
+      key: 'interior-design',
     },
-    description: "Innenarchitekt für moderne Wohnraumgestaltung.",
-    phone: "+43 660 888 999",
-    email: "f.meier@interior.at",
-    address: "8010 Graz",
-    photo: "https://i.pravatar.cc/300"
+    description: 'Innenarchitekt für moderne Wohnraumgestaltung.',
+    phone: '+43 660 888 999',
+    email: 'f.meier@interior.at',
+    address: '8010 Graz',
+    photo: 'https://i.pravatar.cc/300',
   },
   {
-    id: "63",
-    name: "Maximilian Hofer",
+    id: '63',
+    name: 'Maximilian Hofer',
     profession: {
-      title: "service-around.services.carpenter",
-      key: "carpenter"
+      title: 'service-around.services.carpenter',
+      key: 'carpenter',
     },
-    description: "Fachmann für Möbelbau und Maßanfertigungen.",
-    phone: "+43 699 666 777",
-    email: "m.hofer@tischler.at",
-    address: "3100 St. Pölten",
-    photo: "https://i.pravatar.cc/300"
-  }
-
+    description: 'Fachmann für Möbelbau und Maßanfertigungen.',
+    phone: '+43 699 666 777',
+    email: 'm.hofer@tischler.at',
+    address: '3100 St. Pölten',
+    photo: 'https://i.pravatar.cc/300',
+  },
 ]

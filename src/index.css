@@ -113,6 +113,10 @@ html {
   -webkit-box-orient: vertical;
 }
 
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
 @media (min-width: 360px) and (max-width: 768px) {
   html {
     font-size: 12px;

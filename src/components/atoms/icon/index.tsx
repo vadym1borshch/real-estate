@@ -12,7 +12,9 @@ const Icon = ({ id, className, onClick }: IIconBaseProps) => {
       onClick={(e) => {
         e.stopPropagation()
         e.preventDefault()
-        onClick && onClick()
+        if (onClick) {
+          onClick()
+        }
       }}
       onMouseDown={(e) => e.stopPropagation()}
       className={cn('w-full h-full', className)}

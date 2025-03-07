@@ -1,6 +1,5 @@
 import { useAppSelector } from '../../../../store'
 import { selectCurrentEstate } from '../../../../store/estateSlice/selectors.ts'
-import ImagePreview from '../../../../components/molecules/image-preview'
 import H2 from '../../../../components/atoms/typography/h2'
 import { useTranslation } from 'react-i18next'
 import Caption from '../../../../components/atoms/typography/caption'
@@ -8,107 +7,40 @@ import Icon from '../../../../components/atoms/icon'
 import { PriceBlock } from './PriceBlock.tsx'
 import { ActionButtons } from './ActionButtons.tsx'
 import { CommonInfoBlock } from './CommonInfoBlock.tsx'
-import { useElementSizes } from '../../../../helpers/hooks/useElementsSizes.ts'
 import { useRef } from 'react'
-import Avatar from '../../../../components/atoms/avatar'
 import { realEstateAgents } from '../../ServiceAround/mock.ts'
-import Button from '../../../../components/atoms/button'
-import Table from '../../../../components/molecules/table'
-
-const images = [
-  {
-    id: '1',
-    src: '../../../../../public/house1.png?url',
-  },
-  {
-    id: '2',
-    src: '../../../../../public/house2.png?url',
-  },
-  {
-    id: '3',
-    src: '../../../../../public/house3.png?url',
-  },
-  {
-    id: '4',
-    src: '../../../../../public/house4.png?url',
-  },
-  {
-    id: '5',
-    src: '../../../../../public/house5.png?url',
-  },
-  {
-    id: '6',
-    src: '../../../../../public/house6.png?url',
-  },
-]
-
-const estateFullDetails = [
-  {
-    id: '1',
-    iconId: 'houseicon',
-    key: "type.key",
-    value: ""
-  },
-  {
-    id: '2',
-    iconId: 'calendar',
-    key: "details.yearBuilt",
-    value: ""
-  },
-  {
-    id: '3',
-    iconId: 'floors',
-    key: "details.floors",
-    value: ""
-  },
-  {
-    id: '4',
-    iconId: 'livingAreaM2',
-    key: "size.livingAreaM2",
-    value: ""
-  },
-  {
-    id: '5',
-    iconId: 'bed',
-    key: "rooms",
-    value: ""
-  },
-  {
-    id: '6',
-    iconId: 'bed',
-    key: "rooms",
-    value: ""
-  },
-  {
-    id: '6',
-    iconId: 'toilets',
-    key: "bathrooms.description",
-    value: ""
-  },
-  {
-    id: '7',
-    iconId: 'area-flover',
-    key: "size.landAreaM2",
-    value: ""
-  },
-  {
-    id: '7',
-    iconId: 'garage',
-    key: "details.garage",
-    value: ""
-  },
-]
+import { ImagesBlock } from './ImagesBlock.tsx'
+import { Tables } from './Tables.tsx'
+import { MapBlock } from './MapBlock.tsx'
 
 const agent = realEstateAgents[0]
+
+/*const sampleData = [
+  { label: 'Wohnraum', value: '' },
+  { label: 'Schlafzimmer mit Garderobe Erdgeschoss', value: '46,17' },
+  { label: 'Badezimmer', value: '' },
+  { label: 'Erdgeschoss', value: '7,55' },
+  { label: 'WC', value: '' },
+  { label: 'Erdgeschoss', value: '2,05' },
+  { label: 'Nebenraum', value: '' },
+  { label: 'Gallerie', value: '19,68' },
+  { label: 'Wohnraum', value: '' },
+  { label: 'Schlafzimmer 1, 1 Stock', value: '11,22' },
+  { label: 'Wohnraum', value: '' },
+  { label: 'Schlafzimmer 2, 1 Stock', value: '36,80' },
+  { label: 'Wohnraum', value: '' },
+  { label: 'Schlafzimmer 3, 1 Stock', value: '12,40' },
+  { label: 'Wohnraum', value: '' },
+  { label: 'Schlafzimmer 4, 1 Stock', value: '14,67' },
+  { label: 'Badezimmer', value: '' },
+  { label: '1 Stock', value: '4,50' },
+]*/
 
 export const EstatesDetails = () => {
   const ref = useRef<HTMLDivElement | null>(null)
   const estate = useAppSelector(selectCurrentEstate)
   const { t } = useTranslation()
-  const { containerDimension } = useElementSizes({
-    containerRef: ref,
-    containerDimensionProp: 'width',
-  })
+
   if (!estate) {
     return null
   }
@@ -150,55 +82,26 @@ export const EstatesDetails = () => {
         </div>
         <ActionButtons />
       </div>
-      <div className="flex flex-col items-center">
-        <ImagePreview images={images} withButtons width={containerDimension} />
-        <div className="border-blue-gray flex min-w-[300px] flex-col items-center rounded-lg border p-3 pt-7.5 md:min-w-[22.5rem]">
-          <Avatar userName={agent.name} size={10} src={agent.photo} />
-          <div className="flex w-full flex-col items-center pt-6">
-            <span className="text-[1.125rem]">{agent.name}</span>
-            <span className="text-blue-gray pt-1 text-base">
-              {agent.agency.name}
-            </span>
-          </div>
 
-          <div className="flex w-full flex-col items-center py-9">
-            <p className="font-500 text-xl">{agent.phone}</p>
-            <p className="flex items-center pt-1.5">
-              <Icon id="checkBadgeBlueIcon" className="h-[24px] w-[24px]" />
-              <Caption text={t(agent.verified.title)} />
-            </p>
-          </div>
+      <ImagesBlock agent={agent} ref={ref} />
 
-          <div className="flex w-full flex-col gap-3">
-            <Button className="bg-charcoal hover:bg-seafoam-green focus:border-blue-gray w-full focus:outline-none">
-              Alle Objekte des Anbieters
-            </Button>
-            <Button className="bg-charcoal hover:bg-seafoam-green focus:border-blue-gray w-full focus:outline-none">
-              Grundbuchabfrage
-            </Button>
-            <Button className="w-full">Anbieter kontaktieren</Button>
-          </div>
+      <Tables estate={estate} />
+
+      <MapBlock estate={estate} />
+
+      <div className="flex w-full flex-col gap-1.5">
+        <div className="bg-gray min-h-9 rounded-sm px-3 py-1.5 text-base">
+          title
+        </div>
+        <div className="grid grid-cols-[3fr_1fr] gap-1.5">
+          <span className="bg-light-gray min-h-9 rounded-sm px-3 py-1.5 text-base">
+            param
+          </span>
+          <span className="bg-light-gray min-h-9 rounded-sm px-3 py-1.5 text-base">
+            value
+          </span>
         </div>
       </div>
-
-      <Table
-        className="my-[100px]"
-        tableRows={[1, 2, 3, 4, 5, 6, 7, 8, 9].map((_row, index) => {
-          return (
-            <tr
-              id={'index' + index}
-              className="border-blue-gray border-b last-of-type:border-0"
-            >
-              <td className="w-[24px] py-3 pl-6">
-                <span>icon</span>
-              </td>
-              <td className="py-3 pl-3">
-                <span>value</span>
-              </td>
-            </tr>
-          )
-        })}
-      />
     </div>
   )
 }

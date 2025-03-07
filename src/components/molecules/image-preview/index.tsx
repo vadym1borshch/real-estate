@@ -89,7 +89,7 @@ const ImagePreview = ({
       </div>
       <div
         className={cn(
-          'grid w-full grid-cols-2 sm:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6 py-5'
+          'grid w-full grid-cols-2 sm:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6 py-5 md:pb-0'
         )}
       >
         {visibleThumbnails.map((image, index) => (

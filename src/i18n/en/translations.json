@@ -28,7 +28,12 @@
       "logout": "Logout",
       "place-advertisement": "Place an advertisement",
       "find": "Find",
-      "view-on-map": "VIEW ON MAP"
+      "view-on-map": "VIEW ON MAP",
+      "all-provider-objects": "All objects of the provider",
+      "land-registry": "Land registry query",
+      "contact-provider": "Contact provider",
+      "read-more": "Read more",
+      "hide": "Hide"
     },
     "real-estate": {
       "type": {
@@ -48,7 +53,16 @@
         "verified-title": "VERIFIED BY FYLPI"
       },
       "rooms": "Rooms",
-      "bathroom": "Bathroom"
+      "bathroom": "Bathroom",
+      "details": {
+        "contact-provider": {
+          "title": "CONTACT THE PROVIDER",
+          "p1": "This magnificent residence is located high above the rolling hills and offers an incomparable view down over Vienna and the surrounding picturesque landscape. The spacious entrance area immediately conveys a feeling of luxury, comfort and exclusivity. The floor-to-ceiling windows in the central living area flood the room with natural light and offer a magical view of the green oasis of the property's own garden, which blends harmoniously into the panoramic landscape. The fitness room with indoor pool, whirlpool and sauna offers everything you need to strengthen and relax your body and mind. The spacious garage has an electric charging station and offers parking for three cars. The outdoor area of this property offers breathtaking views and plenty of space for terraces, barbecues, sports activities and even an outdoor sauna.",
+          "p2": "Klosterneuburg is a town of rich history, magnificent architecture and an idyllic location along the Danube. The town offers a first-class infrastructure with good transport links, high-quality educational institutions, comprehensive healthcare and a wide range of shopping opportunities. Numerous recreational facilities, including sports clubs and parks, as well as a vibrant cultural scene with museums and cultural events, enrich urban life. Ölberg, a picturesque district in Klosterneuburg, offers not only an idyllic residential location but also breathtaking views of Vienna, which lies at its feet. Well-planned transport links allow residents to quickly reach the city centre of Klosterneuburg, Vienna and beyond. This allows them to enjoy the benefits of country life while benefiting from the amenities and well-developed infrastructure of the big cities."
+        },
+        "click-here-tour": "Click here for the tour",
+        "address-not-published": "* The exact address is not published. Please contact the provider."
+      }
     },
     "services": {
       "buy": {

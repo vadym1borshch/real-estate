@@ -28,7 +28,12 @@
       "logout": "Logout",
       "place-advertisement": "Inserat schalten",
       "find": "Finde",
-      "view-on-map": "AUF DER KARTE ANZEIGEN"
+      "view-on-map": "AUF DER KARTE ANZEIGEN",
+      "all-provider-objects": "Alle Objekte des Anbieters",
+      "land-registry": "Grundbuchabfrage",
+      "contact-provider": "Anbieter kontaktieren",
+      "read-more": "Mehr lesen",
+      "hide": "Verstecken"
     },
     "real-estate": {
       "type": {
@@ -48,7 +53,16 @@
         "verified-title": "VERIFIZIERT DURCH FYLPI"
       },
       "rooms": "Zimmer",
-      "bathroom": "Bad"
+      "bathroom": "Bad",
+      "details": {
+        "contact-provider": {
+          "title": "KONTAKTIEREN SIE DEN ANBIETER",
+          "p1": "Diese prächtige Residenz liegt hoch über den sanften Hügeln und bietet einen unvergleichlichen Ausblick bis über Wien herunter und auf die umliegende malerische Landschaft. Der großzügige Eingangsbereich vermittelt sofort das Gefühl von Luxus, Komfort und Exklusivität. Die  bodentiefen Fenster im zentralen Wohnbereich fluten den Raum mit\n          natürlichem Licht und bieten dabei einen zauberhaften Blick auf die\n          grüne Oase des hauseigenen Gartens, der sich harmonisch in die\n          Panoramalandschaft einfügt. Der Fitnessraum mit Indoor-Pool, Whirlpool\n          und Sauna bietet alles, was Sie benötigen, um Körper und Geist zu stärken und sich zu erholen. Die geräumige Garage verfügt über eine\n          Elektroladestation und bietet Parkplatz für drei Autos. Der Außenbereich dieses Anwesens bietet eine atemberaubende Aussicht und viel Platz für Terrassen, Grillabende, Sportaktivitäten und sogar eine Outdoor Sauna.",
+          "p2": "Klosterneuburg ist eine Stadt mit reicher Geschichte, großartiger Architektur und idyllischer Lage an der Donau. Die Stadt bietet eine erstklassige Infrastruktur mit guten Verkehrsanbindungen, hochwertigen Bildungseinrichtungen, umfassender Gesundheitsversorgung und einem breiten Angebot an Einkaufsmöglichkeiten. Zahlreiche Freizeiteinrichtungen, darunter Sportvereine und Parks, sowie eine lebendige Kulturszene mit Museen und kulturellen Veranstaltungen bereichern das städtische Leben. Ölberg, ein malerischer Stadtteil in Klosterneuburg, bietet nicht nur eine idyllische Wohnlage, sondern auch einen atemberaubenden Blick auf Wien, das ihm zu Füßen liegt. Durch gut geplante Verkehrsanbindungen können die Bewohner das Stadtzentrum von Klosterneuburg, Wien und darüber hinaus schnell erreichen. So können sie die Vorteile des Landlebens genießen und gleichzeitig von den Annehmlichkeiten und der gut ausgebauten Infrastruktur der Großstädte profitieren."
+        },
+        "click-here-tour": "Hier geht es zum Rundgang",
+        "address-not-published": "* Die genaue Adresse ist nicht veröffentlicht. Bitte kontaktieren Sieden Anbieter."
+      }
     },
     "services": {
       "buy": {

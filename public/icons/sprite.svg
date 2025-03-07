@@ -514,12 +514,100 @@
               stroke-linejoin="round"/>
     </symbol>
 
-    <symbol id="tradingHomeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <symbol id="conditionHomeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M6.99286 20.2743H17.007C18.7686 20.2743 20.1959 18.8461 20.1959 17.0855V10.1986C20.1959 9.34298 19.8111 8.53314 19.1478 7.99233L13.7966 3.63397C12.7505 2.78117 11.2494 2.78117 10.2032 3.63397L4.85198 7.99233C4.18879 8.53314 3.80396 9.34298 3.80396 10.1986V17.0855C3.80396 18.8461 5.23122 20.2743 6.99286 20.2743Z"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M7.79956 15.3845L10.4927 11.8852L13.5647 14.2972L16.2001 10.8956" stroke="currentColor"
               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+
+    <symbol id="likeIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M7.66113 9.93497C8.83842 9.93497 10.8971 6.176 11.7657 4.48084C11.9205 4.17862 11.998 4.02751 12.117 3.91155C12.2194 3.81188 12.3694 3.72067 12.505 3.6757C12.6627 3.62337 12.8013 3.62404 13.0785 3.62538C13.2856 3.62639 13.4889 3.63771 13.6399 3.66875C14.9438 3.93677 15.9601 5.52052 14.6451 9.60629C14.5978 9.75311 14.5742 9.82652 14.5882 9.88257C14.6011 9.93443 14.6326 9.97769 14.678 10.0059C14.7271 10.0363 14.8028 10.0363 14.9541 10.0363H16.0092C17.9908 10.0363 18.9816 10.0363 19.6561 10.4416C20.273 10.8124 20.726 11.4037 20.9233 12.096C21.139 12.8528 20.881 13.8094 20.365 15.7225L19.8833 17.5084C19.6101 18.5215 19.4734 19.0281 19.1864 19.4064C18.9221 19.7546 18.5689 20.0252 18.1638 20.1897C17.7238 20.3683 17.1992 20.3683 16.1498 20.3683H11.8799C11.5384 20.3683 11.3677 20.3683 11.2005 20.345C11.0458 20.3234 10.8935 20.2869 10.7457 20.2361C10.5861 20.1812 10.4338 20.104 10.1294 19.9494L7.66113 18.6963"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.40568 8.71875H5.25571C4.47455 8.71875 4.08398 8.71875 3.78456 8.86836C3.50974 9.00568 3.28693 9.22849 3.14961 9.50331C3 9.80273 3 10.1933 3 10.9745V18.1165C3 18.8977 3 19.2883 3.14961 19.5877C3.28693 19.8625 3.50974 20.0853 3.78456 20.2226C4.08398 20.3722 4.47455 20.3722 5.25571 20.3722H5.40568C6.18684 20.3722 6.57742 20.3722 6.87683 20.2226C7.15165 20.0853 7.37447 19.8625 7.51179 19.5877C7.66139 19.2883 7.66139 18.8977 7.66139 18.1165V10.9745C7.66139 10.1933 7.66139 9.80273 7.51179 9.50331C7.37447 9.22849 7.15165 9.00568 6.87683 8.86836C6.57742 8.71875 6.18684 8.71875 5.40568 8.71875Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="kitchenIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 5.7832L3.92234 13.5463L3 18.2164" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+        <path d="M8.231 18.2158V14.5527C8.231 13.9719 7.76009 13.501 7.17925 13.501H3.92188" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21.0005 5.7832L20.0781 13.5463L21.0005 18.2164" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.7695 18.2158V14.5527C15.7695 13.9719 16.2404 13.501 16.8213 13.501H20.0787" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12.0176 18.2164V9.19727" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+        <path d="M6.58594 9.19727H17.4487" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="timeArrowIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M19.3517 7.56582C17.3309 3.85782 13.0215 2.05382 9.00864 3.49682C4.50624 5.11982 2.11104 10.2418 3.66912 14.9318C5.21856 19.6318 10.1348 22.1278 14.6468 20.5038C17.4375 19.5018 19.4189 17.1668 20.1504 14.4108"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.5843 4.27148V7.57048H16.4346" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+        <path d="M14.5446 14.5692L11.4976 12.6722V8.57422" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </symbol>
+
+
+    <symbol id="euroCircleIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M21 11.5804C21 6.80835 16.9709 2.94043 12 2.94043C7.02908 2.94043 3 6.80835 3 11.5804C3 16.3525 7.02908 20.2204 12 20.2204C16.9709 20.2204 21 16.3525 21 11.5804Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.1451 15.0645C11.7323 15.1168 10.4061 14.4106 9.70561 13.2309C9.10334 12.2063 9.10334 10.9537 9.70561 9.92908C10.4061 8.75026 11.7323 8.04319 13.1451 8.09549"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.60547 12.6035H12.8408" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+        <path d="M8.60547 10.5566H12.8408" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="coffeeCupIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M11.5544 20.9994H9.18992C6.15314 20.9994 3.69141 18.5377 3.69141 15.5009V12.0253C3.69141 10.5298 4.90379 9.31738 6.39931 9.31738H14.345C15.8405 9.31738 17.0529 10.5298 17.0529 12.0253V15.5009C17.0529 18.5377 14.5911 20.9994 11.5544 20.9994Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.0527 11.7676H17.7056C19.1428 11.7676 20.3084 12.9333 20.3084 14.3704C20.3084 15.8075 19.1428 16.9732 17.7056 16.9732H17.0527"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.78388 4.69043C6.31683 5.15748 6.31683 5.91449 6.78388 6.38056" stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14.3093 4.69043C13.8422 5.15748 13.8422 5.91449 14.3093 6.38056" stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.5476 3C11.0146 3.46705 11.0146 4.22406 10.5476 4.69013C10.0805 5.15718 10.0805 5.91419 10.5476 6.38026"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="sofaIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M18.922 10.6285C18.4187 10.6274 18.167 10.6269 17.9627 10.6856C17.4662 10.8281 17.0791 11.2143 16.9356 11.7105C16.8765 11.9147 16.8765 12.165 16.8765 12.6656V13.577C16.8765 14.1598 16.4046 14.6317 15.8218 14.6317H8.18504C7.60321 14.6317 7.13035 14.1598 7.13035 13.577V12.6835C7.13035 12.1635 7.13035 11.9035 7.06754 11.6933C6.92251 11.208 6.5465 10.8316 6.06132 10.6861C5.85123 10.6231 5.5898 10.6228 5.06694 10.6222C4.55252 10.6217 4.2953 10.6215 4.08319 10.6853C3.59835 10.8311 3.21361 11.2206 3.07369 11.7072C3.01248 11.92 3.01583 12.1739 3.02255 12.6818C3.03599 13.698 3.05915 14.7936 3.09839 15.2106C3.25309 16.9843 4.67264 18.3834 6.4483 18.5128C7.27921 18.6422 10.6067 18.6422 11.9942 18.6422C13.3816 18.6422 17.0701 18.614 17.5517 18.5109C19.3235 18.3766 20.7372 16.9804 20.891 15.2106C20.9305 14.798 20.9569 13.7094 20.9735 12.6958C20.9818 12.1919 20.9859 11.94 20.9293 11.7334C20.7915 11.2303 20.406 10.8376 19.9056 10.6905C19.7 10.6301 19.4407 10.6296 18.922 10.6285Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.08008 18.7002V20.4764" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+        <path d="M16.1934 18.7002V20.4764" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+        <path d="M18.962 10.5961V8.17438C18.962 6.83286 18.962 6.16209 18.7514 5.62999C18.4464 4.8598 17.8366 4.24998 17.0664 3.94504C16.5343 3.73438 15.8636 3.73438 14.522 3.73438H9.54352C8.202 3.73438 7.53123 3.73438 6.99914 3.94504C6.22895 4.24998 5.61913 4.8598 5.31419 5.62999C5.10352 6.16209 5.10352 6.83286 5.10352 8.17438V10.5961"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+
+    <symbol id="moneyPaperIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M5.68348 4.64258H15.4687C17.1238 4.64258 18.1532 5.81016 18.1532 7.46325V13.6913C18.1532 15.3444 17.1238 16.5129 15.4678 16.5129H5.68348C4.02941 16.5129 3 15.3444 3 13.6913V7.46325C3 5.81016 4.03428 4.64258 5.68348 4.64258Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18.15 7.48438H18.3203C19.9714 7.48438 20.9999 8.65487 20.9999 10.306V16.5341C20.9999 18.1862 19.9714 19.3557 18.3106 19.3557H8.53404C6.87316 19.3557 5.84375 18.1862 5.84375 16.5341"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5.70703 13.5664H6.88823" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M12.5044 10.5779C12.5044 9.5144 11.6423 8.65234 10.5788 8.65234C9.5144 8.65234 8.65234 9.5144 8.65234 10.5779C8.65234 11.6413 9.5144 12.5034 10.5788 12.5034C11.6423 12.5034 12.5044 11.6413 12.5044 10.5779Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.4488 7.58984H14.2676" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </symbol>
+
 
     <symbol id="discountIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M17.9981 6L6 17.9981" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
