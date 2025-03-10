@@ -12,29 +12,11 @@ import { realEstateAgents } from '../../ServiceAround/mock.ts'
 import { ImagesBlock } from './ImagesBlock.tsx'
 import { Tables } from './Tables.tsx'
 import { MapBlock } from './MapBlock.tsx'
+import { DetailedInfoBlock } from './DetailedInfoBlock.tsx'
+import { ContactProviderBlock } from './ContactProviderBlock.tsx'
+import { AllProviderObjects } from './AllProviderObjects.tsx'
 
 const agent = realEstateAgents[0]
-
-/*const sampleData = [
-  { label: 'Wohnraum', value: '' },
-  { label: 'Schlafzimmer mit Garderobe Erdgeschoss', value: '46,17' },
-  { label: 'Badezimmer', value: '' },
-  { label: 'Erdgeschoss', value: '7,55' },
-  { label: 'WC', value: '' },
-  { label: 'Erdgeschoss', value: '2,05' },
-  { label: 'Nebenraum', value: '' },
-  { label: 'Gallerie', value: '19,68' },
-  { label: 'Wohnraum', value: '' },
-  { label: 'Schlafzimmer 1, 1 Stock', value: '11,22' },
-  { label: 'Wohnraum', value: '' },
-  { label: 'Schlafzimmer 2, 1 Stock', value: '36,80' },
-  { label: 'Wohnraum', value: '' },
-  { label: 'Schlafzimmer 3, 1 Stock', value: '12,40' },
-  { label: 'Wohnraum', value: '' },
-  { label: 'Schlafzimmer 4, 1 Stock', value: '14,67' },
-  { label: 'Badezimmer', value: '' },
-  { label: '1 Stock', value: '4,50' },
-]*/
 
 export const EstatesDetails = () => {
   const ref = useRef<HTMLDivElement | null>(null)
@@ -46,7 +28,7 @@ export const EstatesDetails = () => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex max-w-[72.5rem] flex-col">
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
         <div className="lg:pb-12" ref={ref}>
           <H2 text={estate.label} />
@@ -89,19 +71,11 @@ export const EstatesDetails = () => {
 
       <MapBlock estate={estate} />
 
-      <div className="flex w-full flex-col gap-1.5">
-        <div className="bg-gray min-h-9 rounded-sm px-3 py-1.5 text-base">
-          title
-        </div>
-        <div className="grid grid-cols-[3fr_1fr] gap-1.5">
-          <span className="bg-light-gray min-h-9 rounded-sm px-3 py-1.5 text-base">
-            param
-          </span>
-          <span className="bg-light-gray min-h-9 rounded-sm px-3 py-1.5 text-base">
-            value
-          </span>
-        </div>
-      </div>
+      <DetailedInfoBlock />
+
+      <ContactProviderBlock agent={agent} />
+
+      <AllProviderObjects/>
     </div>
   )
 }

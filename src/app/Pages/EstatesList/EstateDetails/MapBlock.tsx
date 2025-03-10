@@ -6,6 +6,7 @@ import { Layer, MapRef, Source } from 'react-map-gl'
 import { useTranslation } from 'react-i18next'
 import { useRef } from 'react'
 import { RealEstate } from '../../../../store/estateSlice'
+import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
 
 interface Props {
   estate: RealEstate
@@ -13,7 +14,10 @@ interface Props {
 
 export const MapBlock = ({estate}:Props) => {
   const { t } = useTranslation()
+  const path = usePathname()
   const mapRef = useRef<MapRef | null>(null)
+
+  const circleColor = path === '/buy/details' ? '#f87a53' : '#33443C'
 
   const geojsonData = {
     type: 'FeatureCollection',
@@ -50,13 +54,13 @@ export const MapBlock = ({estate}:Props) => {
         <Link
           href="/buy/details"
           iconId="playIcon"
-          className="hidden md:flex"
+          className="hidden md:flex md:mb-[100px]"
         >
           {t('real-estate.details.click-here-tour')}
         </Link>
       </div>
 
-      <div className="flex min-w-[50%] flex-col gap-6 pt-6 pb-[100px] md:order-1 md:pt-0">
+      <div className="flex min-w-[calc(50%-1.25rem)] flex-col gap-6 pt-6 pb-[100px] md:order-1 md:pt-0">
         <Link href="/buy/details" iconId="playIcon" className="md:hidden">
           {t('real-estate.details.click-here-tour')}
         </Link>
@@ -67,8 +71,8 @@ export const MapBlock = ({estate}:Props) => {
               type="circle"
               paint={{
                 'circle-radius': ['get', 'size'],
-                'circle-color': '#f87a53',
-                'circle-opacity': 0.3,
+                'circle-color': circleColor,
+                'circle-opacity': 0.5,
               }}
             />
           </Source>

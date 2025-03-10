@@ -5,7 +5,7 @@ import { MapMouseEvent } from 'mapbox-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { useDebouncedCallback } from 'use-debounce'
 import { useTranslation } from 'react-i18next'
-
+import { cn } from '../../../helpers/ui.ts'
 
 interface IMap {
   children: ReactNode
@@ -15,6 +15,7 @@ interface IMap {
   onMouseEnter?: (event: MapMouseEvent) => void
   onMouseLeave?: () => void
   onClick?: (event: MapMouseEvent) => void
+  className?: string
 }
 
 const MapWrapper = ({
@@ -25,6 +26,7 @@ const MapWrapper = ({
   onClick,
   onMouseLeave,
   onMouseEnter,
+  className,
 }: IMap) => {
   const [viewport, setViewport] = useState<Partial<ViewState>>({
     latitude: 48.1936,
@@ -44,7 +46,12 @@ const MapWrapper = ({
   }, 1)
 
   return (
-    <div className="relative z-10 h-[230px] sm:h-[26.75rem] w-full overflow-hidden rounded-lg">
+    <div
+      className={cn(
+        'relative z-10 h-[230px] w-full overflow-hidden rounded-lg sm:h-[26.75rem]',
+        className
+      )}
+    >
       {loading && (
         <div className="bg-light-gray absolute top-0 left-0 z-20 flex h-full w-full items-center justify-center">
           <span>LOADING...</span>
@@ -64,7 +71,9 @@ const MapWrapper = ({
         viewState={viewport}
         // leave key for testing
         //'pk.eyJ1IjoieWlpdSIsImEiOiJjazJvMmJ3M2QwejYzM21tdWdiZzR6cmUwIn0.XolZlohi-gYoIdMoen7Gyg'
-        mapboxAccessToken={"pk.eyJ1IjoieWlpdSIsImEiOiJjazJvMmJ3M2QwejYzM21tdWdiZzR6cmUwIn0.XolZlohi-gYoIdMoen7Gyg"}
+        mapboxAccessToken={
+          'pk.eyJ1IjoieWlpdSIsImEiOiJjazJvMmJ3M2QwejYzM21tdWdiZzR6cmUwIn0.XolZlohi-gYoIdMoen7Gyg'
+        }
         onMove={onMove}
         mapStyle="mapbox://styles/mapbox/streets-v12"
         interactiveLayerIds={['points-layer']}

@@ -26,9 +26,9 @@ export const Tables = ({ estate }: Props) => {
   const secondPartList = updatedEstateDetails.slice(dividedList.length)
 
   return (
-    <div className="flex flex-col items-center gap-10 md:grid md:grid-cols-[1fr_1fr]">
+    <div className="flex flex-col items-center gap-10 md:grid md:grid-cols-[1fr_1fr] md:items-start">
       <Table
-        className="my-[100px]"
+        className="my-[6.25rem]"
         tableRows={(isTablet ? dividedList : updatedEstateDetails).map(
           (row) => (
             <tr
@@ -49,7 +49,7 @@ export const Tables = ({ estate }: Props) => {
       />
 
       <Table
-        className="my-[100px] hidden md:block"
+        className="my-[6.25rem] hidden md:block"
         tableRows={secondPartList.map((row) => (
           <tr
             key={row.id}

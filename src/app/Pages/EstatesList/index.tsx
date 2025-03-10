@@ -13,50 +13,91 @@ import Pagination from '../../../components/molecules/pagination'
 import { setCurrentPage } from '../../../store/estateSlice'
 import Button from '../../../components/atoms/button'
 import Dropdown from '../../../components/atoms/dropdown'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { MapMode } from './MapMode.tsx'
 
 export const EstatesList = () => {
+  const { t } = useTranslation()
+  const { width } = useWindowDimensions()
+  const isMobile = width < BREAKPOINTS.xmd
+
   const itemsPerPage = 9
   const estates = useAppSelector(selectPaginatedEstates(itemsPerPage))
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
   const currentPage = useAppSelector(selectCurrentPage)
+  const [viewMode, setViewMode] = useState<'default' | 'map'>('default')
   const dispatch = useAppDispatch()
   const [openMobileDropdown, setOpenMobileDropdown] = useState(false)
 
-  const { width } = useWindowDimensions()
-  const isMobile = width < BREAKPOINTS.xmd
+  const defaultModeCurrentPage = useRef(currentPage)
 
-  if (!estates.length) {
-    return <div>loading...</div>
+  const changeViewMode = () => {
+    if (viewMode === 'map') {
+      setViewMode('default')
+      dispatch(setCurrentPage(defaultModeCurrentPage.current))
+    } else {
+      setViewMode('map')
+      defaultModeCurrentPage.current = currentPage
+      dispatch(setCurrentPage(1))
+    }
   }
 
+  useEffect(() => {
+    return () => {
+      defaultModeCurrentPage.current = 1
+      dispatch(setCurrentPage(1))
+    }
+  }, [])
+
+  if (viewMode === 'map') {
+    return (
+      <MapMode
+        open={openMobileDropdown}
+        setOpen={setOpenMobileDropdown}
+        changeMode={changeViewMode}
+      />
+    )
+  }
   return (
-    <div className="z-0 flex w-full max-w-[1160px] flex-col items-center">
+    <div className="z-0 flex w-full max-w-[72.5rem] flex-col items-center">
       <div className="flex w-full gap-1.5 md:hidden">
         <Dropdown
-          label={'Filter öffnen'}
+          label={
+            openMobileDropdown
+              ? t('filters.filter-state-open')
+              : t('filters.filter-state-close')
+          }
           open={openMobileDropdown}
           setOpen={(open) => setOpenMobileDropdown(open)}
           variant="outlined"
-          triggerButtonClassName="!w-full text-[16px]"
-          dropdownClassName="w-[calc(100%+38px)] !min-h-[250px]"
+          triggerButtonClassName="!w-full text-base"
+          dropdownClassName="w-[calc(100%+38px)] !min-h-[15.625rem]"
           iconId="filterIcon"
           iconClassName="w-[24px] h-[24px] text-charcoal"
           withIcon
         >
           <Filters className="m-0 bg-transparent px-0">
-            <Button className="col-span-full mx-auto w-full max-w-[420px]">
-              FINDE
+            <Button className="col-span-full mx-auto w-full max-w-[26.25rem]">
+              {t('buttons.find')}
             </Button>
           </Filters>
         </Dropdown>
-        <Button variant="outlined" className="h-12 w-12">
+        <Button
+          variant="outlined"
+          className="h-12 w-12"
+          onClick={changeViewMode}
+        >
           M
         </Button>
       </div>
 
       <Filters className="m-0 hidden bg-transparent px-0 md:flex">
-        <Button variant="outlined" onClick={() => {}}>
+        <Button
+          className="h-12 w-12"
+          variant="outlined"
+          onClick={changeViewMode}
+        >
           M
         </Button>
       </Filters>

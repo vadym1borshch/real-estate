@@ -8,4 +8,8 @@ export const ROUTES = {
   contactUs: '/contact-us',
   termsOfUse: '/terms-of-use',
   serviceAround: '/service-around',
+  rent: '/rent',
+  buy: '/buy',
+  rentDetails: '/rent/details',
+  buyDetails: '/buy/details',
 } as const;

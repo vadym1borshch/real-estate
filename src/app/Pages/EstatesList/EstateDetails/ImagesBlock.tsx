@@ -6,19 +6,26 @@ import Caption from '../../../../components/atoms/typography/caption'
 import Button from '../../../../components/atoms/button'
 import { Agent } from '../../ServiceAround/mock.ts'
 import { useElementSizes } from '../../../../helpers/hooks/useElementsSizes.ts'
-import { RefObject } from 'react'
+import { RefObject, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { scrollToPageBlock } from './helpers.ts'
+import Modal from '../../../../components/molecules/modal'
+import H3 from '../../../../components/atoms/typography/h3'
+import Input from '../../../../components/atoms/input'
 
 interface Props {
   agent: Agent
   ref: RefObject<HTMLDivElement | null>
 }
 
-export const ImagesBlock = ({agent, ref}: Props) => {
+export const ImagesBlock = ({ agent, ref }: Props) => {
   const { containerDimension } = useElementSizes({
     containerRef: ref,
     containerDimensionProp: 'width',
   })
+  const [openModal, setOpenModal] = useState(false)
+  const [step, setStep] = useState(1)
+  const [email, setEmail] = useState('')
   const { t } = useTranslation()
 
   return (
@@ -42,14 +49,75 @@ export const ImagesBlock = ({agent, ref}: Props) => {
         </div>
 
         <div className="flex w-full flex-col gap-3 md:h-full md:justify-end">
-          <Button className="bg-charcoal hover:bg-seafoam-green focus:border-blue-gray w-full focus:outline-none">
+          <Button
+            onClick={() => scrollToPageBlock('allProviderObjects')}
+            className="bg-charcoal hover:bg-seafoam-green focus:border-blue-gray w-full focus:outline-none"
+          >
             {t('buttons.all-provider-objects')}
           </Button>
-          <Button className="bg-charcoal hover:bg-seafoam-green focus:border-blue-gray w-full focus:outline-none">
+          <Button
+            onClick={() => setOpenModal(true)}
+            className="bg-charcoal hover:bg-seafoam-green focus:border-blue-gray w-full focus:outline-none"
+          >
             {t('buttons.land-registry')}
           </Button>
-          <Button className="w-full"> {t('buttons.contact-provider')}</Button>
+          <Button
+            className="w-full"
+            onClick={() => scrollToPageBlock('contactProviderBlock')}
+          >
+            {' '}
+            {t('buttons.contact-provider')}
+          </Button>
         </div>
+        <Modal
+          open={openModal}
+          setOpen={() => {
+            setOpenModal(!openModal)
+            setStep(1)
+          }}
+          className="max-w-[35rem]"
+        >
+          {step === 1 && (
+            <div className="flex flex-col items-center gap-6">
+              <H3
+                text={t('real-estate.details.modal.cost-notification.title')}
+                className="text-center"
+              />
+              <p className="max-w-[15rem] text-center">
+                {t('real-estate.details.modal.cost-notification.description')}
+              </p>
+              <Button onClick={() => setStep(2)}>{t('buttons.next')}</Button>
+            </div>
+          )}
+          {step === 2 && (
+            <div className="flex flex-col items-center gap-6">
+              <H3
+                text={t('real-estate.details.modal.email.title')}
+                className="text-center"
+              />
+              <p className="max-w-[15rem] text-center">
+                {t('real-estate.details.modal.email.description')}
+              </p>
+              <Input
+                placeholder="johnsmith@email.at"
+                value={email}
+                onChange={(e) => setEmail(e.currentTarget.value)}
+              />
+              <Button onClick={() => setStep(3)}>{t('buttons.next')}</Button>
+            </div>
+          )}
+          {step === 3 && (
+            <div className="flex flex-col items-center gap-6">
+              <H3
+                text={t('real-estate.details.modal.confirmation.title')}
+                className="text-center"
+              />
+              <p className="max-w-[15rem] text-center">
+                {t('real-estate.details.modal.confirmation.description')}
+              </p>
+            </div>
+          )}
+        </Modal>
       </div>
     </div>
   )

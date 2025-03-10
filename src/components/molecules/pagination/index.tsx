@@ -1,10 +1,11 @@
-import React, { MouseEvent } from 'react'
+import { MouseEvent, useEffect } from 'react'
 import Button from '../../atoms/button'
 import Icon from '../../atoms/icon'
 import { cn } from '../../../helpers/ui.ts'
 import { useTranslation } from 'react-i18next'
 
-const buttonStyle = 'flex items-center gap-2 focus:rounded-sm min-w-[6.125rem] disabled:bg-transparent hover:text-seafoam-green hover:border-seafoam-green'
+const buttonStyle =
+  'flex items-center gap-2 focus:rounded-sm min-w-[6.125rem] disabled:bg-transparent hover:text-seafoam-green hover:border-seafoam-green'
 
 interface Props {
   count: number
@@ -16,7 +17,11 @@ interface Props {
 const Pagination = ({ count, page, setPage, className }: Props) => {
   const { t } = useTranslation()
 
-  const setPageHandler = (e: MouseEvent<HTMLButtonElement>, index?: number) => {
+  const setPageHandler = (
+    e?: MouseEvent<HTMLButtonElement>,
+    index?: number
+  ) => {
+    if (!e) return
 
     const isPrevPressed = e.currentTarget.innerText === t('buttons.prev')
     const isNextPressed = e.currentTarget.innerText === t('buttons.next')
@@ -57,19 +62,24 @@ const Pagination = ({ count, page, setPage, className }: Props) => {
     return pages
   }
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [page])
+
   return (
-    <div className={cn("flex items-center gap-4", className)}>
+    <div className={cn('flex items-center gap-4', className)}>
       <Button
         variant="outlined"
         size="sm"
-        className={cn(' pl-1.5 pr-3', buttonStyle)}
+        className={cn('pr-3 pl-1.5', buttonStyle)}
         onClick={(e) => setPageHandler(e)}
         disabled={page === 1}
       >
-        <Icon id="chevronDownIcon" className="w-6 h-6 rotate-90" /> {t('buttons.prev')}
+        <Icon id="chevronDownIcon" className="h-6 w-6 rotate-90" />{' '}
+        {t('buttons.prev')}
       </Button>
       <div className="flex items-center gap-2">
-        {generatePages().map((item, index) => (
+        {generatePages().map((item, index) =>
           typeof item === 'number' ? (
             <Button
               key={`page${item}`}
@@ -77,26 +87,35 @@ const Pagination = ({ count, page, setPage, className }: Props) => {
               onClick={(e) => setPageHandler(e, item as number)}
               variant="outlined"
               selected={page === item}
-              className={cn('w-10 h-10 p-0 focus:rounded-sm hover:text-seafoam-green hover:border-seafoam-green', {
-                'hover:bg-seafoam-green hover:text-white focus:border-seafoam-green ': page === item,
-              })}
+              className={cn(
+                'hover:text-seafoam-green hover:border-seafoam-green h-10 w-10 p-0 focus:rounded-sm',
+                {
+                  'hover:bg-seafoam-green focus:border-seafoam-green hover:text-white':
+                    page === item,
+                }
+              )}
             >
               {item}
             </Button>
           ) : (
-            <span key={`dots${index}`} className="w-10 h-10 flex items-center justify-center">...</span>
+            <span
+              key={`dots${index}`}
+              className="flex h-10 w-10 items-center justify-center"
+            >
+              ...
+            </span>
           )
-        ))}
+        )}
       </div>
       <Button
         size="sm"
         variant="outlined"
-        className={cn('pl-3 pr-1.5 ', buttonStyle)}
+        className={cn('pr-1.5 pl-3', buttonStyle)}
         onClick={(e) => setPageHandler(e)}
         disabled={page === count}
       >
         {t('buttons.next')}
-        <Icon id="chevronDownIcon" className="w-6 h-6 -rotate-90" />
+        <Icon id="chevronDownIcon" className="h-6 w-6 -rotate-90" />
       </Button>
     </div>
   )

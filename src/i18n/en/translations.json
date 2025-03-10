@@ -58,10 +58,80 @@
         "contact-provider": {
           "title": "CONTACT THE PROVIDER",
           "p1": "This magnificent residence is located high above the rolling hills and offers an incomparable view down over Vienna and the surrounding picturesque landscape. The spacious entrance area immediately conveys a feeling of luxury, comfort and exclusivity. The floor-to-ceiling windows in the central living area flood the room with natural light and offer a magical view of the green oasis of the property's own garden, which blends harmoniously into the panoramic landscape. The fitness room with indoor pool, whirlpool and sauna offers everything you need to strengthen and relax your body and mind. The spacious garage has an electric charging station and offers parking for three cars. The outdoor area of this property offers breathtaking views and plenty of space for terraces, barbecues, sports activities and even an outdoor sauna.",
-          "p2": "Klosterneuburg is a town of rich history, magnificent architecture and an idyllic location along the Danube. The town offers a first-class infrastructure with good transport links, high-quality educational institutions, comprehensive healthcare and a wide range of shopping opportunities. Numerous recreational facilities, including sports clubs and parks, as well as a vibrant cultural scene with museums and cultural events, enrich urban life. Ölberg, a picturesque district in Klosterneuburg, offers not only an idyllic residential location but also breathtaking views of Vienna, which lies at its feet. Well-planned transport links allow residents to quickly reach the city centre of Klosterneuburg, Vienna and beyond. This allows them to enjoy the benefits of country life while benefiting from the amenities and well-developed infrastructure of the big cities."
+          "p2": "Klosterneuburg is a town of rich history, magnificent architecture and an idyllic location along the Danube. The town offers a first-class infrastructure with good transport links, high-quality educational institutions, comprehensive healthcare and a wide range of shopping opportunities. Numerous recreational facilities, including sports clubs and parks, as well as a vibrant cultural scene with museums and cultural events, enrich urban life. Ölberg, a picturesque district in Klosterneuburg, offers not only an idyllic residential location but also breathtaking views of Vienna, which lies at its feet. Well-planned transport links allow residents to quickly reach the city centre of Klosterneuburg, Vienna and beyond. This allows them to enjoy the benefits of country life while benefiting from the amenities and well-developed infrastructure of the big cities.",
+          "provider-descr": "By pressing the \"Send Message\" button, you agree that fylpi and its partners and real estate professionals may call/message you regarding your inquiry, possibly using automated means and pre-recorded/artificial voices. You do not have to consent in order to purchase a property, goods or services. Message and data rates may apply. You also agree to our Terms of Use. Fylpi does not endorse any specific real estate professionals. We may share information about your recent and future activity on the Site with your agent to help them understand what you are looking for in a home."
         },
         "click-here-tour": "Click here for the tour",
-        "address-not-published": "* The exact address is not published. Please contact the provider."
+        "address-not-published": "* The exact address is not published. Please contact the provider.",
+        "modal": {
+          "cost-notification": {
+            "title": "COST NOTIFICATION",
+            "description": "The cost of the land register extract is €10.00. Please confirm to continue"
+          },
+          "email": {
+            "title": "ENTER EMAIL ADDRESS",
+            "description": "Please enter the email address to which the land register extract should be sent."
+          },
+          "confirmation": {
+            "title": "PAYMENT CONFIRMATION",
+            "description": "Thank you! Your payment was successful. The land register extract will be sent to the email address you provided within the next 24 hours."
+          }
+        },
+        "detail-info": {
+          "premises": {
+            "title": "PREMISES",
+            "living-space": "Living space",
+            "bathroom": "Bathroom",
+            "ground-floor": "Ground floor",
+            "adjoining-room": "Adjoining room",
+            "gallery": "gallery",
+            "bedroom1": "Bedroom 1, 1 Stock",
+            "bedroom2": "Bedroom 2, 1 Stock",
+            "bedroom3": "Bedroom 3, 1 Stock",
+            "bedroom4": "Bedroom 4, 1 Stock",
+            "guest-room": "Guest room",
+            "wellness-area": "Wellness area",
+            "wellness-room-living-area": "Wellness room living area",
+            "pool": "Pool",
+            "fitness": "Fitness",
+            "fitness-pool": "Pool + Fitness",
+            "wine-cellar": "Wine cellar",
+            "technical-room": "Technical room",
+            "outdoor-area": "Outside",
+            "garage": "Garage",
+            "garden": "Garden",
+            "bedroom-with-wardrobe": "Bedroom with wardrobe on the ground floor",
+            "wc": "WC"
+          },
+          "equipments": {
+            "title": "EQUIPMENT",
+            "outlook": "Outlook",
+            "view": "Mountain view, green view, distant view, city view",
+            "kitchen": "Kitchen",
+            "kitchen-type": "Fitted kitchen, kitchen-living room",
+            "floor": "Floor",
+            "floor-type": "Tiles, parquet",
+            "windows": "Windows",
+            "windows-type": "Internal sun protection, multiple glazing, plastic windows",
+            "extra": "Extras",
+            "extra-equip": "Storage room, steam bath, fitness room, barbecue area, children's playground, swimming pool, washing-drying room, whirlpool, alarm system, sauna, wine cellar, wellness area, winter garden, bathroom with window, bathtub"
+          },
+          "fees": {
+            "title": "FEES",
+            "transfer-tax": "Real estate transfer tax",
+            "land-registry": "Land registry entry",
+            "purchase-agreement": "Purchase agreement",
+            "purchase-agreement-descr": "according to the tariff of the respective court judge"
+          },
+          "monthly_costs": {
+            "title": "MONTHLY COSTS",
+            "operating-costs": "Operating costs",
+            "heating": "Heating incl. VAT"
+          }
+        },
+        "providers-objects": {
+          "title": "ALL PROVIDER'S OBJECTS"
+        }
       }
     },
     "services": {
@@ -158,23 +228,23 @@
       "rent": {
         "find-rental-property": {
           "question": "How can I find a rental property on this platform?",
-          "answer":" You can use the search filters to find properties based on location, price, size, and amenities. Click on a listing to view details and contact the landlord."
+          "answer": " You can use the search filters to find properties based on location, price, size, and amenities. Click on a listing to view details and contact the landlord."
         },
         "contact-landlord": {
           "question": "How do I contact a landlord about a property?",
-          "answer":"Once you find a suitable rental, you can contact the landlord directly through the contact form on the listing page."
+          "answer": "Once you find a suitable rental, you can contact the landlord directly through the contact form on the listing page."
         },
         "register-rent": {
           "question": "Do I need to register to rent a property?",
-          "answer":"Yes, registration is required to contact landlords and save favorites. Signing up is free."
+          "answer": "Yes, registration is required to contact landlords and save favorites. Signing up is free."
         },
         "costs-involved-renting": {
           "question": "What costs are involved in renting through this platform?",
-          "answer":"Using the platform is free. However, you may have to pay a security deposit and possibly an agent fee if applicable."
+          "answer": "Using the platform is free. However, you may have to pay a security deposit and possibly an agent fee if applicable."
         },
         "safe-rent-property": {
           "question": "How safe is it to rent a property through this website?",
-          "answer":"All listings are verified, and we recommend reviewing all documents carefully before signing a contract and never making advance payments."
+          "answer": "All listings are verified, and we recommend reviewing all documents carefully before signing a contract and never making advance payments."
         }
       },
       "sell": {
@@ -202,23 +272,23 @@
       "rent-out": {
         "rent-out-property": {
           "question": "How can I rent out a property on this platform?",
-          "answer":"You can create a listing through your user account by adding all relevant details, photos, and rental conditions."
+          "answer": "You can create a listing through your user account by adding all relevant details, photos, and rental conditions."
         },
         "documents-to-rent-out": {
           "question": "What documents do I need to rent out a property?",
-          "answer":"Typically, you need proof of ownership, an energy certificate, and a rental agreement for the tenant."
+          "answer": "Typically, you need proof of ownership, an energy certificate, and a rental agreement for the tenant."
         },
         "quickly-find-tenant": {
           "question": "How can I quickly find a suitable tenant?",
-          "answer":"A detailed listing, high-quality photos, and a competitive rental price help attract tenants faster."
+          "answer": "A detailed listing, high-quality photos, and a competitive rental price help attract tenants faster."
         },
         "edit-remove-listing": {
           "question": "Can I edit or remove my listing after posting?",
-          "answer":"Yes, you can edit or delete your listing at any time in your user account."
+          "answer": "Yes, you can edit or delete your listing at any time in your user account."
         },
         "any-costs-landlords": {
           "question": "Are there any costs for landlords?",
-          "answer":"Using the platform is free, but you may incur costs for real estate agents or legal services."
+          "answer": "Using the platform is free, but you may incur costs for real estate agents or legal services."
         }
       },
       "tech-support": {
@@ -350,7 +420,9 @@
       "type": "Type",
       "price": "Price",
       "area": "Area",
-      "address": "State, city or zip code"
+      "address": "State, city or zip code",
+      "filter-state-open": "Open filter",
+      "filter-state-close": "Closed filter"
     },
     "title": "FIND YOUR PROPERTY IN AUSTRIA",
     "links": {

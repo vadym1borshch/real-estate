@@ -25,3 +25,10 @@ export const extractValuesToTable = (
     return { ...detail, value }
   })
 }
+
+export const scrollToPageBlock = (blockId: string) => {
+  const target = document.getElementById(blockId)
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth' })
+  }
+}

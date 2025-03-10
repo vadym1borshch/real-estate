@@ -13,6 +13,7 @@ interface Props extends HTMLProps<HTMLTextAreaElement> {
   errorPosition?: 'top' | 'bottom'
   className?: string
   iconSide?: 'left' | 'right'
+  rows?: number
   ref?: Ref<HTMLTextAreaElement | null>
 }
 
@@ -28,6 +29,7 @@ const TextArea = ({
   className,
   iconSide = 'right',
   ref,
+  rows,
   ...rest
 }: Props) => {
   return (
@@ -44,7 +46,7 @@ const TextArea = ({
         </div>
       )}
       <textarea
-        rows={8}
+        rows={rows || 8}
         ref={ref}
         value={value}
         placeholder={placeholder}

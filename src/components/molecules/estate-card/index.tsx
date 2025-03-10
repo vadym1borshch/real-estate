@@ -13,9 +13,10 @@ import { useAppDispatch } from '../../../store'
 
 interface Props {
   realEstate: RealEstate
+  className?: string
 }
 
-const EstateCard = ({ realEstate }: Props) => {
+const EstateCard = ({ realEstate, className }: Props) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const {
@@ -40,9 +41,13 @@ const EstateCard = ({ realEstate }: Props) => {
       href={`/${operation.key}/details`}
       className={cn(
         'group z-0 flex min-h-[26.75rem] max-w-[22.5rem] flex-col gap-0 hover:border-0 focus:border-0',
-        { 'border-charcoal rounded-lg border-2 hover:border-2': selectedOnMap }
+        { 'border-charcoal rounded-lg border-2 hover:border-2': selectedOnMap },
+        className
       )}
-      onClick={() => dispatch(setCurrentEstate(id))}
+      onClick={() => {
+        dispatch(setCurrentEstate(id))
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }}
     >
       <div className="relative">
         <div className="absolute top-0 flex w-full justify-between p-6">
