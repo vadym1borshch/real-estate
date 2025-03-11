@@ -30,7 +30,7 @@ export const links = [
     label: 'footer.links.service-property',
   },
   {
-    href: '',
+    href: ROUTES.knowledgeRealEstate,
     label: 'footer.links.practical-instr',
   },
   {

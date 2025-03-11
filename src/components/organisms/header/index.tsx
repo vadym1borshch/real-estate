@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Logo from '../../atoms/logo'
 import Button from '../../atoms/button'
@@ -8,8 +7,9 @@ import { cn } from '../../../helpers/ui.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
-import Drawer from '../../atoms/drawer'
-import Icon from '../../atoms/icon'
+import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
+import MobileMenu from '../../molecules/mobile-menu'
+import { initialButtons } from './mock.ts'
 
 interface Props {
   className?: string
@@ -18,14 +18,14 @@ interface Props {
 const Header = ({ className }: Props) => {
   const { t } = useTranslation()
   const { width } = useWindowDimensions()
-  const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
   const isMedium = width > BREAKPOINTS.md
-  const navigation = useNavigate()
   const pathname = usePathname()
+  const [open, setOpen] = useState(false)
 
   const goToHomePage = () => {
     if (pathname === '/' || pathname === '') return
-    navigation('/')
+    navigate('/')
   }
 
   useEffect(() => {
@@ -55,15 +55,16 @@ const Header = ({ className }: Props) => {
           'header-buttons_container flex items-center gap-6': isMedium,
         })}
       >
-        <Button size="sm" variant="text" onClick={() => {}}>
-          {t('real-estate.operations.buy')}
-        </Button>
-        <Button size="sm" variant="text" onClick={() => {}}>
-          {t('real-estate.operations.rent')}
-        </Button>
-        <Button size="sm" variant="text" onClick={() => {}}>
-          {t('buttons.place-advertisement')}
-        </Button>
+        {initialButtons.map((button) => (
+          <Button
+            key={button.id}
+            size="sm"
+            variant="text"
+            onClick={() => navigate(button.href)}
+          >
+            {t(button.title)}
+          </Button>
+        ))}
         <Button
           size="sm"
           className="bg-charcoal hover:bg-seafoam-green focus:border-seafoam-green px-4 focus:border-4 focus:outline-none"
@@ -73,66 +74,7 @@ const Header = ({ className }: Props) => {
         </Button>
         <LanguageSwitcher />
       </div>
-      <div
-        className={cn('flex items-center gap-6', {
-          hidden: isMedium,
-        })}
-      >
-        <Button variant="outlined" className="h-fit w-fit !border-0 p-0">
-          <Icon
-            id="menuLineIcon"
-            className="text-charcoal hover:text-blue-gray h-[24px] w-[24px]"
-            onClick={() => setOpen(!open)}
-          />
-        </Button>
-        <Drawer open={open} setOpen={setOpen}>
-          <div className="border-b-seafoam-green flex w-full justify-between border-b p-5">
-            <div className="flex items-center gap-6">
-              <Button
-                size="sm"
-                className="text-charcoal hover:bg-seafoam-green focus:border-seafoam-green h-[40px] min-w-[80px] bg-white px-4 focus:border-4 focus:outline-none"
-                onClick={() => {}}
-              >
-                {t('buttons.sign-in')}
-              </Button>
-              <LanguageSwitcher className="hover:text-gray text-white" />
-            </div>
-            <Button
-              className="hover:text-gray !border-0 text-white"
-              variant="outlined"
-              onClick={() => setOpen(!open)}
-            >
-              X
-            </Button>
-          </div>
-          <div className="z-100000 flex h-full w-full flex-col gap-3 p-5">
-            <Button
-              size="sm"
-              variant="text"
-              onClick={() => {}}
-              className="hover:text-gray text-white"
-            >
-              {t('real-estate.operations.buy')}
-            </Button>
-            <Button
-              size="sm"
-              variant="text"
-              onClick={() => {}}
-              className="hover:text-gray text-white"
-            >
-              {t('real-estate.operations.rent')}
-            </Button>
-            <Button
-              size="sm"
-              variant="text"
-              onClick={() => {}}
-              className="hover:text-gray text-white"
-            >
-              {t('buttons.place-advertisement')}
-            </Button>
-          </div>
-        </Drawer>
-      </div>
+      <MobileMenu open={open} setOpen={setOpen} />
     </header>
   )
 }

@@ -8,6 +8,7 @@ interface Props extends ButtonProps {
   onClick?: (e?: MouseEvent<HTMLButtonElement>) => void
   size?: 'sm' | 'md'
   className?: string
+  childrenClassName?: string
   iconClassName?: string
   iconId?: string
   iconSide?: 'left' | 'right'
@@ -25,6 +26,7 @@ const Button = ({
   iconSide = 'right',
   variant = 'filled',
   selected,
+  childrenClassName,
   ...rest
 }: Props) => {
   const [pressed, setPressed] = useState(false)
@@ -60,7 +62,8 @@ const Button = ({
           'flex max-h-[48px] w-full items-center justify-between gap-[0.125rem] capitalize',
           {
             'justify-center': !iconId,
-          }
+          },
+          childrenClassName
         )}
       >
         {children}
@@ -69,7 +72,7 @@ const Button = ({
             onClick={onClick}
             id={iconId}
             className={cn(
-              'h-[24px] w-[24px] md:h-6 md:w-6',
+              'h-[24px] w-[24px] max-w-[24px] min-w-[24px]',
               { 'order-first': iconSide === 'left' },
               iconClassName
             )}

@@ -1,9 +1,9 @@
+import { ReactNode, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import MainBlock from '../main-block'
 import Accordion from '../../../atoms/accordion'
-import { ReactNode, useEffect, useState } from 'react'
 import { sleep } from '../../../../helpers/common.ts'
 import { faqData, Data } from './data.ts'
-import { useTranslation } from 'react-i18next'
 
 interface Props {
   children?: ReactNode

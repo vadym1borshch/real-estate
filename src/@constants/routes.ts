@@ -12,4 +12,5 @@ export const ROUTES = {
   buy: '/buy',
   rentDetails: '/rent/details',
   buyDetails: '/buy/details',
-} as const;
+  knowledgeRealEstate: '/knowledge-real-estate',
+} as const

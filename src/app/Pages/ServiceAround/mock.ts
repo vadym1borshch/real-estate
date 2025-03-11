@@ -119,6 +119,7 @@ export const data = [
 export type Agent = {
   id: string
   name: string
+  lastName: string
   profession: {
     title: string
     key: string
@@ -146,7 +147,8 @@ export type Agent = {
 export const realEstateAgents:Agent[] = [
   {
     id: '1',
-    name: 'Johanna Schneider',
+    name: 'Johanna',
+    lastName: 'Schneider',
     profession: {
       title: 'real-estate.real-estate-agent.title',
       key: 'real-estate-agent',
@@ -173,7 +175,8 @@ export const realEstateAgents:Agent[] = [
   },
   {
     id: '2',
-    name: 'Maximilian Hofer',
+    name: 'Maximilian',
+    lastName: 'Hofer',
     profession: {
       title: 'service-around.services.real-estate-agent',
       key: 'real-estate-agent',
@@ -200,7 +203,8 @@ export const realEstateAgents:Agent[] = [
   },
   {
     id: '3',
-    name: 'Elisabeth Gruber',
+    name: 'Elisabeth',
+    lastName: 'Gruber',
     profession: {
       title: 'service-around.services.real-estate-agent',
       key: 'real-estate-agent',
@@ -227,7 +231,8 @@ export const realEstateAgents:Agent[] = [
   },
   {
     id: '4',
-    name: 'Sebastian Leitner',
+    name: 'Sebastian',
+    lastName: 'Leitner',
     profession: {
       title: 'service-around.services.real-estate-agent',
       key: 'real-estate-agent',
@@ -254,7 +259,8 @@ export const realEstateAgents:Agent[] = [
   },
   {
     id: '5',
-    name: 'Klara Wagner',
+    name: 'Klara',
+    lastName: 'Wagner',
     profession: {
       title: 'service-around.services.real-estate-agent',
       key: 'real-estate-agent',

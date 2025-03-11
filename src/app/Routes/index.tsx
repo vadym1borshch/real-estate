@@ -1,7 +1,10 @@
 import {
-  createBrowserRouter, Navigate,
+  createBrowserRouter,
+  Navigate,
   type RouteObject,
-  RouterProvider, useNavigate, useParams,
+  RouterProvider,
+  useNavigate,
+  useParams,
 } from 'react-router-dom'
 import { HomePage } from '../Pages/Home'
 import { About } from '../Pages/About'
@@ -19,6 +22,9 @@ import { ContactUsPage } from '../Pages/ContactUs'
 import { TermsOfUse } from '../Pages/TermsOfUse'
 import { ServiceAround } from '../Pages/ServiceAround'
 import { EstatesDetails } from '../Pages/EstatesList/EstateDetails'
+import { KnowledgeRealEstate } from '../Pages/KnowledgeRealEstate'
+import { MyAccount } from '../Pages/MyAccount'
+import { ProfilePage } from '../Pages/MyAccount/Profile'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -33,42 +39,14 @@ const EmptyUrlRedirect = () => {
 
 const RedirectToErrorPage = () => {
   const { lang } = useParams<{ lang: string }>()
-  return (
-    <Navigate to={`/${lang}/not-found`} replace />
-  )
+  return <Navigate to={`/${lang}/not-found`} replace />
 }
 
 const routes: RouteObject[] = [
   /* {
-     path: "/:lang",
-     element: <></>,
+     
      errorElement: <ErrorBoundary />,
-     children: [
-       { path: '', element: <HomePage /> },
-       {
-         path: 'about',
-         element: <About />,
-         children: [
-           { path: '', element: <ProvidersPage /> },
-           { path: ':providerId', element: <ProviderPage /> },
-         ],
-       },
-       {
-         element: <PrivateRoute />,
-         children: [
-           {
-             element: <PrivateLayout />,
-             children: [
-
-             ],
-           },
-         ],
-       },
-       {
-         path: '*',
-         element: <Error404Page />,
-       },
-     ],
+ 
    },*/
   {
     path: '/',
@@ -79,10 +57,12 @@ const routes: RouteObject[] = [
     element: <MainWrapper />,
     children: [
       {
-        path: '', element: <MainLayout />,
+        path: '',
+        element: <MainLayout />,
         children: [
           {
-            path: '', element: <HomePageLayout />,
+            path: '',
+            element: <HomePageLayout />,
             children: [
               {
                 path: '',
@@ -97,14 +77,7 @@ const routes: RouteObject[] = [
               {
                 path: 'about',
                 element: <About />,
-                /* children: [
-                   {
-                     path: ':id',
-                     element: <Details />,
-                   },
-                 ],*/
               },
-
               {
                 path: 'estates',
                 element: <EstatesList />,
@@ -116,7 +89,6 @@ const routes: RouteObject[] = [
               {
                 path: 'buy',
                 element: <EstatesList />,
-
               },
               {
                 path: 'rent/details',
@@ -126,6 +98,10 @@ const routes: RouteObject[] = [
               {
                 path: 'buy/details',
                 element: <EstatesDetails />,
+              },
+              {
+                path: 'knowledge-real-estate',
+                element: <KnowledgeRealEstate />,
               },
               {
                 path: 'contacts',
@@ -147,6 +123,16 @@ const routes: RouteObject[] = [
                 path: 'service-around',
                 element: <ServiceAround />,
               },
+              {
+                path: 'my-account',
+                element: <MyAccount />,
+                children: [
+                  {
+                    path: 'profile',
+                    element: <ProfilePage />,
+                  },
+                ],
+              },
               { path: 'not-found', element: <NotFoundPage /> },
               { path: '*', element: <RedirectToErrorPage /> },
             ],
@@ -162,5 +148,3 @@ const router = createBrowserRouter(routes)
 const Routes = () => <RouterProvider router={router} />
 
 export default Routes
-
-
