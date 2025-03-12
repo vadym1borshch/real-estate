@@ -1,19 +1,21 @@
+import { ROUTES } from '../../../@constants/routes.ts'
+
 export const authButtons = [
   {
     id: '1',
-    href: '/my-account/profile',
+    href: ROUTES.profile,
     title: 'buttons.profile',
     icon: 'userIcon',
   },
   {
     id: '2',
-    href: '#',
+    href: ROUTES.ads,
     title: 'buttons.ads',
     icon: 'boardDocumentIcon',
   },
   {
     id: '3',
-    href: '/my-account/messages',
+    href: '#',
     title: 'buttons.messages',
     icon: 'emailIcon',
   },

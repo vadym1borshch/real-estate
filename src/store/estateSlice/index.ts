@@ -1,59 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { houses } from './data.ts'
 import { sleep } from '../../helpers/common.ts'
 import {
   buyFilters,
   FilterOption,
   rentFilters,
 } from '../../components/organisms/home-page/popular-block/mock.ts'
-
-export interface RealEstate {
-  id: string
-  image: string
-  label: string
-  isTop: boolean
-  favorite: boolean
-  selectedOnMap: boolean
-  type: {
-    key: string
-    value: string
-  }
-  address: {
-    location: string
-    coordinates: number[]
-  }
-  rooms: number
-  bathrooms: {
-    total: number
-    description: string
-  }
-  operation: {
-    key: string
-    value: string
-  }
-  size: {
-    livingAreaM2: string
-    landAreaM2: string
-  }
-  price: string
-  views: number
-  details: {
-    yearBuilt: number
-    floors: string
-    garage: string
-    heating: string
-    condition: string
-    commissionFree: string
-  }
-  rentDetails?: {
-    additionalFeatures: string
-    kitchen: string
-    loungeArea: string
-    furnished: string
-    availability: string
-    additionalInfo: string
-  }
-}
+import { houses, RealEstate } from '../commonMock.ts'
 
 export const fetchEstate = createAsyncThunk<RealEstate[], void>(
   'estate',

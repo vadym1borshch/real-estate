@@ -133,14 +133,13 @@ export type Agent = {
     value: boolean
     title: string
   }
-  agency: {
+  agency?: {
     name: string
     type: string
     address: string
     phone: string
     email: string
     website: string
-    verified: boolean
   }
 }
 
@@ -160,7 +159,7 @@ export const realEstateAgents:Agent[] = [
     address: '1010 Wien',
     photo: 'https://i.pravatar.cc/300?img=10',
     verified: {
-      value: true,
+      value: false,
       title: 'real-estate.real-estate-agent.verified-title',
     },
     agency: {
@@ -170,7 +169,6 @@ export const realEstateAgents:Agent[] = [
       phone: '+43 1 987 6543',
       email: 'office@immovision.at',
       website: 'https://www.immovision.at',
-      verified: true,
     },
   },
   {
@@ -198,7 +196,6 @@ export const realEstateAgents:Agent[] = [
       phone: '+43 1 223 4456',
       email: 'office@viennahomes.at',
       website: 'https://www.viennahomes.at',
-      verified: true,
     },
   },
   {
@@ -226,7 +223,6 @@ export const realEstateAgents:Agent[] = [
       phone: '+43 1 456 7890',
       email: 'kontakt@green-realty.at',
       website: 'https://www.green-realty.at',
-      verified: true,
     },
   },
   {
@@ -254,7 +250,6 @@ export const realEstateAgents:Agent[] = [
       phone: '+43 1 112 3344',
       email: 'info@elite-properties.at',
       website: 'https://www.elite-properties.at',
-      verified: false,
     },
   },
   {
@@ -282,7 +277,6 @@ export const realEstateAgents:Agent[] = [
       phone: '+43 1 998 7765',
       email: 'office@altbautraum.at',
       website: 'https://www.altbautraum.at',
-      verified: true,
     },
   },
 ]

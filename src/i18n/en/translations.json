@@ -24,8 +24,48 @@
     "my-account": {
       "title": "My account "
     },
+    "ads": {
+      "title": "My ads"
+    },
+    "rent-ads": {
+      "title": "Rent "
+    },
+    "sell-ads": {
+      "title": "Sell "
+    },
     "profile": {
-      "title": "Profile "
+      "title": "Profile ",
+      "verification": {
+        "title": {
+          "not-verified": "Perform verification",
+          "verified": "Verified"
+        },
+        "modal": {
+          "p1": "To complete the verification process, please upload your license. Supported file formats: JPG, PNG, PDF. Maximum file size: 5 MB. Please ensure all data on the license is clearly legible.",
+          "p2": "Your document has been successfully uploaded. To complete the verification process, please click the \"Send\" button.",
+          "p3": "We've received your documents and will review them within the next 72 hours. If everything is OK, a verification icon will appear on your profile. You don't need to do anything else."
+        }
+      },
+      "form": {
+        "name": "First name",
+        "last-name": "Last name",
+        "email": "Email",
+        "tel": "Phone",
+        "password": {
+          "main": "Password",
+          "extra": "Change Password"
+        },
+        "agency": {
+          "main": "Agency",
+          "extra": "Agency name"
+        },
+        "private": "Private",
+        "city": "City",
+        "province": {
+          "main": "Province",
+          "extra": "State or province"
+        }
+      }
     },
     "buttons": {
       "prev": "Prev",
@@ -45,7 +85,11 @@
       "messages": "My messages",
       "favorite": "Favorites",
       "photo-video": "Order photo/video",
-      "payment-options": "Payment options"
+      "payment-options": "Payment options",
+      "save": "Save",
+      "upload-doc": "Upload document",
+      "send": "Send",
+      "understood": "Understood"
     },
     "knowledge-real-estate": {
       "title": "Knowledge about real estate ",

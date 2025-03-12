@@ -6,15 +6,24 @@ import LanguageSwitcher from '../language-switcher'
 import AuthButtons from '../auth-buttons'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { initialButtons } from '../../organisms/header/mock.ts'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { selectUser } from '../../../store/userSlice/selectors.ts'
+import { setUser } from '../../../store/userSlice'
+import { ROUTES } from '../../../@constants/routes.ts'
+import { realEstateAgents } from '../../../app/Pages/ServiceAround/mock.ts'
+
+const agent = realEstateAgents[0]
 
 interface Props {
   open: boolean
   setOpen: (open: boolean) => void
 }
 
-const MobileMenu = ({open, setOpen}:Props) => {
+const MobileMenu = ({ open, setOpen }: Props) => {
   const navigate = useNavigate()
   const { t } = useTranslation()
+  const dispatch = useAppDispatch()
+  const user = useAppSelector(selectUser)
   return (
     <div className="flex items-center gap-6 md:hidden">
       <Button variant="outlined" className="h-fit w-fit !border-0 p-0">
@@ -30,9 +39,15 @@ const MobileMenu = ({open, setOpen}:Props) => {
             <Button
               size="sm"
               className="text-charcoal hover:bg-seafoam-green focus:border-seafoam-green h-[40px] min-w-[80px] bg-white px-4 focus:border-4 focus:outline-none"
-              onClick={() => {}}
+              onClick={() => {
+                if (!user) {
+                  dispatch(setUser(agent))
+                } else {
+                  navigate(ROUTES.profile)
+                }
+              }}
             >
-              {t('buttons.sign-in')}
+              {!user ? t('buttons.sign-in') : t('my-account.title')}
             </Button>
             <LanguageSwitcher className="hover:text-gray focus:!border-seafoam-green focus:!outline-seafoam-green text-white focus:!border-0 focus:!outline-4" />
           </div>
@@ -68,7 +83,7 @@ const MobileMenu = ({open, setOpen}:Props) => {
             ))}
           </div>
 
-          <AuthButtons onClick={() => setOpen(!open)} />
+          {user && <AuthButtons onClick={() => setOpen(!open)} />}
         </div>
       </Drawer>
     </div>

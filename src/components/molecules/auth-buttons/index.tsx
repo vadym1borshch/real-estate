@@ -42,7 +42,7 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
             },
             {
               'border-charcoal bg-charcoal hover:!bg-charcoal !text-white hover:!text-white':
-                buttonClassName && pathname === button.href,
+                buttonClassName && pathname.includes(button.href),
             },
             buttonClassName
           )}

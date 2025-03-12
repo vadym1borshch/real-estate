@@ -20,8 +20,48 @@
     "my-account": {
       "title": "Mein Konto "
     },
+    "ads": {
+      "title": "Meine Anzeigen"
+    },
+    "rent-ads": {
+      "title": "Verkaufen "
+    },
+    "sell-ads": {
+      "title": "Vermieten "
+    },
     "profile": {
-      "title": "Profile "
+      "title": "Profile ",
+      "verification": {
+        "title": {
+          "not-verified": "Verifizierung durchführen",
+          "verified": "Verified"
+        },
+        "modal": {
+          "p1": "Um den Verifizierungsprozess abzuschließen, laden Sie bitte Ihre Lizenz hoch. Unterstützte Dateiformate: JPG, PNG, PDF. Maximale Dateigröße: 5 MB. Stellen Sie sicher, dass alle Daten auf der Lizenz deutlich lesbar sind.",
+          "p2": "Ihr Dokument wurde erfolgreich hochgeladen. Wenn Sie den Verifizierungsprozess abschließen möchten, klicken Sie bitte auf die Schaltfläche \"Senden\".",
+          "p3": "Wir haben Ihre Dokumente erhalten und werden sie innerhalb der nächsten 72 Stunden überprüfen. Wenn alles in Ordnung ist, wird in Ihrem Profil ein Verifizierungssymbol angezeigt. Sie müssen nichts weiter tun."
+        }
+      },
+      "form": {
+        "name": "Vorname",
+        "last-name": "Nachname",
+        "email": "Email",
+        "tel": "Telefon",
+        "password": {
+          "main": "Passwort",
+          "extra": "Passwort ändern"
+        },
+        "agency": {
+          "main": "Agentur",
+          "extra": "Name der Agentur"
+        },
+        "private": "Privatperson",
+        "city": "Stadt",
+        "province": {
+          "main": "Provinz",
+          "extra": "Staat oder Provinz"
+        }
+      }
     },
     "errors": {
       "invalid-number": "Ungültige Eingabe: \"{{value}}\". Es sind nur Zahlen erlaubt.",
@@ -45,7 +85,11 @@
       "messages": "Meine Nachrichten",
       "favorite": "Favoriten",
       "photo-video": "Foto/Video bestellen",
-      "payment-options": "Zahlungsmöglichkeiten"
+      "payment-options": "Zahlungsmöglichkeiten",
+      "save": "Speichern Sie",
+      "upload-doc": "Dokument hochladen",
+      "send": "Senden",
+      "understood": "Verstanden"
     },
     "knowledge-real-estate": {
       "title": "Wissen rund um die Immobilie ",

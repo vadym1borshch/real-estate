@@ -60,8 +60,8 @@ const Input = ({
         {...rest}
       />
       {error && errorPosition === 'bottom' && (
-        <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end">
-          <Icon id="errorIconRed" className="h-[24px] w-[16px]" />
+        <span className="text-red flex items-center justify-end self-end">
+          <Icon id="errorIconRed" className="h-[24px] w-[24px]" />
           {error}
         </span>
       )}

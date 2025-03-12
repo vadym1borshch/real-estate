@@ -4,6 +4,7 @@ import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
 import Breadcrumb from '../../../molecules/breadcrumb'
 import { useEffect, useState } from 'react'
 import useTranslationSearch from '../../../../helpers/hooks/useTranslationSearch.ts'
+import { ROUTES } from '../../../../@constants/routes.ts'
 
 const initLinks = [
   {
@@ -23,11 +24,13 @@ export const DefaultPageLayout = () => {
       const segments = path.split('/').filter(Boolean)
       let accumulatedPath = ''
 
+      const href = path ===ROUTES.myAccount ? path + ROUTES.profile : path
+
       const newLinks = segments.map((segment) => {
         accumulatedPath += `/${segment}`
         return {
           id: accumulatedPath,
-          href: accumulatedPath,
+          href,
           label: getTranslationByKey(`${segment}.title`) || segment,
         }
       })

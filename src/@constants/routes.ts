@@ -13,4 +13,9 @@ export const ROUTES = {
   rentDetails: '/rent/details',
   buyDetails: '/buy/details',
   knowledgeRealEstate: '/knowledge-real-estate',
+  myAccount: '/my-account',
+  profile: '/my-account/profile',
+  ads: '/my-account/ads',
+  rentAds: '/my-account/ads/rent-ads',
+  sellAds: '/my-account/ads/sell-ads',
 } as const

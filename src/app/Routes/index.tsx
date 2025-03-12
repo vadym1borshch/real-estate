@@ -1,6 +1,6 @@
 import {
   createBrowserRouter,
-  Navigate,
+  Navigate, Outlet,
   type RouteObject,
   RouterProvider,
   useNavigate,
@@ -25,6 +25,9 @@ import { EstatesDetails } from '../Pages/EstatesList/EstateDetails'
 import { KnowledgeRealEstate } from '../Pages/KnowledgeRealEstate'
 import { MyAccount } from '../Pages/MyAccount'
 import { ProfilePage } from '../Pages/MyAccount/Profile'
+import { Ads } from '../Pages/MyAccount/Ads'
+import { Rent } from '../Pages/MyAccount/Ads/Rent'
+import { Sell } from '../Pages/MyAccount/Ads/Sell'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -131,6 +134,31 @@ const routes: RouteObject[] = [
                     path: 'profile',
                     element: <ProfilePage />,
                   },
+                  {
+                    path: 'ads',
+                    element: <Ads />
+                  },
+                  {
+                    path: 'ads/rent-ads',
+                    element: <Rent />,
+                    children: [
+                      {
+                        path: ':id',
+                        element: <Outlet/>
+                      }
+                    ]
+                  },
+                  {
+                    path: 'ads/sell-ads',
+                    element: <Sell/>,
+                    children: [
+                      {
+                        path: ':id',
+                        element: <Outlet/>
+                      }
+                    ]
+                  },
+
                 ],
               },
               { path: 'not-found', element: <NotFoundPage /> },

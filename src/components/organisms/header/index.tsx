@@ -10,6 +10,13 @@ import { BREAKPOINTS } from '../../../helpers/common.ts'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import MobileMenu from '../../molecules/mobile-menu'
 import { initialButtons } from './mock.ts'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { realEstateAgents } from '../../../app/Pages/ServiceAround/mock.ts'
+import { setUser } from '../../../store/userSlice'
+import { selectUser } from '../../../store/userSlice/selectors.ts'
+import { ROUTES } from '../../../@constants/routes.ts'
+
+const agent = realEstateAgents[0]
 
 interface Props {
   className?: string
@@ -17,11 +24,13 @@ interface Props {
 
 const Header = ({ className }: Props) => {
   const { t } = useTranslation()
+  const user = useAppSelector(selectUser)
   const { width } = useWindowDimensions()
   const navigate = useNavigate()
   const isMedium = width > BREAKPOINTS.md
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const dispatch = useAppDispatch()
 
   const goToHomePage = () => {
     if (pathname === '/' || pathname === '') return
@@ -68,9 +77,15 @@ const Header = ({ className }: Props) => {
         <Button
           size="sm"
           className="bg-charcoal hover:bg-seafoam-green focus:border-seafoam-green px-4 focus:border-4 focus:outline-none"
-          onClick={() => {}}
+          onClick={() => {
+            if (!user) {
+              dispatch(setUser(agent))
+            } else {
+              navigate(ROUTES.profile)
+            }
+          }}
         >
-          {t('buttons.sign-in')}
+          {!user ? t('buttons.sign-in') : t('my-account.title')}
         </Button>
         <LanguageSwitcher />
       </div>
