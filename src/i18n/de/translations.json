@@ -29,6 +29,18 @@
     "sell-ads": {
       "title": "Vermieten "
     },
+    "active": {
+      "title": "Aktiv "
+    },
+    "inactive": {
+      "title": "Inaktiv "
+    },
+    "moderation": {
+      "title": "Zur Mäßigung"
+    },
+    "rejected": {
+      "title": "Ablehnungen "
+    },
     "profile": {
       "title": "Profile ",
       "verification": {

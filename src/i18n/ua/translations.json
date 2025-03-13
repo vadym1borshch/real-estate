@@ -33,6 +33,18 @@
     "sell-ads": {
       "title": "Продаж "
     },
+    "active": {
+      "title": "Активні "
+    },
+    "inactive": {
+      "title": "Неактивні "
+    },
+    "moderation": {
+      "title": "В обробці"
+    },
+    "rejected": {
+      "title": "Відмови "
+    },
     "profile": {
       "title": "Профіль",
       "verification": {

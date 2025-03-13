@@ -33,6 +33,18 @@
     "sell-ads": {
       "title": "Sell "
     },
+    "active": {
+      "title": "Active "
+    },
+    "inactive": {
+      "title":"Inactive "
+    },
+    "moderation": {
+      "title": "For moderation"
+    },
+    "rejected": {
+      "title": "Rejections "
+    },
     "profile": {
       "title": "Profile ",
       "verification": {

@@ -1,18 +1,21 @@
 import { ReactNode } from 'react'
-import { adsFilterStatuses } from '../../../../store/adsSlice'
+import { adsFilterStatuses, setCurrentAdsStatus } from '../../../../store/adsSlice'
 import Tab from '../../../../components/atoms/tab'
-import { useNavigate } from '../../../../helpers/hooks/useNavigate.ts'
 import Button from '../../../../components/atoms/button'
-import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
+import { useRoute } from '../useRoute.ts'
+import { useAppDispatch } from '../../../../store'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   children: ReactNode
-  anyAds: boolean
+  anyAds?: boolean
+  onClick: (value: string) => void
 }
 
-export const AdsLayout = ({ children, anyAds }: Props) => {
-  const navigation = useNavigate()
-  const path = usePathname()
+export const AdsLayout = ({ children, anyAds, onClick }: Props) => {
+  const activeRoute = useRoute()
+  const dispatch = useAppDispatch()
+  const {t} = useTranslation()
   return (
     <div className="flex w-full flex-col gap-10">
       <div className="flex flex-wrap gap-3">
@@ -20,10 +23,11 @@ export const AdsLayout = ({ children, anyAds }: Props) => {
           return (
             <Tab
               key={status.type}
-              label={status.title}
-              selected={status.type === 'active'}
+              label={t(status.title)}
+              selected={status.type === activeRoute}
               onClick={() => {
-                navigation(`${path}/${status.type}`)
+                onClick(status.type)
+                dispatch(setCurrentAdsStatus(status.type))
               }}
             />
           )

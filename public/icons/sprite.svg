@@ -147,6 +147,22 @@
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
 
+
+    <svg id="eyeHideIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9.76094 14.3667C9.18594 13.7927 8.83594 13.0127 8.83594 12.1377C8.83594 10.3847 10.2479 8.97168 11.9999 8.97168C12.8669 8.97168 13.6649 9.32268 14.2299 9.89668"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.1054 12.6989C14.8734 13.9889 13.8574 15.0069 12.5684 15.2409" stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.655 17.4722C5.068 16.2262 3.724 14.4062 2.75 12.1372C3.734 9.85823 5.087 8.02823 6.684 6.77223C8.271 5.51623 10.102 4.83423 12 4.83423C13.909 4.83423 15.739 5.52623 17.336 6.79123"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.4487 8.99072C20.1367 9.90472 20.7417 10.9597 21.2507 12.1367C19.2837 16.6937 15.8078 19.4387 12.0008 19.4387C11.1378 19.4387 10.2868 19.2987 9.46875 19.0257"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19.8873 4.24951L4.11328 20.0235" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </svg>
+
+
     <symbol id="menuGridIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M3.10875 4.842C3.21375 3.859 4.02775 3.103 5.01575 3.072C6.08175 2.976 7.15475 2.976 8.22075 3.072C9.21375 3.092 10.0338 3.853 10.1277 4.842C10.2727 6.02 10.2727 7.21 10.1277 8.388C10.0278 9.373 9.21075 10.13 8.22075 10.154C7.15475 10.252 6.08175 10.252 5.01575 10.154C4.02575 10.13 3.20875 9.373 3.10875 8.388C2.96375 7.21 2.96375 6.02 3.10875 4.842Z"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

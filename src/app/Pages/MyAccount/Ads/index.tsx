@@ -1,18 +1,18 @@
 import Button from '../../../../components/atoms/button'
 import { useNavigate } from '../../../../helpers/hooks/useNavigate.ts'
-import { ROUTES } from '../../../../@constants/routes.ts'
+import { ADS_ROUTES } from '../../../../@constants/routes.ts'
 import { useTranslation } from 'react-i18next'
 
 export const Ads = () => {
   const navigate = useNavigate()
   const {t} = useTranslation()
   return (
-    <div className="flex w-full flex-col gap-3">
+    <div className="flex flex-col gap-3">
       <Button
         variant="outlined"
         iconId="arrowRightIcon"
         className="w-full text-base"
-        onClick={() => navigate(ROUTES.sellAds)}
+        onClick={() => navigate(`${ADS_ROUTES.sellAds}/active`)}
       >
         {t('sell-ads.title')}
       </Button>
@@ -20,7 +20,7 @@ export const Ads = () => {
         variant="outlined"
         iconId="arrowRightIcon"
         className="w-full text-base"
-        onClick={() => navigate(ROUTES.rentAds)}
+        onClick={() => navigate(`${ADS_ROUTES.rentAds}/active`)}
       >
         {t('rent-ads.title')}
       </Button>

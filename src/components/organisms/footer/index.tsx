@@ -12,7 +12,7 @@ const Footer = () => {
   const isMedium = width <= BREAKPOINTS.xl
 
   return (
-    <footer className="bg-jungle-green flex min-h-[27.8125rem] flex-col rounded-lg px-6 py-[1.875rem] lg:px-[7.5rem] -mx-5">
+    <footer className="bg-jungle-green flex min-h-[27.8125rem] flex-col rounded-lg px-6 py-[1.875rem] lg:px-[7.5rem] ">
       <div className="w-full flex justify-center md:justify-start">
         <Logo variant="white" />
       </div>

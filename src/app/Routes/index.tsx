@@ -1,6 +1,6 @@
 import {
   createBrowserRouter,
-  Navigate, Outlet,
+  Navigate,
   type RouteObject,
   RouterProvider,
   useNavigate,
@@ -28,6 +28,7 @@ import { ProfilePage } from '../Pages/MyAccount/Profile'
 import { Ads } from '../Pages/MyAccount/Ads'
 import { Rent } from '../Pages/MyAccount/Ads/Rent'
 import { Sell } from '../Pages/MyAccount/Ads/Sell'
+import { AdsType } from '../Pages/MyAccount/Ads/AdsType'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -143,9 +144,18 @@ const routes: RouteObject[] = [
                     element: <Rent />,
                     children: [
                       {
-                        path: ':id',
-                        element: <Outlet/>
-                      }
+                        path: 'active',
+                        element: <AdsType/>
+                      }, {
+                        path: 'inactive',
+                        element: <AdsType/>
+                      }, {
+                        path: 'moderation',
+                        element: <AdsType/>
+                      }, {
+                        path: 'rejected',
+                        element: <AdsType/>
+                      },
                     ]
                   },
                   {
@@ -153,9 +163,18 @@ const routes: RouteObject[] = [
                     element: <Sell/>,
                     children: [
                       {
-                        path: ':id',
-                        element: <Outlet/>
-                      }
+                        path: 'active',
+                        element: <AdsType/>
+                      }, {
+                        path: 'inactive',
+                        element: <AdsType/>
+                      }, {
+                        path: 'moderation',
+                        element: <AdsType/>
+                      }, {
+                        path: 'rejected',
+                        element: <AdsType/>
+                      },
                     ]
                   },
 

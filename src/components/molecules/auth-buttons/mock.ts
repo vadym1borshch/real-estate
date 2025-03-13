@@ -1,4 +1,4 @@
-import { ROUTES } from '../../../@constants/routes.ts'
+import { ADS_ROUTES, ROUTES } from '../../../@constants/routes.ts'
 
 export const authButtons = [
   {
@@ -9,7 +9,7 @@ export const authButtons = [
   },
   {
     id: '2',
-    href: ROUTES.ads,
+    href: ADS_ROUTES.ads,
     title: 'buttons.ads',
     icon: 'boardDocumentIcon',
   },

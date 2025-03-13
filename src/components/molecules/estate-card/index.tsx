@@ -5,11 +5,11 @@ import { useTranslation } from 'react-i18next'
 import H3 from '../../atoms/typography/h3'
 import { cn } from '../../../helpers/ui.ts'
 import {
-  RealEstate,
   setCurrentEstate,
   setFavorite,
 } from '../../../store/estateSlice'
 import { useAppDispatch } from '../../../store'
+import { RealEstate } from '../../../store/commonMock.ts'
 
 interface Props {
   realEstate: RealEstate
@@ -40,7 +40,7 @@ const EstateCard = ({ realEstate, className }: Props) => {
     <Link
       href={`/${operation.key}/details`}
       className={cn(
-        'group z-0 flex min-h-[26.75rem] max-w-[22.5rem] flex-col gap-0 hover:border-0 focus:border-0',
+        'group z-0 flex min-h-[26.75rem] min-w-[300px] max-w-[22.5rem] flex-col gap-0 hover:border-0 focus:border-0',
         { 'border-charcoal rounded-lg border-2 hover:border-2': selectedOnMap },
         className
       )}
@@ -50,7 +50,7 @@ const EstateCard = ({ realEstate, className }: Props) => {
       }}
     >
       <div className="relative">
-        <div className="absolute top-0 flex w-full justify-between p-6">
+        <div className="absolute top-0 flex w-full justify-between p-6 min-w-[300px]">
           {isTop && <Chip value="Top" />}
           <Icon
             id={favorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
@@ -63,7 +63,7 @@ const EstateCard = ({ realEstate, className }: Props) => {
             }}
           />
         </div>
-        <img src={image} alt="house" className="h-[15rem] object-cover" />
+        <img src={image} alt="house" className="h-[15rem] object-cover min-w-[300px] rounded-lg" />
       </div>
       <div className="bg-light-gray2 group-hover:bg-gray transition-hover flex min-h-[11.75rem] w-full flex-col gap-3 rounded-b-lg px-6 py-5 duration-300">
         <label className="house-card__label font-700 text-charcoal">

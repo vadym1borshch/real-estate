@@ -20,7 +20,7 @@ export const MainLayout = () => {
 
   return (
     <div
-      className={cn('max-w-[1440px] p-5', {
+      className={cn('w-full p-5', {
         'px-7.5': path !== ROUTES.home && isMobile,
       })}
     >

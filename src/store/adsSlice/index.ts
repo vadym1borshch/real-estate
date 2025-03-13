@@ -2,36 +2,35 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { sleep } from '../../helpers/common.ts'
 import { houses, RealEstate } from '../commonMock.ts'
 
-export const fetchEstate = createAsyncThunk<RealEstate[], void>(
+export const fetchAds = createAsyncThunk<RealEstate[], void>(
   'ads',
   async () => {
     // simulate api call
     await sleep(1000)
-   /* return [...houses]*/
-    return []
+    return [...houses]
   }
 )
 
 export const adsFilterStatuses = [
   {
-    type:'active',
-    title: "Active",
+    type: 'active',
+    title: 'active.title',
   },
-   {
-    type:'inactive',
-    title: "Inactive",
+  {
+    type: 'inactive',
+    title: 'inactive.title',
   },
-   {
-    type:'moderation',
-    title: "For moderation",
+  {
+    type: 'moderation',
+    title: 'moderation.title',
   },
-   {
-    type:'rejected',
-    title: "Rejections",
+  {
+    type: 'rejected',
+    title: 'rejected.title',
   },
 ] as const
 
-export type AdsFilterStatus = typeof adsFilterStatuses[number]['type'];
+export type AdsFilterStatus = (typeof adsFilterStatuses)[number]['type']
 
 export interface I_ADS extends RealEstate {
   status: AdsFilterStatus
@@ -39,47 +38,48 @@ export interface I_ADS extends RealEstate {
 
 export interface IState {
   data: I_ADS[] | null
-
+  currentAdStatus: AdsFilterStatus
 }
 
 const initialState: IState = {
   data: null,
+  currentAdStatus: 'active',
 }
 
 export const realEstateSlice = createSlice({
   name: 'ads',
   initialState,
   reducers: {
-    addAds: (state, action: PayloadAction<I_ADS>) => {
+    addAd: (state, action: PayloadAction<I_ADS>) => {
       if (state.data) {
         state.data = [...state.data, action.payload]
       }
     },
-
+    setCurrentAdsStatus: (state, action: PayloadAction<AdsFilterStatus>) => {
+      state.currentAdStatus = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder
-    /*  .addCase(fetchEstate.pending, (state) => {
-
-      })*/
+      /*  .addCase(fetchEstate.pending, (state) => {
+  
+        })*/
       .addCase(
-        fetchEstate.fulfilled,
+        fetchAds.fulfilled,
         (state, action: PayloadAction<RealEstate[]>) => {
-          state.data = action.payload.slice(3,7).map(el => {
+          state.data = action.payload.map((el, index) => {
             return {
               ...el,
-              status: "inactive"
-            }
-          })
+              status: adsFilterStatuses[index % adsFilterStatuses.length].type,
+            };
+          });
         }
       )
-   /*   .addCase(fetchEstate.rejected, (state, action) => {
-      })*/
+    /*   .addCase(fetchEstate.rejected, (state, action) => {
+       })*/
   },
 })
 
-export const {
- addAds
-} = realEstateSlice.actions
+export const { addAd,  setCurrentAdsStatus } = realEstateSlice.actions
 
 export default realEstateSlice.reducer
