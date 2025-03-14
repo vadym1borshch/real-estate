@@ -1,80 +1,105 @@
-import { useAppSelector } from '../../../../../store'
+import { useAppDispatch, useAppSelector } from '../../../../../store'
 import { selectCurrentAds } from '../../../../../store/adsSlice/selectors.ts'
 import EstateCard from '../../../../../components/molecules/estate-card'
 import { usePathname } from '../../../../../helpers/hooks/usePathname.ts'
 import { ADS_ROUTES } from '../../../../../@constants/routes.ts'
-import Icon from '../../../../../components/atoms/icon'
-import Button from '../../../../../components/atoms/button'
+import { cn } from '../../../../../helpers/ui.ts'
+import { ActionButtons } from './ActionButtons.tsx'
+import { useEffect, useState } from 'react'
+import Modal from '../../../../../components/molecules/modal'
+import { ModalContent } from './ModalContent.tsx'
+import { useTranslation } from 'react-i18next'
+import { setTopAd } from '../../../../../store/adsSlice'
 
-const actionButtons = [
-  {
-    id: '1',
-    children: 'Top',
-    type: 'default',
-  },
-  {
-    id: '2',
-    children: 'homeIcon',
-    type: 'icon',
-  },
-  {
-    id: '3',
-    children: 'keysIcon',
-    type: 'icon',
-  },
-  {
-    id: '4',
-    children: 'eyeHideIcon',
-    type: 'icon',
-  },
-  {
-    id: '5',
-    children: 'editIcon',
-    type: 'icon',
-  },
-  {
-    id: '6',
-    children: 'deleteIcon',
-    type: 'icon',
-  },
-]
+export type ModalStatus = 'success' | 'rejected' | null
 
 export const AdsType = () => {
+  const [modalId, setModalId] = useState<string | null>(null)
+  const [modalStatus, setModalStatus] = useState<ModalStatus>(null)
+  const [currentAd, setCurrentAd] = useState<string | null>(null)
   const path = usePathname()
+  const { t } = useTranslation()
+  const dispatch = useAppDispatch()
 
   const key = path.includes(ADS_ROUTES.rentAds) ? 'rent' : 'buy'
 
   const ads = useAppSelector(selectCurrentAds(key))
 
+  const modalStatusHandler = (modalId: string, adId?: string) => {
+    if (adId) {
+      setCurrentAd(adId)
+    }
+    setModalId(modalId)
+  }
+
+  const getModalTitle = () => {
+    if (modalId === 'rejected-reason') {
+      return t('ads.modal.rejected-reason.title')
+    }
+    if (modalStatus === 'success') {
+      return t('ads.modal.increase-top.success.title')
+    }
+    if (modalStatus === 'rejected') {
+      return t('ads.modal.increase-top.rejected.title')
+    }
+
+    return t('ads.modal.increase-top.main.title')
+  }
+
+  useEffect(() => {
+    if (!modalId) {
+      setCurrentAd(null)
+    }
+  }, [modalId])
+
+  useEffect(() => {
+    if (modalStatus === 'success') {
+      if (currentAd) {
+        dispatch(setTopAd({ id: currentAd }))
+      }
+    }
+  }, [modalStatus, currentAd])
+
   if (!ads) {
     return null
   }
+
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(22.5rem,1fr))] place-items-center gap-10">
-      {ads.map((ad) => (
-        <div key={ad.id} className="flex w-fit flex-col gap-1.5">
-          <EstateCard realEstate={ad} />
-          <div className="grid w-[22.5rem] min-w-[300px] grid-cols-[3fr_1fr_1fr_1fr_1fr_1fr] gap-1.5">
-            {actionButtons.map((button) => {
-              if (button.type === 'default') {
-                return (
-                  <Button className="!h-[40px] w-auto" key={button.id}>
-                    {button.children}
-                  </Button>
-                )
-              }
-              return (
-                <Button
-                  key={button.id}
-                  className="bg-charcoal hover:bg-seafoam-green !h-[40px] !w-[40px] px-0 text-white"
-                >
-                  <Icon id={button.children} className="h-[24px] w-[24px]" />
-                </Button>
-              )
-            })}
+      {ads.map((ad) => {
+        const disabled = ad.status !== 'active' && ad.status !== 'inactive'
+        return (
+          <div key={ad.id} className="flex w-fit flex-col gap-1.5">
+            <EstateCard
+              disabled={disabled}
+              realEstate={ad}
+              className={cn({
+                'opacity-50': disabled,
+              })}
+            />
+            <ActionButtons
+              status={ad.status}
+              adId={ad.id}
+              callback={(modalId, adId) => modalStatusHandler(modalId, adId)}
+            />
           </div>
-        </div>
-      ))}
+        )
+      })}
+      <Modal
+        title={getModalTitle()}
+        className="max-w-[35rem]"
+        open={!!modalId}
+        setOpen={() => {
+          setModalId(null)
+          setModalStatus(null)
+        }}
+      >
+        <ModalContent
+          id={modalId}
+          onClick={setModalStatus}
+          status={modalStatus}
+        />
+      </Modal>
     </div>
   )
 }

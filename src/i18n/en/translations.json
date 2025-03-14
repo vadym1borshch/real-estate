@@ -1,7 +1,8 @@
 {
   "translation": {
     "common": {
-      "postal-code": "Postal code"
+      "postal-code": "Postal code",
+      "top": "Top"
     },
     "rent": {
       "title": "Rent "
@@ -25,7 +26,28 @@
       "title": "My account "
     },
     "ads": {
-      "title": "My ads"
+      "title": "My ads",
+      "no-ads": "You currently have no ads.",
+      "modal": {
+        "rejected-reason": {
+          "title": "REASON FOR REJECTION",
+          "p": "Your ad was rejected because the images do not meet our quality standards. You can correct the errors and resubmit your ad for moderation by clicking the \"Restart\" button."
+        },
+        "increase-top": {
+          "main": {
+            "title": "BUY TOP AD",
+            "p": "Select the desired duration and see the corresponding costs. After successful payment, your ad will automatically be placed in the top ads."
+          },
+          "success": {
+            "title": "PAYMENT SUCCESSFUL",
+            "p": "Thank you! Your payment was successful. We are glad that you chose us. Your ad has been successfully placed in the top ads."
+          },
+          "rejected": {
+            "title":"ERROR MESSAGE",
+            "p": "A problem occurred. Please try again later. Thank you for your understanding. Or write to us; we'll be happy to help."
+          }
+        }
+      }
     },
     "rent-ads": {
       "title": "Rent "
@@ -101,7 +123,10 @@
       "save": "Save",
       "upload-doc": "Upload document",
       "send": "Send",
-      "understood": "Understood"
+      "understood": "Understood",
+      "find-reason": "Find out the reason",
+      "create-ad": "Create ad",
+      "pay": "Pay"
     },
     "knowledge-real-estate": {
       "title": "Knowledge about real estate ",

@@ -35,7 +35,7 @@ const Button = ({
     <TButton
       ripple={false}
       className={cn(
-        'bg-coral hover:bg-light-coral focus:border-charcoal !focus:py-0 disabled:bg-gray flex h-12 w-fit cursor-pointer items-center justify-center rounded-sm px-6 py-0 text-xl font-normal text-white shadow-none hover:shadow-none focus:rounded-lg focus:border-4',
+        'bg-coral hover:bg-light-coral focus:border-charcoal !focus:py-0 disabled:bg-gray flex h-12 w-fit cursor-pointer items-center justify-center rounded-sm px-6 py-0 text-xl font-normal text-white shadow-none hover:shadow-none focus:rounded-sm focus:border-4',
         {
           'h-10 py-0 text-center text-base': size === 'sm',
           'bg-dark-coral hover:bg-dark-coral': pressed,

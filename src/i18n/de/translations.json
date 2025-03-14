@@ -1,7 +1,8 @@
 {
   "translation": {
     "common": {
-      "postal-code": "Postleitzahl"
+      "postal-code": "Postleitzahl",
+      "top": "Top"
     },
     "rent": {
       "title": "Mieten "
@@ -21,7 +22,28 @@
       "title": "Mein Konto "
     },
     "ads": {
-      "title": "Meine Anzeigen"
+      "title": "Meine Anzeigen",
+      "no-ads": "Sie haben derzeit keine Anzeigen.",
+      "modal": {
+        "rejected-reason": {
+          "title": "GRUND DER ABLEHNUNG",
+          "p": "Ihr Anzeige wurde abgelehnt, weil die Bilder nicht den Qualitätsstandards entsprechen. Sie können die Fehler beheben und Ihre Anzeige zur erneuten Moderation einreichen, indem Sie auf die Schaltfläche \"Restart\" klicken."
+        },
+        "increase-top": {
+          "main": {
+            "title": "TOP-ANZEIGE KAUFEN",
+            "p": "Wählen Sie die gewünschte Dauer aus und sehen Sie die entsprechenden Kosten. Nach erfolgreicher Zahlung wird Ihre Anzeige automatisch in den Top-Anzeigen platziert."
+          },
+          "success": {
+            "title": "ZAHLUNG ERFOLGREICH",
+            "p": "Vielen Dank! Ihre Zahlung war erfolgreich. Wir freuen uns, dass Sie sich für uns entschieden haben. Ihre Anzeige wurde erfolgreich in den Top-Anzeigen platziert."
+          },
+          "rejected": {
+            "title":"FEHLERMELDUNG",
+            "p": "Es ist ein Problem aufgetreten. Bitte versuchen Sie es später erneut. Vielen Dank für Ihr Verständnis. Oder schreiben Sie uns, wir helfen Ihnen gerne weiter."
+          }
+        }
+      }
     },
     "rent-ads": {
       "title": "Verkaufen "
@@ -101,7 +123,10 @@
       "save": "Speichern Sie",
       "upload-doc": "Dokument hochladen",
       "send": "Senden",
-      "understood": "Verstanden"
+      "understood": "Verstanden",
+      "find-reason": "Grund herausfinden",
+      "create-ad": "Anzeige erstellen",
+      "pay": "Bezahlen"
     },
     "knowledge-real-estate": {
       "title": "Wissen rund um die Immobilie ",

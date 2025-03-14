@@ -4,7 +4,6 @@ import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
 import Breadcrumb from '../../../molecules/breadcrumb'
 import { useEffect, useState } from 'react'
 import useTranslationSearch from '../../../../helpers/hooks/useTranslationSearch.ts'
-import { ROUTES } from '../../../../@constants/routes.ts'
 
 const initLinks = [
   {
@@ -24,13 +23,11 @@ export const DefaultPageLayout = () => {
       const segments = path.split('/').filter(Boolean)
       let accumulatedPath = ''
 
-      const href = path ===ROUTES.myAccount ? path + ROUTES.profile : path
-
       const newLinks = segments.map((segment) => {
         accumulatedPath += `/${segment}`
         return {
           id: accumulatedPath,
-          href,
+          href: accumulatedPath,
           label: getTranslationByKey(`${segment}.title`) || segment,
         }
       })
@@ -40,9 +37,11 @@ export const DefaultPageLayout = () => {
   }, [path])
 
   return (
-    <div className="w-full flex flex-col items-center ">
+    <div className="flex w-full flex-col items-center">
       <Header />
-      {path !== '/rent' && path !== '/buy' && path !== '/estates' && <Breadcrumb items={links} />}
+      {path !== '/rent' && path !== '/buy' && path !== '/estates' && (
+        <Breadcrumb items={links} />
+      )}
       <Outlet />
     </div>
   )

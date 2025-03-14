@@ -14,9 +14,10 @@ import { RealEstate } from '../../../store/commonMock.ts'
 interface Props {
   realEstate: RealEstate
   className?: string
+  disabled?: boolean
 }
 
-const EstateCard = ({ realEstate, className }: Props) => {
+const EstateCard = ({ realEstate, className, disabled }: Props) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const {
@@ -48,6 +49,7 @@ const EstateCard = ({ realEstate, className }: Props) => {
         dispatch(setCurrentEstate(id))
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }}
+      disabled={disabled}
     >
       <div className="relative">
         <div className="absolute top-0 flex w-full justify-between p-6 min-w-[300px]">

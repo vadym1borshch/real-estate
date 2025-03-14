@@ -1,24 +1,22 @@
-import { AdsLayout } from '../AdsLayout.tsx'
 import { Outlet } from 'react-router-dom'
+import { AdsLayout } from '../AdsLayout.tsx'
 import { useNavigate } from '../../../../../helpers/hooks/useNavigate.ts'
 import { ADS_ROUTES } from '../../../../../@constants/routes.ts'
-import { useAppDispatch, useAppSelector } from '../../../../../store'
+import { useAppSelector } from '../../../../../store'
 import { selectCurrentAds } from '../../../../../store/adsSlice/selectors.ts'
-import { useEffect } from 'react'
-import { fetchAds } from '../../../../../store/adsSlice'
+import { useApplyCorrectBreadcrumbLink, useFetchAds } from '../helpers.ts'
 
 export const Sell = () => {
+  useFetchAds()
+  useApplyCorrectBreadcrumbLink(ADS_ROUTES.sellAds)
+
   const navigate = useNavigate()
-  const dispatch = useAppDispatch()
+
   const routeHandler = (path: string) => {
     navigate(`${ADS_ROUTES.sellAds}/${path}`)
   }
 
-  const ads = useAppSelector(selectCurrentAds("buy"))
-
-  useEffect(() => {
-    dispatch(fetchAds())
-  }, [])
+  const ads = useAppSelector(selectCurrentAds('buy'))
 
   return (
     <AdsLayout onClick={routeHandler} anyAds={!!ads?.length}>
