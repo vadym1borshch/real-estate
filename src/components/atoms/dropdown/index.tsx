@@ -15,6 +15,7 @@ interface Props {
   dropdownClassName?: string
   iconId?: string
   iconClassName?: string
+  id?: string
 }
 
 const Dropdown = ({
@@ -28,6 +29,7 @@ const Dropdown = ({
   dropdownClassName,
   iconId,
   iconClassName,
+  id,
 }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null)
 
@@ -51,6 +53,7 @@ const Dropdown = ({
             },
             iconClassName
           )}
+          id={id}
         >
           {label}
         </Button>

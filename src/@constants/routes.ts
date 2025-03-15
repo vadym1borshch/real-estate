@@ -22,4 +22,6 @@ export const ADS_ROUTES = {
   ads: '/my-account/ads',
   rentAds: '/my-account/ads/rent-ads',
   sellAds: '/my-account/ads/sell-ads',
+  sellDetails: '/my-account/ads/sell-ads/details',
+  rentDetails: '/my-account/ads/rent-ads/details',
 } as const

@@ -11,7 +11,19 @@
       "title": "Купити "
     },
     "details": {
-      "title": " Деталі"
+      "title": "Деталі "
+    },
+    "premises": {
+      "title": "Приміщення "
+    },
+    "equipments": {
+      "title": "Oбладнання "
+    },
+    "fees": {
+      "title": "Комісії "
+    },
+    "monthly-costs": {
+      "title": "Щомісячні витрати"
     },
     "not-found": {
       "title": "404",

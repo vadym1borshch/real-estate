@@ -11,7 +11,19 @@
       "title": "Kaufen "
     },
     "details": {
-      "title": " details"
+      "title": "Detail "
+    },
+    "premises": {
+      "title": "Räumlichkeiten "
+    },
+    "equipments": {
+      "title": "Ausstattung "
+    },
+    "fees": {
+      "title": "Gebühren "
+    },
+    "monthly-costs": {
+      "title": "Monatliche Kosten "
     },
     "not-found": {
       "title": "404",

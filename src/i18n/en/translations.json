@@ -11,7 +11,19 @@
       "title": "Buy "
     },
     "details": {
-      "title": " details"
+      "title": "Details "
+    },
+    "premises": {
+      "title": "Premises "
+    },
+    "equipments": {
+      "title": "Equipments "
+    },
+    "fees": {
+      "title": "Fees "
+    },
+    "monthly-costs": {
+      "title": "Monthly costs "
     },
     "not-found": {
       "title": "404",

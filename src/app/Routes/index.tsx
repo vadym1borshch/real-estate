@@ -29,6 +29,12 @@ import { Ads } from '../Pages/MyAccount/Ads'
 import { Rent } from '../Pages/MyAccount/Ads/Rent'
 import { Sell } from '../Pages/MyAccount/Ads/Sell'
 import { AdsType } from '../Pages/MyAccount/Ads/AdsType'
+import { DetailPage } from '../Pages/MyAccount/Ads/Details'
+import { DetailsLayout } from '../Pages/MyAccount/Ads/DetailsLayout.tsx'
+import { Premises } from '../Pages/MyAccount/Ads/Details/Premises'
+import { Equipments } from '../Pages/MyAccount/Ads/Details/Equipments'
+import { Fees } from '../Pages/MyAccount/Ads/Details/Fees'
+import { MonthlyCosts } from '../Pages/MyAccount/Ads/Details/MonthlyCosts'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -137,7 +143,7 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'ads',
-                    element: <Ads />
+                    element: <Ads />,
                   },
                   {
                     path: 'ads/rent-ads',
@@ -145,39 +151,96 @@ const routes: RouteObject[] = [
                     children: [
                       {
                         path: 'active',
-                        element: <AdsType/>
-                      }, {
-                        path: 'inactive',
-                        element: <AdsType/>
-                      }, {
-                        path: 'moderation',
-                        element: <AdsType/>
-                      }, {
-                        path: 'rejected',
-                        element: <AdsType/>
+                        element: <AdsType />,
                       },
-                    ]
+                      {
+                        path: 'inactive',
+                        element: <AdsType />,
+                      },
+                      {
+                        path: 'moderation',
+                        element: <AdsType />,
+                      },
+                      {
+                        path: 'rejected',
+                        element: <AdsType />,
+                      },
+                    ],
+                  },
+                  {
+                    path: 'ads/rent-ads',
+                    element: <DetailsLayout />,
+                    children: [
+                      {
+                        path: 'details',
+                        element: <DetailPage />,
+                      },
+                      {
+                        path: 'premises',
+                        element: <Premises />,
+                      },
+                      {
+                        path: 'equipments',
+                        element: <Equipments />,
+                      },
+                      {
+                        path: 'fees',
+                        element: <Fees />,
+                      },
+                      {
+                        path: 'monthly-costs',
+                        element: <MonthlyCosts />,
+                      },
+                    ],
                   },
                   {
                     path: 'ads/sell-ads',
-                    element: <Sell/>,
+                    element: <Sell />,
                     children: [
                       {
                         path: 'active',
-                        element: <AdsType/>
-                      }, {
-                        path: 'inactive',
-                        element: <AdsType/>
-                      }, {
-                        path: 'moderation',
-                        element: <AdsType/>
-                      }, {
-                        path: 'rejected',
-                        element: <AdsType/>
+                        element: <AdsType />,
                       },
-                    ]
+                      {
+                        path: 'inactive',
+                        element: <AdsType />,
+                      },
+                      {
+                        path: 'moderation',
+                        element: <AdsType />,
+                      },
+                      {
+                        path: 'rejected',
+                        element: <AdsType />,
+                      },
+                    ],
                   },
-
+                  {
+                    path: 'ads/sell-ads',
+                    element: <DetailsLayout />,
+                    children: [
+                      {
+                        path: 'details',
+                        element: <DetailPage />,
+                      },
+                      {
+                        path: 'premises',
+                        element: <Premises />,
+                      },
+                      {
+                        path: 'equipments',
+                        element: <Equipments />,
+                      },
+                      {
+                        path: 'fees',
+                        element: <Fees />,
+                      },
+                      {
+                        path: 'monthly-costs',
+                        element: <MonthlyCosts />,
+                      },
+                    ],
+                  },
                 ],
               },
               { path: 'not-found', element: <NotFoundPage /> },
