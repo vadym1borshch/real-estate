@@ -2,7 +2,12 @@
   "translation": {
     "common": {
       "postal-code": "Postleitzahl",
-      "top": "Top"
+      "top": "Top",
+      "countries": {
+        "de": "Deutschland",
+        "at": "Österreich",
+        "uk": "Ukraine"
+      }
     },
     "rent": {
       "title": "Mieten "
@@ -11,7 +16,45 @@
       "title": "Kaufen "
     },
     "details": {
-      "title": "Detail "
+      "title": "Detail ",
+      "details-form": {
+        "choose": "Wählen Sie",
+        "placeholder": "Sie müssen den Text eingeben",
+        "yes": "Ja",
+        "no": "Nein",
+        "object": "Objekt",
+        "title": "Titel",
+        "country": "Land",
+        "city": "Stadt",
+        "post-code": "Postleitzahl",
+        "visible-addresses": "Adresse sichtbar?",
+        "street": "Strasse",
+        "number": "Nummer",
+        "permitted-rent-info": "Zugelassene Mietzinsbildung",
+        "build-year": "Baujahr des Hauses",
+        "nums-of-floors": "Anzahl der Etagen",
+        "living-spase": "Wohnfläche (m2)",
+        "balcony": "Balkon (m2)",
+        "terrace": "Terasse (m2)",
+        "garden": "Garten (m2)",
+        "heating-type":"Heizungstyp",
+        "energy-certificate": "Energieausweis gültig bis",
+        "HBW-energy-class": "HBW Energieklasse",
+        "fGEE-energy-class": "fGEE Energieklasse",
+        "cellar": "Keller",
+        "price": "Kaufpreis",
+        "park-place-price": "Kaufpreis Parkplatz",
+        "park-place": "Parkplatz",
+        "rooms": "Zimmer",
+        "storage": "Zustand",
+        "net-operation-costs": "Betriebskosten Netto",
+        "broker-commissions": "Maklerprovision",
+        "broker-commissions-percentage": "Maklerprovision (%)",
+        "property-descriptions": "Beschreibung des Objektes",
+        "location-descriptions": "Beschreibung der Lage",
+        "coordinates": "Latitude and longitude",
+        "photos":"Fotos hinzufügen"
+      }
     },
     "premises": {
       "title": "Räumlichkeiten "
@@ -51,7 +94,7 @@
             "p": "Vielen Dank! Ihre Zahlung war erfolgreich. Wir freuen uns, dass Sie sich für uns entschieden haben. Ihre Anzeige wurde erfolgreich in den Top-Anzeigen platziert."
           },
           "rejected": {
-            "title":"FEHLERMELDUNG",
+            "title": "FEHLERMELDUNG",
             "p": "Es ist ein Problem aufgetreten. Bitte versuchen Sie es später erneut. Vielen Dank für Ihr Verständnis. Oder schreiben Sie uns, wir helfen Ihnen gerne weiter."
           }
         }
@@ -138,7 +181,8 @@
       "understood": "Verstanden",
       "find-reason": "Grund herausfinden",
       "create-ad": "Anzeige erstellen",
-      "pay": "Bezahlen"
+      "pay": "Bezahlen",
+      "next-page": "Nächste Seite"
     },
     "knowledge-real-estate": {
       "title": "Wissen rund um die Immobilie ",

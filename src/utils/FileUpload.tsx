@@ -1,29 +1,36 @@
-import React, { useRef } from 'react';
+import React, { ReactNode, useRef } from 'react'
 import Button from '../components/atoms/button'
 import { useAppDispatch } from '../store'
 import { addToast } from '../store/toastSlise'
 
 interface IFileUpload {
-  callback: (file: File) => void;
-  buttonTitle?: string;
+  callback: (files: File | File[]) => void;
+  buttonTitle?: ReactNode;
   className?: string;
+  multiple?: boolean;
 }
 
-const FileUpload = ({ callback, buttonTitle, className }: IFileUpload) => {
+const FileUpload = ({ callback, buttonTitle, className, multiple = false }: IFileUpload) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
 
-    const file = event.target.files?.[0];
-    if (file && ['image/jpeg', 'image/png', 'application/pdf'].includes(file.type)) {
-      callback(file);
+    const validFiles = files.filter(file => ['image/jpeg', 'image/png', 'application/pdf'].includes(file.type));
+
+    if (validFiles.length > 0) {
+      if (multiple) {
+        callback(validFiles);
+      } else {
+        callback(validFiles[0]);
+      }
+
       if (inputRef.current) {
         inputRef.current.value = '';
       }
-    }
-    else {
-      dispatch(addToast({message:"file format not supported", type:'error'}));
+    } else {
+      dispatch(addToast({ message: "File format not supported", type: 'error' }));
     }
   };
 
@@ -39,6 +46,7 @@ const FileUpload = ({ callback, buttonTitle, className }: IFileUpload) => {
         ref={inputRef}
         type="file"
         accept=".jpeg,.jpg,.png,.pdf"
+        multiple={multiple}
         onChange={handleFileChange}
         className="hidden"
       />
@@ -47,7 +55,7 @@ const FileUpload = ({ callback, buttonTitle, className }: IFileUpload) => {
         onClick={handleButtonClick}
         className={className}
       >
-        {buttonTitle || "Add file"}
+        {buttonTitle || (multiple ? "Add files" : "Add file")}
       </Button>
     </div>
   );

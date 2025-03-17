@@ -2,7 +2,12 @@
   "translation": {
     "common": {
       "postal-code": "Postal code",
-      "top": "Top"
+      "top": "Top",
+      "countries": {
+        "de": "Germany",
+        "at": "Austria",
+        "uk": "Ukraine"
+      }
     },
     "rent": {
       "title": "Rent "
@@ -11,7 +16,45 @@
       "title": "Buy "
     },
     "details": {
-      "title": "Details "
+      "title": "Details ",
+      "details-form": {
+        "choose": "Choose",
+        "placeholder": "You must enter the text",
+        "yes": "Yes",
+        "no": "No",
+        "object": "Object",
+        "title": "Title",
+        "country": "Country",
+        "city": "City",
+        "post-code": "Postal code",
+        "visible-addresses": "Address visible?",
+        "street": "Street",
+        "number": "Number",
+        "permitted-rent-info": "Permitted rent formation",
+        "build-year": "Year of construction of the house",
+        "nums-of-floors": "Number of floors",
+        "living-spase": "Living space (m2)",
+        "balcony": "Balcony (m2)",
+        "terrace": "Terrace (m2)",
+        "garden": "Garden (m2)",
+        "heating-type":"Heating type",
+        "energy-certificate": "Energy certificate valid until",
+        "HBW-energy-class": "HBW Energy class",
+        "fGEE-energy-class": "fGEE Energy class",
+        "cellar": "Cellar",
+        "price": "Price",
+        "park-place-price": "Park place price",
+        "park-place": "Park place",
+        "rooms": "Rooms",
+        "storage": "Storage",
+        "net-operation-costs": "Net operating costs",
+        "broker-commissions": "Broker commission",
+        "broker-commissions-percentage": "Broker commission (%)",
+        "property-descriptions": "Description of the object",
+        "location-descriptions": "Description of the location",
+        "coordinates": "Latitude and longitude",
+        "photos":"Add photos"
+      }
     },
     "premises": {
       "title": "Premises "
@@ -138,7 +181,8 @@
       "understood": "Understood",
       "find-reason": "Find out the reason",
       "create-ad": "Create ad",
-      "pay": "Pay"
+      "pay": "Pay",
+      "next-page": "Next page"
     },
     "knowledge-real-estate": {
       "title": "Knowledge about real estate ",

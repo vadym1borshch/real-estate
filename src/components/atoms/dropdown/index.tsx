@@ -37,12 +37,20 @@ const Dropdown = ({
 
   return (
     <ClickOutsideWrapper
-      onClickOutside={() => setOpen(false)}
+      onClickOutside={() => {
+        if (open) {
+          setOpen(false)
+        }
+      }}
       className="relative w-full md:w-auto"
     >
       <div ref={ref}>
         <Button
-          onClick={() => setOpen(!open)}
+          onClick={(e) => {
+            e?.stopPropagation()
+            e?.preventDefault()
+            setOpen(!open)
+          }}
           variant={variant}
           className={cn('relative z-1000 text-base', triggerButtonClassName)}
           iconId={withIcon ? icon : undefined}

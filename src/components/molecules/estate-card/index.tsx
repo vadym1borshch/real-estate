@@ -4,10 +4,7 @@ import Icon from '../../atoms/icon'
 import { useTranslation } from 'react-i18next'
 import H3 from '../../atoms/typography/h3'
 import { cn } from '../../../helpers/ui.ts'
-import {
-  setCurrentEstate,
-  setFavorite,
-} from '../../../store/estateSlice'
+import { setCurrentEstate, setFavorite } from '../../../store/estateSlice'
 import { useAppDispatch } from '../../../store'
 import { RealEstate } from '../../../store/commonMock.ts'
 
@@ -41,7 +38,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
     <Link
       href={`/${operation.key}/details`}
       className={cn(
-        'group z-0 flex min-h-[26.75rem] min-w-[300px] max-w-[22.5rem] flex-col gap-0 hover:border-0 focus:border-0',
+        'group z-0 flex min-h-[26.75rem] max-w-[22.5rem] min-w-[300px] flex-col gap-0 hover:border-0 focus:border-0',
         { 'border-charcoal rounded-lg border-2 hover:border-2': selectedOnMap },
         className
       )}
@@ -52,7 +49,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
       disabled={disabled}
     >
       <div className="relative">
-        <div className="absolute top-0 flex w-full justify-between p-6 min-w-[300px]">
+        <div className="absolute top-0 flex w-full min-w-[300px] justify-between p-6">
           {isTop && <Chip value="Top" />}
           <Icon
             id={favorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
@@ -60,12 +57,18 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
               'z-100 ml-auto h-[20px] w-[20px] text-white lg:h-5 lg:w-5',
               { 'text-coral': favorite }
             )}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation()
+              e.preventDefault()
               dispatch(setFavorite({ id }))
             }}
           />
         </div>
-        <img src={image} alt="house" className="h-[15rem] object-cover min-w-[300px] rounded-lg" />
+        <img
+          src={image}
+          alt="house"
+          className="h-[15rem] min-w-[300px] rounded-lg object-cover"
+        />
       </div>
       <div className="bg-light-gray2 group-hover:bg-gray transition-hover flex min-h-[11.75rem] w-full flex-col gap-3 rounded-b-lg px-6 py-5 duration-300">
         <label className="house-card__label font-700 text-charcoal">

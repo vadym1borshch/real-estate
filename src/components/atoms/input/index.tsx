@@ -51,7 +51,7 @@ const Input = ({
         placeholder={placeholder}
         onChange={(e) => onChange(e)}
         className={cn(
-          'border-blue-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 min-h-[40px] w-full rounded-sm border px-6 autofill:shadow-[inset_0_0_0px_1000px_white] focus:ring-1 focus:outline-none md:h-12',
+          'border-blue-gray placeholder-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 min-h-[40px] w-full rounded-sm border px-6 autofill:shadow-[inset_0_0_0px_1000px_white] focus:ring-1 focus:outline-none md:h-12',
           { 'h-10': size === 'sm' },
           { 'border-red focus:outline-red focus:outline': error },
           { 'pl-[36px]': iconSide === 'left' },

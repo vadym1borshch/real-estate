@@ -69,7 +69,7 @@ const Button = ({
         {children}
         {iconId && (
           <Icon
-            onClick={onClick}
+            onClick={() => (onClick ? onClick() : null)}
             id={iconId}
             className={cn(
               'h-[24px] w-[24px] max-w-[24px] min-w-[24px]',

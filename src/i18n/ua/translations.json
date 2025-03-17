@@ -2,7 +2,12 @@
   "translation": {
     "common": {
       "postal-code": "Поштовий індекс",
-      "top": "Топ"
+      "top": "Топ",
+      "countries": {
+        "de": "Німеччина",
+        "at": "Австрія",
+        "uk": "Україна"
+      }
     },
     "rent": {
       "title": "Оренда "
@@ -11,7 +16,45 @@
       "title": "Купити "
     },
     "details": {
-      "title": "Деталі "
+      "title": "Деталі ",
+      "details-form": {
+        "choose": "Виберіть",
+        "placeholder": "Введіть текст",
+        "yes": "Так",
+        "no": "Ні",
+        "object": "Об'єкт",
+        "title": "Назва",
+        "country": "Країна",
+        "city": "Місто",
+        "post-code": "Поштовий код",
+        "visible-addresses": "Видима адреса?",
+        "street": "Вулиця",
+        "number": "Номер",
+        "permitted-rent-info": "Затверджено формування орендної плати",
+        "build-year": "Рік побудови будинку",
+        "nums-of-floors": "Кількість поверхів",
+        "living-spase": "Житлова площа (м2)",
+        "balcony": "Балкон (м2)",
+        "terrace": "Тераса (м2)",
+        "garden": "Двір (m2)",
+        "heating-type":"Тип опалення",
+        "energy-certificate": "Енергетичний сертифікат дійсний до",
+        "HBW-energy-class": "HBW Клас енергоспоживання",
+        "fGEE-energy-class": "fGEE Клас енергоспоживання",
+        "cellar": "Льох",
+        "price": "Ціна",
+        "park-place-price": "Ціна паркомісця",
+        "park-place": "Паркомісце",
+        "rooms": "Кімнати",
+        "storage": "Сховище",
+        "net-operation-costs": "Чисті операційні витрати",
+        "broker-commissions": "Брокерська комісія",
+        "broker-commissions-percentage": "Брокерська комісія (%)",
+        "property-descriptions": "Опис об'єкта",
+        "location-descriptions": "Опис локації",
+        "coordinates": "Широта і довгота",
+        "photos":"Додайте фотографії"
+      }
     },
     "premises": {
       "title": "Приміщення "
@@ -138,7 +181,8 @@
       "understood": "Зрозуміло",
       "find-reason": "З'ясуйте причину",
       "create-ad": "Створити оголошення",
-      "pay": "Оплатити"
+      "pay": "Оплатити",
+      "next-page": "Наступна сторінка"
     },
     "knowledge-real-estate": {
       "title": "Інформація про нерухомість ",

@@ -19,10 +19,10 @@ const ContactUsForm = ({ callback, textFieldRows, withAgreeField }: Props) => {
     // leave for next use params
     /*    values: FormikValues,
         errors?: FormikErrors<FormikValues>*/ {
-    if (callback) {
-      callback()
+      if (callback) {
+        callback()
+      }
     }
-  }
 
   return (
     <Formik
@@ -51,7 +51,7 @@ const ContactUsForm = ({ callback, textFieldRows, withAgreeField }: Props) => {
                   label={`${t('contact-us.form.name')} *`}
                   id="email"
                   error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
+                  className="min-h-[48px]"
                   errorPosition="bottom"
                 />
               )}
@@ -64,7 +64,7 @@ const ContactUsForm = ({ callback, textFieldRows, withAgreeField }: Props) => {
                   label={`${t('contact-us.form.last-name')} *`}
                   id="lastName"
                   error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
+                  className="min-h-[48px]"
                   errorPosition="bottom"
                 />
               )}
@@ -79,7 +79,7 @@ const ContactUsForm = ({ callback, textFieldRows, withAgreeField }: Props) => {
                   label={`${t('contact-us.form.email')} *`}
                   id="email"
                   error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
+                  className="min-h-[48px]"
                   errorPosition="bottom"
                 />
               )}
@@ -92,7 +92,7 @@ const ContactUsForm = ({ callback, textFieldRows, withAgreeField }: Props) => {
                   label={`${t('contact-us.form.tel')} *`}
                   id="phone"
                   error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
+                  className="min-h-[48px]"
                   errorPosition="bottom"
                 />
               )}
@@ -107,13 +107,13 @@ const ContactUsForm = ({ callback, textFieldRows, withAgreeField }: Props) => {
                 label={`${t('contact-us.form.message')} *`}
                 id="message"
                 error={meta.touched && meta.error ? meta.error : undefined}
-                className="placeholder-gray min-h-[48px]"
+                className="min-h-[48px]"
                 errorPosition="bottom"
               />
             )}
           </Field>
           <div className="w-full">
-            {withAgreeField &&
+            {withAgreeField && (
               <Field name={'agree'}>
                 {({ field, form }: FieldProps) => (
                   <span
@@ -133,7 +133,7 @@ const ContactUsForm = ({ callback, textFieldRows, withAgreeField }: Props) => {
                   </span>
                 )}
               </Field>
-            }
+            )}
 
             <Button
               onClick={() => handleSubmit()}

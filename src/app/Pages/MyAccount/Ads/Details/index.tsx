@@ -1,637 +1,294 @@
-import { useTranslation } from 'react-i18next'
+import { useRef, useState } from 'react'
 import { Field, FieldProps, Form, Formik } from 'formik'
-import Input from '../../../../../components/atoms/input'
-import { ReactNode } from 'react'
-import Dropdown from '../../../../../components/atoms/dropdown'
-import RadioButton from '../../../../../components/atoms/radio-button'
+import { useTranslation } from 'react-i18next'
 import TextArea from '../../../../../components/atoms/text-area'
 import Button from '../../../../../components/atoms/button'
-import { cn } from '../../../../../helpers/ui.ts'
 import Icon from '../../../../../components/atoms/icon'
+import { countries, initialValuesForm, objectsTypes } from './common.ts'
+import {
+  FieldWrapper,
+  FormDropdownWrapper,
+  FormInputWrapper,
+  FormRadioWrapper,
+} from './Wrappers.tsx'
+import Modal from '../../../../../components/molecules/modal'
+import Map from '../../../../../components/organisms/map'
+import { MapRef } from 'react-map-gl'
+import FileUpload from '../../../../../utils/FileUpload.tsx'
 
 export const DetailPage = () => {
   const { t } = useTranslation()
+  const [openMap, setOpenMap] = useState(false)
+  const [images, setImages] = useState<string[]>([])
+  const mapRef = useRef<MapRef | null>(null)
+
   return (
-    <Formik
-      initialValues={{
-        object: '',
-        title: '',
-        country: '',
-        city: '',
-        postCode: '',
-        visibleAddresses: false,
-        street: '',
-        number: '',
-        permittedRentInfo: '',
-        buildYear: '',
-        numsOfFloors: '',
-        livingSpase: '',
-        balcony: '',
-        terrace: '',
-        garden: '',
-        heatingType: '',
-        energyCertificate: '',
-        HBW: '',
-        HBWEnergyClass: '',
-        fGEE: '',
-        fGEEEnergyClass: '',
-        cellar: false,
-        price: '',
-        parkPlacePrice: '',
-        parkPlace: '',
-        rooms: 1,
-        WC: '',
-        storage: '',
-        netOperationCosts: '',
-        brokerCommissions: '',
-        brokerCommissionsPercentage: '',
-        propertyDescriptions: '',
-        locationDescriptions: '',
-        latitude: '',
-        longitude: '',
-        photos: [],
-      }}
-      onSubmit={async (_values, { resetForm }) => {
-        /* handleSubmit(values)*/
-        resetForm()
-      }}
-      /*  validationSchema={useValidationSchema()}*/
-    >
-      {({ isValid, dirty }) => (
-        <Form className="flex w-full flex-col gap-3">
-          <FieldWrapper label="Object">
-            <Field name="object">
-              {({ field, meta }: FieldProps) => (
-                <Dropdown
-                  label="Wählen Sie"
-                  open={false}
-                  setOpen={() => {}}
-                  id="object"
-                  variant="outlined"
-                  withIcon
-                  triggerButtonClassName="min-h-[48px] w-full"
-                >
-                  <div>options</div>
-                </Dropdown>
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Tilte">
-            <Field name="title">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="title"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
+    <>
+      <Formik
+        initialValues={initialValuesForm}
+        onSubmit={async (_values, { resetForm }) => {
+          /* handleSubmit(values)*/
+         /* console.log(_values)*/
+          resetForm()
+        }}
+        /*  validationSchema={useValidationSchema()}*/
+      >
+        {({ setFieldValue }) => (
+          <Form className="flex w-full flex-col gap-3">
+            <FieldWrapper label={t('details.details-form.object')}>
+              <FormDropdownWrapper
+                fieldName="object"
+                dropdownElements={objectsTypes}
+              />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.title')}>
+              <FormInputWrapper fieldName="title" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.country')}>
+              <FormDropdownWrapper
+                fieldName="country"
+                dropdownElements={countries}
+              />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.city')}>
+              <FormInputWrapper fieldName="city" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.post-code')}>
+              <FormInputWrapper fieldName="postCode" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.visible-addresses')}>
+              <FormRadioWrapper fieldName="visibleAddresses" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.street')}>
+              <FormInputWrapper fieldName="street" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.number')}>
+              <FormInputWrapper fieldName="number" />
+            </FieldWrapper>
+            <FieldWrapper
+              label={t('details.details-form.permitted-rent-info')}
+              extra={
+                <Icon
+                  id="roundedQuestionMarkIcon"
+                  className="text-blue-gray h-[24px] w-[24px]"
                 />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Country">
-            <Field name="country">
-              {({ field, meta }: FieldProps) => (
-                <Dropdown
-                  label="Wählen Sie"
-                  open={false}
-                  setOpen={() => {}}
-                  id="country"
-                  variant="outlined"
-                  withIcon
-                  triggerButtonClassName="min-h-[48px] w-full"
-                >
-                  <div>options</div>
-                </Dropdown>
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="City">
-            <Field name="city">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="city"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Post code">
-            <Field name="postCode">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="postCode"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Visible Addresses">
-            <Field name="postCode">
-              {({ field, meta }: FieldProps) => (
-                <div className="flex items-center gap-6 py-3">
-                  <RadioButton
-                    label="Yes"
-                    name="visibleAddresses"
-                    value="Yes"
-                    checked={false}
-                    onChange={() => {}}
-                  />
-                  <RadioButton
-                    label="No"
-                    name="visibleAddresses"
-                    value="No"
-                    checked={true}
-                    onChange={() => {}}
-                  />
-                </div>
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Street">
-            <Field name="street">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="street"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Number">
-            <Field name="number">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="number"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Permitted rent formation" extra="icon">
-            <Field name="permittedRentInfo">
-              {({ field, meta }: FieldProps) => (
-                <Dropdown
-                  label="Wählen Sie"
-                  open={false}
-                  setOpen={() => {}}
-                  id="permittedRentInfo"
-                  variant="outlined"
-                  withIcon
-                  triggerButtonClassName="min-h-[48px] w-full"
-                >
-                  <div>options</div>
-                </Dropdown>
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Year of construction of the house">
-            <Field name="buildYear">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="buildYear"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Number of floors">
-            <Field name="numsOfFloors">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="numsOfFloors"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Living space (m2)">
-            <Field name="livingSpase">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="livingSpase"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Balcony (m2)">
-            <Field name="balcony">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="balcony"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Terrace (m2)">
-            <Field name="terrace">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="terrace"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Garden (m2)">
-            <Field name="garden">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="garden"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Heizungstyp">
-            <Field name="heatingType">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="heatingType"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Energy certificate valid until">
-            <Field name="energyCertificate">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="energyCertificate"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="HBW">
-            <Field name="HBW">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="HBW"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="HBW energy class">
-            <Field name="HBWEnergyClass">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="HBWEnergyClass"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="fGEE">
-            <Field name="fGEE">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="fGEE"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="fGEE energy class">
-            <Field name="fGEEEnergyClass">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="fGEEEnergyClass"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Cellar">
-            <Field name="postCode">
-              {({ field, meta }: FieldProps) => (
-                <div className="flex items-center gap-6 py-3">
-                  <RadioButton
-                    label="Yes"
-                    name="cellar"
-                    value="Yes"
-                    checked={false}
-                    onChange={() => {}}
-                  />
-                  <RadioButton
-                    label="No"
-                    name="cellar"
-                    value="No"
-                    checked={true}
-                    onChange={() => {}}
-                  />
-                </div>
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Purchase price">
-            <Field name="price">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="price"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Purchase price parking space">
-            <Field name="parkPlacePrice">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="parkPlacePrice"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Park place" infoIcon>
-            <Field name="parkPlace">
-              {({ field, meta }: FieldProps) => (
-                <Dropdown
-                  label="Wählen Sie"
-                  open={false}
-                  setOpen={() => {}}
-                  id="parkPlace"
-                  variant="outlined"
-                  withIcon
-                  triggerButtonClassName="min-h-[48px] w-full"
-                >
-                  <div>options</div>
-                </Dropdown>
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Rooms">
-            <Field name="rooms">
-              {({ field, meta }: FieldProps) => (
-                <div id="rooms" className="flex gap-1.5 py-3">
-                  <span>-</span>
-                  {field.value}
-                  <span>+</span>
-                </div>
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="WC">
-            <Field name="WC">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="WC"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Storage" extra="icon">
-            <Field name="storage">
-              {({ field, meta }: FieldProps) => (
-                <Dropdown
-                  label="Wählen Sie"
-                  open={false}
-                  setOpen={() => {}}
-                  id="storage"
-                  variant="outlined"
-                  withIcon
-                  triggerButtonClassName="min-h-[48px] w-full"
-                >
-                  <div>options</div>
-                </Dropdown>
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Net operating costs">
-            <Field name="netOperationCosts">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="netOperationCosts"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Brokerage commission">
-            <Field name="brokerCommissions">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="brokerCommissions"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Brokerage commission" extra="(%)">
-            <Field name="brokerCommissionsPercentage">
-              {({ field, meta }: FieldProps) => (
-                <Input
-                  {...field}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="brokerCommissionsPercentage"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Description of the property">
-            <Field name="propertyDescriptions">
-              {({ field, meta }: FieldProps) => (
-                <TextArea
-                  {...field}
-                  rows={8}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="propertyDescriptions"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Description of the location">
-            <Field name="locationDescriptions">
-              {({ field, meta }: FieldProps) => (
-                <TextArea
-                  {...field}
-                  rows={8}
-                  placeholder="Sie müssen den Text eingeben"
-                  id="locationDescriptions"
-                  error={meta.touched && meta.error ? meta.error : undefined}
-                  className="placeholder-gray min-h-[48px]"
-                  errorPosition="bottom"
-                />
-              )}
-            </Field>
-          </FieldWrapper>
-          <FieldWrapper label="Latitude and longitude">
-            <div className="flex gap-3">
-              <Field name="latitude">
+              }
+            >
+              <FormDropdownWrapper
+                fieldName="permittedRentInfo"
+                dropdownElements={[]}
+              />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.build-year')}>
+              <FormInputWrapper fieldName="buildYear" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.nums-of-floors')}>
+              <FormInputWrapper fieldName="numsOfFloors" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.living-spase')}>
+              <FormInputWrapper fieldName="livingSpase" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.balcony')}>
+              <FormInputWrapper fieldName="balcony" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.terrace')}>
+              <FormInputWrapper fieldName="terrace" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.garden')}>
+              <FormInputWrapper fieldName="garden" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.heating-type')}>
+              <FormInputWrapper fieldName="heatingType" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.energy-certificate')}>
+              <FormInputWrapper fieldName="energyCertificate" />
+            </FieldWrapper>
+            <FieldWrapper label="HBW">
+              <FormInputWrapper fieldName="HBW" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.HBW-energy-class')}>
+              <FormInputWrapper fieldName="HBWEnergyClass" />
+            </FieldWrapper>
+            <FieldWrapper label="fGEE">
+              <FormInputWrapper fieldName="fGEE" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.fGEE-energy-class')}>
+              <FormInputWrapper fieldName="fGEEEnergyClass" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.cellar')}>
+              <FormRadioWrapper fieldName="cellar" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.price')}>
+              <FormInputWrapper fieldName="price" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.park-place-price')}>
+              <FormInputWrapper fieldName="parkPlacePrice" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.park-place')}>
+              <FormDropdownWrapper
+                fieldName="parkPlace"
+                dropdownElements={[]}
+              />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.rooms')}>
+              <Field name="rooms">
+                {({ field, form }: FieldProps) => (
+                  <div
+                    id="rooms"
+                    className="text-charcoal flex items-center gap-1.5 py-3"
+                  >
+                    <Icon
+                      id="roundedSmallMinusIcon"
+                      className="text-blue-gray h-[24px] w-[24px] cursor-pointer"
+                      onClick={() => {
+                        form.setFieldValue(
+                          'rooms',
+                          field.value <= 1 ? 1 : field.value - 1
+                        )
+                      }}
+                    />
+                    {field.value}
+                    <Icon
+                      id="roundedSmallPlusIcon"
+                      className="text-blue-gray h-[24px] w-[24px] cursor-pointer"
+                      onClick={() => {
+                        form.setFieldValue('rooms', field.value + 1)
+                      }}
+                    />
+                  </div>
+                )}
+              </Field>
+            </FieldWrapper>
+            <FieldWrapper label="WC">
+              <FormInputWrapper fieldName="WC" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.storage')}>
+              <FormDropdownWrapper fieldName="storage" dropdownElements={[]} />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.net-operation-costs')}>
+              <FormInputWrapper fieldName="netOperationCosts" />
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.broker-commissions')}>
+              <FormInputWrapper fieldName="brokerCommissions" />
+            </FieldWrapper>
+            <FieldWrapper
+              label={t('details.details-form.broker-commissions-percentage')}
+            >
+              <FormInputWrapper fieldName="brokerCommissionsPercentage" />
+            </FieldWrapper>
+            <FieldWrapper
+              label={t('details.details-form.property-descriptions')}
+            >
+              <Field name="propertyDescriptions">
                 {({ field, meta }: FieldProps) => (
-                  <Input
+                  <TextArea
                     {...field}
-                    placeholder="48.2082"
-                    id="latitude"
+                    rows={8}
+                    placeholder={t('details.details-form.placeholder')}
+                    id="propertyDescriptions"
                     error={meta.touched && meta.error ? meta.error : undefined}
-                    className="placeholder-gray min-h-[48px]"
                     errorPosition="bottom"
                   />
                 )}
               </Field>
-              <Field name="longitude">
+            </FieldWrapper>
+            <FieldWrapper
+              label={t('details.details-form.location-descriptions')}
+            >
+              <Field name="locationDescriptions">
                 {({ field, meta }: FieldProps) => (
-                  <Input
+                  <TextArea
                     {...field}
-                    placeholder="16.3738"
-                    id="longitude"
+                    rows={8}
+                    placeholder={t('details.details-form.placeholder')}
+                    id="locationDescriptions"
                     error={meta.touched && meta.error ? meta.error : undefined}
-                    className="placeholder-gray min-h-[48px]"
                     errorPosition="bottom"
                   />
                 )}
               </Field>
-              <Button className="bg-charcoal hover:bg-seafoam-green h-[48px] w-[48px] text-white">
-                M
+            </FieldWrapper>
+            <FieldWrapper label={t('details.details-form.coordinates')}>
+              <div className="flex gap-3">
+                <FormInputWrapper fieldName="latitude" placeholder="48.2082" />
+                <FormInputWrapper fieldName="longitude" placeholder="16.3738" />
+                <Button
+                  className="bg-charcoal hover:bg-seafoam-green h-[48px] min-w-[48px] p-3 text-white"
+                  onClick={() => setOpenMap(true)}
+                >
+                  <Icon
+                    id="navigateMarkerIcon"
+                    className="h-[24px] w-[24px] text-white"
+                    onClick={() => setOpenMap(true)}
+                  />
+                </Button>
+              </div>
+            </FieldWrapper>
+            <FieldWrapper
+              label={t('details.details-form.photos')}
+              className="items-start rounded-lg pt-[5.625rem]"
+            >
+              <div className="grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] place-items-center gap-10 pt-3">
+                {images.map((image, index) => (
+                  <img
+                    key={image + index}
+                    src={image}
+                    alt={image + index}
+                    className="h-[7.5rem] w-[10rem] cursor-pointer items-center justify-center rounded-lg"
+                  />
+                ))}
+                <div className="bg-gray flex h-[7.5rem] w-[10rem] cursor-pointer items-center justify-center rounded-lg">
+                  <FileUpload
+                    multiple
+                    className="bg-transparent hover:bg-transparent hover:outline-0 focus:border-0"
+                    buttonTitle={
+                      <Icon
+                        id="roundedPlusIcon"
+                        className="text-blue-gray h-[48px] w-[48px] cursor-pointer"
+                      />
+                    }
+                    callback={(files) => {
+                      if (Array.isArray(files)) {
+                        const urls = files.map((file) =>
+                          URL.createObjectURL(file)
+                        )
+                        setImages(urls)
+                        setFieldValue('photos', files)
+                      }
+                    }}
+                  />
+                </div>
+              </div>
+            </FieldWrapper>
+            <div className="flex flex-col gap-3 pt-[5.625rem] whitespace-nowrap md:flex-row">
+              <Button size="sm" className="w-full md:w-fit" type="submit" onClick={() => setImages([])}>
+                {t('buttons.save')}
+              </Button>
+              <Button
+                size="sm"
+                className="bg-charcoal hover:bg-seafoam-green w-full whitespace-nowrap text-white md:w-fit"
+              >
+                {t('buttons.next-page')}
               </Button>
             </div>
-          </FieldWrapper>
-          <FieldWrapper
-            label="Add photos"
-            className="items-start rounded-lg pt-[5.625rem]"
-          >
-            <div className="bg-gray flex h-[7.5rem] w-[10rem] cursor-pointer items-center justify-center rounded-lg">
-              <Icon
-                id="roundedPlusIcon"
-                className="text-blue-gray h-[48px] w-[48px] cursor-pointer"
-              />
-            </div>
-          </FieldWrapper>
-          <div className="flex flex-col gap-3 pt-[5.625rem] md:flex-row">
-            <Button size="sm" className="w-full md:w-fit">
-              Speichern Sie
-            </Button>
-            <Button
-              size="sm"
-              className="bg-charcoal hover:bg-seafoam-green w-full text-white md:w-fit"
-            >
-              Nächste Seite
-            </Button>
-          </div>
-        </Form>
-      )}
-    </Formik>
-  )
-}
-
-export const FieldWrapper = ({
-  children,
-  label,
-  extra,
-  className,
-}: {
-  children: ReactNode
-  label: string
-  extra?: ReactNode
-  className?: string
-}) => {
-  return (
-    <div
-      className={cn(
-        'grid grid-cols-1 items-center gap-1.5 md:grid-cols-2',
-        className
-      )}
-    >
-      <label className="flex w-full gap-3">
-        {label} {extra ? <span>{extra}</span> : null}
-      </label>
-      {children}
-    </div>
+            <Modal open={openMap} setOpen={setOpenMap}>
+              <Map
+                className="h-[80vh] 2xl:h-[50vh]"
+                loading={false}
+                data={[1]}
+                ref={mapRef}
+                onClick={(e) => {
+                  setFieldValue('longitude', e.lngLat.lng.toFixed(5))
+                  setFieldValue('latitude', e.lngLat.lat.toFixed(5))
+                  setOpenMap(false)
+                }}
+              >
+                <></>
+              </Map>
+            </Modal>
+          </Form>
+        )}
+      </Formik>
+    </>
   )
 }

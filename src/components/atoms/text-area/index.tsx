@@ -52,9 +52,9 @@ const TextArea = ({
         placeholder={placeholder}
         onChange={(e) => onChange(e)}
         className={cn(
-          'border-blue-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 h-full min-h-[220px] w-full resize-none rounded-sm border px-6 py-3 focus:ring-1 focus:outline-none',
+          'border-blue-gray placeholder-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 h-full min-h-[220px] w-full resize-none rounded-sm border px-6 py-3 focus:ring-1 focus:outline-none',
           {
-            'border-red focus:outline-red focus:outline focus:outline-1': error,
+            'border-red focus:outline-red focus:outline': error,
           },
           { 'pl-[36px]': iconSide === 'left' },
           className

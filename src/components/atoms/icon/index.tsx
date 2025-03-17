@@ -1,19 +1,18 @@
+import React from 'react'
 import { cn } from '../../../helpers/ui.ts'
 
 interface IIconBaseProps {
   id: string;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 }
 
 const Icon = ({ id, className, onClick }: IIconBaseProps) => {
   return (
     <svg
       onClick={(e) => {
-        e.stopPropagation()
-        e.preventDefault()
         if (onClick) {
-          onClick()
+          onClick(e)
         }
       }}
       onMouseDown={(e) => e.stopPropagation()}
