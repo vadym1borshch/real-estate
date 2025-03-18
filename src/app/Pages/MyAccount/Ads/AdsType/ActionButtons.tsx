@@ -1,3 +1,5 @@
+import { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { cn } from '../../../../../helpers/ui.ts'
 import Button from '../../../../../components/atoms/button'
 import Icon from '../../../../../components/atoms/icon'
@@ -6,10 +8,11 @@ import {
   deleteAd,
   refreshRejection,
 } from '../../../../../store/adsSlice'
-import { useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { actionButtons, rejectedButtons } from './common.ts'
 import { useAppDispatch } from '../../../../../store'
+import { useNavigate } from '../../../../../helpers/hooks/useNavigate.ts'
+import { usePathname } from '../../../../../helpers/hooks/usePathname.ts'
+import { ADS_ROUTES } from '../../../../../@constants/routes.ts'
 
 interface Props {
   status: AdsFilterStatus
@@ -20,6 +23,13 @@ interface Props {
 export const ActionButtons = ({ status, adId, callback }: Props) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const path = usePathname()
+
+  const correctDetailsRoute = path.includes(ADS_ROUTES.rentAds)
+    ? ADS_ROUTES.rentDetails
+    : ADS_ROUTES.sellDetails
+
   const disabledButtons = (
     status: AdsFilterStatus,
     children: string,
@@ -45,6 +55,8 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
         return () => callback(id, adId)
       case 'rejected-reason':
         return () => callback(id)
+      case 'edit':
+        return () => navigate(correctDetailsRoute)
     }
   }
 

@@ -30,7 +30,7 @@
         "visible-addresses": "Address visible?",
         "street": "Street",
         "number": "Number",
-        "permitted-rent-info": "Permitted rent formation",
+        "permitted-rent-form": "Permitted rent formation",
         "build-year": "Year of construction of the house",
         "nums-of-floors": "Number of floors",
         "living-spase": "Living space (m2)",
@@ -46,7 +46,7 @@
         "park-place-price": "Park place price",
         "park-place": "Park place",
         "rooms": "Rooms",
-        "storage": "Storage",
+        "state": "State",
         "net-operation-costs": "Net operating costs",
         "broker-commissions": "Broker commission",
         "broker-commissions-percentage": "Broker commission (%)",
@@ -54,6 +54,40 @@
         "location-descriptions": "Description of the location",
         "coordinates": "Latitude and longitude",
         "photos":"Add photos"
+      },
+      "rent-formation": {
+        "index-rent": "Index Rent",
+        "graduated-rent": "Graduated Rent",
+        "comparative-rent": "Comparative Rent",
+        "social-rent": "Social Rent",
+        "rent-cap": "Rent Cap",
+        "cost-rent": "Cost Rent",
+        "cooperative-rent": "Cooperative Rent",
+        "hereditary-lease": "Hereditary Lease",
+        "rental-yield": "Rental Yield",
+        "income-valuation": "Income Valuation",
+        "rental-control": "Rental Control",
+        "graduated-lease": "Graduated Lease",
+        "indexed-lease": "Indexed Lease",
+        "social-regulation": "Social Regulation",
+        "commercial-rent": "Commercial Rent",
+        "termination-for-own-use": "Termination for Own Use"
+      },
+      "parking": {
+        "underground": "Underground Parking",
+        "garage": "Garage",
+        "carport": "Carport",
+        "outdoor": "Outdoor Parking",
+        "covered": "Covered Parking",
+        "none": "No Parking"
+      },
+      "condition": {
+        "new": "New",
+        "renovated": "Renovated",
+        "modernized": "Modernized",
+        "well-maintained": "Well Maintained",
+        "needs-renovation": "Needs Renovation",
+        "run-down": "Run Down"
       }
     },
     "premises": {

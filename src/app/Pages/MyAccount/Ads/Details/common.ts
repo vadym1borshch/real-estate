@@ -1,4 +1,4 @@
-export const initialValuesForm= {
+export const initialValuesForm = {
   object: '',
   title: '',
   country: '',
@@ -7,7 +7,7 @@ export const initialValuesForm= {
   visibleAddresses: 'no',
   street: '',
   number: '',
-  permittedRentInfo: '',
+  permittedRentForm: '',
   buildYear: '',
   numsOfFloors: '',
   livingSpase: '',
@@ -36,8 +36,6 @@ export const initialValuesForm= {
   longitude: '',
   photos: [],
 }
-
-
 
 export const objectsTypes = [
   {
@@ -73,3 +71,126 @@ export const countries = [
   },
 ]
 
+export const permittedRentInfos = [
+  {
+    value: 'index-rent',
+    title: 'details.rent-formation.index-rent',
+  },
+  {
+    value: 'graduated-rent',
+    title: 'details.rent-formation.graduated-rent',
+  },
+  {
+    value: 'comparative-rent',
+    title: 'details.rent-formation.comparative-rent',
+  },
+  {
+    value: 'social-rent',
+    title: 'details.rent-formation.social-rent',
+  },
+  {
+    value: 'rent-cap',
+    title: 'details.rent-formation.rent-cap',
+  },
+  {
+    value: 'cost-rent',
+    title: 'details.rent-formation.cost-rent',
+  },
+  {
+    value: 'cooperative-rent',
+    title: 'details.rent-formation.cooperative-rent',
+  },
+  {
+    value: 'hereditary-lease',
+    title: 'details.rent-formation.hereditary-lease',
+  },
+]
+
+export const permittedSellInfos = [
+  {
+    value: 'rental-yield',
+    title: 'details.rent-formation.rental-yield',
+  },
+  {
+    value: 'income-valuation',
+    title: 'details.rent-formation.income-valuation',
+  },
+  {
+    value: 'rental-control',
+    title: 'details.rent-formation.rental-control',
+  },
+  {
+    value: 'graduated-lease',
+    title: 'details.rent-formation.graduated-lease',
+  },
+  {
+    value: 'indexed-lease',
+    title: 'details.rent-formation.indexed-lease',
+  },
+  {
+    value: 'social-regulation',
+    title: 'details.rent-formation.social-regulation',
+  },
+  {
+    value: 'commercial-rent',
+    title: 'details.rent-formation.commercial-rent',
+  },
+  {
+    value: 'termination-for-own-use',
+    title: 'details.rent-formation.termination-for-own-use',
+  },
+]
+
+export const parkingTypes = [
+  {
+    value: 'underground-parking',
+    title: 'details.parking.underground',
+  },
+  {
+    value: 'garage',
+    title: 'details.parking.garage',
+  },
+  {
+    value: 'carport',
+    title: 'details.parking.carport',
+  },
+  {
+    value: 'outdoor-parking',
+    title: 'details.parking.outdoor',
+  },
+  {
+    value: 'covered-parking',
+    title: 'details.parking.covered',
+  },
+  {
+    value: 'none',
+    title: 'details.parking.none',
+  },
+]
+
+export const stateTypes = [
+  {
+    value: 'new',
+    title: 'details.condition.new',
+  },
+  {
+    value: 'renovated',
+    title: 'details.condition.renovated',
+  },
+  {
+    value: 'modernized',
+    title: 'details.condition.modernized',
+  },
+  {
+    value: 'well-maintained',
+    title: 'details.condition.well-maintained',
+  },
+  {
+    value: 'needs-renovation',
+    title: 'details.condition.needs-renovation',
+  },
+  {
+    value: 'run-down',
+    title: 'details.condition.run-down',
+  },
+]

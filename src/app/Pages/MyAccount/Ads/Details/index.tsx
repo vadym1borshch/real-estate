@@ -4,7 +4,13 @@ import { useTranslation } from 'react-i18next'
 import TextArea from '../../../../../components/atoms/text-area'
 import Button from '../../../../../components/atoms/button'
 import Icon from '../../../../../components/atoms/icon'
-import { countries, initialValuesForm, objectsTypes } from './common.ts'
+import {
+  countries,
+  initialValuesForm,
+  objectsTypes, parkingTypes,
+  permittedRentInfos,
+  permittedSellInfos, stateTypes,
+} from './common.ts'
 import {
   FieldWrapper,
   FormDropdownWrapper,
@@ -15,12 +21,17 @@ import Modal from '../../../../../components/molecules/modal'
 import Map from '../../../../../components/organisms/map'
 import { MapRef } from 'react-map-gl'
 import FileUpload from '../../../../../utils/FileUpload.tsx'
+import { usePathname } from '../../../../../helpers/hooks/usePathname.ts'
+import { ADS_ROUTES } from '../../../../../@constants/routes.ts'
 
 export const DetailPage = () => {
   const { t } = useTranslation()
   const [openMap, setOpenMap] = useState(false)
   const [images, setImages] = useState<string[]>([])
   const mapRef = useRef<MapRef | null>(null)
+  const path = usePathname()
+
+  const isSellPath = path.includes(ADS_ROUTES.sellAds)
 
   return (
     <>
@@ -28,7 +39,7 @@ export const DetailPage = () => {
         initialValues={initialValuesForm}
         onSubmit={async (_values, { resetForm }) => {
           /* handleSubmit(values)*/
-         /* console.log(_values)*/
+          /* console.log(_values)*/
           resetForm()
         }}
         /*  validationSchema={useValidationSchema()}*/
@@ -66,7 +77,7 @@ export const DetailPage = () => {
               <FormInputWrapper fieldName="number" />
             </FieldWrapper>
             <FieldWrapper
-              label={t('details.details-form.permitted-rent-info')}
+              label={t('details.details-form.permitted-rent-form')}
               extra={
                 <Icon
                   id="roundedQuestionMarkIcon"
@@ -75,8 +86,10 @@ export const DetailPage = () => {
               }
             >
               <FormDropdownWrapper
-                fieldName="permittedRentInfo"
-                dropdownElements={[]}
+                fieldName="permittedRentForm"
+                dropdownElements={
+                  isSellPath ? permittedSellInfos : permittedRentInfos
+                }
               />
             </FieldWrapper>
             <FieldWrapper label={t('details.details-form.build-year')}>
@@ -121,13 +134,15 @@ export const DetailPage = () => {
             <FieldWrapper label={t('details.details-form.price')}>
               <FormInputWrapper fieldName="price" />
             </FieldWrapper>
-            <FieldWrapper label={t('details.details-form.park-place-price')}>
-              <FormInputWrapper fieldName="parkPlacePrice" />
-            </FieldWrapper>
+            {isSellPath && (
+              <FieldWrapper label={t('details.details-form.park-place-price')}>
+                <FormInputWrapper fieldName="parkPlacePrice" />
+              </FieldWrapper>
+            )}
             <FieldWrapper label={t('details.details-form.park-place')}>
               <FormDropdownWrapper
                 fieldName="parkPlace"
-                dropdownElements={[]}
+                dropdownElements={parkingTypes}
               />
             </FieldWrapper>
             <FieldWrapper label={t('details.details-form.rooms')}>
@@ -162,8 +177,8 @@ export const DetailPage = () => {
             <FieldWrapper label="WC">
               <FormInputWrapper fieldName="WC" />
             </FieldWrapper>
-            <FieldWrapper label={t('details.details-form.storage')}>
-              <FormDropdownWrapper fieldName="storage" dropdownElements={[]} />
+            <FieldWrapper label={t('details.details-form.state')}>
+              <FormDropdownWrapper fieldName="storage" dropdownElements={stateTypes} />
             </FieldWrapper>
             <FieldWrapper label={t('details.details-form.net-operation-costs')}>
               <FormInputWrapper fieldName="netOperationCosts" />
@@ -261,7 +276,12 @@ export const DetailPage = () => {
               </div>
             </FieldWrapper>
             <div className="flex flex-col gap-3 pt-[5.625rem] whitespace-nowrap md:flex-row">
-              <Button size="sm" className="w-full md:w-fit" type="submit" onClick={() => setImages([])}>
+              <Button
+                size="sm"
+                className="w-full md:w-fit"
+                type="submit"
+                onClick={() => setImages([])}
+              >
                 {t('buttons.save')}
               </Button>
               <Button

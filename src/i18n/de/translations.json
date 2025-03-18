@@ -30,7 +30,7 @@
         "visible-addresses": "Adresse sichtbar?",
         "street": "Strasse",
         "number": "Nummer",
-        "permitted-rent-info": "Zugelassene Mietzinsbildung",
+        "permitted-rent-form": "Zugelassene Mietzinsbildung",
         "build-year": "Baujahr des Hauses",
         "nums-of-floors": "Anzahl der Etagen",
         "living-spase": "Wohnfläche (m2)",
@@ -46,7 +46,7 @@
         "park-place-price": "Kaufpreis Parkplatz",
         "park-place": "Parkplatz",
         "rooms": "Zimmer",
-        "storage": "Zustand",
+        "state": "Zustand",
         "net-operation-costs": "Betriebskosten Netto",
         "broker-commissions": "Maklerprovision",
         "broker-commissions-percentage": "Maklerprovision (%)",
@@ -54,6 +54,40 @@
         "location-descriptions": "Beschreibung der Lage",
         "coordinates": "Latitude and longitude",
         "photos":"Fotos hinzufügen"
+      },
+      "rent-formation": {
+        "index-rent": "Indexmiete",
+        "graduated-rent": "Staffelmiete",
+        "comparative-rent": "Vergleichsmiete",
+        "social-rent": "Sozialmiete",
+        "rent-cap": "Mietpreisbremse",
+        "cost-rent": "Kostenmiete",
+        "cooperative-rent": "Genossenschaftsmiete",
+        "hereditary-lease": "Erbbauzins",
+        "rental-yield": "Mietrendite",
+        "income-valuation": "Ertragswertverfahren",
+        "rental-control": "Mietbindung",
+        "graduated-lease": "Staffelmietvertrag",
+        "indexed-lease": "Indexierter Mietvertrag",
+        "social-regulation": "Sozialbindung",
+        "commercial-rent": "Gewerbemiete",
+        "termination-for-own-use": "Eigenbedarfskündigung möglich"
+      },
+      "parking": {
+        "underground": "Tiefgarage",
+        "garage": "Garage",
+        "carport": "Carport",
+        "outdoor": "Außenstellplatz",
+        "covered": "Überdachter Parkplatz",
+        "none": "Kein Parkplatz"
+      },
+      "condition": {
+        "new": "Neubau",
+        "renovated": "Renoviert",
+        "modernized": "Modernisiert",
+        "well-maintained": "Gepflegt",
+        "needs-renovation": "Renovierungsbedürftig",
+        "run-down": "Sanierungsbedürftig"
       }
     },
     "premises": {
