@@ -37,7 +37,7 @@
         "balcony": "Balkon (m2)",
         "terrace": "Terasse (m2)",
         "garden": "Garten (m2)",
-        "heating-type":"Heizungstyp",
+        "heating-type": "Heizungstyp",
         "energy-certificate": "Energieausweis gültig bis",
         "HBW-energy-class": "HBW Energieklasse",
         "fGEE-energy-class": "fGEE Energieklasse",
@@ -53,7 +53,21 @@
         "property-descriptions": "Beschreibung des Objektes",
         "location-descriptions": "Beschreibung der Lage",
         "coordinates": "Latitude and longitude",
-        "photos":"Fotos hinzufügen"
+        "photos": "Fotos hinzufügen"
+      },
+      "premises-form": {
+        "labels": {
+          "type": "Type ",
+          "name": "Name ",
+          "square": "Quadratmeter"
+        }
+      },
+      "fees-form": {
+        "labels": {
+          "fee": "Gebühr",
+          "percent": "Prozent",
+          "extra-information": "Weitere Infos"
+        }
       },
       "rent-formation": {
         "index-rent": "Indexmiete",
@@ -377,7 +391,10 @@
             "garage": "Garage",
             "garden": "Garten",
             "bedroom-with-wardrobe": "Schlafzimmer mit Garderobe Erdgeschoss",
-            "wc": "WC"
+            "wc": "WC",
+            "kitchen": "Küche",
+            "storage": "Abstellraum",
+            "cellar": "Keller"
           },
           "equipments": {
             "title": "AUSSTATTUNG",
@@ -397,7 +414,8 @@
             "transfer-tax": "Grunderwerbsteuer",
             "land-registry": "Grundbucheintragung",
             "purchase-agreement": "Kaufvertragserrichtung",
-            "purchase-agreement-descr": "nach dem Tarif des jeweiligen Urkundenrichters"
+            "purchase-agreement-descr": "nach dem Tarif des jeweiligen Urkundenrichters",
+            "broker-fee": "Maklergebühr"
           },
           "monthly_costs": {
             "title": "MONATLICHE KOSTEN",

@@ -19,6 +19,7 @@
     "@types/mapbox-gl": "^3.4.1",
     "@types/node": "^22.13.9",
     "@types/react-map-gl": "^6.1.7",
+    "@types/uuid": "^10.0.0",
     "clsx": "^2.1.1",
     "formik": "^2.4.6",
     "i18next": "^24.2.2",
@@ -40,6 +41,7 @@
     "reselect": "^5.1.1",
     "tailwind-merge": "^3.0.1",
     "use-debounce": "^10.0.4",
+    "uuid": "^11.1.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {

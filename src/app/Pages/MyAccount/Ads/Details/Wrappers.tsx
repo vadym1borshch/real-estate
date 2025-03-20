@@ -1,10 +1,11 @@
 import { ReactNode, useState } from 'react'
 import { cn } from '../../../../../helpers/ui.ts'
 import { useTranslation } from 'react-i18next'
-import { Field, FieldProps } from 'formik'
+import { Field, FieldProps, Form } from 'formik'
 import Input from '../../../../../components/atoms/input'
 import Dropdown from '../../../../../components/atoms/dropdown'
 import RadioButton from '../../../../../components/atoms/radio-button'
+import Button from '../../../../../components/atoms/button'
 
 export const FieldWrapper = ({
   children,
@@ -80,6 +81,7 @@ export const FormDropdownWrapper = ({
             variant="outlined"
             withIcon
             triggerButtonClassName="min-h-[48px] w-full"
+            dropdownClassName="top-16 md:top-14 lg:top-12 "
           >
             <div className="flex flex-col">
               {dropdownElements.map((el) => {
@@ -127,5 +129,40 @@ export const FormRadioWrapper = ({ fieldName }: { fieldName: string }) => {
         </div>
       )}
     </Field>
+  )
+}
+
+export const MainFormWrapper = ({
+  children,
+  saveButtonHandler,
+  nextPageButtonHandler,
+}: {
+  children?: ReactNode
+  saveButtonHandler: () => void
+  nextPageButtonHandler: () => void
+}) => {
+  const { t } = useTranslation()
+
+  return (
+    <Form className="flex w-full flex-col gap-3">
+      {children}
+      <div className="flex flex-col gap-3 pt-[5.625rem] whitespace-nowrap md:flex-row">
+        <Button
+          size="sm"
+          className="w-full lg:w-fit"
+          type="submit"
+          onClick={saveButtonHandler}
+        >
+          {t('buttons.save')}
+        </Button>
+        <Button
+          size="sm"
+          className="bg-charcoal hover:bg-seafoam-green w-full whitespace-nowrap text-white lg:w-fit"
+          onClick={nextPageButtonHandler}
+        >
+          {t('buttons.next-page')}
+        </Button>
+      </div>
+    </Form>
   )
 }

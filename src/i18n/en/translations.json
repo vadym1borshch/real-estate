@@ -55,6 +55,20 @@
         "coordinates": "Latitude and longitude",
         "photos":"Add photos"
       },
+      "premises-form": {
+        "labels": {
+          "type": "Type ",
+          "name": "Name ",
+          "square": "Sq. meters"
+        }
+      },
+      "fees-form": {
+        "labels": {
+          "fee": "Fee",
+          "percent": "Percent",
+          "extra-information": "Further information"
+        }
+      },
       "rent-formation": {
         "index-rent": "Index Rent",
         "graduated-rent": "Graduated Rent",
@@ -377,7 +391,10 @@
             "garage": "Garage",
             "garden": "Garden",
             "bedroom-with-wardrobe": "Bedroom with wardrobe on the ground floor",
-            "wc": "WC"
+            "wc": "WC",
+            "kitchen": "Kitchen",
+            "storage": "Storage room",
+            "cellar": "Cellar"
           },
           "equipments": {
             "title": "EQUIPMENT",
@@ -397,7 +414,8 @@
             "transfer-tax": "Real estate transfer tax",
             "land-registry": "Land registry entry",
             "purchase-agreement": "Purchase agreement",
-            "purchase-agreement-descr": "according to the tariff of the respective court judge"
+            "purchase-agreement-descr": "according to the tariff of the respective court judge",
+            "broker-fee": "Brokerage fee"
           },
           "monthly_costs": {
             "title": "MONTHLY COSTS",
