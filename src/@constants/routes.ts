@@ -15,8 +15,8 @@ export const ROUTES = {
   knowledgeRealEstate: '/knowledge-real-estate',
   myAccount: '/my-account',
   profile: '/my-account/profile',
+  messages: '/my-account/messages',
 } as const
-
 
 export const ADS_ROUTES = {
   ads: '/my-account/ads',

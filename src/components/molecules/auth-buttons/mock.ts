@@ -15,7 +15,7 @@ export const authButtons = [
   },
   {
     id: '3',
-    href: '#',
+    href: ROUTES.messages,
     title: 'buttons.messages',
     icon: 'emailIcon',
   },

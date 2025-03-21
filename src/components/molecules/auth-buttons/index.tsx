@@ -6,6 +6,7 @@ import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { authButtons } from './mock.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
+import { ROUTES } from '../../../@constants/routes.ts'
 
 interface Props {
   onClick?: () => void
@@ -47,10 +48,14 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
             buttonClassName
           )}
           onClick={() => {
-            navigate(button.href)
             if (onClick) {
               onClick()
             }
+            if (button.href == ROUTES.messages) {
+              navigate(button.href + "/inboxes")
+              return
+            }
+            navigate(button.href)
           }}
         >
           <span className="flex w-full justify-between">

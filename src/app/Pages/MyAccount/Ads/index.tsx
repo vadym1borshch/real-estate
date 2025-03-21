@@ -21,7 +21,7 @@ export const Ads = () => {
           dispatch(setCurrentAdsStatus('active'))
         }}
       >
-        {t('sell-ads.title')}
+        {t('rent-ads.title')}
       </Button>
       <Button
         variant="outlined"
@@ -32,7 +32,7 @@ export const Ads = () => {
           dispatch(setCurrentAdsStatus('active'))
         }}
       >
-        {t('rent-ads.title')}
+        {t('sell-ads.title')}
       </Button>
     </div>
   )

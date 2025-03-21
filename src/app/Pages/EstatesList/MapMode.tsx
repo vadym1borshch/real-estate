@@ -4,7 +4,7 @@ import Button from '../../../components/atoms/button'
 import { cn } from '../../../helpers/ui.ts'
 import EstateCard from '../../../components/molecules/estate-card'
 import { useTranslation } from 'react-i18next'
-import { RealEstate, setCurrentPage } from '../../../store/estateSlice'
+import {  setCurrentPage } from '../../../store/estateSlice'
 import Map from '../../../components/organisms/map'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { MapRef, Marker } from 'react-map-gl'
@@ -18,6 +18,7 @@ import isEqual from 'lodash.isequal'
 import MapMarker from '../../../components/atoms/map-marker'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
+import { RealEstate } from '../../../store/commonMock.ts'
 
 interface Props {
   open: boolean
@@ -147,7 +148,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
               <EstateCard
                 key={estate.id}
                 realEstate={estate}
-                className="min-w-[22.5rem]"
+                className="min-w-[300px]"
               />
             )
           })}

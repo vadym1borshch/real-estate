@@ -1,11 +1,12 @@
 import { ReactNode, useState } from 'react'
 import { cn } from '../../../../../helpers/ui.ts'
 import { useTranslation } from 'react-i18next'
-import { Field, FieldProps, Form } from 'formik'
+import { Field, FieldArray, FieldArrayRenderProps, FieldProps } from 'formik'
 import Input from '../../../../../components/atoms/input'
 import Dropdown from '../../../../../components/atoms/dropdown'
 import RadioButton from '../../../../../components/atoms/radio-button'
 import Button from '../../../../../components/atoms/button'
+import Icon from '../../../../../components/atoms/icon'
 
 export const FieldWrapper = ({
   children,
@@ -132,37 +133,109 @@ export const FormRadioWrapper = ({ fieldName }: { fieldName: string }) => {
   )
 }
 
-export const MainFormWrapper = ({
-  children,
-  saveButtonHandler,
-  nextPageButtonHandler,
+export const FormLayoutButtons = ({
+  handleSave,
+  handleNext,
 }: {
-  children?: ReactNode
-  saveButtonHandler: () => void
-  nextPageButtonHandler: () => void
+  handleSave: () => void
+  handleNext: () => void
 }) => {
   const { t } = useTranslation()
+  return (
+    <div className="flex flex-col gap-3 pt-[5.625rem] whitespace-nowrap md:flex-row">
+      <Button
+        size="sm"
+        className="w-full lg:w-fit"
+        type="submit"
+        onClick={handleSave}
+      >
+        {t('buttons.save')}
+      </Button>
+      <Button
+        size="sm"
+        className="bg-charcoal hover:bg-seafoam-green w-full whitespace-nowrap text-white lg:w-fit"
+        onClick={handleNext}
+      >
+        {t('buttons.next-page')}
+      </Button>
+    </div>
+  )
+}
+
+export const ActionsButtonsWrapper = ({
+  deleteHandler,
+  addHandler,
+}: {
+  deleteHandler: () => void
+  addHandler: () => void
+}) => {
+  return (
+    <div className="flex gap-3">
+      <Button
+        className="bg-charcoal hover:bg-seafoam-green h-[48px] w-full p-0 lg:w-[48px]"
+        onClick={deleteHandler}
+      >
+        <Icon id="deleteIcon" className="h-[24px] w-[24px]" />
+      </Button>
+      <Button
+        className="bg-charcoal hover:bg-seafoam-green h-[48px] w-full p-0 lg:w-[48px]"
+        onClick={addHandler}
+      >
+        <Icon id="roundedSmallPlusIcon" className="h-[24px] w-[24px]" />
+      </Button>
+    </div>
+  )
+}
+
+interface MainFormWrapperProps {
+  children: (props: FieldArrayRenderProps) => ReactNode
+  onSubmit: () => void
+  formHeaderValues: {
+    firstColumnWidth: number
+    secondColumnWidth: number
+    thirdColumnWidth: number
+    firstColumnLabel: string
+    secondColumnLabel: string
+    thirdColumnLabel: string
+  }
+  name: string
+  handleSave: () => void
+  handleNext: () => void
+}
+
+export const MainFormWrapper = ({
+  children,
+  onSubmit,
+  formHeaderValues,
+  name,
+  handleSave,
+  handleNext,
+}: MainFormWrapperProps) => {
+  const {
+    firstColumnWidth,
+    secondColumnWidth,
+    thirdColumnWidth,
+    firstColumnLabel,
+    secondColumnLabel,
+    thirdColumnLabel,
+  } = formHeaderValues
 
   return (
-    <Form className="flex w-full flex-col gap-3">
-      {children}
-      <div className="flex flex-col gap-3 pt-[5.625rem] whitespace-nowrap md:flex-row">
-        <Button
-          size="sm"
-          className="w-full lg:w-fit"
-          type="submit"
-          onClick={saveButtonHandler}
-        >
-          {t('buttons.save')}
-        </Button>
-        <Button
-          size="sm"
-          className="bg-charcoal hover:bg-seafoam-green w-full whitespace-nowrap text-white lg:w-fit"
-          onClick={nextPageButtonHandler}
-        >
-          {t('buttons.next-page')}
-        </Button>
+    <form onSubmit={onSubmit} className="flex flex-col gap-3">
+      <div
+        className={`-mb-1.5 hidden gap-3 lg:grid`}
+        style={{
+          gridTemplateColumns: `${firstColumnWidth}px ${secondColumnWidth}px ${thirdColumnWidth}px`,
+        }}
+      >
+        <label>{firstColumnLabel}</label>
+        <label>{secondColumnLabel}</label>
+        <label>{thirdColumnLabel}</label>
       </div>
-    </Form>
+
+      <FieldArray name={name}>{children}</FieldArray>
+
+      <FormLayoutButtons handleSave={handleSave} handleNext={handleNext} />
+    </form>
   )
 }

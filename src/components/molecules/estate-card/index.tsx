@@ -67,7 +67,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
         <img
           src={image}
           alt="house"
-          className="h-[15rem] min-w-[300px] rounded-lg object-cover"
+          className="h-[15rem] min-w-[300px] rounded-t-lg object-cover"
         />
       </div>
       <div className="bg-light-gray2 group-hover:bg-gray transition-hover flex min-h-[11.75rem] w-full flex-col gap-3 rounded-b-lg px-6 py-5 duration-300">

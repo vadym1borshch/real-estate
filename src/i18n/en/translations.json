@@ -15,8 +15,21 @@
     "buy": {
       "title": "Buy "
     },
+    "messages": {
+      "title": "My messages"
+    },
+    "inboxes": {
+      "title": "Inboxes "
+    },
+    "sent": {
+      "title": "Sent "
+    },
+    "archive": {
+      "title": "Archive "
+    },
     "details": {
       "title": "Details ",
+      "modal-info": "# APPROVED RENT PRICE FORMATION\n\n## **Free Rent Price**  \nThe amount of the free rent price is determined by supply and demand in the market.  \nA review of the appropriateness of the free rent price by the court or the arbitration board is not possible.  \n\nA free rent price formation applies when:  \n\n **1. You conclude a long-term rental agreement (longer than 6 months).**  \n **2. Your property is not operated as a home, a humanitarian organization,**  \n   an accommodation, parking facility, transport, airport operations,  \n   forwarding, or warehouse company.  \n **3. One of the following conditions is met:**  \n   -   Your property is located in a privately financed building,  \n       constructed after **1953** without public funding.  \n   -   Your property is an attic conversion or extension,  \n       for which the building permit was issued after **31.12.2001**.  \n   -   Your property is an annex,  \n       for which the building permit was issued after **30.09.2006**.  \n   -   Your property is under condominium ownership and located in a building,  \n       constructed after the building permit was issued on **08.05.1945**.  \n   -   Your property is a **single-family or two-family house**.  \n   -   Your property is a **second home for recreational purposes** (secondary residence).  \n   -   Your property is a **service apartment**.  \n\n## **Regulated Rent Price**  \nFor all other properties, a **regulated rent price formation** applies.  \n\nA regulated rent price is one whose amount and increase possibilities  \nare explicitly regulated in the Tenancy Act **(MRG)**.  \nA range of rent types falls under **regulated rent price**.  \n",
       "details-form": {
         "choose": "Choose",
         "placeholder": "You must enter the text",
@@ -67,6 +80,97 @@
           "fee": "Fee",
           "percent": "Percent",
           "extra-information": "Further information"
+        },
+        "placeholders": {
+          "name": "Name"
+        }
+      },
+
+      "monthly-costs-form": {
+        "labels": {
+          "cost-type": "Cost type",
+          "cost": "Cost",
+          "ust": "UST %"
+        }
+      },
+      "equipments": {
+        "outlook": {
+          "title": "View",
+          "mountain": "Mountain view",
+          "lake": "Lake view",
+          "sea": "Sea view",
+          "green": "Green view",
+          "long-distance": "Distant view",
+          "city": "City view"
+        },
+        "free-space": {
+          "title": "Open Space",
+          "north": "North",
+          "eats": "East",
+          "south": "South",
+          "west": "West",
+          "northeast": "Northeast",
+          "southeast": "Southeast",
+          "southwest": "Southwest",
+          "northwest": "Northwest"
+        },
+        "kitchen": {
+          "title": "Kitchen",
+          "fit-kitchen": "Fitted kitchen",
+          "compact-kitchen": "Kitchenette",
+          "tea-kitchen": "Tea kitchen",
+          "eat-in-kitchen": "Eat-in kitchen"
+        },
+        "floor": {
+          "title": "Floor",
+          "floorboards": "Floorboards",
+          "tiles": "Tiles",
+          "linoleum": "Linoleum",
+          "carpet-floor": "Carpet flooring",
+          "granite": "Granite",
+          "marble": "Marble",
+          "screed": "Screed",
+          "plastic-floor": "Plastic flooring",
+          "parquet": "Parquet",
+          "terracotta": "Terracotta",
+          "laminate": "Laminate",
+          "stone-floor": "Stone flooring"
+        },
+        "windows": {
+          "title": "Windows",
+          "external-sun-protection": "External sun protection",
+          "internal-sun-protection": "Internal sun protection",
+          "roller-shutters": "Roller shutters",
+          "glare-protection": "Glare protection",
+          "double-glazing": "Double glazing",
+          "multiple-glazing": "Multiple glazing",
+          "plastic-windows": "Plastic windows"
+        },
+        "extras": {
+          "title": "Extras",
+          "furnished": "Furnished",
+          "outdoor-shower": "Outdoor shower",
+          "fitness-room": "Fitness room",
+          "playground": "Playground",
+          "lake-access": "Lake access",
+          "laundry-drying-room": "Laundry drying room",
+          "alarm-system": "Alarm system",
+          "bike-room": "Bike room",
+          "sauna": "Sauna",
+          "wine-cellar": "Wine cellar",
+          "winter-garden": "Winter garden",
+          "bathtub": "Bathtub",
+          "storage-room": "Storage room",
+          "steam-bath": "Steam bath",
+          "grill-area": "Grill area",
+          "wheelchair-accessible": "Wheelchair accessible",
+          "swimming-pool": "Swimming pool",
+          "whirlpool": "Whirlpool",
+          "library": "Library",
+          "garden-use": "Garden use",
+          "near-subway": "Near subway",
+          "wellness-area": "Wellness area",
+          "bath-with-window": "Bath with window"
         }
       },
       "rent-formation": {

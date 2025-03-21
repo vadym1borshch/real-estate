@@ -15,8 +15,21 @@
     "buy": {
       "title": "Kaufen "
     },
+    "messages": {
+      "title": "Meine Nachrichten"
+    },
+    "inboxes": {
+      "title": "Posteingänge "
+    },
+    "sent": {
+      "title": "Gesendet "
+    },
+    "archive": {
+      "title": "Archiv "
+    },
     "details": {
       "title": "Detail ",
+      "modal-info": "# ZUGELASSENE MIETZINSBILDUNG\n\n## **Freier Mietzins**  \nDie Höhe des freien Mietzinses ergibt sich aus Nachfrage und Angebot aus dem Markt.  \nEine Überprüfung der Angemessenheit des freien Mietzinses durch das Gericht oder die Schlichtungsstelle ist nicht möglich.  \n\nEine freie Mietzinsbildung kommt zur Anwendung wenn:  \n\n **1. Sie ein langfristiges Mietverhältnis (länger als 6 Monate) beschließen.**  \n **2. Ihr Objekt sich nicht im Betrieb eines Heimes, einer humanitären Organisation,**  \n   eines Beherbergungs-, Garagierungs-, Verkehres-, Flughafenbetriebs-,  \n   Speditions- oder Lagerhausunternehmens befindet.  \n **3. Und eine der folgenden Bedingungen ist erfüllt:**  \n   -   Ihr Objekt liegt in einem freifinanzierten Gebäude,  \n     das nach **1953** ohne Zuhilfenahme von öffentlichen Mitteln errichtet wurde.  \n   -    Ihr Objekt ist ein Dachgeschossausbau oder Aufbau,  \n        für den die Baubewilligung nach **31.12.2001** erteilt wurde.  \n   -    Ihr Objekt ist Zubau auf Grund,  \n        für den die Baubewilligung nach **30.09.2006** erteilt wurde.  \n   -    Ihr Objekt steht in Wohnungseigentum und liegt in einem Gebäude,  \n        welches nach der Baubewilligung nach **08.05.1945** errichtet wurde.  \n   -    Ihr Objekt ist **Ein- oder Zweifamilienhaus**.  \n   -    Ihr Objekt ist eine **Zweitwohnung für Erholungszweck** (Zweitwohnsitz).  \n   -    Ihr Objekt ist eine **Dienstwohnung**.  \n\n## **Gedeckelte Mietzinsbildung**  \nBei allen anderen Objekten kommt eine **gedeckelte Mietzinsbildung** zur Anwendung.  \n\nGedeckelter Mietzins ist jener Mietzins, dessen Höhe und Erhöhungsmöglichkeiten  \nim Mietrechtsgesetz **(MRG)** ausdrücklich geregelt sind.  \nUnter **gedeckelten Mietzins** fällt eine Reihe von Mietzinsarten.  \n",
       "details-form": {
         "choose": "Wählen Sie",
         "placeholder": "Sie müssen den Text eingeben",
@@ -67,6 +80,96 @@
           "fee": "Gebühr",
           "percent": "Prozent",
           "extra-information": "Weitere Infos"
+        },
+        "placeholders": {
+          "name": "Name"
+        }
+      },
+      "monthly-costs-form": {
+        "labels": {
+          "cost-type": "Cost type",
+          "cost": "Cost ",
+          "ust": "UST %"
+        }
+      },
+      "equipments": {
+        "outlook": {
+          "title": "AUSBLICK",
+          "mountain": "Bergblick",
+          "lake": "Seeblick",
+          "sea": "Meerblick",
+          "green": "Grünblick",
+          "long-distance": "Fernblick",
+          "city": "Stadtblick"
+        },
+        "free-space": {
+          "title": "FREIRAUM",
+          "north": "Nord",
+          "eats": "Ost",
+          "south": "Süd",
+          "west": "West",
+          "northeast": "Nordost",
+          "southeast": "Südost",
+          "southwest": "Südwest",
+          "northwest": "Nordwest"
+        },
+        "kitchen": {
+          "title": "KÜCHE",
+          "fit-kitchen": "Einbauküche",
+          "compact-kitchen": "Küchennette",
+          "tea-kitchen": "Teeküche",
+          "eat-in-kitchen": "Wohnküche"
+        },
+        "floor": {
+          "title": "Boden",
+          "floorboards": "Dielen",
+          "tiles": "Fliesen",
+          "linoleum": "Linoleum",
+          "carpet-floor": "Teppichboden",
+          "granite": "Granit",
+          "marble": "Marmor",
+          "screed": "Estrich",
+          "plastic-floor": "Kunststoffboden",
+          "parquet": "Parkett",
+          "terracotta": "Terrakotte",
+          "laminate": "Laminat",
+          "stone-floor": "Steinboden"
+        },
+        "windows": {
+          "title": "Fenster",
+          "external-sun-protection": "Außenliegender Sonnenschutz",
+          "internal-sun-protection": "Innenliegender Sonnenschutz",
+          "roller-shutters": "Rolladen",
+          "glare-protection": "Blendschutz",
+          "double-glazing": "Doppelverglasung",
+          "multiple-glazing": "Mehrfachverglasung",
+          "plastic-windows": "Kunststofffenster"
+        },
+        "extras": {
+          "title": "Extras",
+          "furnished": "Möbliert",
+          "outdoor-shower": "Außendusche",
+          "fitness-room": "Fitnessraum",
+          "playground": "Kinderspielplatz",
+          "lake-access": "Seezugang",
+          "laundry-drying-room": "Wasch-Trockenraum",
+          "alarm-system": "Alarmanlage",
+          "bike-room": "Fahrradraum",
+          "sauna": "Sauna",
+          "wine-cellar": "Weinkeller",
+          "winter-garden": "Wintergarten",
+          "bathtub": "Badewanne",
+          "storage-room": "Abstellraum",
+          "steam-bath": "Dampfbad",
+          "grill-area": "Grillstelle",
+          "wheelchair-accessible": "Rollstuhlgerecht",
+          "swimming-pool": "Swimmingpool",
+          "whirlpool": "Whirlpool",
+          "library": "Bibliothek",
+          "garden-use": "Gartennutzung",
+          "near-subway": "U-Bahn-Nähe",
+          "wellness-area": "Wellnessbereich",
+          "bath-with-window": "Bad mit Fenster"
         }
       },
       "rent-formation": {

@@ -37,6 +37,8 @@ export const initialValuesForm = {
   photos: [],
 }
 
+export const modalInfo = 'details.modal-info'
+
 export const objectsTypes = [
   {
     value: 'apartment',

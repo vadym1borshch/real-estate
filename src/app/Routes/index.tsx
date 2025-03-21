@@ -35,6 +35,8 @@ import { Premises } from '../Pages/MyAccount/Ads/Details/Premises'
 import { Equipments } from '../Pages/MyAccount/Ads/Details/Equipments'
 import { Fees } from '../Pages/MyAccount/Ads/Details/Fees'
 import { MonthlyCosts } from '../Pages/MyAccount/Ads/Details/MonthlyCosts'
+import { Messages } from '../Pages/MyAccount/Messages'
+import { MessagesContent } from '../Pages/MyAccount/Messages/MessagesContent.tsx'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -238,6 +240,24 @@ const routes: RouteObject[] = [
                       {
                         path: 'monthly-costs',
                         element: <MonthlyCosts />,
+                      },
+                    ],
+                  },
+                  {
+                    path: 'messages',
+                    element: <Messages/>,
+                    children: [
+                      {
+                        path: 'inboxes',
+                        element: <MessagesContent />,
+                      },
+                      {
+                        path: 'sent',
+                        element: <MessagesContent />,
+                      },
+                      {
+                        path: 'archive',
+                        element: <MessagesContent />,
                       },
                     ],
                   },
