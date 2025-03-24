@@ -1,12 +1,15 @@
+import { useTranslation } from 'react-i18next'
 import Button from '../../atoms/button'
 import { cn } from '../../../helpers/ui.ts'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
-import { useTranslation } from 'react-i18next'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { authButtons } from './mock.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { selectCountNewMessages } from '../../../store/messagesSlice/selectors.ts'
+import { deleteUser } from '../../../store/userSlice'
 
 interface Props {
   onClick?: () => void
@@ -19,6 +22,8 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
   const navigate = useNavigate()
   const { width } = useWindowDimensions()
   const isTablet = width <= BREAKPOINTS.md
+  const newMessagesCount = useAppSelector(selectCountNewMessages)
+  const dispatch = useAppDispatch()
 
   return (
     <div
@@ -52,7 +57,7 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
               onClick()
             }
             if (button.href == ROUTES.messages) {
-              navigate(button.href + "/inboxes")
+              navigate(button.href + '/inboxes')
               return
             }
             navigate(button.href)
@@ -60,9 +65,9 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
         >
           <span className="flex w-full justify-between">
             {t(button.title)}
-            {button.href === '/my-account/messages' && (
+            {button.href === ROUTES.messages && !!newMessagesCount && (
               <span className="bg-coral h-6 w-6 rounded-full text-center text-white">
-                1
+                {newMessagesCount}
               </span>
             )}
           </span>
@@ -79,9 +84,7 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
           buttonClassName
         )}
         onClick={() => {
-          if (onClick) {
-            onClick()
-          }
+          dispatch(deleteUser())
         }}
       >
         {t('buttons.logout')}

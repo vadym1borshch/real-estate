@@ -16,7 +16,11 @@
       "title": "Kaufen "
     },
     "messages": {
-      "title": "Meine Nachrichten"
+      "title": "Meine Nachrichten",
+      "common": {
+        "you": "Ich",
+        "to": "An"
+      }
     },
     "inboxes": {
       "title": "Posteingänge "
@@ -329,6 +333,7 @@
       "save": "Speichern Sie",
       "upload-doc": "Dokument hochladen",
       "send": "Senden",
+      "send-message": "Nachricht senden",
       "understood": "Verstanden",
       "find-reason": "Grund herausfinden",
       "create-ad": "Anzeige erstellen",

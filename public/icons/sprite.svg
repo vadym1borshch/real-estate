@@ -238,7 +238,8 @@
               stroke-linejoin="round"/>
     </symbol>
 
-    <symbol id="roundedQuestionMarkIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="roundedQuestionMarkIcon" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
         <path d="M21 12C21 7.02908 16.9709 3 12 3C7.02908 3 3 7.02908 3 12C3 16.9699 7.02908 21 12 21C16.9709 21 21 16.9699 21 12Z"
               stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         <path d="M11.9473 16.2245V16.1963" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -394,6 +395,30 @@
         <path d="M11.9766 7.65625H15.991M11.9766 12.0014H15.991M11.9766 16.3465H15.991" stroke="currentColor"
               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+
+    <symbol id="downSquareIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M21 7.78216V16.2169C21 19.165 18.9188 21 15.9736 21H8.02638C5.08119 21 3 19.165 3 16.2159V7.78216C3 4.83405 5.08119 3 8.02638 3H15.9736C18.9188 3 21 4.84281 21 7.78216Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15.392 12.457L11.9986 15.8615L8.60742 12.457" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11.998 15.8612V8.13672" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="openEmailIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 10.5244C3 9.52223 3.48941 8.58331 4.31157 8.0112L10.4715 3.71942C11.3899 3.0792 12.6101 3.0792 13.5285 3.71942L19.6884 8.0112C20.5096 8.58331 21 9.52223 21 10.5244V16.369C21 19.1342 19.1552 20.7669 16.4183 20.7601H7.58173C4.84476 20.7669 3 19.1342 3 16.369V10.5244Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.3027 11.3086L13.3038 14.5603C12.5507 15.1586 11.4833 15.1586 10.7302 14.5603L6.69727 11.3086"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="inboxArchiveIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M8.08392 3.14648H16.5186C19.4667 3.14648 21.3008 5.23471 21.3008 8.18986V16.164C21.3008 19.1191 19.4667 21.2074 16.5176 21.2074H8.08392C5.13581 21.2074 3.30078 19.1191 3.30078 16.164V8.18986C3.30078 5.23471 5.14456 3.14648 8.08392 3.14648Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21.295 12.625H17.011C16.1236 12.625 15.3141 13.1288 14.9201 13.9264C14.4423 14.8929 13.4489 15.5567 12.3008 15.5567C11.1527 15.5567 10.1593 14.8929 9.68157 13.9264C9.28752 13.1288 8.47801 12.625 7.59066 12.625H3.31055"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
 
     <symbol id="emailIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M21 15.0944C21 17.8596 19.1552 20.1072 16.4183 20.1004H7.58173C4.84476 20.1072 3 17.8596 3 15.0944V8.91315C3 6.15088 4.84476 3.90039 7.58173 3.90039H16.4183C19.1552 3.90039 21 6.15088 21 8.91315V15.0944Z"

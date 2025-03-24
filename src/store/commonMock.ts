@@ -262,7 +262,7 @@ export const houses: RealEstate[] = [
     image: house8,
     label: 'MODERNE DG-MAISONETTE MIT BALKON AM AUMANNPLATZ',
     isTop: false,
-    favorite: false,
+    favorite: true,
     selectedOnMap: false,
     type: {
       key: 'apartment',
@@ -301,7 +301,7 @@ export const houses: RealEstate[] = [
     image: house9,
     label: 'MODERNE DACHGESCHOSSWOHNUNG NÄHE AKH WIEN UND KUTSCHKERMARKT',
     isTop: false,
-    favorite: false,
+    favorite: true,
     selectedOnMap: false,
     type: {
       key: 'apartment',
@@ -340,7 +340,7 @@ export const houses: RealEstate[] = [
     image: house10,
     label: 'GARTEN-MAISONETTE MIT EIGENEM POOL IN DÖBLING',
     isTop: false,
-    favorite: false,
+    favorite: true,
     selectedOnMap: false,
     type: {
       key: 'apartment',
@@ -379,7 +379,7 @@ export const houses: RealEstate[] = [
     image: house5,
     label: 'EXQUISITE VILLA MIT WELLNESSBEREICH UND INDOOR-POOL',
     isTop: false,
-    favorite: false,
+    favorite: true,
     selectedOnMap: false,
     type: {
       key: 'house',
@@ -418,7 +418,7 @@ export const houses: RealEstate[] = [
     image: house11,
     label: 'EXKLUSIVES PENTHOUSE MIT BLICK AUF DEN STEPHANSDOM',
     isTop: false,
-    favorite: false,
+    favorite: true,
     selectedOnMap: false,
     type: {
       key: 'house',
@@ -465,7 +465,7 @@ export const houses: RealEstate[] = [
     image: house6,
     label: 'CHARMANTE ALTBAUWOHNUNG IM HERZEN WIENS',
     isTop: false,
-    favorite: false,
+    favorite: true,
     selectedOnMap: false,
     type: {
       key: 'apartment',

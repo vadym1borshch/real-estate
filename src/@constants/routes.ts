@@ -16,6 +16,8 @@ export const ROUTES = {
   myAccount: '/my-account',
   profile: '/my-account/profile',
   messages: '/my-account/messages',
+  login: '/login',
+  favorites: '/my-account/favorites',
 } as const
 
 export const ADS_ROUTES = {
@@ -24,4 +26,5 @@ export const ADS_ROUTES = {
   sellAds: '/my-account/ads/sell-ads',
   sellDetails: '/my-account/ads/sell-ads/details',
   rentDetails: '/my-account/ads/rent-ads/details',
+
 } as const

@@ -4,6 +4,7 @@ import realEstateSlice from './estateSlice'
 import toastSlice from './toastSlise'
 import userSlice from './userSlice'
 import adsSlice from './adsSlice'
+import messagesSlice from './messagesSlice'
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     toasts: toastSlice,
     user: userSlice,
     ads: adsSlice,
+    messages: messagesSlice,
   },
 })
 

@@ -21,7 +21,7 @@ export const authButtons = [
   },
   {
     id: '4',
-    href: '#',
+    href: ROUTES.favorites,
     title: 'buttons.favorite',
     icon: 'standardHeartIcon',
   },

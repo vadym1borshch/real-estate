@@ -25,7 +25,7 @@ export const MainLayout = () => {
       })}
     >
       <Outlet />
-      <Footer />
+      {path !== ROUTES.login && <Footer />}
       <Toast />
     </div>
   )

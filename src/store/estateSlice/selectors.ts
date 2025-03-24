@@ -34,6 +34,11 @@ export const selectTopEstates = createSelector(
   (data) => data.filter(el => el.isTop),
 )
 
+export const selectFavoritesEstates = createSelector(
+  [selectEstates],
+  (data) => data.filter(el => el.favorite),
+)
+
 export const selectBuyEstates = createSelector(
   [selectEstates, selectBuyFilter],
   (data, buyFilter) =>

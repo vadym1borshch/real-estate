@@ -37,6 +37,8 @@ import { Fees } from '../Pages/MyAccount/Ads/Details/Fees'
 import { MonthlyCosts } from '../Pages/MyAccount/Ads/Details/MonthlyCosts'
 import { Messages } from '../Pages/MyAccount/Messages'
 import { MessagesContent } from '../Pages/MyAccount/Messages/MessagesContent.tsx'
+import { LoginPage } from '../Pages/Login'
+import { FavoritesPage } from '../Pages/MyAccount/Favorites'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -86,6 +88,10 @@ const routes: RouteObject[] = [
             path: '',
             element: <DefaultPageLayout />,
             children: [
+              {
+                path: 'login',
+                element: <LoginPage />,
+              },
               {
                 path: 'about',
                 element: <About />,
@@ -245,11 +251,17 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'messages',
-                    element: <Messages/>,
+                    element: <Messages />,
                     children: [
                       {
                         path: 'inboxes',
                         element: <MessagesContent />,
+                        children: [
+                          {
+                            path: '',
+                            element: <></>,
+                          },
+                        ],
                       },
                       {
                         path: 'sent',
@@ -260,6 +272,10 @@ const routes: RouteObject[] = [
                         element: <MessagesContent />,
                       },
                     ],
+                  },
+                  {
+                    path: 'favorites',
+                    element: <FavoritesPage />,
                   },
                 ],
               },

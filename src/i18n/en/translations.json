@@ -16,7 +16,11 @@
       "title": "Buy "
     },
     "messages": {
-      "title": "My messages"
+      "title": "My messages",
+      "common": {
+        "you": "You",
+        "to": "To"
+      }
     },
     "inboxes": {
       "title": "Inboxes "
@@ -330,6 +334,7 @@
       "save": "Save",
       "upload-doc": "Upload document",
       "send": "Send",
+      "send-message": "Send message",
       "understood": "Understood",
       "find-reason": "Find out the reason",
       "create-ad": "Create ad",
