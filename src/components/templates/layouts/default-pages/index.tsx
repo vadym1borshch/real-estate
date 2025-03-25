@@ -4,6 +4,7 @@ import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
 import Breadcrumb from '../../../molecules/breadcrumb'
 import { useEffect, useState } from 'react'
 import useTranslationSearch from '../../../../helpers/hooks/useTranslationSearch.ts'
+import { ROUTES } from '../../../../@constants/routes.ts'
 
 const initLinks = [
   {
@@ -39,9 +40,11 @@ export const DefaultPageLayout = () => {
   return (
     <div className="flex w-full flex-col items-center">
       <Header />
-      {path !== '/rent' && path !== '/buy' && path !== '/estates' && (
-        <Breadcrumb items={links} />
-      )}
+      {path !== ROUTES.rent &&
+        path !== ROUTES.buy &&
+        path !== ROUTES.estates &&
+        path !== ROUTES.login &&
+        path !== ROUTES.register && <Breadcrumb items={links} />}
       <Outlet />
     </div>
   )

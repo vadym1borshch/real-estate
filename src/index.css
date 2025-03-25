@@ -48,6 +48,7 @@ html:has(.modal) {
 
 html {
   overflow-x: hidden;
+  color: var(--color-charcoal);
 }
 
 .r-estate-descriptions {

@@ -27,13 +27,13 @@ export const authButtons = [
   },
   {
     id: '5',
-    href: '#',
+    href: ROUTES.order,
     title: 'buttons.photo-video',
     icon: 'cameraIcon',
   },
   {
     id: '6',
-    href: '#',
+    href: ROUTES.payments,
     title: 'buttons.payment-options',
     icon: 'bankCardIcon',
   },

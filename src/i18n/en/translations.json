@@ -3,6 +3,7 @@
     "common": {
       "postal-code": "Postal code",
       "top": "Top",
+      "add-card": "Add card",
       "countries": {
         "de": "Germany",
         "at": "Austria",
@@ -14,6 +15,79 @@
     },
     "buy": {
       "title": "Buy "
+    },
+    "login": {
+      "title": "LOGIN",
+      "form": {
+        "email": "Email",
+        "password": "Password",
+        "save-password": "Save password",
+        "forgot-password": "Forgot your password?",
+        "connection-secure": "Secure connection",
+        "error": "The password or email is incorrect",
+        "no-account": "You don't have an account?"
+      }
+    },
+    "register": {
+      "title": "Register",
+      "form": {
+        "first-name": "First name",
+        "last-name": "Last name",
+        "email": "Email",
+        "password": "Password",
+        "password-placeholder": "Password ({{value}} or more characters)",
+        "terms-agree": "Yes, I understand and agree to the <span>Terms of Use</span>."
+      }
+    },
+    "payments": {
+      "title": "Payment options",
+      "basic": "Basic",
+      "make-basic": "Make it default",
+      "no-cards": "You currently have no cards attached.",
+      "unknown-payment system": "Unknown or non-standard payment system",
+      "validity-period": "Validity period",
+      "card-number": "Card number",
+      "modal": {
+        "success": "SUCCESS REPORT",
+        "success-info": "Congratulations! Your card has been successfully added.",
+        "error": "ERROR MESSAGE",
+        "error-info": "Error: There was a problem. Please try again later."
+      }
+    },
+    "order": {
+      "title": "Order photo/video ",
+      "price-list": {
+        "title": "PRICE LIST",
+        "area": "Area (m²)",
+        "up-to": "up to",
+        "from": "from",
+        "photo": "Photo",
+        "video": "Video",
+        "combo": "Combo"
+      },
+      "included": {
+        "title": "INCLUDED",
+        "license-music": "Music license for videos",
+        "video-thumbnail": "Video Thumbnail",
+        "logo": "Logo overlay (photo/video) "
+      },
+      "extra": {
+        "title": "EXTRAS",
+        "social-media": "Social media formats (TikTok/Reel)",
+        "drone-footage": "Drone footage",
+        "travel-outside": "Travel expenses outside Vienna",
+        "by": "by"
+      },
+      "text-area": {
+        "placeholder": "I order the following product:\nThe address is:\nHere is my suggested delivery date:"
+      },
+      "modal": {
+        "title": "CONGRATULATIONS!",
+        "text": "Your order has been successfully sent. A specialist will contact you shortly. Thank you for using Fylpi!"
+      }
+    },
+    "favorites": {
+      "title": "Favorites "
     },
     "messages": {
       "title": "My messages",
@@ -54,7 +128,7 @@
         "balcony": "Balcony (m2)",
         "terrace": "Terrace (m2)",
         "garden": "Garden (m2)",
-        "heating-type":"Heating type",
+        "heating-type": "Heating type",
         "energy-certificate": "Energy certificate valid until",
         "HBW-energy-class": "HBW Energy class",
         "fGEE-energy-class": "fGEE Energy class",
@@ -70,7 +144,7 @@
         "property-descriptions": "Description of the object",
         "location-descriptions": "Description of the location",
         "coordinates": "Latitude and longitude",
-        "photos":"Add photos"
+        "photos": "Add photos"
       },
       "premises-form": {
         "labels": {
@@ -89,7 +163,6 @@
           "name": "Name"
         }
       },
-
       "monthly-costs-form": {
         "labels": {
           "cost-type": "Cost type",
@@ -254,7 +327,7 @@
             "p": "Thank you! Your payment was successful. We are glad that you chose us. Your ad has been successfully placed in the top ads."
           },
           "rejected": {
-            "title":"ERROR MESSAGE",
+            "title": "ERROR MESSAGE",
             "p": "A problem occurred. Please try again later. Thank you for your understanding. Or write to us; we'll be happy to help."
           }
         }
@@ -270,7 +343,7 @@
       "title": "Active "
     },
     "inactive": {
-      "title":"Inactive "
+      "title": "Inactive "
     },
     "moderation": {
       "title": "For moderation"
@@ -317,6 +390,7 @@
       "next": "Next",
       "sign-in": "Sign in",
       "logout": "Logout",
+      "login": "Login",
       "place-advertisement": "Place an advertisement",
       "find": "Find",
       "view-on-map": "VIEW ON MAP",
@@ -339,7 +413,9 @@
       "find-reason": "Find out the reason",
       "create-ad": "Create ad",
       "pay": "Pay",
-      "next-page": "Next page"
+      "next-page": "Next page",
+      "attach-card": "Attach a card",
+      "register": "Register"
     },
     "knowledge-real-estate": {
       "title": "Knowledge about real estate ",

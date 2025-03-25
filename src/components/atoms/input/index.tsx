@@ -36,45 +36,47 @@ const Input = ({
     <div className="relative z-0 flex w-full flex-col">
       {label && (
         <div className="flex w-full items-center justify-between">
-          {label && <label className="w-fit pb-1.5">{label}</label>}
+          {label && <label className="w-fit pb-1.5 pr-3">{label}</label>}
           {error && errorPosition === 'top' && (
-            <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end">
-              <Icon id="errorIconRed" className="h-[24px] w-[16px]" />
+            <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end leading-4 text-center">
+              <Icon id="errorIconRed" className="h-[24px] w-[24px]" />
               {error}
             </span>
           )}
         </div>
       )}
-      <input
-        ref={ref}
-        value={value}
-        placeholder={placeholder}
-        onChange={(e) => onChange(e)}
-        className={cn(
-          'border-blue-gray placeholder-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 min-h-[40px] w-full rounded-sm border px-6 autofill:shadow-[inset_0_0_0px_1000px_white] focus:ring-1 focus:outline-none md:h-12',
-          { 'h-10': size === 'sm' },
-          { 'border-red focus:outline-red focus:outline': error },
-          { 'pl-[36px]': iconSide === 'left' },
-          className
+      <div className="relative w-full">
+        <input
+          ref={ref}
+          value={value}
+          placeholder={placeholder}
+          onChange={(e) => onChange(e)}
+          className={cn(
+            'border-blue-gray placeholder-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 min-h-[40px] w-full rounded-sm border px-6 autofill:shadow-[inset_0_0_0px_1000px_white] focus:ring-1 focus:outline-none md:h-12',
+            { 'h-10': size === 'sm' },
+            { 'border-red focus:outline-red focus:outline': error },
+            { 'pl-[46px]': iconSide === 'left' },
+            className
+          )}
+          {...rest}
+        />
+        {iconId && (
+          <span
+            className={cn(
+              'text-blue-gray absolute top-1/2 right-3 z-20 flex h-[24px] w-[24px] -translate-y-1/2 items-center justify-center bg-white lg:h-6 lg:w-6',
+              { 'left-3': iconSide === 'left' },
+              iconClassName
+            )}
+          >
+            <Icon id={iconId} />
+          </span>
         )}
-        {...rest}
-      />
+      </div>
+
       {error && errorPosition === 'bottom' && (
-        <span className="text-red flex items-center justify-end self-end">
+        <span className="text-red flex items-center justify-end self-end leading-4 text-center">
           <Icon id="errorIconRed" className="h-[24px] w-[24px]" />
           {error}
-        </span>
-      )}
-      {iconId && (
-        <span
-          className={cn(
-            'text-blue-gray absolute right-3 bottom-2 z-20 flex h-[24px] w-[24px] items-center justify-center bg-white md:bottom-3 lg:h-6 lg:w-6',
-            { 'bottom-2': size === 'sm' },
-            { 'left-3': iconSide === 'left' },
-            iconClassName
-          )}
-        >
-          <Icon id={iconId} />
         </span>
       )}
     </div>

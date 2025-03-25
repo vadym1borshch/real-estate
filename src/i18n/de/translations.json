@@ -3,6 +3,7 @@
     "common": {
       "postal-code": "Postleitzahl",
       "top": "Top",
+      "add-card": "Karte hinzufügen",
       "countries": {
         "de": "Deutschland",
         "at": "Österreich",
@@ -14,6 +15,79 @@
     },
     "buy": {
       "title": "Kaufen "
+    },
+    "login": {
+      "title": "ANMELDEN",
+      "form": {
+        "email": "Email",
+        "password": "Passwort",
+        "save-password": "Passwort speichern",
+        "forgot-password": "Passwort vergessen?",
+        "connection-secure": "Gesicherte Verbindung",
+        "error": "Das Passwort oder die E-Mail ist falsch",
+        "no-account": "Sie haben kein Konto?"
+      }
+    },
+    "register": {
+      "title": "REGISTRIEREN",
+      "form": {
+        "first-name": "Vorname",
+        "last-name": "Nachname",
+        "email": "Email",
+        "password": "Passwort",
+        "password-placeholder": "Passwort ({{value}} oder mehr Zeichen)",
+        "terms-agree": "Ja, ich verstehe und stimme den Fylpi <span>Nutzungsbedingungen</span> zu."
+      }
+    },
+    "payments": {
+      "title": "Zahlungsmöglichkeiten",
+      "basic": "Grundlegend",
+      "make-basic": "Machen Sie es zum Mainstream",
+      "no-cards": "Sie haben derzeit keine angehängten Karten.",
+      "unknown-payment system": "Unbekanntes oder nicht standardmäßiges Zahlungssystem",
+      "validity-period": "Gültigkeitsdauer",
+      "card-number": "Nummer der Karte",
+      "modal": {
+        "success": "ERFOLGSMELDUNG",
+        "success-info": "Herzlichen Glückwunsch! Ihre Karte wurde erfolgreich hinzugefügt.",
+        "error": "FEHLERMELDUNG",
+        "error-info": "Fehler: Es ist ein Problem aufgetreten. Bitte versuchen Sie es später erneut."
+      }
+    },
+    "order": {
+      "title": "Foto/Video bestellen ",
+      "price-list": {
+        "title": "PREISLISTE",
+        "area": "Fläche (m²)",
+        "up-to": "bis",
+        "from": "ab",
+        "photo": "Foto",
+        "video": "Video",
+        "combo": "Kombo"
+      },
+      "included": {
+        "title": "INKLUDIERT",
+        "license-music": "Musiklizenz für Videos",
+        "video-thumbnail": "Video Thumbnail",
+        "logo": "Logo Einblendung (Foto/Video) "
+      },
+      "extra": {
+        "title": "EXTRAS",
+        "social-media": "Social Media Formate (TikTok/Reel)",
+        "drone-footage": "Drohnenaufnahmen",
+        "travel-outside": "Reisekosten außerhalb Wien",
+        "by": "per"
+      },
+      "text-area": {
+        "placeholder": "Ich bestelle folgendes Produkt:\nDie Adresse lautet:\nHier ist mein Terminvorschlag:"
+      },
+      "modal": {
+        "title": "HERZLICHEN GLÜCKWUNSCH!",
+        "text": "Ihre Bestellung wurde erfolgreich gesendet. Ein Spezialist wird sich in Kürze mit Ihnen in Verbindung setzen. Vielen Dank, dass Sie Fylpi nutzen!"
+      }
+    },
+    "favorites": {
+      "title": "Favoriten"
     },
     "messages": {
       "title": "Meine Nachrichten",
@@ -316,6 +390,7 @@
       "next": "Weiter",
       "sign-in": "Sign in",
       "logout": "Abmeldung",
+      "login": "Anmelden",
       "place-advertisement": "Inserat schalten",
       "find": "Finde",
       "view-on-map": "AUF DER KARTE ANZEIGEN",
@@ -338,7 +413,9 @@
       "find-reason": "Grund herausfinden",
       "create-ad": "Anzeige erstellen",
       "pay": "Bezahlen",
-      "next-page": "Nächste Seite"
+      "next-page": "Nächste Seite",
+      "attach-card": "Eine Karte anhängen",
+      "register": "Registrieren Sie sich"
     },
     "knowledge-real-estate": {
       "title": "Wissen rund um die Immobilie ",

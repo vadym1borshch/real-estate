@@ -6,13 +6,9 @@ import LanguageSwitcher from '../language-switcher'
 import AuthButtons from '../auth-buttons'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { initialButtons } from '../../organisms/header/mock.ts'
-import { useAppDispatch, useAppSelector } from '../../../store'
+import { useAppSelector } from '../../../store'
 import { selectUser } from '../../../store/userSlice/selectors.ts'
-import { setUser } from '../../../store/userSlice'
 import { ROUTES } from '../../../@constants/routes.ts'
-import { realEstateAgents } from '../../../app/Pages/ServiceAround/mock.ts'
-
-const agent = realEstateAgents[0]
 
 interface Props {
   open: boolean
@@ -22,7 +18,6 @@ interface Props {
 const MobileMenu = ({ open, setOpen }: Props) => {
   const navigate = useNavigate()
   const { t } = useTranslation()
-  const dispatch = useAppDispatch()
   const user = useAppSelector(selectUser)
   return (
     <div className="flex items-center gap-6 md:hidden">
@@ -41,10 +36,10 @@ const MobileMenu = ({ open, setOpen }: Props) => {
               className="text-charcoal hover:bg-seafoam-green focus:border-seafoam-green h-[40px] min-w-[80px] bg-white px-4 focus:border-4 focus:outline-none"
               onClick={() => {
                 if (!user) {
-                  dispatch(setUser(agent))
-                } else {
-                  navigate(ROUTES.profile)
+                  navigate(ROUTES.login)
+                  return
                 }
+                navigate(ROUTES.myAccount)
               }}
             >
               {!user ? t('buttons.sign-in') : t('my-account.title')}

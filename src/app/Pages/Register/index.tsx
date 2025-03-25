@@ -1,22 +1,22 @@
-import { Field, FieldProps, Form, Formik } from 'formik'
-import Input from '../../../components/atoms/input'
-import { useTranslation } from 'react-i18next'
-import Button from '../../../components/atoms/button'
-import Checkbox from '../../../components/atoms/checkbox'
-import { realEstateAgents } from '../ServiceAround/mock.ts'
-import { useAppDispatch, useAppSelector } from '../../../store'
-import { setUser } from '../../../store/userSlice'
-import { selectUser } from '../../../store/userSlice/selectors.ts'
-import { useEffect } from 'react'
-import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
-import { ROUTES } from '../../../@constants/routes.ts'
 import H3 from '../../../components/atoms/typography/h3'
 import Icon from '../../../components/atoms/icon'
-import { useValidationLoginSchema } from './validation.ts'
+import { Field, FieldProps, Form, Formik } from 'formik'
+import { Trans, useTranslation } from 'react-i18next'
+import { setUser } from '../../../store/userSlice'
+import Input from '../../../components/atoms/input'
+import Checkbox from '../../../components/atoms/checkbox'
+import Button from '../../../components/atoms/button'
+import { realEstateAgents } from '../ServiceAround/mock.ts'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { selectUser } from '../../../store/userSlice/selectors.ts'
+import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
+import { useEffect } from 'react'
+import { ROUTES } from '../../../@constants/routes.ts'
+import { useValidationRegisterSchema } from './validation.ts'
 
 const agent = realEstateAgents[0]
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const { t } = useTranslation()
   const user = useAppSelector(selectUser)
   const navigate = useNavigate()
@@ -31,7 +31,7 @@ export const LoginPage = () => {
   return (
     <div className="w-full max-w-[22.5rem] pt-[6.8125rem]">
       <div className="flex items-center justify-between pb-10">
-        <H3 text={t('login.title')} />
+        <H3 text={t('register.title')} />
         <span className="text-gray flex items-center">
           {t('login.form.connection-secure')}
           <Icon id="lockIcon" className="h-[24px] w-[24px]" />
@@ -39,23 +39,49 @@ export const LoginPage = () => {
       </div>
       <Formik
         initialValues={{
+          firstName: '',
+          lastName: '',
           email: '',
           password: '',
-          savePassword: false,
+          termsOfUse: false,
         }}
         onSubmit={() => {
           dispatch(setUser(agent))
         }}
-        validationSchema={useValidationLoginSchema()}
+        validationSchema={useValidationRegisterSchema()}
       >
-        {({ isValid, dirty }) => (
+        {({ isValid, dirty, values }) => (
           <Form className="flex w-full flex-col gap-3">
+            <Field name="firstName">
+              {({ field, meta }: FieldProps) => (
+                <Input
+                  {...field}
+                  placeholder="johnsmith@email.at"
+                  label={t('register.form.first-name')}
+                  id="firstName"
+                  error={meta.touched && meta.error ? meta.error : undefined}
+                  className="min-h-[48px]"
+                />
+              )}
+            </Field>{' '}
+            <Field name="lastName">
+              {({ field, meta }: FieldProps) => (
+                <Input
+                  {...field}
+                  placeholder="johnsmith@email.at"
+                  label={t('register.form.last-name')}
+                  id="lastName"
+                  error={meta.touched && meta.error ? meta.error : undefined}
+                  className="min-h-[48px]"
+                />
+              )}
+            </Field>{' '}
             <Field name="email">
               {({ field, meta }: FieldProps) => (
                 <Input
                   {...field}
                   placeholder="johnsmith@email.at"
-                  label={t('login.form.email')}
+                  label={t('register.form.email')}
                   id="email"
                   error={meta.touched && meta.error ? meta.error : undefined}
                   className="min-h-[48px]"
@@ -68,7 +94,7 @@ export const LoginPage = () => {
                   {...field}
                   placeholder="************"
                   type="password"
-                  label={t('login.form.password')}
+                  label={t('register.form.password')}
                   id="password"
                   error={meta.touched && meta.error ? meta.error : undefined}
                   className="min-h-[48px]"
@@ -76,49 +102,50 @@ export const LoginPage = () => {
               )}
             </Field>
             <div className="my-3 flex items-center">
-              <Field name="savePassword">
+              <Field name="termsOfUse">
                 {({ field, form }: FieldProps) => (
                   <span
                     className="flex w-full cursor-pointer items-center gap-1.5"
                     onClick={() => {
-                      form.setFieldValue('savePassword', !field.value)
+                      form.setFieldValue('termsOfUse', !field.value)
                     }}
                   >
                     <Checkbox
                       {...field}
                       checked={field.value}
                       setChecked={(v) => {
-                        form.setFieldValue('savePassword', v)
+                        form.setFieldValue('termsOfUse', v)
                       }}
+                      className="self-start"
                     />
-                    {t('login.form.save-password')}
+                    <span className="text-xs">
+                      <Trans
+                        i18nKey="register.form.terms-agree"
+                        components={{
+                          span: (
+                            <span
+                              className="text-coral hover:text-light-coral cursor-pointer text-xs transition-all duration-300"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                e.preventDefault()
+                                navigate(ROUTES.termsOfUse)
+                              }}
+                            />
+                          ),
+                        }}
+                      />
+                    </span>
                   </span>
                 )}
               </Field>
-              <Button
-                className="text-coral p-0 text-xs whitespace-nowrap"
-                variant="text"
-              >
-                {t('login.form.forgot-password')}
-              </Button>
             </div>
             <Button
               type="submit"
               className="w-full"
-              disabled={!isValid || !dirty}
+              disabled={!isValid || !dirty || !values.termsOfUse}
             >
-              {t('buttons.login')}
+              {t('buttons.register')}
             </Button>
-            <div className="mt-3 flex items-center justify-between">
-              <span className="text-xs">{t('login.form.no-account')}</span>
-              <Button
-                className="text-coral p-0"
-                variant="text"
-                onClick={() => navigate(ROUTES.register)}
-              >
-                {t('buttons.register')}
-              </Button>
-            </div>
           </Form>
         )}
       </Formik>

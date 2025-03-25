@@ -39,6 +39,9 @@ import { Messages } from '../Pages/MyAccount/Messages'
 import { MessagesContent } from '../Pages/MyAccount/Messages/MessagesContent.tsx'
 import { LoginPage } from '../Pages/Login'
 import { FavoritesPage } from '../Pages/MyAccount/Favorites'
+import { PhotoVideoOrderPage } from '../Pages/MyAccount/PhotoVideoOrder'
+import { PaymentMethodsPage } from '../Pages/MyAccount/PaymentMethods'
+import { RegisterPage } from '../Pages/Register'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -91,6 +94,10 @@ const routes: RouteObject[] = [
               {
                 path: 'login',
                 element: <LoginPage />,
+              },
+              {
+                path: 'register',
+                element: <RegisterPage />,
               },
               {
                 path: 'about',
@@ -276,6 +283,14 @@ const routes: RouteObject[] = [
                   {
                     path: 'favorites',
                     element: <FavoritesPage />,
+                  },
+                  {
+                    path: 'order',
+                    element: <PhotoVideoOrderPage />,
+                  },
+                  {
+                    path: 'payments',
+                    element: <PaymentMethodsPage />,
                   },
                 ],
               },
