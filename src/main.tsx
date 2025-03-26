@@ -9,17 +9,23 @@ import { theme } from './theme.ts'
 import { Provider } from 'react-redux'
 import { store } from './store'
 import { ListingProvider } from './contexts/ListingContext.tsx'
+import { ConfirmProvider } from './contexts/ConfirmationEmailContext.tsx'
+import { ModeProvider } from './contexts/ModContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <ThemeProvider value={theme}>
         <I18nextProvider i18n={config}>
-          <ListingProvider>
-            <App />
-          </ListingProvider>
+          <ModeProvider>
+            <ListingProvider>
+              <ConfirmProvider>
+                <App />
+              </ConfirmProvider>
+            </ListingProvider>
+          </ModeProvider>
         </I18nextProvider>
       </ThemeProvider>
     </Provider>
-  </StrictMode>,
+  </StrictMode>
 )

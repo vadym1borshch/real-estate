@@ -175,13 +175,13 @@ export const ActionsButtonsWrapper = ({
         className="bg-charcoal hover:bg-seafoam-green h-[48px] w-full p-0 lg:w-[48px]"
         onClick={deleteHandler}
       >
-        <Icon id="deleteIcon" className="h-[24px] w-[24px]" />
+        <Icon id="deleteIcon" className="h-[24px] min-w-[24px]" />
       </Button>
       <Button
         className="bg-charcoal hover:bg-seafoam-green h-[48px] w-full p-0 lg:w-[48px]"
         onClick={addHandler}
       >
-        <Icon id="roundedSmallPlusIcon" className="h-[24px] w-[24px]" />
+        <Icon id="roundedSmallPlusIcon" className="h-[24px] min-w-[24px]" />
       </Button>
     </div>
   )

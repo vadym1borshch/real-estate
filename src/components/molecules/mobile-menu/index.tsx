@@ -53,7 +53,7 @@ const MobileMenu = ({ open, setOpen }: Props) => {
           >
             <Icon
               id="closeIcon"
-              className="h-[24px] w-[24px]"
+              className="h-[24px] min-w-[24px]"
               onClick={() => {
                 setOpen(!open)
               }}

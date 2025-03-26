@@ -28,6 +28,26 @@
         "no-account": "Sie haben kein Konto?"
       }
     },
+    "forgot-password": {
+      "title": "PASSWORT VERGESSEN?",
+      "step1": "Geben Sie unten Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zu, über den Sie ein neues Passwort eingeben können.",
+      "step2": "Wir haben eine E-Mail mit einem Bestätigungscode an Ihr E-Mail-Konto gesendet!",
+      "step3": "Legen Sie Ihr neues Passwort fest, um sich in Ihr Konto einzuloggen!",
+      "input": {
+        "step1": {
+          "label": "Email",
+          "placeholder": "johnsmith@email.at"
+        },
+        "step2": {
+          "label": "Verifizierungscode",
+          "placeholder": "Geben Sie den Code ein"
+        },
+        "step3": {
+          "label": "Passwort",
+          "placeholder": "Neues Passwort eingeben"
+        }
+      }
+    },
     "register": {
       "title": "REGISTRIEREN",
       "form": {
@@ -37,6 +57,13 @@
         "password": "Passwort",
         "password-placeholder": "Passwort ({{value}} oder mehr Zeichen)",
         "terms-agree": "Ja, ich verstehe und stimme den Fylpi <span>Nutzungsbedingungen</span> zu."
+      },
+      "confirm-register": {
+        "p": "Um den Anmeldevorgang abzuschließen, überprüfen Sie bitte Ihre E-Mail. Wir haben Ihnen eine Nachricht mit Anweisungen zur Bestätigung Ihrer E-Mail-Adresse geschickt. Bitte klicken Sie auf den Link in dieser E-Mail, um Ihr Konto zu aktivieren.",
+        "modal": {
+          "title": "HERZLICHEN GLÜCKWUNSCH!",
+          "p": "Ihr Konto wurde erfolgreich aktiviert. Sie können nun alle Funktionen unserer Website nutzen. Vielen Dank für Ihre Registrierung!"
+        }
       }
     },
     "payments": {
@@ -415,7 +442,9 @@
       "pay": "Bezahlen",
       "next-page": "Nächste Seite",
       "attach-card": "Eine Karte anhängen",
-      "register": "Registrieren Sie sich"
+      "register": "Registrieren Sie sich",
+      "restore": "Wiederherstellen",
+      "confirm-email": "E-Mail bestätigen"
     },
     "knowledge-real-estate": {
       "title": "Wissen rund um die Immobilie ",

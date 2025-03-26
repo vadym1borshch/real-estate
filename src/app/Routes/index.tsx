@@ -42,6 +42,9 @@ import { FavoritesPage } from '../Pages/MyAccount/Favorites'
 import { PhotoVideoOrderPage } from '../Pages/MyAccount/PhotoVideoOrder'
 import { PaymentMethodsPage } from '../Pages/MyAccount/PaymentMethods'
 import { RegisterPage } from '../Pages/Register'
+import { ForgotPassword } from '../Pages/ForgotPassword'
+import { AuthLayout } from '../../components/templates/layouts/auth-layout'
+import { ConfirmRegister } from '../Pages/ConfirmRegister'
 
 const EmptyUrlRedirect = () => {
   const navigate = useNavigate()
@@ -74,6 +77,28 @@ const routes: RouteObject[] = [
     element: <MainWrapper />,
     children: [
       {
+        path: 'auth',
+        element: <AuthLayout />,
+        children: [
+          {
+            path: 'login',
+            element: <LoginPage />,
+          },
+          {
+            path: 'forgot-password',
+            element: <ForgotPassword />,
+          },
+          {
+            path: 'register',
+            element: <RegisterPage />,
+          },
+          {
+            path: 'confirm-register',
+            element: <ConfirmRegister />,
+          },
+        ],
+      },
+      {
         path: '',
         element: <MainLayout />,
         children: [
@@ -91,14 +116,6 @@ const routes: RouteObject[] = [
             path: '',
             element: <DefaultPageLayout />,
             children: [
-              {
-                path: 'login',
-                element: <LoginPage />,
-              },
-              {
-                path: 'register',
-                element: <RegisterPage />,
-              },
               {
                 path: 'about',
                 element: <About />,
@@ -263,12 +280,6 @@ const routes: RouteObject[] = [
                       {
                         path: 'inboxes',
                         element: <MessagesContent />,
-                        children: [
-                          {
-                            path: '',
-                            element: <></>,
-                          },
-                        ],
                       },
                       {
                         path: 'sent',

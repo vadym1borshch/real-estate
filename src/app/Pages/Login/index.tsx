@@ -98,6 +98,9 @@ export const LoginPage = () => {
               <Button
                 className="text-coral p-0 text-xs whitespace-nowrap"
                 variant="text"
+                onClick={() => {
+                  navigate(ROUTES.forgotPassword)
+                }}
               >
                 {t('login.form.forgot-password')}
               </Button>

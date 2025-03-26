@@ -7,10 +7,8 @@ import Input from '../../../components/atoms/input'
 import Checkbox from '../../../components/atoms/checkbox'
 import Button from '../../../components/atoms/button'
 import { realEstateAgents } from '../ServiceAround/mock.ts'
-import { useAppDispatch, useAppSelector } from '../../../store'
-import { selectUser } from '../../../store/userSlice/selectors.ts'
+import { useAppDispatch } from '../../../store'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
-import { useEffect } from 'react'
 import { ROUTES } from '../../../@constants/routes.ts'
 import { useValidationRegisterSchema } from './validation.ts'
 
@@ -18,15 +16,8 @@ const agent = realEstateAgents[0]
 
 export const RegisterPage = () => {
   const { t } = useTranslation()
-  const user = useAppSelector(selectUser)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    if (user) {
-      navigate(ROUTES.home)
-    }
-  }, [user])
 
   return (
     <div className="w-full max-w-[22.5rem] pt-[6.8125rem]">
@@ -46,6 +37,7 @@ export const RegisterPage = () => {
           termsOfUse: false,
         }}
         onSubmit={() => {
+          navigate(ROUTES.confirmRegister)
           dispatch(setUser(agent))
         }}
         validationSchema={useValidationRegisterSchema()}
@@ -56,7 +48,7 @@ export const RegisterPage = () => {
               {({ field, meta }: FieldProps) => (
                 <Input
                   {...field}
-                  placeholder="johnsmith@email.at"
+                  placeholder="John"
                   label={t('register.form.first-name')}
                   id="firstName"
                   error={meta.touched && meta.error ? meta.error : undefined}
@@ -68,7 +60,7 @@ export const RegisterPage = () => {
               {({ field, meta }: FieldProps) => (
                 <Input
                   {...field}
-                  placeholder="johnsmith@email.at"
+                  placeholder="Smith"
                   label={t('register.form.last-name')}
                   id="lastName"
                   error={meta.touched && meta.error ? meta.error : undefined}

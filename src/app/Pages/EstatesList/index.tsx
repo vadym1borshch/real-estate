@@ -16,28 +16,54 @@ import Dropdown from '../../../components/atoms/dropdown'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MapMode } from './MapMode.tsx'
+import { useSearchContext } from '../../../contexts/SearchContext.tsx'
+import Icon from '../../../components/atoms/icon'
+import { useMode } from '../../../contexts/ModContext.tsx'
+
+const itemsPerPage = 9
 
 export const EstatesList = () => {
   const { t } = useTranslation()
   const { width } = useWindowDimensions()
   const isMobile = width < BREAKPOINTS.xmd
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(false)
+  const { mode, setMode } = useMode()
+  const {
+    operation,
+    address,
+    type,
+    rooms,
+    area_min,
+    price_min,
+    price_max,
+    area_max,
+  } = useSearchContext()
 
-  const itemsPerPage = 9
-  const estates = useAppSelector(selectPaginatedEstates(itemsPerPage))
+  const estates = useAppSelector(
+    selectPaginatedEstates(itemsPerPage, {
+      rooms,
+      price_max,
+      price_min,
+      area_min,
+      address,
+      type,
+      area_max,
+      operation,
+    })
+  )
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
   const currentPage = useAppSelector(selectCurrentPage)
-  const [viewMode, setViewMode] = useState<'default' | 'map'>('default')
   const dispatch = useAppDispatch()
-  const [openMobileDropdown, setOpenMobileDropdown] = useState(false)
-
   const defaultModeCurrentPage = useRef(currentPage)
 
   const changeViewMode = () => {
-    if (viewMode === 'map') {
-      setViewMode('default')
+    if (mode === 'map') {
+      setMode('default')
+      localStorage.setItem('mode', 'default')
       dispatch(setCurrentPage(defaultModeCurrentPage.current))
     } else {
-      setViewMode('map')
+      setMode('map')
+      localStorage.setItem('mode', 'map')
       defaultModeCurrentPage.current = currentPage
       dispatch(setCurrentPage(1))
     }
@@ -50,7 +76,7 @@ export const EstatesList = () => {
     }
   }, [])
 
-  if (viewMode === 'map') {
+  if (mode === 'map') {
     return (
       <MapMode
         open={openMobileDropdown}
@@ -88,7 +114,7 @@ export const EstatesList = () => {
           className="h-12 w-12"
           onClick={changeViewMode}
         >
-          M
+          <Icon id="mapIcon" className="h-[24px] min-w-[24px]" />
         </Button>
       </div>
 
@@ -98,7 +124,7 @@ export const EstatesList = () => {
           variant="outlined"
           onClick={changeViewMode}
         >
-          M
+          <Icon id="mapIcon" className="h-[24px] min-w-[24px]" />
         </Button>
       </Filters>
       <div
@@ -106,6 +132,7 @@ export const EstatesList = () => {
           'mt-[1.125rem] grid grid-cols-2 gap-10 md:grid-cols-2 xl:grid-cols-3',
           {
             'grid-cols-1': isMobile,
+            'pb-[9.375rem]': estates.length <= itemsPerPage,
           }
         )}
       >
@@ -113,12 +140,14 @@ export const EstatesList = () => {
           return <EstateCard key={estate.id} realEstate={estate} />
         })}
       </div>
-      <Pagination
-        count={totalPages}
-        page={currentPage}
-        setPage={(page) => dispatch(setCurrentPage(page))}
-        className="pt-[5.625rem] pb-[9.375rem]"
-      />
+      {estates.length > itemsPerPage && (
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          setPage={(page) => dispatch(setCurrentPage(page))}
+          className="pt-[5.625rem] pb-[9.375rem]"
+        />
+      )}
     </div>
   )
 }

@@ -1,7 +1,11 @@
 import { Fragment, ReactNode, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import i18next from 'i18next'
-import { DEFAULT_LANG, STORAGE_KEY, SUPPORTED_LANGUAGES } from '../../../common/constants.ts'
+import {
+  DEFAULT_LANG,
+  STORAGE_KEY,
+  SUPPORTED_LANGUAGES,
+} from '../../../common/constants.ts'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 
 export const LanguageWrapper = ({ children }: { children: ReactNode }) => {
@@ -12,8 +16,7 @@ export const LanguageWrapper = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const savedLang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG
-    const isLangValid = SUPPORTED_LANGUAGES.some(item => item === lang)
-
+    const isLangValid = SUPPORTED_LANGUAGES.some((item) => item === lang)
 
     if (!isLangValid) {
       navigate(`/${savedLang}/${pathname || '/'}`, { replace: true })
@@ -23,9 +26,10 @@ export const LanguageWrapper = ({ children }: { children: ReactNode }) => {
     if (i18next.language !== lang) {
       i18next.changeLanguage(lang).catch(console.error)
     }
-
-    localStorage.setItem(STORAGE_KEY, lang)
-    setCurrentLang(lang)
+    if (lang) {
+      localStorage.setItem(STORAGE_KEY, lang)
+      setCurrentLang(lang)
+    }
   }, [lang, pathname, navigate])
 
   useEffect(() => {
@@ -35,7 +39,5 @@ export const LanguageWrapper = ({ children }: { children: ReactNode }) => {
     }
   }, [])
 
-  return (
-    <Fragment key={currentLang as string}>{children}</Fragment>
-  )
+  return <Fragment key={currentLang as string}>{children}</Fragment>
 }

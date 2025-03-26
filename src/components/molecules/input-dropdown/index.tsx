@@ -44,8 +44,6 @@ const DropdownInput = ({
           placeholder={inputValue || t('filters.address')}
           className="min-h-[40px] capitalize placeholder:text-blue-gray"
           iconSide="left"
-          //eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          //@ts-expect-error
           onFocus={() => {
             setOpen(true)
           }}

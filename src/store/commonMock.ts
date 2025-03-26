@@ -122,14 +122,14 @@ export const houses: RealEstate[] = [
       description: '1 Bad | 1 WC',
     },
     operation: {
-      key: 'buy',
-      value: 'real-estate.operations.buy',
+      key: 'rent',
+      value: 'real-estate.operations.rent',
     },
     size: {
       livingAreaM2: '142.26 m²',
       landAreaM2: '',
     },
-    price: '1.235.000,00 €',
+    price: '1.235 €',
     views: 139,
     details: {
       yearBuilt: 2015,
@@ -239,14 +239,14 @@ export const houses: RealEstate[] = [
       description: '1 Bad | 1 WC',
     },
     operation: {
-      key: 'buy',
-      value: 'real-estate.operations.buy',
+      key: 'rent',
+      value: 'real-estate.operations.rent',
     },
     size: {
       livingAreaM2: '98.51 m²',
       landAreaM2: '',
     },
-    price: '606.000,00 €',
+    price: '1.606,00 €',
     views: 152,
     details: {
       yearBuilt: 2007,
@@ -317,14 +317,14 @@ export const houses: RealEstate[] = [
       description: '1 Bad | 1 WC',
     },
     operation: {
-      key: 'buy',
-      value: 'real-estate.operations.buy',
+      key: 'rent',
+      value: 'real-estate.operations.rent',
     },
     size: {
       livingAreaM2: '111.2 m²',
       landAreaM2: '',
     },
-    price: '690.000,00 €',
+    price: '2.690,00 €',
     views: 53,
     details: {
       yearBuilt: 2005,

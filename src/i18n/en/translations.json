@@ -28,6 +28,26 @@
         "no-account": "You don't have an account?"
       }
     },
+    "forgot-password": {
+      "title": "FORGOTTEN PASSWORD?",
+      "step1": "Enter your email address below and we will send you a link to create a new password.",
+      "step2": "We have sent an email with a confirmation code to your email account!",
+      "step3": "Set your new password to log in to your account!",
+      "input": {
+        "step1": {
+          "label": "Email",
+          "placeholder": "johnsmith@email.at"
+        },
+        "step2": {
+          "label": "Verification code",
+          "placeholder": "Enter the code"
+        },
+        "step3": {
+          "label": "Password",
+          "placeholder": "Enter new password"
+        }
+      }
+    },
     "register": {
       "title": "Register",
       "form": {
@@ -37,6 +57,13 @@
         "password": "Password",
         "password-placeholder": "Password ({{value}} or more characters)",
         "terms-agree": "Yes, I understand and agree to the <span>Terms of Use</span>."
+      },
+      "confirm-register": {
+        "p": "To complete the registration process, please check your email. We have sent you an email with instructions for confirming your email address. Please click the link in this email to activate your account.",
+        "modal": {
+          "title": "HERZLICHEN GLÜCKWUNSCH!",
+          "p": "Your account has been successfully activated. You can now use all the features of our website. Thank you for registering!"
+        }
       }
     },
     "payments": {
@@ -415,7 +442,9 @@
       "pay": "Pay",
       "next-page": "Next page",
       "attach-card": "Attach a card",
-      "register": "Register"
+      "register": "Register",
+      "restore": "Restore",
+      "confirm-email": "Confirm email address"
     },
     "knowledge-real-estate": {
       "title": "Knowledge about real estate ",

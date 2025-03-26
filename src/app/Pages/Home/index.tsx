@@ -11,6 +11,8 @@ import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.
 import { BREAKPOINTS } from '../../../helpers/common.ts'
 import { cn } from '../../../helpers/ui.ts'
 import Slider from '../../../components/molecules/slider'
+import { useEmailConfirm } from '../../../contexts/ConfirmationEmailContext.tsx'
+import Modal from '../../../components/molecules/modal'
 
 export const HomePage = () => {
   const { t } = useTranslation()
@@ -19,6 +21,7 @@ export const HomePage = () => {
   const preMedium = width <= BREAKPOINTS.xmd
   const isMobile = width <= BREAKPOINTS.xsm
   const topEstate = useAppSelector(selectTopEstates)
+  const { isConfirm, setIsConfirm } = useEmailConfirm()
 
   return (
     <div className="text-charcoal mt-[90px] flex w-full flex-col items-center gap-[9.375rem]">
@@ -42,7 +45,7 @@ export const HomePage = () => {
             />
           ))}
         </div>
-        <div className="w-screen md:hidden pt-[3.75rem]">
+        <div className="w-screen pt-[3.75rem] md:hidden">
           <Slider>
             {services.map((service) => (
               <LinkCard
@@ -73,6 +76,15 @@ export const HomePage = () => {
       </MainBlock>
       <PopularBlock />
       <FAQ />
+      <Modal
+        open={isConfirm}
+        setOpen={() => setIsConfirm(false)}
+        title={t('register.confirm-register.modal.title')}
+        childrenClassName="text-center"
+        className="max-w-[35rem]"
+      >
+        {t('register.confirm-register.modal.p')}
+      </Modal>
     </div>
   )
 }

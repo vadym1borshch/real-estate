@@ -1,43 +1,41 @@
-import { createContext, useContext, useMemo } from 'react'
-import { useLocation, useSearchParams } from 'react-router-dom'
-import useTranslationSearch from '../helpers/hooks/useTranslationSearch.ts'
-import { usePathname } from '../helpers/hooks/usePathname.ts'
+import { createContext, ReactNode, useContext, useMemo } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useListing } from './ListingContext.tsx'
 
-interface SearchContextProps {
-  address: string | null;
-  price_min: string | null;
-  price_max: string | null;
-  area_min: string | null;
-  area_max: string | null;
-  rooms: string | null;
-  operation: string;
-  type: string;
+export interface Search {
+  address: string | null
+  price_min: string | null
+  price_max: string | null
+  area_min: string | null
+  area_max: string | null
+  rooms: string | null
+  operation: string
+  type: string | null
 }
 
-const SearchContext = createContext<SearchContextProps | undefined>(undefined)
+const SearchContext = createContext<Search | undefined>(undefined)
 
-export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
+export const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [searchParams] = useSearchParams()
-  const { getTranslationByKey } = useTranslationSearch()
-  const paramsType = searchParams.get('type')
   const { listingType } = useListing()
 
-  const translateOperationKey = `real-estate.operations.${listingType.replace(/\//g, '')}`
-  const translateTypeKey = `real-estate.type.${paramsType}`
+  const value = useMemo(
+    () => ({
+      address: searchParams.get('address'),
+      price_min: searchParams.get('price_min'),
+      price_max: searchParams.get('price_max'),
+      area_min: searchParams.get('area_min'),
+      area_max: searchParams.get('area_max'),
+      rooms: searchParams.get('rooms'),
+      operation: listingType,
+      type: searchParams.get('type'),
+    }),
+    [listingType, searchParams.toString()]
+  )
 
-  const value = useMemo(() => ({
-    address: searchParams.get('address'),
-    price_min: searchParams.get('price_min'),
-    price_max: searchParams.get('price_max'),
-    area_min: searchParams.get('area_min'),
-    area_max: searchParams.get('area_max'),
-    rooms: searchParams.get('rooms'),
-    operation: translateOperationKey,
-    type: translateTypeKey,
-  }), [searchParams, getTranslationByKey, listingType, paramsType])
-
-  return <SearchContext.Provider value={value}>{children}</SearchContext.Provider>
+  return (
+    <SearchContext.Provider value={value}>{children}</SearchContext.Provider>
+  )
 }
 
 export const useSearchContext = () => {

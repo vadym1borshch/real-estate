@@ -13,6 +13,7 @@ import { initialButtons } from './mock.ts'
 import { useAppSelector } from '../../../store'
 import { selectUser } from '../../../store/userSlice/selectors.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
+import { useListing } from '../../../contexts/ListingContext.tsx'
 
 interface Props {
   className?: string
@@ -26,6 +27,7 @@ const Header = ({ className }: Props) => {
   const isMedium = width > BREAKPOINTS.md
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const { setListingType } = useListing()
 
   const goToHomePage = () => {
     if (pathname === '/' || pathname === '') return
@@ -64,7 +66,12 @@ const Header = ({ className }: Props) => {
             key={button.id}
             size="sm"
             variant="text"
-            onClick={() => navigate(button.href)}
+            onClick={() => {
+              if (button.id === 'buy' || button.id === 'rent') {
+                setListingType(button.id)
+              }
+              navigate(button.href)
+            }}
           >
             {t(button.title)}
           </Button>

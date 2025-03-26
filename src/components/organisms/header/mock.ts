@@ -2,17 +2,17 @@ import { ROUTES } from '../../../@constants/routes.ts'
 
 export const initialButtons = [
   {
-    id: '1',
+    id: 'buy',
     href: ROUTES.buy,
     title: 'real-estate.operations.buy',
   },
   {
-    id: '2',
+    id: 'rent',
     href: ROUTES.rent,
     title: 'real-estate.operations.rent',
   },
   {
-    id: '3',
+    id: 'place-advertisement',
     href: '#',
     title: 'buttons.place-advertisement',
   },

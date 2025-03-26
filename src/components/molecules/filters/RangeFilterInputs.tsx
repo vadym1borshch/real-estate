@@ -64,7 +64,7 @@ export const RangeFilterInputs = ({ minKey, maxKey, searchParams, updateParams, 
         iconId={iconId}
         placeholder="von"
         className={cn(
-          'min-w-[108px] min-h-[35px] px-0 pl-4',
+          'min-w-[108px] min-h-[35px] ',
           {
             'border-red focus:outline focus:outline-red hover:border-red focus:ring-red focus:border-red': errors[minKey],
           })}

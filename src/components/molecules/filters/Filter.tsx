@@ -60,12 +60,15 @@ export const Filter = ({ filter }: Props) => {
   }, [searchParams, filter.key])
 
   useEffect(() => {
+    if (filter.key === 'rooms') return
+
     const params = new URLSearchParams(searchParams)
     let hasChanges = false
 
     filter.values.forEach((value) => {
       const key = filter.key
       const currentValue = searchParams.get(key)
+
       const translatedValue = t(value, { lng: i18n.language })
 
       const numericCurrentValue = Number(currentValue)

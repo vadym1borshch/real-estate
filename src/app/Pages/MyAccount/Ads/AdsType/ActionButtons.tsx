@@ -82,7 +82,7 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
               ) : (
                 <Icon
                   id={button.children}
-                  className="h-[24px] w-[24px]"
+                  className="h-[24px] min-w-[24px]"
                   onClick={onClickHandler(button.id)}
                 />
               )}
@@ -119,7 +119,7 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
             >
               <Icon
                 id={button.children}
-                className="h-[24px] w-[24px]"
+                className="h-[24px] min-w-[24px]"
                 onClick={onClickHandler(button.id)}
               />
             </Button>

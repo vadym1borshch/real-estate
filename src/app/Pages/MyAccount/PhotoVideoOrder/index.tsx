@@ -8,7 +8,8 @@ import { OrderWrapper } from './OrderWrapper.tsx'
 
 export const PhotoVideoOrderPage = () => {
   const { t } = useTranslation()
-  const [query, setQuery] = useState(t('order.text-area.placeholder'))
+  const initialValue = t('order.text-area.placeholder')
+  const [query, setQuery] = useState(initialValue)
   const [showModal, setShowModal] = useState(false)
   return (
     <div className="flex flex-col gap-[5.625rem]">
@@ -88,7 +89,12 @@ export const PhotoVideoOrderPage = () => {
           value={query}
           onChange={(e) => setQuery(e.currentTarget.value)}
         />
-        <Button onClick={() => setShowModal(true)}>
+        <Button
+          onClick={() => {
+            setShowModal(true)
+            setQuery(initialValue)
+          }}
+        >
           {t('buttons.send-message')}
         </Button>
       </div>

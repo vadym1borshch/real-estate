@@ -42,9 +42,7 @@ export const DefaultPageLayout = () => {
       <Header />
       {path !== ROUTES.rent &&
         path !== ROUTES.buy &&
-        path !== ROUTES.estates &&
-        path !== ROUTES.login &&
-        path !== ROUTES.register && <Breadcrumb items={links} />}
+        path !== ROUTES.estates && <Breadcrumb items={links} />}
       <Outlet />
     </div>
   )

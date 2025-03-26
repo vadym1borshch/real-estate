@@ -4,7 +4,7 @@ import Button from '../../../components/atoms/button'
 import { cn } from '../../../helpers/ui.ts'
 import EstateCard from '../../../components/molecules/estate-card'
 import { useTranslation } from 'react-i18next'
-import {  setCurrentPage } from '../../../store/estateSlice'
+import { setCurrentPage } from '../../../store/estateSlice'
 import Map from '../../../components/organisms/map'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { MapRef, Marker } from 'react-map-gl'
@@ -19,6 +19,8 @@ import MapMarker from '../../../components/atoms/map-marker'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
 import { RealEstate } from '../../../store/commonMock.ts'
+import { useSearchContext } from '../../../contexts/SearchContext.tsx'
+import Icon from '../../../components/atoms/icon'
 
 interface Props {
   open: boolean
@@ -26,22 +28,64 @@ interface Props {
   changeMode: () => void
 }
 
+const itemsPerPage = 5
+
 export const MapMode = ({ open, setOpen, changeMode }: Props) => {
   const { t } = useTranslation()
 
   const mapRef = useRef<MapRef | null>(null)
   const listContainerRef = useRef<HTMLDivElement | null>(null)
-  const itemsPerPage = 5
+
   const dispatch = useAppDispatch()
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
   const currentPage = useAppSelector(selectCurrentPage)
-  const estates = useAppSelector(selectPaginatedEstates(itemsPerPage))
+  const {
+    operation,
+    address,
+    type,
+    rooms,
+    area_min,
+    price_min,
+    price_max,
+    area_max,
+  } = useSearchContext()
+
+  const filtersKey = JSON.stringify({
+    rooms,
+    price_max,
+    price_min,
+    area_min,
+    address,
+    type,
+    area_max,
+    operation,
+  })
+
+  const estates = useAppSelector(
+    selectPaginatedEstates(itemsPerPage, {
+      rooms,
+      price_max,
+      price_min,
+      area_min,
+      address,
+      type,
+      area_max,
+      operation,
+    })
+  )
+
   const [loadedEstates, setLoadedEstates] = useState<RealEstate[]>([])
 
   const prevEstatesRef = useRef<RealEstate[]>([])
 
   const { width } = useWindowDimensions()
   const isMobile = width < BREAKPOINTS.md
+
+  useEffect(() => {
+    setLoadedEstates([])
+    prevEstatesRef.current = []
+    dispatch(setCurrentPage(1))
+  }, [filtersKey])
 
   useEffect(() => {
     if (!isEqual(prevEstatesRef.current, estates)) {
@@ -112,13 +156,13 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
           </Filters>
         </Dropdown>
         <Button variant="outlined" className="h-12 w-12" onClick={changeMode}>
-          M
+          <Icon id="mapIcon" className="h-[24px] min-w-[24px]" />
         </Button>
       </div>
 
       <Filters className="m-0 hidden bg-transparent px-0 md:flex">
         <Button className="h-12 w-12" variant="outlined" onClick={changeMode}>
-          M
+          <Icon id="mapIcon" className="h-[24px] min-w-[24px]" />
         </Button>
       </Filters>
       <div
@@ -141,7 +185,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
         </div>
         <div
           ref={listContainerRef}
-          className="flex min-w-[22.5rem] pb-[6.25rem] flex-col gap-10 md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-scroll"
+          className="flex min-w-[22.5rem] flex-col gap-10 pb-[6.25rem] md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-auto"
         >
           {loadedEstates.map((estate) => {
             return (
