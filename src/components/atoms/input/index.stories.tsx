@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import Input from './index'
 
@@ -9,7 +9,11 @@ export default {
 const Template: StoryFn<typeof Input> = (args) => {
   const [value, setValue] = useState('')
   return (
-    <Input value={value} onChange={(e) => setValue(e.currentTarget.value)} {...args} />
+    <Input
+      {...args}
+      value={value}
+      onChange={(e) => setValue(e.currentTarget.value)}
+    />
   )
 }
 

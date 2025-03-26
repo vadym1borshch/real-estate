@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, RefObject } from 'react'
+import { useState, useEffect} from 'react'
 
 export const useScrollbarWidth = () => {
   const [scrollbarWidth, setScrollbarWidth] = useState(0);

@@ -9,14 +9,12 @@ interface IUseElementsSizes {
   containerDimensionProp?: Dimensions;
   childDimensionProp?: Dimensions;
   styleAttr?: Style;
-  exRerenderValue?: any;
 }
 
 export const useElementSizes = (
   {
     containerRef,
     childClassName,
-    exRerenderValue,
     styleAttr = 'gap',
     containerDimensionProp = 'height',
     childDimensionProp = 'height',
@@ -40,6 +38,8 @@ export const useElementSizes = (
 
     const dimensions = container.getBoundingClientRect()
     const styles = getComputedStyle(container)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     const result = styles[styleAttr]
 
     if (result) {
@@ -73,7 +73,7 @@ export const useElementSizes = (
     return () => {
       resizeObserver.disconnect()
     }
-  }, [exRerenderValue, containerDimensionProp, childDimensionProp, styleAttr])
+  }, [containerDimensionProp, childDimensionProp, styleAttr])
 
   return { containerDimension, childDimension, styleProp, childrenCount }
 }

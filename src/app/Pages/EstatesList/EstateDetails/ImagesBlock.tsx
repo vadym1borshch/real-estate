@@ -36,7 +36,7 @@ export const ImagesBlock = ({ agent, ref }: Props) => {
         <div className="flex w-full flex-col items-center pt-6">
           <span className="text-[1.125rem]">{agent.name}</span>
           <span className="text-blue-gray pt-1 text-base">
-            {agent.agency.name}
+            {agent.agency?.name}
           </span>
         </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import Dropdown from './index'
 
@@ -9,7 +9,7 @@ export default {
 const Template: StoryFn<typeof Dropdown> = (args) => {
   const [open, setOpen] = useState(false)
   return (
-    <Dropdown open={open} setOpen={setOpen} {...args} >
+    <Dropdown {...args} open={open} setOpen={setOpen}>
       <div>Element</div>
     </Dropdown>
   )

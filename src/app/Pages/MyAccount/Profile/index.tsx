@@ -12,56 +12,48 @@ import { ModalChildWrapper } from './ModalChildWrapper.tsx'
 import { useAppSelector } from '../../../../store'
 import { selectUser } from '../../../../store/userSlice/selectors.ts'
 
-
-
 export const ProfilePage = () => {
   const [openModal, setOpenModal] = useState(false)
-  const [file, setFile] = useState<File | null>(null)
+  const [file, setFile] = useState<File | File[] | null>(null)
   const [send, setSend] = useState(false)
   const { t } = useTranslation()
   const agent = useAppSelector(selectUser)
 
-
-
   const modalChild = useMemo(() => {
-    if (send) {
-      return (
-        <ModalChildWrapper
-          text={t('profile.verification.modal.p3')}
-        >
-          <span>{file?.name}</span>
-          <Button
-            onClick={() => {
-              setOpenModal(false)
-              setSend(false)
-            }}
-          >
-            {t('buttons.understood')}
-          </Button>
-        </ModalChildWrapper>
-      )
-    }
-    if (file) {
-      return (
-        <ModalChildWrapper
-         text={t('profile.verification.modal.p2')}
-        >
-          <span>{file?.name}</span>
-          <Button
-            onClick={() => {
-              setSend(true)
-              setFile(null)
-            }}
-          >
-            {t('buttons.send')}
-          </Button>
-        </ModalChildWrapper>
-      )
+    if (!Array.isArray(file)) {
+      if (send) {
+        return (
+          <ModalChildWrapper text={t('profile.verification.modal.p3')}>
+            <span>{file?.name}</span>
+            <Button
+              onClick={() => {
+                setOpenModal(false)
+                setSend(false)
+              }}
+            >
+              {t('buttons.understood')}
+            </Button>
+          </ModalChildWrapper>
+        )
+      }
+      if (file) {
+        return (
+          <ModalChildWrapper text={t('profile.verification.modal.p2')}>
+            <span>{file?.name}</span>
+            <Button
+              onClick={() => {
+                setSend(true)
+                setFile(null)
+              }}
+            >
+              {t('buttons.send')}
+            </Button>
+          </ModalChildWrapper>
+        )
+      }
     }
     return (
-      <ModalChildWrapper
-        text={t('profile.verification.modal.p1')}
-      >
+      <ModalChildWrapper text={t('profile.verification.modal.p1')}>
         <FileUpload
           callback={(file) => {
             setFile(file)
@@ -71,7 +63,6 @@ export const ProfilePage = () => {
       </ModalChildWrapper>
     )
   }, [file, send])
-
 
   if (!agent) {
     return null
@@ -112,7 +103,7 @@ export const ProfilePage = () => {
       <ProfileForm user={agent} />
       <Modal
         open={openModal}
-        setOpen={(open)=>{
+        setOpen={(open) => {
           setSend(false)
           setFile(null)
           setOpenModal(open)

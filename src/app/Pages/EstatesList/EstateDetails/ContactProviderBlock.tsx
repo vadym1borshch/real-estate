@@ -20,7 +20,7 @@ export const ContactProviderBlock = ({agent}: Props) => {
         <Avatar size={6} src={agent.photo} />
         <div className="flex flex-col">
           <span className="text-base">{agent.name}</span>
-          <span className="text-xs text-blue-gray">{agent.agency.name}</span>
+          <span className="text-xs text-blue-gray">{agent.agency?.name}</span>
         </div>
       </div>
       <div className="flex flex-col gap-6 pb-6 md:order-1 md:pt-7">

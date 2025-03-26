@@ -13,7 +13,7 @@ interface Props {
 
 const LinkCard = ({ src, descriptions, label, href = '/estates' }: Props) => {
   const [isLongPressed, setIsLongPressed] = useState(false)
-  const pressTimer = useRef<number | null>(null)
+  const pressTimer = useRef<NodeJS.Timeout | null>(null)
   const handleTouchStart = () => {
     pressTimer.current = setTimeout(() => {
       setIsLongPressed(true)

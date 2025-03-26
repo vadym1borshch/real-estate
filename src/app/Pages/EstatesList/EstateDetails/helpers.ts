@@ -1,5 +1,5 @@
 import { EstateDetails } from './mock.ts'
-import { RealEstate } from '../../../../store/estateSlice'
+import { RealEstate } from '../../../../store/commonMock.ts'
 
 export const extractValuesToTable = (
   detailsArray: EstateDetails[],

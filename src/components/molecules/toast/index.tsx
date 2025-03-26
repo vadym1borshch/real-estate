@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../store'
 import { selectToast } from '../../../store/toastSlise/selectors'
 import { removeToast } from '../../../store/toastSlise'
 import Button from '../../atoms/button'
-import {  getToastColor, getToastTextColor } from './helper'
+import {  getToastColor } from './helper'
 import { cn } from '../../../helpers/ui.ts'
 
 type PositionType = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'

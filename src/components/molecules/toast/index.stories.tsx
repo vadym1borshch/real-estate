@@ -1,4 +1,3 @@
-import React from 'react';
 import { Meta, StoryFn } from '@storybook/react';
 import Button from '../../atoms/button'
 import Toast from './index.tsx'
@@ -18,7 +17,7 @@ const Template: StoryFn<typeof Toast> = (args) => {
 
     >
       <Button
-        variant="contained"
+        variant="filled"
         onClick={() =>
           dispatch(addToast({
             message: 'Test Notification! ',
@@ -29,7 +28,7 @@ const Template: StoryFn<typeof Toast> = (args) => {
         Show Success Toast
       </Button>
       <Button
-      variant="contained"
+      variant="filled"
       onClick={() =>
         dispatch(addToast({
           message: 'Test Notification! ',
@@ -40,7 +39,7 @@ const Template: StoryFn<typeof Toast> = (args) => {
       Show error Toast
     </Button>
       <Button
-      variant="contained"
+      variant="filled"
       onClick={() =>
         dispatch(addToast({
           message: 'Test Notification! ',
@@ -51,7 +50,7 @@ const Template: StoryFn<typeof Toast> = (args) => {
       Show warning Toast
     </Button>
       <Button
-      variant="contained"
+      variant="filled"
       onClick={() =>
         dispatch(addToast({
           message: 'Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!Test Notification!',

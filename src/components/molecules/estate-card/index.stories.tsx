@@ -1,7 +1,6 @@
-import React from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import EstateCard from './index'
-import { houses } from '../../../store/estateSlice/data.ts'
+import { houses } from '../../../store/commonMock.ts'
 
 
 export default {

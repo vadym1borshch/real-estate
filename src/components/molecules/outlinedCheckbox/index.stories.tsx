@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Meta, StoryFn } from '@storybook/react'
 import OutlinedCheckbox from './index'
 
@@ -9,7 +9,7 @@ export default {
 const Template: StoryFn<typeof OutlinedCheckbox> = (args) => {
   const [checked, setChecked] = useState(false)
   return (
-    <OutlinedCheckbox checked={checked} setChecked={setChecked} {...args} />
+    <OutlinedCheckbox {...args} checked={checked} setChecked={setChecked} />
   )
 }
 
@@ -27,16 +27,12 @@ variantText.args = {
 export const checkboxSide = Template.bind({})
 checkboxSide.args = {
   label: 'Label',
-  checkboxSide: 'left'
+  checkboxSide: 'left',
 }
 
 export const checkboxSideVariantText = Template.bind({})
 checkboxSideVariantText.args = {
   variant: 'text',
   label: 'Label',
-  checkboxSide: 'left'
+  checkboxSide: 'left',
 }
-
-
-
-

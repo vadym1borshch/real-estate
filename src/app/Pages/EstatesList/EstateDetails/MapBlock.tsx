@@ -5,8 +5,8 @@ import Map from '../../../../components/organisms/map'
 import { Layer, MapRef, Source } from 'react-map-gl'
 import { useTranslation } from 'react-i18next'
 import { useRef } from 'react'
-import { RealEstate } from '../../../../store/estateSlice'
 import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
+import { RealEstate } from '../../../../store/commonMock.ts'
 
 interface Props {
   estate: RealEstate
