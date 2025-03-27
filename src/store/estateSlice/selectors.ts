@@ -28,12 +28,9 @@ export const selectPaginatedEstates = (
   searchParams: Search
 ) =>
   createSelector([selectEstates, selectCurrentPage], (estates, currentPage) => {
-
     const filtered = estates.filter((estate) => {
-
       const size = +estate.size.livingAreaM2.split(' ')[0]
       const price = parseFormattedPrice(estate.price.split(' ')[0])
-      const rooms = searchParams.rooms?.split('-')
 
       if (searchParams.price_min && price < +searchParams.price_min)
         return false
@@ -42,8 +39,20 @@ export const selectPaginatedEstates = (
       if (searchParams.area_min && size < +searchParams.area_min) return false
       if (searchParams.area_max && size > +searchParams.area_max) return false
 
-      if (searchParams.rooms && !rooms?.includes(estate.rooms.toString()))
-        return false
+      if (searchParams.rooms) {
+        const roomsParam = searchParams.rooms.split('-')
+        const estateRooms = estate.rooms
+
+        const hasMatch = roomsParam.some((room) => {
+          const parsedRoom = +room
+          if (parsedRoom >= 6) {
+            return estateRooms >= parsedRoom
+          }
+          return estateRooms === parsedRoom
+        })
+
+        if (!hasMatch) return false
+      }
       if (
         searchParams.operation &&
         estate.operation.key !== searchParams.operation

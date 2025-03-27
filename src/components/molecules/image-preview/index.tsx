@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { cn } from '../../../helpers/ui.ts'
-import Button from '../../atoms/button'
 import Icon from '../../atoms/icon'
+import { ButtonsBlock } from './ButtonsBlock.tsx'
 
 interface IImagePreview {
   images: { id: string; src: string; title?: string }[]
@@ -60,36 +60,13 @@ const ImagePreview = ({
             className="h-auto w-full rounded-xl object-cover"
           />
           {withButtons && (
-            <>
-              <Button
-                variant="outlined"
-                className="absolute top-1/2 left-6 h-[48px] w-[48px] -translate-y-1/2 transform !rounded-full !border-white"
-                onClick={handlePrev}
-              >
-                <Icon
-                  id="chevronDownIcon"
-                  className="h-[24px] w-[24px] rotate-90 text-white"
-                  onClick={handlePrev}
-                />
-              </Button>
-              <Button
-                variant="outlined"
-                className="absolute top-1/2 right-6 h-[48px] w-[48px] -translate-y-1/2 transform !rounded-full !border-white"
-                onClick={handleNext}
-              >
-                <Icon
-                  id="chevronDownIcon"
-                  className="h-[24px] w-[24px] -rotate-90 text-white"
-                  onClick={handleNext}
-                />
-              </Button>
-            </>
+            <ButtonsBlock handleNext={handleNext} handlePrev={handlePrev} />
           )}
         </div>
       </div>
       <div
         className={cn(
-          'grid w-full grid-cols-2 sm:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-6 py-5 md:pb-0'
+          'grid w-full grid-cols-2 gap-6 py-5 sm:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] md:pb-0'
         )}
       >
         {visibleThumbnails.map((image, index) => (
@@ -111,7 +88,7 @@ const ImagePreview = ({
         {images.length > 4 && (
           <div
             onClick={() => onClick && onClick(3)}
-            className="relative flex  h-[6.8125rem] w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-black/50 text-white"
+            className="relative flex h-[6.8125rem] w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-black/50 text-white"
           >
             <img
               src={images[3].src}

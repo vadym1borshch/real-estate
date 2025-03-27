@@ -129,6 +129,15 @@
               stroke-linejoin="round"/>
     </symbol>
 
+    <symbol id="arrowLeftRoundedIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M12 2.75C6.892 2.75 2.75 6.891 2.75 12C2.75 17.108 6.892 21.25 12 21.25C17.108 21.25 21.25 17.108 21.25 12C21.25 6.891 17.108 2.75 12 2.75Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.4424 8.52832L9.95638 11.9993L13.4424 15.4703" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+
     <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path fill-rule="evenodd" clip-rule="evenodd"
               d="M12 2.5C17.2459 2.5 21.5 6.75315 21.5 12C21.5 17.2469 17.2459 21.5 12 21.5C6.75315 21.5 2.5 17.2469 2.5 12C2.5 6.75315 6.75315 2.5 12 2.5Z"
