@@ -22,7 +22,7 @@ export const MyAccount = () => {
 
   useEffect(() => {
     if (!user) {
-      navigate(ROUTES.home)
+      navigate(ROUTES.login)
     }
   }, [user])
 

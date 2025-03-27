@@ -10,15 +10,15 @@ export const links = [
     label: 'footer.links.contact-us',
   },
   {
-    href: '',
+    href: ROUTES.myAccount,
     label: 'footer.links.my-account',
   },
   {
-    href: '',
+    href: ROUTES.buy,
     label: 'footer.links.buy',
   },
   {
-    href: '',
+    href: ROUTES.rent,
     label: 'footer.links.rent',
   },
   {
@@ -34,7 +34,7 @@ export const links = [
     label: 'footer.links.practical-instr',
   },
   {
-    href: '',
+    href: ROUTES.knowledgeRealEstate,
     label: 'footer.links.knowledge-property',
   },
   {
