@@ -156,13 +156,13 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
           </Filters>
         </Dropdown>
         <Button variant="outlined" className="h-12 w-12" onClick={changeMode}>
-          <Icon id="mapIcon" className="h-[24px] min-w-[24px]" />
+          <Icon id="menuGridIcon" className="h-[24px] min-w-[24px]" />
         </Button>
       </div>
 
       <Filters className="m-0 hidden bg-transparent px-0 md:flex">
         <Button className="h-12 w-12" variant="outlined" onClick={changeMode}>
-          <Icon id="mapIcon" className="h-[24px] min-w-[24px]" />
+          <Icon id="menuGridIcon" className="h-[24px] min-w-[24px]" />
         </Button>
       </Filters>
       <div
