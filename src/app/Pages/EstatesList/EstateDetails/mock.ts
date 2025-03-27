@@ -8,27 +8,27 @@ export type EstateDetails = {
 export const images = [
   {
     id: '1',
-    src: '../../../../../public/house1.png?url',
+    src: '/public/house1.png?url',
   },
   {
     id: '2',
-    src: '../../../../../public/house2.png?url',
+    src: '/public/house2.png?url',
   },
   {
     id: '3',
-    src: '../../../../../public/house3.png?url',
+    src: '/public/house3.png?url',
   },
   {
     id: '4',
-    src: '../../../../../public/house4.png?url',
+    src: '/public/house4.png?url',
   },
   {
     id: '5',
-    src: '../../../../../public/house5.png?url',
+    src: '/public/house5.png?url',
   },
   {
     id: '6',
-    src: '../../../../../public/house6.png?url',
+    src: '/public/house6.png?url',
   },
 ]
 
