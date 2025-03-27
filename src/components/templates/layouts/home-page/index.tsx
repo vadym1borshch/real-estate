@@ -20,7 +20,7 @@ export const HomePageLayout = () => {
         <span className="font-200 max-w-[47.5rem] pt-[4.375rem] text-center text-[2rem] leading-[4.125rem] md:text-[3.75rem]">
           {t('title')}
         </span>
-        <Filters className="mt-[9rem] max-w-[72.5rem] bg-[#FAFAFA]/80 backdrop-blur-[5px]">
+        <Filters className="mt-[9rem] max-w-[72.5rem] bg-light-gray3/80 backdrop-blur-[5px]">
           <Button
             onClick={() => navigate(`/${listingType}`, true)}
             className="col-span-full mx-auto w-full max-w-[420px] lg:w-fit"
