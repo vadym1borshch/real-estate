@@ -21,7 +21,6 @@ const ImagePreview = ({
   onClick,
 }: IImagePreview) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
-
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length)
   }
@@ -66,7 +65,7 @@ const ImagePreview = ({
       </div>
       <div
         className={cn(
-          'grid w-full grid-cols-2 gap-6 py-5 sm:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] lg:grid-cols-4 md:pb-0'
+          'grid w-full grid-cols-2 gap-6 py-5 sm:grid-cols-4 md:grid-cols-2 md:pb-0 lg:grid-cols-4'
         )}
       >
         {visibleThumbnails.map((image, index) => (
@@ -85,6 +84,7 @@ const ImagePreview = ({
             />
           </div>
         ))}
+
         {images.length > 4 && (
           <div
             onClick={() => onClick && onClick(3)}

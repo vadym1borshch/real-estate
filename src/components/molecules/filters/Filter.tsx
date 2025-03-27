@@ -142,10 +142,15 @@ export const Filter = ({ filter }: Props) => {
             return (
               <span
                 key={item.id}
-                className="hover:bg-blue-gray px-4 py-2 text-base"
+                className={
+                cn("hover:bg-blue-gray px-4 py-2 text-base", {
+                  "bg-coral": item.id === filter.key,
+                })
+                }
                 onClick={() => {
                   if (filter.key === 'operation') {
                     setListingType(item.id as ListingType)
+                    localStorage.setItem('operation', item.id)
                     setOpen(false)
                     if (path !== ROUTES.home) {
                       navigate(`/${item.id}`, true)

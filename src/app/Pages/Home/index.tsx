@@ -17,9 +17,7 @@ import Modal from '../../../components/molecules/modal'
 export const HomePage = () => {
   const { t } = useTranslation()
   const { width } = useWindowDimensions()
-  const isMedium = width <= BREAKPOINTS.xl
-  const preMedium = width <= BREAKPOINTS.xmd
-  const isMobile = width <= BREAKPOINTS.xsm
+  const isLarge = width >= BREAKPOINTS['pre-xl']
   const topEstate = useAppSelector(selectTopEstates)
   const { isConfirm, setIsConfirm } = useEmailConfirm()
 
@@ -30,9 +28,8 @@ export const HomePage = () => {
         description={t('home.operations.descriptions')}
       >
         <div
-          className={cn('hidden grid-cols-4 gap-10 pt-[5.625rem] md:grid', {
-            'grid-cols-2': isMedium,
-            'mx-auto grid-cols-1': isMobile,
+          className={cn('hidden grid-cols-4 gap-10 pt-[5.625rem]', {
+            'lg:grid': isLarge,
           })}
         >
           {services.map((service) => (
@@ -45,7 +42,9 @@ export const HomePage = () => {
             />
           ))}
         </div>
-        <div className="w-screen pt-[3.75rem] md:hidden">
+        <div className={cn("w-screen pt-[3.75rem]", {
+          "hidden": isLarge,
+        })}>
           <Slider>
             {services.map((service) => (
               <LinkCard
@@ -63,12 +62,7 @@ export const HomePage = () => {
         title={t('home.top-ads.main-title')}
         description={t('home.top-ads.descriptions')}
       >
-        <div
-          className={cn('grid grid-cols-3 gap-10 pt-[5.625rem]', {
-            'grid-cols-2': isMedium,
-            'mx-auto grid-cols-1': preMedium,
-          })}
-        >
+        <div className="grid grid-cols-1 gap-10 pt-[5.625rem] sm:grid-cols-2 xl:grid-cols-3">
           {topEstate.map((house) => (
             <EstateCard realEstate={house} key={house.id} />
           ))}

@@ -140,6 +140,7 @@ export const EstatesList = () => {
           return <EstateCard key={estate.id} realEstate={estate} />
         })}
       </div>
+      {!estates.length && <div className="pb-[9.375rem]">Objects not found...</div>}
       {estates.length > itemsPerPage && (
         <Pagination
           count={totalPages}

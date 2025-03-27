@@ -70,9 +70,8 @@ export const selectPaginatedEstates = (
       return true
     })
 
-    const startIndex = (currentPage - 1) * itemsPerPage
-    const endIndex = startIndex + itemsPerPage
-    return filtered.slice(startIndex, endIndex)
+    const endIndex = currentPage * itemsPerPage
+    return filtered.slice(0, endIndex)
   })
 
 export const selectTotalPages = (itemsPerPage: number) =>

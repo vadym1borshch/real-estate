@@ -1,16 +1,29 @@
-import { createContext, useContext, useState, ReactNode } from 'react'
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from 'react'
 
-export type ListingType = 'buy' | 'rent';
+export type ListingType = 'buy' | 'rent'
 
 interface ListingContextProps {
-  listingType: ListingType;
-  setListingType: (type: ListingType) => void;
+  listingType: ListingType
+  setListingType: (type: ListingType) => void
 }
 
 const ListingContext = createContext<ListingContextProps | undefined>(undefined)
 
 export const ListingProvider = ({ children }: { children: ReactNode }) => {
   const [listingType, setListingType] = useState<ListingType>('buy')
+
+  useEffect(() => {
+    const currentListing = localStorage.getItem('operation')
+    if (currentListing) {
+      setListingType(currentListing as ListingType)
+    }
+  }, [])
 
   return (
     <ListingContext.Provider value={{ listingType, setListingType }}>

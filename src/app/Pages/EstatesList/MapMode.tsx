@@ -6,7 +6,7 @@ import EstateCard from '../../../components/molecules/estate-card'
 import { useTranslation } from 'react-i18next'
 import { setCurrentPage } from '../../../store/estateSlice'
 import Map from '../../../components/organisms/map'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { MapRef, Marker } from 'react-map-gl'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import {
@@ -14,11 +14,9 @@ import {
   selectPaginatedEstates,
   selectTotalPages,
 } from '../../../store/estateSlice/selectors.ts'
-import isEqual from 'lodash.isequal'
 import MapMarker from '../../../components/atoms/map-marker'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../helpers/common.ts'
-import { RealEstate } from '../../../store/commonMock.ts'
 import { useSearchContext } from '../../../contexts/SearchContext.tsx'
 import Icon from '../../../components/atoms/icon'
 
@@ -39,72 +37,24 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
   const dispatch = useAppDispatch()
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
   const currentPage = useAppSelector(selectCurrentPage)
-  const {
-    operation,
-    address,
-    type,
-    rooms,
-    area_min,
-    price_min,
-    price_max,
-    area_max,
-  } = useSearchContext()
+  const search = useSearchContext()
 
   const filtersKey = JSON.stringify({
-    rooms,
-    price_max,
-    price_min,
-    area_min,
-    address,
-    type,
-    area_max,
-    operation,
+   ...search
   })
 
   const estates = useAppSelector(
-    selectPaginatedEstates(itemsPerPage, {
-      rooms,
-      price_max,
-      price_min,
-      area_min,
-      address,
-      type,
-      area_max,
-      operation,
-    })
+    selectPaginatedEstates(itemsPerPage, JSON.parse(filtersKey))
   )
-
-  const [loadedEstates, setLoadedEstates] = useState<RealEstate[]>([])
-
-  const prevEstatesRef = useRef<RealEstate[]>([])
 
   const { width } = useWindowDimensions()
   const isMobile = width < BREAKPOINTS.md
-
-  useEffect(() => {
-    setLoadedEstates([])
-    prevEstatesRef.current = []
-    dispatch(setCurrentPage(1))
-  }, [filtersKey])
-
-  useEffect(() => {
-    if (!isEqual(prevEstatesRef.current, estates)) {
-      prevEstatesRef.current = estates
-
-      setLoadedEstates((prev) => {
-        const prevIds = new Set(prev.map((estate) => estate.id))
-        const newEstates = estates.filter((estate) => !prevIds.has(estate.id))
-
-        return newEstates.length > 0 ? [...prev, ...newEstates] : prev
-      })
-    }
-  }, [estates])
 
   const handleScroll = useCallback(() => {
     if (isMobile) {
       if (
         window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 300 &&
+        document.body.offsetHeight - 300 &&
         currentPage < totalPages
       ) {
         dispatch(setCurrentPage(currentPage + 1))
@@ -119,6 +69,11 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
       }
     }
   }, [isMobile, currentPage, totalPages, dispatch])
+
+  useEffect(() => {
+    dispatch(setCurrentPage(1))
+  }, [filtersKey])
+
 
   useEffect(() => {
     if (isMobile) {
@@ -172,7 +127,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
       >
         <div className="w-full">
           <Map loading={false} data={[1]} ref={mapRef} className="!h-[488px]">
-            {loadedEstates.map((estate) => (
+            {estates.map((estate) => (
               <Marker
                 key={estate.id}
                 longitude={estate.address.coordinates[1]}
@@ -187,7 +142,8 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
           ref={listContainerRef}
           className="flex min-w-[22.5rem] flex-col gap-10 pb-[6.25rem] md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-auto"
         >
-          {loadedEstates.map((estate) => {
+          {!estates.length && <div className="pb-[9.375rem] mx-auto">Objects not found...</div>}
+          {estates.map((estate) => {
             return (
               <EstateCard
                 key={estate.id}
