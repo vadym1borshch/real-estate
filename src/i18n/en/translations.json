@@ -444,7 +444,9 @@
       "attach-card": "Attach a card",
       "register": "Register",
       "restore": "Restore",
-      "confirm-email": "Confirm email address"
+      "confirm-email": "Confirm email address",
+      "like": "SAVE",
+      "share": "SHARE"
     },
     "knowledge-real-estate": {
       "title": "Knowledge about real estate ",

@@ -62,7 +62,7 @@ export const EstatesDetails = () => {
             </div>
           </div>
         </div>
-        <ActionButtons />
+        <ActionButtons estateId={estate.id} isFavorite={estate.favorite} />
       </div>
 
       <ImagesBlock agent={agent} ref={ref} />

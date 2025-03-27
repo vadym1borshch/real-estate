@@ -1,25 +1,42 @@
 import Button from '../../../../components/atoms/button'
+import { changeCurrentEstate, setFavorite } from '../../../../store/estateSlice'
+import { useAppDispatch } from '../../../../store'
+import { useTranslation } from 'react-i18next'
+import { cn } from '../../../../helpers/ui.ts'
 
-export const ActionButtons = () => {
+interface Props {
+  estateId: string
+  isFavorite: boolean
+}
+
+export const ActionButtons = ({ estateId, isFavorite }: Props) => {
+  const dispatch = useAppDispatch()
+  const { t } = useTranslation()
   return (
     <div className="hidden justify-end gap-3 lg:flex">
       <Button
         variant="text"
-        className="hover:text-blue-gray !border-0 w-auto"
+        className="hover:text-blue-gray w-auto !border-0"
         iconId="bigShareIcon"
         iconSide="left"
         iconClassName="!min-h-[48px] !min-w-[48px]"
       >
-        share
+        {t('buttons.share')}
       </Button>
       <Button
         variant="text"
-        className="hover:text-blue-gray !border-0 w-auto"
-        iconId="bigHeartIcon"
+        className="hover:text-blue-gray w-auto !border-0"
+        iconId={isFavorite ? 'bigHeartFilledIcon' : 'bigHeartIcon'}
         iconSide="left"
-        iconClassName="!min-h-[48px] !min-w-[48px]"
+        iconClassName={cn('!min-h-[48px] !min-w-[48px] ', {
+          'text-coral': isFavorite,
+        })}
+        onClick={() => {
+          dispatch(setFavorite({ id: estateId }))
+          dispatch(changeCurrentEstate({ favorite: !isFavorite }))
+        }}
       >
-        like
+        {t('buttons.like')}
       </Button>
     </div>
   )

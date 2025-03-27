@@ -71,6 +71,17 @@ export const realEstateSlice = createSlice({
         state.currentEstate = estate
       }
     },
+    changeCurrentEstate: (
+      state,
+      action: PayloadAction<Partial<RealEstate>>
+    ) => {
+      if (state.currentEstate) {
+        state.currentEstate = {
+          ...state.currentEstate,
+          ...action.payload,
+        }
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -98,6 +109,7 @@ export const {
   setRentFilter,
   setCurrentPage,
   setCurrentEstate,
+  changeCurrentEstate,
 } = realEstateSlice.actions
 
 export default realEstateSlice.reducer
