@@ -20,5 +20,6 @@ export default defineConfig({
      //enable to test on mobile devices
      host: '0.0.0.0',
      port: 5173,
+     hmr: false,
    }
 })
