@@ -2,39 +2,39 @@ import { ROUTES } from '../../../@constants/routes.ts'
 
 export const links = [
   {
-    href: ROUTES.about,
+    href: ROUTES.ABOUT,
     label: 'footer.links.about-us',
   },
   {
-    href: ROUTES.contactUs,
+    href: ROUTES.CONTACT_US,
     label: 'footer.links.contact-us',
   },
   {
-    href: ROUTES.myAccount,
+    href: ROUTES.MY_ACCOUNT,
     label: 'footer.links.my-account',
   },
   {
-    href: ROUTES.buy,
+    href: ROUTES.BUY,
     label: 'footer.links.buy',
   },
   {
-    href: ROUTES.rent,
+    href: ROUTES.RENT,
     label: 'footer.links.rent',
   },
   {
-    href: ROUTES.faq,
+    href: ROUTES.FAQ,
     label: 'footer.links.faq',
   },
   {
-    href: ROUTES.serviceAround,
+    href: ROUTES.SERVICE_AROUND,
     label: 'footer.links.service-property',
   },
   {
-    href: ROUTES.knowledgeRealEstate,
+    href: ROUTES.KNOWLEDGE_REAL_ESTATE,
     label: 'footer.links.practical-instr',
   },
   {
-    href: ROUTES.knowledgeRealEstate,
+    href: ROUTES.KNOWLEDGE_REAL_ESTATE,
     label: 'footer.links.knowledge-property',
   },
   {

@@ -21,8 +21,7 @@ export const MonthlyCosts = () => {
         },
       ],
     },
-    onSubmit: (values) => {
-      console.log('Form Data:', values)
+    onSubmit: () => {
     },
   })
 

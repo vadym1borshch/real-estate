@@ -37,7 +37,7 @@ export const RegisterPage = () => {
           termsOfUse: false,
         }}
         onSubmit={() => {
-          navigate(ROUTES.confirmRegister)
+          navigate(ROUTES.CONFIRM_REGISTER)
           dispatch(setUser(agent))
         }}
         validationSchema={useValidationRegisterSchema()}
@@ -120,7 +120,7 @@ export const RegisterPage = () => {
                               onClick={(e) => {
                                 e.stopPropagation()
                                 e.preventDefault()
-                                navigate(ROUTES.termsOfUse)
+                                navigate(ROUTES.TERMS_OF_USE)
                               }}
                             />
                           ),

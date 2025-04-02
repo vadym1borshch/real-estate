@@ -100,9 +100,7 @@ export const ServiceAround = () => {
           />
           <div className="flex w-full max-w-[360px] flex-col items-center gap-1.5">
             <H3
-              //eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              //@ts-expect-error
-              text={currentAssistant?.name}
+              text={currentAssistant?.name as string}
             />
             <span className="text-blue-gray text-center text-xs">
               {t(currentAssistant?.profession.title)}

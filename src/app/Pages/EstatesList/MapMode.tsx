@@ -40,7 +40,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
   const search = useSearchContext()
 
   const filtersKey = JSON.stringify({
-   ...search
+    ...search,
   })
 
   const estates = useAppSelector(
@@ -54,7 +54,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
     if (isMobile) {
       if (
         window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 300 &&
+          document.body.offsetHeight - 300 &&
         currentPage < totalPages
       ) {
         dispatch(setCurrentPage(currentPage + 1))
@@ -73,7 +73,6 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
   useEffect(() => {
     dispatch(setCurrentPage(1))
   }, [filtersKey])
-
 
   useEffect(() => {
     if (isMobile) {
@@ -99,12 +98,12 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
           setOpen={(open) => setOpen(open)}
           variant="outlined"
           triggerButtonClassName="!w-full text-base"
-          dropdownClassName="w-[calc(100%+38px)] !min-h-[15.625rem]"
+          dropdownClassName="min-w-[300px] w-[calc(100%+53px)] border border-blue-gray p-3 !min-h-[15.75rem] overflow-hidden"
           iconId="filterIcon"
           iconClassName="w-[24px] h-[24px] text-charcoal"
           withIcon
         >
-          <Filters className="m-0 bg-transparent px-0">
+          <Filters className="m-0 bg-transparent p-0">
             <Button className="col-span-full mx-auto w-full max-w-[26.25rem]">
               {t('buttons.find')}
             </Button>
@@ -122,7 +121,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
       </Filters>
       <div
         className={cn(
-          'mt-[1.125rem] grid grid-cols-1 gap-10 md:grid-cols-[2fr_1fr]'
+          'mt-[1.125rem] grid grid-cols-1 gap-5 lg:gap-10 md:grid-cols-[2fr_1fr]'
         )}
       >
         <div className="w-full">
@@ -140,15 +139,16 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
         </div>
         <div
           ref={listContainerRef}
-          className="flex min-w-[22.5rem] flex-col gap-10 pb-[6.25rem] md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-auto"
+          className="flex !min-w-[300px] flex-col gap-5 lg:gap-10 pb-[6.25rem] md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-auto"
         >
-          {!estates.length && <div className="pb-[9.375rem] mx-auto">Objects not found...</div>}
+          {!estates.length && (
+            <div className="mx-auto pb-[9.375rem]">Objects not found...</div>
+          )}
           {estates.map((estate) => {
             return (
               <EstateCard
                 key={estate.id}
                 realEstate={estate}
-                className="min-w-[300px]"
               />
             )
           })}

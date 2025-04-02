@@ -24,7 +24,7 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate(ROUTES.home)
+      navigate(ROUTES.HOME)
     }
   }, [user])
 
@@ -99,7 +99,7 @@ export const LoginPage = () => {
                 className="text-coral p-0 text-xs whitespace-nowrap"
                 variant="text"
                 onClick={() => {
-                  navigate(ROUTES.forgotPassword)
+                  navigate(ROUTES.FORGOT_PASSWORD)
                 }}
               >
                 {t('login.form.forgot-password')}
@@ -117,7 +117,7 @@ export const LoginPage = () => {
               <Button
                 className="text-coral p-0"
                 variant="text"
-                onClick={() => navigate(ROUTES.register)}
+                onClick={() => navigate(ROUTES.REGISTER)}
               >
                 {t('buttons.register')}
               </Button>

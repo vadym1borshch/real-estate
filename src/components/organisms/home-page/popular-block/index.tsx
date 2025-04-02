@@ -15,7 +15,7 @@ export const PopularBlock = () => {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <H2 text={t('home.popular.main-title')} className="max-w-[35rem]" />
+      <H2 text={t('home.popular.main-title')} className="max-w-[35rem] text-2xl lg:text-4xl" />
       <Operation
         estates={buy}
         filters={buyFilters}
@@ -23,7 +23,7 @@ export const PopularBlock = () => {
       />
       <Operation
         estates={rent}
-        className="pt-[66px] pb-6"
+        className="pt-[2.25rem] lg:pt-[4.125rem]"
         filters={rentFilters}
         label={t('real-estate.operations.rent')}
       />

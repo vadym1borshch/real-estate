@@ -26,9 +26,9 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
   const navigate = useNavigate()
   const path = usePathname()
 
-  const correctDetailsRoute = path.includes(ADS_ROUTES.rentAds)
-    ? ADS_ROUTES.rentDetails
-    : ADS_ROUTES.sellDetails
+  const correctDetailsRoute = path.includes(ADS_ROUTES.RENT_ADS)
+    ? ADS_ROUTES.RENT_DETAILS
+    : ADS_ROUTES.SELL_DETAILS
 
   const disabledButtons = (
     status: AdsFilterStatus,

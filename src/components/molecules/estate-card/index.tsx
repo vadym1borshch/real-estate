@@ -76,9 +76,9 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
         </label>
         <div className="flex flex-col gap-1.5">
           <p className="r-estate-descriptions">
-            <span>ID: {id}</span>
+            <span className="whitespace-nowrap">ID: {id}</span>
             <span>{t(type.value)}</span>
-            <span>{address.location}</span>
+            <span className="truncate">{address.location}</span>
           </p>
           <p className="r-estate-descriptions">
             <span>

@@ -43,16 +43,16 @@ const Header = ({ className }: Props) => {
   return (
     <header
       className={cn(
-        'z-1001 flex w-full justify-between bg-transparent py-[1.875rem]',
+        'z-1001 flex w-full justify-between bg-transparent pb-6 pt-[0.875rem] lg:py-[1.875rem]',
         className
       )}
     >
       <div
-        className="flex cursor-pointer items-center gap-6"
+        className="flex cursor-pointer items-center gap-3 md:gap-6"
         onClick={goToHomePage}
       >
         <Logo />
-        <span className="font-600 tracking-[3px] uppercase">
+        <span className="font-600 tracking-[3px] uppercase text-[10px] md:text-base">
           Immobilien Suche
         </span>
       </div>
@@ -81,10 +81,10 @@ const Header = ({ className }: Props) => {
           className="bg-charcoal hover:bg-seafoam-green focus:border-seafoam-green px-4 focus:border-4 focus:outline-none"
           onClick={() => {
             if (!user) {
-              navigate(ROUTES.login)
+              navigate(ROUTES.LOGIN)
               return
             }
-            navigate(ROUTES.myAccount)
+            navigate(ROUTES.MY_ACCOUNT)
           }}
         >
           {!user ? t('buttons.sign-in') : t('my-account.title')}

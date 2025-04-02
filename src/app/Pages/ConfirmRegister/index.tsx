@@ -16,7 +16,7 @@ export const ConfirmRegister = () => {
       <Button
         className="w-full"
         onClick={() => {
-          navigate(ROUTES.home)
+          navigate(ROUTES.HOME)
           setIsConfirm(true)
         }}
       >

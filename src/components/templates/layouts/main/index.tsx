@@ -20,12 +20,12 @@ export const MainLayout = () => {
 
   return (
     <div
-      className={cn('w-full p-5', {
-        'px-7.5': path !== ROUTES.home && isMobile,
+      className={cn('w-full p-2.5 md:p-5 overflow-x-hidden', {
+        'px-7.5': path !== ROUTES.HOME && isMobile,
       })}
     >
       <Outlet />
-      {path !== ROUTES.login && path !== ROUTES.register && <Footer />}
+      {path !== ROUTES.LOGIN && path !== ROUTES.REGISTER && <Footer />}
       <Toast />
     </div>
   )

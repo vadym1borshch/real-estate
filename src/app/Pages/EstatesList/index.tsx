@@ -98,12 +98,12 @@ export const EstatesList = () => {
           setOpen={(open) => setOpenMobileDropdown(open)}
           variant="outlined"
           triggerButtonClassName="!w-full text-base"
-          dropdownClassName="w-[calc(100%+38px)] !min-h-[15.625rem]"
+          dropdownClassName="min-w-[300px] w-[calc(100%+53px)] border border-blue-gray p-3 !min-h-[15.75rem] overflow-hidden"
           iconId="filterIcon"
           iconClassName="w-[24px] h-[24px] text-charcoal"
           withIcon
         >
-          <Filters className="m-0 bg-transparent px-0">
+          <Filters className="m-0 bg-transparent p-0">
             <Button className="col-span-full mx-auto w-full max-w-[26.25rem]">
               {t('buttons.find')}
             </Button>
@@ -129,7 +129,7 @@ export const EstatesList = () => {
       </Filters>
       <div
         className={cn(
-          'mt-[1.125rem] grid grid-cols-2 gap-10 md:grid-cols-2 xl:grid-cols-3',
+          'mt-[1.125rem] grid grid-cols-2 gap-5 lg:gap-10 md:grid-cols-2 xl:grid-cols-3',
           {
             'grid-cols-1': isMobile,
             'pb-[9.375rem]': estates.length <= itemsPerPage,
@@ -140,7 +140,9 @@ export const EstatesList = () => {
           return <EstateCard key={estate.id} realEstate={estate} />
         })}
       </div>
-      {!estates.length && <div className="pb-[9.375rem]">Objects not found...</div>}
+      {!estates.length && (
+        <div className="pb-[9.375rem]">Objects not found...</div>
+      )}
       {estates.length > itemsPerPage && (
         <Pagination
           count={totalPages}

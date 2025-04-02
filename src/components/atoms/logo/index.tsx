@@ -9,7 +9,7 @@ interface Props {
 
 const Logo = ({ className, variant = 'dark' }: Props) => {
   return (
-    <img src={variant === 'white' ? white : dark} alt="logo" className={cn('w-[3.75rem] h-[3.75rem]', className)} />
+    <img src={variant === 'white' ? white : dark} alt="logo" className={cn('w-10 h-10 md:w-[3.75rem] md:h-[3.75rem]', className)} />
   )
 }
 

@@ -40,7 +40,7 @@ export const ForgotPassword = () => {
         step={step}
         paragraph={t('forgot-password.step3')}
         onClick={() => {
-          navigate(ROUTES.login)
+          navigate(ROUTES.LOGIN)
         }}
         buttonText={t('buttons.send')}
       />

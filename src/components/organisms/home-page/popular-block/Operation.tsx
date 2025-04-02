@@ -19,9 +19,9 @@ export const Operation = ({ label, filters, estates, className }: Props) => {
   const isMobile = width <= BREAKPOINTS['pre-md']
 
   return (
-    <div className={cn('flex flex-col items-center gap-[90px]', className)}>
+    <div className={cn('flex flex-col items-center gap-[3.75rem] lg:gap-[5.625rem]', className)}>
       <OperationFilter label={label} filters={filters} />
-      <div className={cn('grid grid-cols-3 gap-10', {
+      <div className={cn('grid grid-cols-3 gap-5 lg:gap-10 ', {
         'grid-cols-2': isMedium || estates.length < 3,
         'grid-cols-1 mx-auto': isMobile || !estates.length || estates.length < 2,
       })}>

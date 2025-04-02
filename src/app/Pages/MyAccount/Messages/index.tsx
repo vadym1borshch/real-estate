@@ -26,14 +26,14 @@ export const Messages = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (path === ROUTES.messages) {
-      navigate(ROUTES.messages + '/inboxes')
+    if (path === ROUTES.MESSAGES) {
+      navigate(ROUTES.MESSAGES + ROUTES.INBOXES)
     }
   }, [path])
 
   return (
     <ContentLayout
-      route={ROUTES.messages}
+      route={ROUTES.MESSAGES}
       currentPage={currentPage}
       tabs={tabs}
     />

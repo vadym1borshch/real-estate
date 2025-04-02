@@ -3,37 +3,37 @@ import { ADS_ROUTES, ROUTES } from '../../../@constants/routes.ts'
 export const authButtons = [
   {
     id: '1',
-    href: ROUTES.profile,
+    href: ROUTES.PROFILE,
     title: 'buttons.profile',
     icon: 'userIcon',
   },
   {
     id: '2',
-    href: ADS_ROUTES.ads,
+    href: ADS_ROUTES.ADS,
     title: 'buttons.ads',
     icon: 'boardDocumentIcon',
   },
   {
     id: '3',
-    href: ROUTES.messages,
+    href: ROUTES.MESSAGES,
     title: 'buttons.messages',
     icon: 'emailIcon',
   },
   {
     id: '4',
-    href: ROUTES.favorites,
+    href: ROUTES.FAVORITES,
     title: 'buttons.favorite',
     icon: 'standardHeartIcon',
   },
   {
     id: '5',
-    href: ROUTES.order,
+    href: ROUTES.ORDER,
     title: 'buttons.photo-video',
     icon: 'cameraIcon',
   },
   {
     id: '6',
-    href: ROUTES.payments,
+    href: ROUTES.PAYMENTS,
     title: 'buttons.payment-options',
     icon: 'bankCardIcon',
   },

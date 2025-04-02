@@ -15,14 +15,14 @@ export const MyAccount = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (path === ROUTES.myAccount) {
-      navigate(ROUTES.profile)
+    if (path === ROUTES.MY_ACCOUNT) {
+      navigate(ROUTES.PROFILE)
     }
   }, [path])
 
   useEffect(() => {
     if (!user) {
-      navigate(ROUTES.login)
+      navigate(ROUTES.LOGIN)
     }
   }, [user])
 

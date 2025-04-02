@@ -30,8 +30,6 @@ export const ProfileForm = ({ user }: Props) => {
         province: '',
       }}
       onSubmit={async (_values, { resetForm }) => {
-        /* handleSubmit(values)*/
-        console.log(_values)
         resetForm()
       }}
       validationSchema={useValidationSchema()}

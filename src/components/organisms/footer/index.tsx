@@ -68,13 +68,13 @@ const Footer = () => {
         </p>
         <p className="flex flex-col md:flex-row items-center gap-3 md:gap-6 pt-6 md:pt-0 md:order-2">
           <Link
-            href={ROUTES.contacts}
+            href={ROUTES.CONTACTS}
             className="text-seafoam-green hover:text-white"
           >
             {t('contacts.title')}
           </Link>
           <Link
-            href={ROUTES.termsOfUse}
+            href={ROUTES.TERMS_OF_USE}
             className="text-seafoam-green hover:text-white"
           >
             {t('footer.links.terms-of-use')}

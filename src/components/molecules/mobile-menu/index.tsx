@@ -36,10 +36,10 @@ const MobileMenu = ({ open, setOpen }: Props) => {
               className="text-charcoal hover:bg-seafoam-green focus:border-seafoam-green h-[40px] min-w-[80px] bg-white px-4 focus:border-4 focus:outline-none"
               onClick={() => {
                 if (!user) {
-                  navigate(ROUTES.login)
+                  navigate(ROUTES.LOGIN)
                   return
                 }
-                navigate(ROUTES.myAccount)
+                navigate(ROUTES.MY_ACCOUNT)
               }}
             >
               {!user ? t('buttons.sign-in') : t('my-account.title')}
@@ -65,7 +65,7 @@ const MobileMenu = ({ open, setOpen }: Props) => {
             {initialButtons.map((button) => (
               <Button
                 key={button.id}
-                className="hover:text-gray focus:!border-seafoam-green focus:!outline-seafoam-green px-2 text-white focus:!outline-4"
+                className="hover:text-gray focus:!border-seafoam-green focus:!outline-seafoam-green py-0 h-fit text-white focus:!outline-4"
                 size="sm"
                 variant="text"
                 onClick={() => {

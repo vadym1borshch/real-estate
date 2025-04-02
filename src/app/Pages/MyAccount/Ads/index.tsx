@@ -17,7 +17,7 @@ export const Ads = () => {
         iconId="arrowRightIcon"
         className="w-full text-base"
         onClick={() => {
-          navigate(`${ADS_ROUTES.rentAds}/active`)
+          navigate(`${ADS_ROUTES.RENT_ADS}/active`)
           dispatch(setCurrentAdsStatus('active'))
         }}
       >
@@ -28,7 +28,7 @@ export const Ads = () => {
         iconId="arrowRightIcon"
         className="w-full text-base"
         onClick={() => {
-          navigate(`${ADS_ROUTES.sellAds}/active`)
+          navigate(`${ADS_ROUTES.SELL_ADS}/active`)
           dispatch(setCurrentAdsStatus('active'))
         }}
       >

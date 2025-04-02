@@ -8,11 +8,11 @@ import { useApplyCorrectBreadcrumbLink, useFetchAds } from '../helpers.ts'
 
 export const Rent = () => {
   useFetchAds()
-  useApplyCorrectBreadcrumbLink(ADS_ROUTES.rentAds)
+  useApplyCorrectBreadcrumbLink(ADS_ROUTES.RENT_ADS)
 
   const navigate = useNavigate()
   const routeHandler = (path: string) => {
-    navigate(`${ADS_ROUTES.rentAds}/${path}`)
+    navigate(`${ADS_ROUTES.RENT_ADS}/${path}`)
   }
 
   const ads = useAppSelector(selectCurrentAds('rent'))

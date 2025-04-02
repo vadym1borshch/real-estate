@@ -14,8 +14,7 @@ export const Fees = () => {
     initialValues: {
       fees: initialFields,
     },
-    onSubmit: (values) => {
-      console.log('Form Data:', values)
+    onSubmit: () => {
     },
   })
 

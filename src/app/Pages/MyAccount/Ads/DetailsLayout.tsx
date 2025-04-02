@@ -28,8 +28,8 @@ export const tabs = [
 export const DetailsLayout = () => {
   const path = usePathname()
   const correctRoute = path.includes('rent-ads')
-    ? ADS_ROUTES.rentAds
-    : ADS_ROUTES.sellAds
+    ? ADS_ROUTES.RENT_ADS
+    : ADS_ROUTES.SELL_ADS
 
   const splitPath = path.split('/')
   const currentPage = splitPath[splitPath.length - 1]

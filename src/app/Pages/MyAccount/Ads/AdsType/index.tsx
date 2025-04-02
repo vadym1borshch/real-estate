@@ -21,7 +21,7 @@ export const AdsType = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
-  const key = path.includes(ADS_ROUTES.rentAds) ? 'rent' : 'buy'
+  const key = path.includes(ADS_ROUTES.RENT_ADS) ? 'rent' : 'buy'
 
   const ads = useAppSelector(selectCurrentAds(key))
 

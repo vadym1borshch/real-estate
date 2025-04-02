@@ -14,8 +14,8 @@ export const Premises = () => {
     initialValues: {
       premises: initialFields,
     },
-    onSubmit: (values) => {
-      console.log('Form Data:', values)
+    onSubmit: () => {
+
     },
   })
 

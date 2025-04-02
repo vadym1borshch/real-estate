@@ -22,7 +22,7 @@ export const HomePage = () => {
   const { isConfirm, setIsConfirm } = useEmailConfirm()
 
   return (
-    <div className="text-charcoal mt-[90px] flex w-full flex-col items-center gap-[9.375rem]">
+    <div className="text-charcoal mt-[3.375rem] lg:mt-[5.625rem] flex w-full flex-col items-center gap-[6.25rem] lg:gap-[9.375rem] px-5">
       <MainBlock
         title={t('home.operations.main-title')}
         description={t('home.operations.descriptions')}
@@ -62,7 +62,7 @@ export const HomePage = () => {
         title={t('home.top-ads.main-title')}
         description={t('home.top-ads.descriptions')}
       >
-        <div className="grid grid-cols-1 gap-10 pt-[5.625rem] sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 lg:gap-10 pt-[3.75rem] lg:pt-[5.625rem] sm:grid-cols-2 xl:grid-cols-3">
           {topEstate.map((house) => (
             <EstateCard realEstate={house} key={house.id} />
           ))}

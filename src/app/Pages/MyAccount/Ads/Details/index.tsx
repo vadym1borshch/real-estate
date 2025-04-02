@@ -37,7 +37,7 @@ export const DetailPage = () => {
   const mapRef = useRef<MapRef | null>(null)
   const path = usePathname()
 
-  const isSellPath = path.includes(ADS_ROUTES.sellAds)
+  const isSellPath = path.includes(ADS_ROUTES.SELL_ADS)
 
   useEffect(() => {
     setOpenInfoModal(true)
@@ -48,8 +48,6 @@ export const DetailPage = () => {
       <Formik
         initialValues={initialValuesForm}
         onSubmit={async (_values, { resetForm }) => {
-          /* handleSubmit(values)*/
-          console.log(_values)
           resetForm()
         }}
         /*  validationSchema={useValidationSchema()}*/
@@ -310,11 +308,17 @@ export const DetailPage = () => {
       <Modal
         open={openInfoModal}
         setOpen={setOpenInfoModal}
-        className="max-h-[90vh] max-w-[560px] overflow-y-scroll"
+        className="max-h-[90svh] max-w-[560px] overflow-y-scroll"
       >
         <ul className="whitespace-pre-wrap">
           <ReactMarkdown>{t(modalInfo)}</ReactMarkdown>
         </ul>
+        <Button
+          className="mx-auto mt-6"
+          onClick={() => setOpenInfoModal(false)}
+        >
+          Ok
+        </Button>
       </Modal>
     </>
   )

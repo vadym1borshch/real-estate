@@ -56,8 +56,8 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
             if (onClick) {
               onClick()
             }
-            if (button.href == ROUTES.messages) {
-              navigate(button.href + '/inboxes')
+            if (button.href == ROUTES.MY_ACCOUNT) {
+              navigate(button.href + ROUTES.INBOXES)
               return
             }
             navigate(button.href)
@@ -65,7 +65,7 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
         >
           <span className="flex w-full justify-between">
             {t(button.title)}
-            {button.href === ROUTES.messages && !!newMessagesCount && (
+            {button.href === ROUTES.MESSAGES && !!newMessagesCount && (
               <span className="bg-coral h-6 w-6 rounded-full text-center text-white">
                 {newMessagesCount}
               </span>

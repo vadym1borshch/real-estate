@@ -34,7 +34,7 @@ const FAQ = ({ children, filter = 'buy' }: Props) => {
   return (
     <MainBlock title={t('faq.title')} description={t('faq.descriptions')}>
       {children}
-      <div className="flex max-w-[760px] flex-col gap-3 pt-[90px] pb-[150px]">
+      <div className="flex max-w-[47.5rem] flex-col gap-3 pt-[3.75rem] pb-[6.25rem] lg:pt-[5.625rem] lg:pb-[9.375rem]">
         {!data.length && <div>Loading ...</div>}
         {data.map(({ id, question, answer }: Data) => (
           <Accordion

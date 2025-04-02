@@ -152,7 +152,7 @@ export const Filter = ({ filter }: Props) => {
                     setListingType(item.id as ListingType)
                     localStorage.setItem('operation', item.id)
                     setOpen(false)
-                    if (path !== ROUTES.home) {
+                    if (path !== ROUTES.HOME) {
                       navigate(`/${item.id}`, true)
                     }
                     return
@@ -220,7 +220,7 @@ export const Filter = ({ filter }: Props) => {
       triggerButtonClassName="min-w-[8.25rem] w-full"
       dropdownClassName={cn(
         filter.key === 'rooms'
-          ? 'flex flex-row py-3 gap-1.5 w-fit !right-0'
+          ? 'flex flex-row py-3 gap-1.5 w-fit !right-0 px-4'
           : '',
         filter.key === 'price' ? '!right-0 lg:!left-0' : ''
       )}
