@@ -16,7 +16,7 @@ export const ActionButtons = ({ estateId, isFavorite }: Props) => {
     <div className="hidden justify-end gap-3 lg:flex">
       <Button
         variant="text"
-        className="hover:text-blue-gray w-auto !border-0"
+        className="text-blue-gray hover:text-charcoal w-auto !border-0"
         iconId="bigShareIcon"
         iconSide="left"
         iconClassName="!min-h-[48px] !min-w-[48px]"
@@ -25,7 +25,7 @@ export const ActionButtons = ({ estateId, isFavorite }: Props) => {
       </Button>
       <Button
         variant="text"
-        className="hover:text-blue-gray w-auto !border-0"
+        className="text-blue-gray hover:text-charcoal  w-auto !border-0"
         iconId={isFavorite ? 'bigHeartFilledIcon' : 'bigHeartIcon'}
         iconSide="left"
         iconClassName={cn('!min-h-[48px] !min-w-[48px] ', {

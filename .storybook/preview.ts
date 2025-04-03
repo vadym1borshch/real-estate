@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/react'
 import { PreviewDecorator } from './PreviewDecorator'
 import { IntlDecorator } from './IntlDecorator'
+import { ReduxDecorator } from './ReduxDecorator'
 
 const preview: Preview = {
   parameters: {
@@ -11,7 +12,7 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [PreviewDecorator, IntlDecorator],
+  decorators: [PreviewDecorator, IntlDecorator, ReduxDecorator],
 }
 
 export default preview

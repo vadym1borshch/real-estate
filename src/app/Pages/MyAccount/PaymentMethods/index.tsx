@@ -72,7 +72,7 @@ export const PaymentMethodsPage = () => {
         open={addCardModal}
         setOpen={setAddCardModal}
         className="max-w-[35rem]"
-        childrenClassName="flex justify-center"
+        childrenClassName="flex justify-center px-[0.375rem]"
         title={t('common.add-card')}
         titleClassName="uppercase"
       >

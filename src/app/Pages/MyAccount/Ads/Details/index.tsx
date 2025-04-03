@@ -24,7 +24,7 @@ import {
 import Modal from '../../../../../components/molecules/modal'
 import Map from '../../../../../components/organisms/map'
 import { MapRef } from 'react-map-gl'
-import FileUpload from '../../../../../utils/FileUpload.tsx'
+import FileUpload from '../../../../../components/molecules/file-upload'
 import { usePathname } from '../../../../../helpers/hooks/usePathname.ts'
 import { ADS_ROUTES } from '../../../../../@constants/routes.ts'
 import ReactMarkdown from 'react-markdown'
@@ -50,7 +50,6 @@ export const DetailPage = () => {
         onSubmit={async (_values, { resetForm }) => {
           resetForm()
         }}
-        /*  validationSchema={useValidationSchema()}*/
       >
         {({ setFieldValue }) => (
           <Form className="flex flex-col gap-3">
@@ -265,7 +264,7 @@ export const DetailPage = () => {
                 ))}
                 <div className="bg-gray flex h-[7.5rem] w-[10rem] cursor-pointer items-center justify-center rounded-lg">
                   <FileUpload
-                    multiple
+                    isMultiple
                     className="bg-transparent hover:bg-transparent hover:outline-0 focus:border-0"
                     buttonTitle={
                       <Icon

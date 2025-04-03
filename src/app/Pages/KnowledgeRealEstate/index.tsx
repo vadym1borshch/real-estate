@@ -58,9 +58,9 @@ export const KnowledgeRealEstate = () => {
             open={openId === item.id}
             setOpen={() => openHandler(item.id)}
           >
-            <p className="whitespace-pre-wrap">
+            <span className="whitespace-pre-wrap">
               <ReactMarkdown>{t(item.description)}</ReactMarkdown>
-            </p>
+            </span>
           </Accordion>
         ))}
       </div>

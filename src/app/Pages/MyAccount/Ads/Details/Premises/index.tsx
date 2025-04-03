@@ -7,7 +7,7 @@ import { ActionsButtonsWrapper, MainFormWrapper } from '../Wrappers.tsx'
 import { initialFields } from './mock.ts'
 import Input from '../../../../../../components/atoms/input'
 import { useWindowDimensions } from '../../../../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../../../../helpers/common.ts'
+import { BREAKPOINTS } from '../../../../../../@constants'
 
 export const Premises = () => {
   const formik = useFormik({
@@ -20,7 +20,7 @@ export const Premises = () => {
   })
 
   const { width } = useWindowDimensions()
-  const isLarge = width >= BREAKPOINTS.lg
+  const isLarge = width >= BREAKPOINTS.LG
 
   const typeRef = useRef<HTMLDivElement>(null)
   const nameRef = useRef<HTMLDivElement>(null)

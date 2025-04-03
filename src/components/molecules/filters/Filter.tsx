@@ -153,7 +153,7 @@ export const Filter = ({ filter }: Props) => {
                     localStorage.setItem('operation', item.id)
                     setOpen(false)
                     if (path !== ROUTES.HOME) {
-                      navigate(`/${item.id}`, true)
+                      navigate(`${item.id}`, true)
                     }
                     return
                   }
@@ -181,7 +181,7 @@ export const Filter = ({ filter }: Props) => {
           setQuery(value)
           updateParams(filter.key, value)
         }}
-        dropdownClassName="top-14"
+        dropdownClassName="top-12"
       >
         {filter.values.map((item) => {
           if (typeof item !== 'number') {

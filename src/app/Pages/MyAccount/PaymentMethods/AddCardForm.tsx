@@ -80,7 +80,7 @@ export const AddCardForm = ({submitHandler}: Props) => {
               )
             }}
           </Field>
-          <div className="grid grid-cols-[2fr_1fr] gap-3">
+          <div className="grid grid-cols-[2fr_1.2fr] w-full gap-3">
             <Field name="validPeriod">
               {({ field, meta, form }: FieldProps) => (
                 <Input
@@ -122,7 +122,7 @@ export const AddCardForm = ({submitHandler}: Props) => {
                     form.setFieldValue('validPeriod', `${mm}/${yy}`)
                     form.setFieldError('validPeriod', undefined)
                   }}
-                  className="min-h-[48px] px-4"
+                  className="min-h-[48px] px-4 md:max-w-[198px]"
                   errorPosition="bottom"
                 />
               )}

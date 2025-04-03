@@ -1,6 +1,6 @@
 import { ContentLayout } from '../ContentLayout.tsx'
 import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
-import { ROUTES } from '../../../../@constants/routes.ts'
+import { MY_ACCOUNT, ROUTES } from '../../../../@constants/routes.ts'
 import { useEffect } from 'react'
 import { useNavigate } from '../../../../helpers/hooks/useNavigate.ts'
 
@@ -26,8 +26,8 @@ export const Messages = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (path === ROUTES.MESSAGES) {
-      navigate(ROUTES.MESSAGES + ROUTES.INBOXES)
+    if (path === `/${ROUTES.MESSAGES}`) {
+      navigate(ROUTES.MESSAGES + `/${MY_ACCOUNT.INBOXES}` )
     }
   }, [path])
 

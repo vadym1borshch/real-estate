@@ -1,6 +1,6 @@
-import FAQ from '../../../components/organisms/home-page/faq'
+import FAQ from '../Home/faq'
 import { useState } from 'react'
-import { faqFilters } from '../../../components/organisms/home-page/faq/data.ts'
+import { faqFilters } from '../Home/faq/data.ts'
 import { useTranslation } from 'react-i18next'
 import { cn } from '../../../helpers/ui.ts'
 

@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { sleep } from '../../helpers/common.ts'
+import { sleep } from '../../helpers'
 import {
   buyFilters,
   FilterOption,
   rentFilters,
-} from '../../components/organisms/home-page/popular-block/mock.ts'
+} from '../../app/Pages/Home/popular-block/mock.ts'
 import { houses, RealEstate } from '../commonMock.ts'
 
 export const fetchEstate = createAsyncThunk<RealEstate[], void>(

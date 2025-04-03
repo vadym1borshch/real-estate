@@ -1,12 +1,12 @@
 import { v4 } from 'uuid'
 import { FormikProvider, useFormik } from 'formik'
 import { useWindowDimensions } from '../../../../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../../../../helpers/common.ts'
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useElementSizes } from '../../../../../../helpers/hooks/useElementsSizes.ts'
 import { ActionsButtonsWrapper, MainFormWrapper } from '../Wrappers.tsx'
 import Input from '../../../../../../components/atoms/input'
+import { BREAKPOINTS } from '../../../../../../@constants'
 
 export const MonthlyCosts = () => {
   const formik = useFormik({
@@ -26,7 +26,7 @@ export const MonthlyCosts = () => {
   })
 
   const { width } = useWindowDimensions()
-  const isLarge = width >= BREAKPOINTS.lg
+  const isLarge = width >= BREAKPOINTS.LG
 
   const costTypeRef = useRef<HTMLDivElement>(null)
   const costRef = useRef<HTMLDivElement>(null)

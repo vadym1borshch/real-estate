@@ -36,7 +36,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
 
   return (
     <Link
-      href={`/${operation.key}/details`}
+      href={`${operation.key}/details`}
       className={cn(
         'group z-0 flex min-h-[26.75rem] max-w-[22.5rem] min-w-[300px] flex-col gap-0 hover:border-0 focus:border-0',
         { 'border-charcoal rounded-lg border-2 hover:border-2': selectedOnMap },
@@ -48,8 +48,8 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
       }}
       disabled={disabled}
     >
-      <div className="relative">
-        <div className="absolute top-0 flex w-full min-w-[300px] justify-between p-6">
+      <div className="relative w-full ">
+        <div className="absolute top-0 flex w-full min-w-[300px]  justify-between p-6">
           {isTop && <Chip value="Top" />}
           <Icon
             id={favorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
@@ -67,7 +67,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
         <img
           src={image}
           alt="house"
-          className="h-[15rem] min-w-[300px] rounded-t-lg object-cover"
+          className="h-[15rem] min-w-[300px] w-full rounded-t-lg object-cover"
         />
       </div>
       <div className="bg-light-gray2 group-hover:bg-gray transition-hover flex min-h-[11.75rem] w-full flex-col gap-3 rounded-b-lg px-6 py-5 duration-300">

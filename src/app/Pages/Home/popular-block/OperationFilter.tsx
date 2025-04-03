@@ -28,7 +28,7 @@ export const OperationFilter = ({ label, filters }: Props) => {
 
   return (
     <div className="flex w-full gap-6 max-w-[300px] md:max-w-full md:justify-center">
-      <div className="flex items-center justify-center gap-6 flex-wrap md:justify-start md:flex-nowrap">
+      <div className="flex items-center justify-center gap-6 gap-y-3 flex-wrap lg:justify-start lg:flex-nowrap">
         <label>{label}:</label>
         {filters.map((filter) => {
           const initFilter = filter.key === currentFilter.key

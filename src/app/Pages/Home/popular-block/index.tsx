@@ -1,4 +1,4 @@
-import H2 from '../../../atoms/typography/h2'
+import H2 from '../../../../components/atoms/typography/h2'
 import { Operation } from './Operation.tsx'
 import { useAppSelector } from '../../../../store'
 import {

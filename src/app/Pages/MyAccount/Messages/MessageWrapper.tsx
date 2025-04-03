@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../../../store'
 import { selectUser } from '../../../../store/userSlice/selectors.ts'
 import Button from '../../../../components/atoms/button'
 import Icon from '../../../../components/atoms/icon'
-import { formatDate } from '../../../../helpers/common.ts'
+import { formatDate } from '../../../../helpers'
 import { useTranslation } from 'react-i18next'
 import {
   deleteMessages,

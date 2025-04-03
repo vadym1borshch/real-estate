@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { sleep } from '../../helpers/common.ts'
+import { sleep } from '../../helpers'
 import { houses, RealEstate } from '../commonMock.ts'
 
 export const fetchAds = createAsyncThunk<RealEstate[], void>(

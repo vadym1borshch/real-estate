@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../../../store'
-import { formatDate } from '../../../../helpers/common.ts'
+import { formatDate } from '../../../../helpers'
 import { useTranslation } from 'react-i18next'
 import ReactMarkdown from 'react-markdown'
 import TextArea from '../../../../components/atoms/text-area'

@@ -12,7 +12,7 @@ import { useEffect } from 'react'
 import { DEFAULT_LANG, STORAGE_KEY } from '../../common/constants.ts'
 import { MainWrapper } from '../../components/wrappers/main-wrapper'
 import { MainLayout } from '../../components/templates/layouts/main'
-import { HomePageLayout } from '../../components/templates/layouts/home-page'
+import { HomePageLayout } from '../Pages/Home/layout.tsx'
 import { DefaultPageLayout } from '../../components/templates/layouts/default-pages'
 import { EstatesList } from '../Pages/EstatesList'
 import { NotFoundPage } from '../Pages/NotFound'
@@ -45,21 +45,26 @@ import { RegisterPage } from '../Pages/Register'
 import { ForgotPassword } from '../Pages/ForgotPassword'
 import { AuthLayout } from '../../components/templates/layouts/auth-layout'
 import { ConfirmRegister } from '../Pages/ConfirmRegister'
+import { AUTH_ROUTES, MY_ACCOUNT, ROUTES } from '../../@constants/routes.ts'
+import { usePathname } from '../../helpers/hooks/usePathname.ts'
 
 const EmptyUrlRedirect = () => {
+  const pathname = usePathname()
   const navigate = useNavigate()
-
   useEffect(() => {
+    if (pathname === ROUTES.HOME) {
+      navigate(ROUTES.HOME)
+    }
     const savedLang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG
-    navigate(`/${savedLang}`, { replace: true })
-  }, [navigate])
+    navigate(`${savedLang}`, { replace: true })
+  }, [navigate, pathname])
 
   return null
 }
 
 const RedirectToErrorPage = () => {
   const { lang } = useParams<{ lang: string }>()
-  return <Navigate to={`/${lang}/not-found`} replace />
+  return <Navigate to={`/${lang}/${ROUTES.NOT_FOUND}`} replace />
 }
 
 const routes: RouteObject[] = [
@@ -69,7 +74,7 @@ const routes: RouteObject[] = [
  
    },*/
   {
-    path: '/',
+    path: '',
     element: <EmptyUrlRedirect />,
   },
   {
@@ -77,23 +82,23 @@ const routes: RouteObject[] = [
     element: <MainWrapper />,
     children: [
       {
-        path: 'auth',
+        path: AUTH_ROUTES.ROOT,
         element: <AuthLayout />,
         children: [
           {
-            path: 'login',
+            path: AUTH_ROUTES.LOGIN,
             element: <LoginPage />,
           },
           {
-            path: 'forgot-password',
+            path: AUTH_ROUTES.FORGOT_PASSWORD,
             element: <ForgotPassword />,
           },
           {
-            path: 'register',
+            path: AUTH_ROUTES.REGISTER,
             element: <RegisterPage />,
           },
           {
-            path: 'confirm-register',
+            path: AUTH_ROUTES.CONFIRM_REGISTER,
             element: <ConfirmRegister />,
           },
         ],
@@ -117,195 +122,195 @@ const routes: RouteObject[] = [
             element: <DefaultPageLayout />,
             children: [
               {
-                path: 'about',
+                path: ROUTES.ABOUT,
                 element: <About />,
               },
               {
-                path: 'estates',
+                path: ROUTES.ESTATES,
                 element: <EstatesList />,
               },
               {
-                path: 'rent',
+                path: ROUTES.RENT,
                 element: <EstatesList />,
               },
               {
-                path: 'buy',
+                path: ROUTES.BUY,
                 element: <EstatesList />,
               },
               {
-                path: 'rent/details',
+                path: ROUTES.RENT_DETAILS,
                 element: <EstatesDetails />,
               },
 
               {
-                path: 'buy/details',
+                path: ROUTES.BUY_DETAILS,
                 element: <EstatesDetails />,
               },
               {
-                path: 'knowledge-real-estate',
+                path: ROUTES.KNOWLEDGE_REAL_ESTATE,
                 element: <KnowledgeRealEstate />,
               },
               {
-                path: 'contacts',
+                path: ROUTES.CONTACTS,
                 element: <Contacts />,
               },
               {
-                path: 'faq',
+                path: ROUTES.FAQ,
                 element: <FAQPage />,
               },
               {
-                path: 'contact-us',
+                path: ROUTES.CONTACT_US,
                 element: <ContactUsPage />,
               },
               {
-                path: 'terms-of-use',
+                path: ROUTES.TERMS_OF_USE,
                 element: <TermsOfUse />,
               },
               {
-                path: 'service-around',
+                path: ROUTES.SERVICE_AROUND,
                 element: <ServiceAround />,
               },
               {
-                path: 'my-account',
+                path: MY_ACCOUNT.ROOT,
                 element: <MyAccount />,
                 children: [
                   {
-                    path: 'profile',
+                    path: MY_ACCOUNT.PROFILE,
                     element: <ProfilePage />,
                   },
                   {
-                    path: 'ads',
+                    path: MY_ACCOUNT.ADS,
                     element: <Ads />,
                   },
                   {
-                    path: 'ads/rent-ads',
+                    path: MY_ACCOUNT.RENT_ADS,
                     element: <Rent />,
                     children: [
                       {
-                        path: 'active',
+                        path: MY_ACCOUNT.ACTIVE,
                         element: <AdsType />,
                       },
                       {
-                        path: 'inactive',
+                        path: MY_ACCOUNT.INACTIVE,
                         element: <AdsType />,
                       },
                       {
-                        path: 'moderation',
+                        path: MY_ACCOUNT.MODERATION,
                         element: <AdsType />,
                       },
                       {
-                        path: 'rejected',
+                        path: MY_ACCOUNT.REJECTED,
                         element: <AdsType />,
                       },
                     ],
                   },
                   {
-                    path: 'ads/rent-ads',
+                    path: MY_ACCOUNT.RENT_ADS,
                     element: <DetailsLayout />,
                     children: [
                       {
-                        path: 'details',
+                        path: MY_ACCOUNT.DETAILS,
                         element: <DetailPage />,
                       },
                       {
-                        path: 'premises',
+                        path: MY_ACCOUNT.PREMISES,
                         element: <Premises />,
                       },
                       {
-                        path: 'equipments',
+                        path: MY_ACCOUNT.EQUIPMENTS,
                         element: <Equipments />,
                       },
                       {
-                        path: 'fees',
+                        path: MY_ACCOUNT.FEES,
                         element: <Fees />,
                       },
                       {
-                        path: 'monthly-costs',
+                        path: MY_ACCOUNT.MONTHLY_COSTS,
                         element: <MonthlyCosts />,
                       },
                     ],
                   },
                   {
-                    path: 'ads/sell-ads',
+                    path: MY_ACCOUNT.SELL_ADS,
                     element: <Sell />,
                     children: [
                       {
-                        path: 'active',
+                        path: MY_ACCOUNT.ACTIVE,
                         element: <AdsType />,
                       },
                       {
-                        path: 'inactive',
+                        path: MY_ACCOUNT.INACTIVE,
                         element: <AdsType />,
                       },
                       {
-                        path: 'moderation',
+                        path: MY_ACCOUNT.MODERATION,
                         element: <AdsType />,
                       },
                       {
-                        path: 'rejected',
+                        path: MY_ACCOUNT.REJECTED,
                         element: <AdsType />,
                       },
                     ],
                   },
                   {
-                    path: 'ads/sell-ads',
+                    path: MY_ACCOUNT.SELL_ADS,
                     element: <DetailsLayout />,
                     children: [
                       {
-                        path: 'details',
+                        path: MY_ACCOUNT.DETAILS,
                         element: <DetailPage />,
                       },
                       {
-                        path: 'premises',
+                        path: MY_ACCOUNT.PREMISES,
                         element: <Premises />,
                       },
                       {
-                        path: 'equipments',
+                        path: MY_ACCOUNT.EQUIPMENTS,
                         element: <Equipments />,
                       },
                       {
-                        path: 'fees',
+                        path: MY_ACCOUNT.FEES,
                         element: <Fees />,
                       },
                       {
-                        path: 'monthly-costs',
+                        path: MY_ACCOUNT.MONTHLY_COSTS,
                         element: <MonthlyCosts />,
                       },
                     ],
                   },
                   {
-                    path: 'messages',
+                    path: MY_ACCOUNT.MESSAGES,
                     element: <Messages />,
                     children: [
                       {
-                        path: 'inboxes',
+                        path: MY_ACCOUNT.INBOXES,
                         element: <MessagesContent />,
                       },
                       {
-                        path: 'sent',
+                        path: MY_ACCOUNT.SENT,
                         element: <MessagesContent />,
                       },
                       {
-                        path: 'archive',
+                        path: MY_ACCOUNT.ARCHIVE,
                         element: <MessagesContent />,
                       },
                     ],
                   },
                   {
-                    path: 'favorites',
+                    path: MY_ACCOUNT.FAVORITES,
                     element: <FavoritesPage />,
                   },
                   {
-                    path: 'order',
+                    path: MY_ACCOUNT.ORDER,
                     element: <PhotoVideoOrderPage />,
                   },
                   {
-                    path: 'payments',
+                    path: MY_ACCOUNT.PAYMENTS,
                     element: <PaymentMethodsPage />,
                   },
                 ],
               },
-              { path: 'not-found', element: <NotFoundPage /> },
+              { path: ROUTES.NOT_FOUND, element: <NotFoundPage /> },
               { path: '*', element: <RedirectToErrorPage /> },
             ],
           },

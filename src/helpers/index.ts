@@ -1,15 +1,4 @@
-export const BREAKPOINTS = {
-  sm: 360,
-  xsm: 480,
-  'pre-sm': 560,
-  xmd: 620,
-  md: 768,
-  'pre-md': 850,
-  lg: 1024,
-  'pre-xl': 1220,
-  xl: 1280,
-  '2xl': 1536,
-} as const
+import { DateFormat } from '../@types'
 
 export const sleep = async (ms: number) =>
   new Promise<void>((resolve) => {
@@ -19,8 +8,6 @@ export const sleep = async (ms: number) =>
     }, ms)
   })
 
-type DateFormat = 'full' | 'short' | 'day' | 'time'
-
 export const formatDate = (
   dateInput: Date | string | number,
   locale: string,
@@ -28,7 +15,7 @@ export const formatDate = (
 ): string => {
   const date = new Date(dateInput)
   const correctLocale = () => {
-    if (locale ===  'ua') {
+    if (locale === 'ua') {
       return 'uk-UA'
     }
     if (locale === 'de') {
@@ -37,11 +24,15 @@ export const formatDate = (
     return locale
   }
 
-  const weekday = new Intl.DateTimeFormat(correctLocale(), { weekday: 'short' }).format(
-    date
-  )
-  const day = new Intl.DateTimeFormat(correctLocale(), { day: '2-digit' }).format(date)
-  const month = new Intl.DateTimeFormat(correctLocale(), { month: 'short' }).format(date)
+  const weekday = new Intl.DateTimeFormat(correctLocale(), {
+    weekday: 'short',
+  }).format(date)
+  const day = new Intl.DateTimeFormat(correctLocale(), {
+    day: '2-digit',
+  }).format(date)
+  const month = new Intl.DateTimeFormat(correctLocale(), {
+    month: 'short',
+  }).format(date)
   const hour = date.getHours().toString().padStart(2, '0')
   const minute = date.getMinutes().toString().padStart(2, '0')
   if (format === 'short') {

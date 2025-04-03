@@ -1,8 +1,8 @@
 import { ReactNode, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import MainBlock from '../main-block'
-import Accordion from '../../../atoms/accordion'
-import { sleep } from '../../../../helpers/common.ts'
+import Accordion from '../../../../components/atoms/accordion'
+import { sleep } from '../../../../helpers'
 import { faqData, Data } from './data.ts'
 
 interface Props {

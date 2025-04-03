@@ -22,7 +22,7 @@ export const FieldWrapper = ({
   return (
     <div
       className={cn(
-        'grid grid-cols-1 items-center gap-1.5 md:grid-cols-2',
+        'grid grid-cols-1 items-center gap-1.5 lg:grid-cols-2',
         className
       )}
     >

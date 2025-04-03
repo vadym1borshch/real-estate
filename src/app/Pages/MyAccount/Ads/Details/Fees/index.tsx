@@ -7,7 +7,7 @@ import Input from '../../../../../../components/atoms/input'
 import { initialFields } from './mock.ts'
 import { ActionsButtonsWrapper, MainFormWrapper } from '../Wrappers.tsx'
 import { useWindowDimensions } from '../../../../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../../../../helpers/common.ts'
+import { BREAKPOINTS } from '../../../../../../@constants'
 
 export const Fees = () => {
   const formik = useFormik({
@@ -23,7 +23,7 @@ export const Fees = () => {
   const additionalInfoRef = useRef<HTMLDivElement>(null)
 
   const { width } = useWindowDimensions()
-  const isLarge = width >= BREAKPOINTS.lg
+  const isLarge = width >= BREAKPOINTS.LG
 
   const { t } = useTranslation()
 

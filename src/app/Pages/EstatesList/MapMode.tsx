@@ -16,9 +16,10 @@ import {
 } from '../../../store/estateSlice/selectors.ts'
 import MapMarker from '../../../components/atoms/map-marker'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../helpers/common.ts'
 import { useSearchContext } from '../../../contexts/SearchContext.tsx'
 import Icon from '../../../components/atoms/icon'
+import { useMode } from '../../../contexts/ModContext.tsx'
+import { BREAKPOINTS } from '../../../@constants'
 
 interface Props {
   open: boolean
@@ -33,6 +34,8 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
 
   const mapRef = useRef<MapRef | null>(null)
   const listContainerRef = useRef<HTMLDivElement | null>(null)
+  const { mode } = useMode()
+
 
   const dispatch = useAppDispatch()
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
@@ -48,7 +51,8 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
   )
 
   const { width } = useWindowDimensions()
-  const isMobile = width < BREAKPOINTS.md
+  const isMobile = width < BREAKPOINTS.MD
+  const isMedium = width >= BREAKPOINTS.PRE_XMD
 
   const handleScroll = useCallback(() => {
     if (isMobile) {
@@ -121,7 +125,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
       </Filters>
       <div
         className={cn(
-          'mt-[1.125rem] grid grid-cols-1 gap-5 lg:gap-10 md:grid-cols-[2fr_1fr]'
+          'mt-[1.125rem] grid w-full grid-cols-1 gap-5 md:grid-cols-[2fr_1fr] lg:gap-10'
         )}
       >
         <div className="w-full">
@@ -139,7 +143,12 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
         </div>
         <div
           ref={listContainerRef}
-          className="flex !min-w-[300px] flex-col gap-5 lg:gap-10 pb-[6.25rem] md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-auto"
+          className={cn(
+            'grid w-full !min-w-[300px] grid-cols-1 gap-5 pb-[6.25rem] md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-auto lg:gap-10',
+            {
+              "grid-cols-2": isMedium && mode !== "map"
+            }
+          )}
         >
           {!estates.length && (
             <div className="mx-auto pb-[9.375rem]">Objects not found...</div>
@@ -149,6 +158,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
               <EstateCard
                 key={estate.id}
                 realEstate={estate}
+                className="max-w-full"
               />
             )
           })}

@@ -3,8 +3,9 @@ import { useAppDispatch, useAppSelector } from '../../../store'
 import { selectToast } from '../../../store/toastSlise/selectors'
 import { removeToast } from '../../../store/toastSlise'
 import Button from '../../atoms/button'
-import {  getToastColor } from './helper'
+import { getToastColor } from './helper'
 import { cn } from '../../../helpers/ui.ts'
+import Icon from '../../atoms/icon'
 
 type PositionType = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'
 type HiddenTime = 3000 | 5000 | 10000 | 15000
@@ -17,14 +18,16 @@ interface IToast {
 const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
   const toasts = useAppSelector(selectToast)
   const dispatch = useAppDispatch()
-  const [visibleToasts, setVisibleToasts] = useState<{ [key: number]: boolean }>({})
+  const [visibleToasts, setVisibleToasts] = useState<{
+    [key: number]: boolean
+  }>({})
   const activeToastsRef = useRef(new Set<number>())
 
   const positionClasses = {
     'top-left': 'top-5 left-5 items-start',
     'top-right': 'top-5 right-5 items-end',
     'bottom-left': 'bottom-5 left-5 items-start',
-    'bottom-right': 'bottom-5 right-5 items-end'
+    'bottom-right': 'bottom-5 right-5 items-end',
   }
 
   useEffect(() => {
@@ -43,13 +46,16 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
 
     const closeToastsSequentially = () => {
       toasts.forEach((toast, i) => {
-        setTimeout(() => {
-          setVisibleToasts((prev) => ({ ...prev, [toast.id]: false }))
-          setTimeout(() => {
-            dispatch(removeToast(toast.id))
-            activeToastsRef.current.delete(toast.id)
-          }, 500)
-        }, hiddenTime + i * 500)
+        setTimeout(
+          () => {
+            setVisibleToasts((prev) => ({ ...prev, [toast.id]: false }))
+            setTimeout(() => {
+              dispatch(removeToast(toast.id))
+              activeToastsRef.current.delete(toast.id)
+            }, 500)
+          },
+          hiddenTime + i * 500
+        )
       })
     }
 
@@ -57,12 +63,17 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
   }, [toasts, dispatch, hiddenTime])
 
   return (
-    <div className={cn('fixed flex flex-col-reverse z-50 gap-2', positionClasses[position])}>
+    <div
+      className={cn(
+        'fixed z-50 flex flex-col-reverse gap-2',
+        positionClasses[position]
+      )}
+    >
       {toasts.map((toast) => (
         <div
           key={toast.id}
           className={cn(
-            'relative bg-jungle-green min-w-[250px] max-w-[300px] p-4 rounded-lg flex justify-between items-start text-sm overflow-hidden transition-all duration-500 ease-in-out',
+            'relative flex max-w-[300px] min-w-[250px] items-start justify-between overflow-hidden rounded-lg bg-transparent p-4 text-sm transition-all duration-500 ease-in-out',
             visibleToasts[toast.id]
               ? 'translate-x-0 opacity-100'
               : position.includes('right')
@@ -73,19 +84,14 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
           )}
         >
           <div className="flex items-center">
-            Icon
-           {/* <Icon
-              icon={getIcon(toast.type)}
-              className={cn('w-12 h-12', getToastTextColor(toast.type), {
-                'rotate-180': toast.type === 'info'
-              })}
-            />*/}
-            <span className="overflow-hidden text-ellipsis whitespace-normal px-4 line-clamp-3">
+            <Icon id="errorIconOutlined" className="h-6 w-6 p-0" />
+            <span className="line-clamp-3 overflow-hidden px-4 text-ellipsis whitespace-normal max-w-[200px]">
               {toast.message}
             </span>
           </div>
           <Button
-            className="w-10 h-10 p-2"
+            variant="text"
+            className="text-charcoal h-fit w-fit p-0"
             onClick={() => {
               setVisibleToasts((prev) => ({ ...prev, [toast.id]: false }))
               setTimeout(() => {
@@ -94,7 +100,10 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
               }, 500)
             }}
           >
-           x {/*<Icon icon={cross} className={cn(getToastTextColor(toast.type))} />*/}
+            <Icon
+              id="closeIcon"
+              className="text-charcoal h-[24px] w-[24px] p-0"
+            />
           </Button>
         </div>
       ))}

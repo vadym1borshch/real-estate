@@ -1,16 +1,16 @@
 import React, { ReactNode, useRef } from 'react'
-import Button from '../components/atoms/button'
-import { useAppDispatch } from '../store'
-import { addToast } from '../store/toastSlise'
+import Button from '../../atoms/button'
+import { useAppDispatch } from '../../../store'
+import { addToast } from '../../../store/toastSlise'
 
 interface IFileUpload {
   callback: (files: File | File[]) => void;
   buttonTitle?: ReactNode;
   className?: string;
-  multiple?: boolean;
+  isMultiple?: boolean;
 }
 
-const FileUpload = ({ callback, buttonTitle, className, multiple = false }: IFileUpload) => {
+const FileUpload = ({ callback, buttonTitle, className, isMultiple = false }: IFileUpload) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
 
@@ -20,7 +20,7 @@ const FileUpload = ({ callback, buttonTitle, className, multiple = false }: IFil
     const validFiles = files.filter(file => ['image/jpeg', 'image/png', 'application/pdf'].includes(file.type));
 
     if (validFiles.length > 0) {
-      if (multiple) {
+      if (isMultiple) {
         callback(validFiles);
       } else {
         callback(validFiles[0]);
@@ -46,7 +46,7 @@ const FileUpload = ({ callback, buttonTitle, className, multiple = false }: IFil
         ref={inputRef}
         type="file"
         accept=".jpeg,.jpg,.png,.pdf"
-        multiple={multiple}
+        multiple={isMultiple}
         onChange={handleFileChange}
         className="hidden"
       />
@@ -55,7 +55,7 @@ const FileUpload = ({ callback, buttonTitle, className, multiple = false }: IFil
         onClick={handleButtonClick}
         className={className}
       >
-        {buttonTitle || (multiple ? "Add files" : "Add file")}
+        {buttonTitle || (isMultiple ? "Add files" : "Add file")}
       </Button>
     </div>
   );

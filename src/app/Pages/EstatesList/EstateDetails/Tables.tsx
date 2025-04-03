@@ -3,8 +3,8 @@ import Icon from '../../../../components/atoms/icon'
 import { extractValuesToTable } from './helpers.ts'
 import { estateFullDetails } from './mock.ts'
 import { useWindowDimensions } from '../../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../../helpers/common.ts'
 import { RealEstate } from '../../../../store/commonMock.ts'
+import { BREAKPOINTS } from '../../../../@constants'
 
 interface Props {
   estate: RealEstate
@@ -12,7 +12,7 @@ interface Props {
 
 export const Tables = ({ estate }: Props) => {
   const { width } = useWindowDimensions()
-  const isTablet = width >= BREAKPOINTS.md
+  const isTablet = width >= BREAKPOINTS.MD
 
   const updatedEstateDetails = extractValuesToTable(
     estateFullDetails,

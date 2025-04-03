@@ -3,7 +3,7 @@ import { createSelector } from 'reselect'
 import {
   BuyKeys,
   RentKeys,
-} from '../../components/organisms/home-page/popular-block/filtersKeys.ts'
+} from '../../app/Pages/Home/popular-block/filtersKeys.ts'
 import { Search } from '../../contexts/SearchContext.tsx'
 
 const parseFormattedPrice = (str: string): number => {

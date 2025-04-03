@@ -19,7 +19,7 @@ export const LanguageWrapper = ({ children }: { children: ReactNode }) => {
     const isLangValid = SUPPORTED_LANGUAGES.some((item) => item === lang)
 
     if (!isLangValid) {
-      navigate(`/${savedLang}/${pathname || '/'}`, { replace: true })
+      navigate(`/${savedLang}/${pathname || ''}`, { replace: true })
       return
     }
 

@@ -8,7 +8,6 @@ import {
 import EstateCard from '../../../components/molecules/estate-card'
 import { cn } from '../../../helpers/ui.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../helpers/common.ts'
 import Pagination from '../../../components/molecules/pagination'
 import { setCurrentPage } from '../../../store/estateSlice'
 import Button from '../../../components/atoms/button'
@@ -19,13 +18,15 @@ import { MapMode } from './MapMode.tsx'
 import { useSearchContext } from '../../../contexts/SearchContext.tsx'
 import Icon from '../../../components/atoms/icon'
 import { useMode } from '../../../contexts/ModContext.tsx'
+import { BREAKPOINTS } from '../../../@constants'
 
 const itemsPerPage = 9
 
 export const EstatesList = () => {
   const { t } = useTranslation()
   const { width } = useWindowDimensions()
-  const isMobile = width < BREAKPOINTS.xmd
+  const isMobile = width < BREAKPOINTS.PRE_XMD
+  const isLarge = width >= BREAKPOINTS.XLG
   const [openMobileDropdown, setOpenMobileDropdown] = useState(false)
   const { mode, setMode } = useMode()
   const {
@@ -87,7 +88,9 @@ export const EstatesList = () => {
   }
   return (
     <div className="z-0 flex w-full max-w-[72.5rem] flex-col items-center">
-      <div className="flex w-full gap-1.5 md:hidden">
+      <div className={cn("flex w-full gap-1.5", {
+        "hidden": isLarge,
+      })}>
         <Dropdown
           label={
             openMobileDropdown
@@ -97,7 +100,7 @@ export const EstatesList = () => {
           open={openMobileDropdown}
           setOpen={(open) => setOpenMobileDropdown(open)}
           variant="outlined"
-          triggerButtonClassName="!w-full text-base"
+          triggerButtonClassName="!min-w-full text-base"
           dropdownClassName="min-w-[300px] w-[calc(100%+53px)] border border-blue-gray p-3 !min-h-[15.75rem] overflow-hidden"
           iconId="filterIcon"
           iconClassName="w-[24px] h-[24px] text-charcoal"
@@ -118,7 +121,9 @@ export const EstatesList = () => {
         </Button>
       </div>
 
-      <Filters className="m-0 hidden bg-transparent px-0 md:flex">
+      <Filters className={cn("m-0 hidden bg-transparent px-0 ", {
+        "flex": isLarge,
+      })}>
         <Button
           className="h-12 w-12"
           variant="outlined"
@@ -129,7 +134,7 @@ export const EstatesList = () => {
       </Filters>
       <div
         className={cn(
-          'mt-[1.125rem] grid grid-cols-2 gap-5 lg:gap-10 md:grid-cols-2 xl:grid-cols-3',
+          'mt-[1.125rem] grid grid-cols-2 gap-5 lg:gap-10 w-full md:grid-cols-2 lg:grid-cols-3',
           {
             'grid-cols-1': isMobile,
             'pb-[9.375rem]': estates.length <= itemsPerPage,
@@ -137,7 +142,7 @@ export const EstatesList = () => {
         )}
       >
         {estates.map((estate) => {
-          return <EstateCard key={estate.id} realEstate={estate} />
+          return <EstateCard key={estate.id} realEstate={estate} className="max-w-full"/>
         })}
       </div>
       {!estates.length && (

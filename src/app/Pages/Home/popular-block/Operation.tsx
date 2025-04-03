@@ -1,10 +1,10 @@
 import { OperationFilter } from './OperationFilter.tsx'
-import EstateCard from '../../../molecules/estate-card'
+import EstateCard from '../../../../components/molecules/estate-card'
 import { cn } from '../../../../helpers/ui.ts'
 import { FilterOption } from './mock.ts'
 import { useWindowDimensions } from '../../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../../helpers/common.ts'
 import { RealEstate } from '../../../../store/commonMock.ts'
+import { BREAKPOINTS } from '../../../../@constants'
 
 interface Props {
   label: string
@@ -15,8 +15,8 @@ interface Props {
 
 export const Operation = ({ label, filters, estates, className }: Props) => {
   const { width } = useWindowDimensions()
-  const isMedium = width <= BREAKPOINTS.xl
-  const isMobile = width <= BREAKPOINTS['pre-md']
+  const isMedium = width <= BREAKPOINTS.XL
+  const isMobile = width <= BREAKPOINTS.PRE_MD
 
   return (
     <div className={cn('flex flex-col items-center gap-[3.75rem] lg:gap-[5.625rem]', className)}>

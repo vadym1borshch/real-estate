@@ -20,11 +20,6 @@ const Template: StoryFn<typeof Input> = (args) => {
 export const Default = Template.bind({})
 Default.args = {}
 
-export const small = Template.bind({})
-small.args = {
-  size: 'sm',
-}
-
 export const withIcon = Template.bind({})
 withIcon.args = {
   iconId: 'playIcon',

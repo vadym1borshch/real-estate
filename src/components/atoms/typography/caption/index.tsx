@@ -1,13 +1,19 @@
+import React from 'react'
 import { cn } from '../../../../helpers/ui.ts'
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLSpanElement> {
   text: string
   className?: string
 }
 
-const Caption = ({ text, className }: Props) => {
+const Caption = ({ text, className, ...rest }: Props) => {
   return (
-    <span className={cn('font-[800] text-xs tracking-[0.1875rem]', className)}>{text}</span>
+    <span
+      className={cn('text-xs font-[800] tracking-[0.1875rem]', className)}
+      {...rest}
+    >
+      {text}
+    </span>
   )
 }
 

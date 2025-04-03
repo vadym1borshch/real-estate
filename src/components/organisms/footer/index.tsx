@@ -1,15 +1,15 @@
 import Logo from '../../atoms/logo'
 import Link from '../../atoms/link'
-import { links } from './common.ts'
+import { links } from './mock.ts'
 import { useTranslation } from 'react-i18next'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../helpers/common.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
+import { BREAKPOINTS } from '../../../@constants'
 
 const Footer = () => {
   const { t } = useTranslation()
   const { width } = useWindowDimensions()
-  const isMedium = width <= BREAKPOINTS.xl
+  const isMedium = width <= BREAKPOINTS.XL
 
   return (
     <footer className="bg-jungle-green flex min-h-[27.8125rem] flex-col rounded-lg px-6 py-[1.875rem] lg:px-[7.5rem] ">

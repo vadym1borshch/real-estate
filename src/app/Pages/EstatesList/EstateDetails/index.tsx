@@ -29,7 +29,7 @@ export const EstatesDetails = () => {
 
   return (
     <div className="flex max-w-[72.5rem] flex-col">
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-[2fr_1fr]">
         <div className="lg:pb-12" ref={ref}>
           <H2 text={estate.label} />
 
