@@ -10,13 +10,12 @@ import { useCallback, useEffect, useRef } from 'react'
 import { MapRef, Marker } from 'react-map-gl'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import {
-  selectCurrentPage,
+  selectCurrentPage, selectFilters,
   selectPaginatedEstates,
   selectTotalPages,
 } from '../../../store/estateSlice/selectors.ts'
 import MapMarker from '../../../components/atoms/map-marker'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
-import { useSearchContext } from '../../../contexts/SearchContext.tsx'
 import Icon from '../../../components/atoms/icon'
 import { useMode } from '../../../contexts/ModContext.tsx'
 import { BREAKPOINTS } from '../../../@constants'
@@ -40,14 +39,10 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
   const dispatch = useAppDispatch()
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
   const currentPage = useAppSelector(selectCurrentPage)
-  const search = useSearchContext()
-
-  const filtersKey = JSON.stringify({
-    ...search,
-  })
+  const filters = useAppSelector(selectFilters)
 
   const estates = useAppSelector(
-    selectPaginatedEstates(itemsPerPage, JSON.parse(filtersKey))
+    selectPaginatedEstates(itemsPerPage)
   )
 
   const { width } = useWindowDimensions()
@@ -76,7 +71,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
 
   useEffect(() => {
     dispatch(setCurrentPage(1))
-  }, [filtersKey])
+  }, [filters])
 
   useEffect(() => {
     if (isMobile) {

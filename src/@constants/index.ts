@@ -8,6 +8,7 @@ export enum BREAKPOINTS {
   PRE_MD = 850,
   XLG = 890,
   LG = 1024,
+  PRE_LG = 1100,
   PRE_XL = 1220,
   XL = 1280,
   XXL = 1536,

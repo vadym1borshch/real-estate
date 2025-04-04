@@ -4,7 +4,6 @@ import {
   BuyKeys,
   RentKeys,
 } from '../../app/Pages/Home/popular-block/filtersKeys.ts'
-import { Search } from '../../contexts/SearchContext.tsx'
 
 const parseFormattedPrice = (str: string): number => {
   const cleaned = str.replace(/\./g, '').replace(',', '.')
@@ -12,6 +11,8 @@ const parseFormattedPrice = (str: string): number => {
 }
 
 export const selectBuyFilter = (state: RootState) => state.estates.buyFilter
+export const selectFilters = (state: RootState) => state.estates.filters
+export const selectListingType = (state: RootState) => state.estates.filters.listingType
 export const selectRentFilter = (state: RootState) => state.estates.rentFilter
 export const selectCurrentEstate = (state: RootState) =>
   state.estates.currentEstate
@@ -25,54 +26,56 @@ export const selectCurrentPage = (state: RootState) => state.estates.currentPage
 
 export const selectPaginatedEstates = (
   itemsPerPage: number,
-  searchParams: Search
 ) =>
-  createSelector([selectEstates, selectCurrentPage], (estates, currentPage) => {
-    const filtered = estates.filter((estate) => {
-      const size = +estate.size.livingAreaM2.split(' ')[0]
-      const price = parseFormattedPrice(estate.price.split(' ')[0])
+  createSelector(
+    [selectEstates, selectCurrentPage, selectFilters],
+    (estates, currentPage, filters) => {
+      const filtered = estates.filter((estate) => {
+        const size = +estate.size.livingAreaM2.split(' ')[0]
+        const price = parseFormattedPrice(estate.price.split(' ')[0])
 
-      if (searchParams.price_min && price < +searchParams.price_min)
-        return false
-      if (searchParams.price_max && price > +searchParams.price_max)
-        return false
-      if (searchParams.area_min && size < +searchParams.area_min) return false
-      if (searchParams.area_max && size > +searchParams.area_max) return false
+        if (filters.priceMin && price < +filters.priceMin)
+          return false
+        if (filters.priceMax && price > +filters.priceMax)
+          return false
+        if (filters.areaMin && size < +filters.areaMin) return false
+        if (filters.areaMax && size > +filters.areaMax) return false
 
-      if (searchParams.rooms) {
-        const roomsParam = searchParams.rooms.split('-')
-        const estateRooms = estate.rooms
+        if (filters.rooms) {
+          const roomsParam = filters.rooms.split('-')
+          const estateRooms = estate.rooms
 
-        const hasMatch = roomsParam.some((room) => {
-          const parsedRoom = +room
-          if (parsedRoom >= 6) {
-            return estateRooms >= parsedRoom
-          }
-          return estateRooms === parsedRoom
-        })
+          const hasMatch = roomsParam.some((room) => {
+            const parsedRoom = +room
+            if (parsedRoom >= 6) {
+              return estateRooms >= parsedRoom
+            }
+            return estateRooms === parsedRoom
+          })
 
-        if (!hasMatch) return false
-      }
-      if (
-        searchParams.operation &&
-        estate.operation.key !== searchParams.operation
-      )
-        return false
-      if (searchParams.type && estate.type.key !== searchParams.type)
-        return false
+          if (!hasMatch) return false
+        }
+        if (
+          filters.listingType &&
+          estate.operation.key !== filters.listingType
+        )
+          return false
+        if (filters.type && estate.type.key !== filters.type)
+          return false
 
-      if (
-        searchParams.address &&
-        !estate.address.location.toLowerCase().includes(searchParams.address)
-      )
-        return false
+        if (
+          filters.address &&
+          !estate.address.location.toLowerCase().includes(filters.address)
+        )
+          return false
 
-      return true
-    })
+        return true
+      })
 
-    const endIndex = currentPage * itemsPerPage
-    return filtered.slice(0, endIndex)
-  })
+      const endIndex = currentPage * itemsPerPage
+      return filtered.slice(0, endIndex)
+    }
+  )
 
 export const selectTotalPages = (itemsPerPage: number) =>
   createSelector([selectEstates], (estates) =>

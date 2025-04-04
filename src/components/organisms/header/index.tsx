@@ -9,11 +9,12 @@ import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import MobileMenu from '../../molecules/mobile-menu'
 import { initialButtons } from './mock.ts'
-import { useAppSelector } from '../../../store'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import { selectUser } from '../../../store/userSlice/selectors.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
-import { useListing } from '../../../contexts/ListingContext.tsx'
 import { BREAKPOINTS } from '../../../@constants'
+import { setListingType } from '../../../store/estateSlice'
+import { truncateTextByChars } from '../../../helpers'
 
 interface Props {
   className?: string
@@ -25,9 +26,10 @@ const Header = ({ className }: Props) => {
   const { width } = useWindowDimensions()
   const navigate = useNavigate()
   const isMedium = width > BREAKPOINTS.MD
+  const isSmall = width < BREAKPOINTS.MD
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
-  const { setListingType } = useListing()
+  const dispatch = useAppDispatch()
 
   const goToHomePage = () => {
     if (pathname === ROUTES.HOME) return
@@ -69,12 +71,14 @@ const Header = ({ className }: Props) => {
             childrenClassName="truncate "
             onClick={() => {
               if (button.id === 'buy' || button.id === 'rent') {
-                setListingType(button.id)
+                dispatch(setListingType(button.id))
               }
               navigate(button.href)
             }}
           >
-            {t(button.title)}
+            {isSmall
+              ? truncateTextByChars(t(button.title), 12)
+              : t(button.title)}
           </Button>
         ))}
         <Button

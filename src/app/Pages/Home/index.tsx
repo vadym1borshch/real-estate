@@ -22,7 +22,7 @@ export const HomePage = () => {
   const { isConfirm, setIsConfirm } = useEmailConfirm()
 
   return (
-    <div className="text-charcoal mt-[3.375rem] lg:mt-[5.625rem] flex w-full flex-col items-center gap-[6.25rem] lg:gap-[9.375rem] px-5">
+    <div className="text-charcoal mt-[3.375rem] flex w-full flex-col items-center gap-[6.25rem] px-5 lg:mt-[5.625rem] lg:gap-[9.375rem]">
       <MainBlock
         title={t('home.operations.main-title')}
         description={t('home.operations.descriptions')}
@@ -42,9 +42,11 @@ export const HomePage = () => {
             />
           ))}
         </div>
-        <div className={cn("w-screen pt-[3.75rem]", {
-          "hidden": isLarge,
-        })}>
+        <div
+          className={cn('w-screen pt-[3.75rem]', {
+            hidden: isLarge,
+          })}
+        >
           <Slider>
             {services.map((service) => (
               <LinkCard
@@ -62,10 +64,26 @@ export const HomePage = () => {
         title={t('home.top-ads.main-title')}
         description={t('home.top-ads.descriptions')}
       >
-        <div className="grid grid-cols-1 gap-5 lg:gap-10 pt-[3.75rem] lg:pt-[5.625rem] sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-5 pt-[3.75rem] md:hidden">
+          {topEstate.map((house) => (
+            <EstateCard
+              realEstate={house}
+              key={house.id}
+              className="max-w-full"
+            />
+          ))}
+        </div>
+        <div className="hidden grid-cols-3 gap-5 pt-[3.75rem] lg:grid lg:gap-10 lg:pt-[5.625rem]">
           {topEstate.map((house) => (
             <EstateCard realEstate={house} key={house.id} />
           ))}
+        </div>
+        <div className="hidden w-screen pt-[3.75rem] pl-2.5 md:block lg:hidden">
+          <Slider slideWidth={360}>
+            {topEstate.map((house) => (
+              <EstateCard realEstate={house} key={house.id} />
+            ))}
+          </Slider>
         </div>
       </MainBlock>
       <PopularBlock />

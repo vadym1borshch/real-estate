@@ -7,23 +7,28 @@ import Button from '../../atoms/button'
 import { cn, textEllipsis } from '../../../helpers/ui.ts'
 import DropdownInput from '../input-dropdown'
 import Dropdown from '../../atoms/dropdown'
-import { ListingType, useListing } from '../../../contexts/ListingContext.tsx'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
+import { useQueryParams } from '../../../helpers/hooks/useQueryParams.ts'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { ListingType, setListingType } from '../../../store/estateSlice'
+import { selectListingType } from '../../../store/estateSlice/selectors.ts'
 
 interface Props {
   filter: IFilter
 }
 
 export const Filter = ({ filter }: Props) => {
+  useQueryParams()
   const [searchParams, setSearchParams] = useSearchParams()
   const { t, i18n } = useTranslation()
   const [query, setQuery] = useState(searchParams.get(filter.key) || '')
   const [open, setOpen] = useState(false)
-  const { listingType, setListingType } = useListing()
+  const listingType = useAppSelector(selectListingType)
   const navigate = useNavigate()
   const path = usePathname()
+  const dispatch = useAppDispatch()
 
   const label = filter.values.find(
     (val) => typeof val !== 'number' && val.id === listingType
@@ -95,8 +100,8 @@ export const Filter = ({ filter }: Props) => {
             iconId="euroCurrencyIcon"
             searchParams={searchParams}
             updateParams={updateParams}
-            maxKey="price_max"
-            minKey="price_min"
+            maxKey="priceMax"
+            minKey="priceMin"
           />
         )
       case 'm2':
@@ -105,8 +110,8 @@ export const Filter = ({ filter }: Props) => {
             iconId="m2Icon"
             searchParams={searchParams}
             updateParams={updateParams}
-            maxKey="area_max"
-            minKey="area_min"
+            maxKey="areaMax"
+            minKey="areaMin"
           />
         )
       case 'rooms': {
@@ -142,14 +147,12 @@ export const Filter = ({ filter }: Props) => {
             return (
               <span
                 key={item.id}
-                className={
-                cn("hover:bg-blue-gray px-4 py-2 text-base", {
-                  "bg-coral": item.id === filter.key,
-                })
-                }
+                className={cn('hover:bg-blue-gray px-4 py-2 text-base', {
+                  'bg-coral': item.id === filter.key,
+                })}
                 onClick={() => {
                   if (filter.key === 'operation') {
-                    setListingType(item.id as ListingType)
+                    dispatch(setListingType(item.id as ListingType))
                     localStorage.setItem('operation', item.id)
                     setOpen(false)
                     if (path !== ROUTES.HOME) {

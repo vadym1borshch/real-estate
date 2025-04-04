@@ -10,6 +10,8 @@ import Modal from '../../../../../components/molecules/modal'
 import { ModalContent } from './ModalContent.tsx'
 import { useTranslation } from 'react-i18next'
 import { setTopAd } from '../../../../../store/adsSlice'
+import { useWindowDimensions } from '../../../../../helpers/hooks/useWindowDimensions.ts'
+import { BREAKPOINTS } from '../../../../../@constants'
 
 export type ModalStatus = 'success' | 'rejected' | null
 
@@ -20,6 +22,8 @@ export const AdsType = () => {
   const path = usePathname()
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
+  const { width } = useWindowDimensions()
+  const isLarge = width >= BREAKPOINTS.PRE_LG
 
   const key = path.includes(ADS_ROUTES.RENT_ADS) ? 'rent' : 'buy'
 
@@ -65,16 +69,21 @@ export const AdsType = () => {
   }
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(22.5rem,1fr))] place-items-center gap-10">
+    <div
+      className={cn('grid grid-cols-1 gap-5', {
+        'grid-cols-2 gap-10': isLarge,
+      })}
+    >
       {ads.map((ad) => {
         const disabled = ad.status !== 'active' && ad.status !== 'inactive'
         return (
-          <div key={ad.id} className="flex w-fit flex-col gap-1.5">
+          <div key={ad.id} className="flex w-full flex-col gap-1.5">
             <EstateCard
               disabled={disabled}
               realEstate={ad}
-              className={cn({
+              className={cn('max-w-full', {
                 'opacity-50': disabled,
+                'max-w-[22.5rem]': isLarge,
               })}
             />
             <ActionButtons

@@ -5,14 +5,15 @@ import Link from '../../../components/atoms/link'
 import { Filters } from '../../../components/molecules/filters'
 import Button from '../../../components/atoms/button'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
-import { useListing } from '../../../contexts/ListingContext.tsx'
 import { useMode } from '../../../contexts/ModContext.tsx'
 import H1 from '../../../components/atoms/typography/h1'
+import { useAppSelector } from '../../../store'
+import { selectListingType } from '../../../store/estateSlice/selectors.ts'
 
 export const HomePageLayout = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const { listingType } = useListing()
+  const listingType = useAppSelector(selectListingType)
   const { setMode } = useMode()
 
   return (

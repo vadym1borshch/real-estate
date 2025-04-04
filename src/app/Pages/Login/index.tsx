@@ -24,13 +24,13 @@ export const LoginPage = () => {
 
   useEffect(() => {
     if (user) {
-      navigate(ROUTES.HOME)
+      navigate('')
     }
   }, [user])
 
   return (
-    <div className="w-full max-w-[22.5rem] pt-[6.8125rem]">
-      <div className="flex items-center justify-between pb-10">
+    <div className="flex h-[calc(100svh-78px)] lg:h-[calc(100svh-120px)] w-full max-w-[22.5rem] flex-col items-center justify-center">
+      <div className="flex items-center justify-between pb-10 w-full">
         <H3 text={t('login.title')} />
         <span className="text-gray flex items-center">
           {t('login.form.connection-secure')}

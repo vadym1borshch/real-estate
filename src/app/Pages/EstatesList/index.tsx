@@ -15,7 +15,6 @@ import Dropdown from '../../../components/atoms/dropdown'
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MapMode } from './MapMode.tsx'
-import { useSearchContext } from '../../../contexts/SearchContext.tsx'
 import Icon from '../../../components/atoms/icon'
 import { useMode } from '../../../contexts/ModContext.tsx'
 import { BREAKPOINTS } from '../../../@constants'
@@ -29,29 +28,8 @@ export const EstatesList = () => {
   const isLarge = width >= BREAKPOINTS.XLG
   const [openMobileDropdown, setOpenMobileDropdown] = useState(false)
   const { mode, setMode } = useMode()
-  const {
-    operation,
-    address,
-    type,
-    rooms,
-    area_min,
-    price_min,
-    price_max,
-    area_max,
-  } = useSearchContext()
 
-  const estates = useAppSelector(
-    selectPaginatedEstates(itemsPerPage, {
-      rooms,
-      price_max,
-      price_min,
-      area_min,
-      address,
-      type,
-      area_max,
-      operation,
-    })
-  )
+  const estates = useAppSelector(selectPaginatedEstates(itemsPerPage))
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
   const currentPage = useAppSelector(selectCurrentPage)
   const dispatch = useAppDispatch()
@@ -88,9 +66,11 @@ export const EstatesList = () => {
   }
   return (
     <div className="z-0 flex w-full max-w-[72.5rem] flex-col items-center">
-      <div className={cn("flex w-full gap-1.5", {
-        "hidden": isLarge,
-      })}>
+      <div
+        className={cn('flex w-full gap-1.5', {
+          hidden: isLarge,
+        })}
+      >
         <Dropdown
           label={
             openMobileDropdown
@@ -121,9 +101,11 @@ export const EstatesList = () => {
         </Button>
       </div>
 
-      <Filters className={cn("m-0 hidden bg-transparent px-0 ", {
-        "flex": isLarge,
-      })}>
+      <Filters
+        className={cn('m-0 hidden bg-transparent px-0', {
+          flex: isLarge,
+        })}
+      >
         <Button
           className="h-12 w-12"
           variant="outlined"
@@ -134,7 +116,7 @@ export const EstatesList = () => {
       </Filters>
       <div
         className={cn(
-          'mt-[1.125rem] grid grid-cols-2 gap-5 lg:gap-10 w-full md:grid-cols-2 lg:grid-cols-3',
+          'mt-[1.125rem] grid w-full grid-cols-2 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10',
           {
             'grid-cols-1': isMobile,
             'pb-[9.375rem]': estates.length <= itemsPerPage,
@@ -142,7 +124,13 @@ export const EstatesList = () => {
         )}
       >
         {estates.map((estate) => {
-          return <EstateCard key={estate.id} realEstate={estate} className="max-w-full"/>
+          return (
+            <EstateCard
+              key={estate.id}
+              realEstate={estate}
+              className="max-w-full"
+            />
+          )
         })}
       </div>
       {!estates.length && (

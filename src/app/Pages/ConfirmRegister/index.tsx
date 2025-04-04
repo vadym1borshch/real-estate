@@ -10,7 +10,7 @@ export const ConfirmRegister = () => {
   const { setIsConfirm } = useEmailConfirm()
   const navigate = useNavigate()
   return (
-    <div className="flex max-w-[360px] flex-col gap-10 pt-[6.8125rem]">
+    <div className="flex h-[calc(100svh-78px)] w-full max-w-[360px] flex-col items-center justify-center gap-10 lg:h-[calc(100svh-120px)]">
       <H3 text={t('register.title')} />
       <p>{t('register.confirm-register.p')}</p>
       <Button

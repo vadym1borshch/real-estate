@@ -20,8 +20,8 @@ export const RegisterPage = () => {
   const dispatch = useAppDispatch()
 
   return (
-    <div className="w-full max-w-[22.5rem] pt-[6.8125rem]">
-      <div className="flex items-center justify-between pb-10">
+    <div className="flex h-[calc(100svh-78px)] w-full max-w-[22.5rem] flex-col items-center justify-center lg:h-[calc(100svh-120px)]">
+      <div className="flex w-full items-center justify-between pb-10">
         <H3 text={t('register.title')} />
         <span className="text-gray flex items-center">
           {t('login.form.connection-secure')}
@@ -137,6 +137,15 @@ export const RegisterPage = () => {
               disabled={!isValid || !dirty || !values.termsOfUse}
             >
               {t('buttons.register')}
+            </Button>
+            <Button
+              type="button"
+              className="w-full"
+              onClick={() => {
+                navigate(ROUTES.LOGIN)
+              }}
+            >
+              {t('buttons.login')}
             </Button>
           </Form>
         )}

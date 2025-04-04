@@ -13,6 +13,8 @@ import { useAppDispatch } from '../../../../../store'
 import { useNavigate } from '../../../../../helpers/hooks/useNavigate.ts'
 import { usePathname } from '../../../../../helpers/hooks/usePathname.ts'
 import { ADS_ROUTES } from '../../../../../@constants/routes.ts'
+import { useWindowDimensions } from '../../../../../helpers/hooks/useWindowDimensions.ts'
+import { BREAKPOINTS } from '../../../../../@constants'
 
 interface Props {
   status: AdsFilterStatus
@@ -25,6 +27,8 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const path = usePathname()
+  const { width } = useWindowDimensions()
+  const isLarge = width >= BREAKPOINTS.PRE_LG
 
   const correctDetailsRoute = path.includes(ADS_ROUTES.RENT_ADS)
     ? ADS_ROUTES.RENT_DETAILS
@@ -64,17 +68,20 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
     if (status === 'rejected') {
       return (
         <div
-          className={cn(
-            'grid w-[22.5rem] min-w-[300px] grid-cols-[7fr_1fr_1fr] gap-1.5'
-          )}
+          className={cn('flex w-full min-w-[300px] gap-1.5', {
+            'grid max-w-[22.5rem] grid-cols-[7fr_1fr_1fr]': isLarge,
+          })}
         >
           {rejectedButtons.map((button) => (
             <Button
               key={button.id}
-              className={cn('!h-[40px] w-auto', {
-                'bg-charcoal hover:bg-seafoam-green !w-[40px] px-0 text-white':
-                  button.type !== 'default',
-              })}
+              className={cn(
+                'h-10 w-full max-w-full truncate',
+                {
+                  'bg-charcoal hover:bg-seafoam-green !max-w-10 !min-w-10 px-0 text-white':
+                    button.type !== 'default',
+                }
+              )}
               onClick={onClickHandler(button.id)}
             >
               {button.type === 'default' ? (
@@ -93,15 +100,15 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
     }
     return (
       <div
-        className={cn(
-          'grid w-[22.5rem] min-w-[300px] grid-cols-[3fr_1fr_1fr_1fr_1fr_1fr] gap-1.5'
-        )}
+        className={cn('flex w-full min-w-[300px] gap-1.5', {
+          'grid max-w-[22.5rem] grid-cols-[3fr_1fr_1fr_1fr_1fr_1fr]': isLarge,
+        })}
       >
         {actionButtons.map((button, index) => {
           if (button.type === 'default') {
             return (
               <Button
-                className="!h-[40px] w-auto"
+                className="!h-10 w-full px-0"
                 key={button.id}
                 disabled={status === 'moderation' || status === 'inactive'}
                 onClick={onClickHandler(button.id)}
@@ -114,7 +121,7 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
             <Button
               key={button.id}
               disabled={disabledButtons(status, button.children, index)}
-              className="bg-charcoal hover:bg-seafoam-green !h-[40px] !w-[40px] px-0 text-white last:!opacity-100"
+              className="bg-charcoal hover:bg-seafoam-green !h-10 !min-w-10 px-0 text-white last:!opacity-100"
               onClick={onClickHandler(button.id)}
             >
               <Icon

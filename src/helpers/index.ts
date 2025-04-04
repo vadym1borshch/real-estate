@@ -47,3 +47,10 @@ export const formatDate = (
 
   return `${weekday}, ${day} ${month}, ${hour}:${minute}`
 }
+
+export const truncateTextByChars = (
+  text: string,
+  maxChars: number = 10
+): string => {
+  return text.length > maxChars ? text.slice(0, maxChars) + '…' : text
+}
