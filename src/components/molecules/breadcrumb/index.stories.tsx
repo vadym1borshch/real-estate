@@ -9,7 +9,7 @@ const items = [
   {
     id: '1',
     href: '',
-    label: 'Home ',
+    label: 'home ',
   },
   {
     id: '2',

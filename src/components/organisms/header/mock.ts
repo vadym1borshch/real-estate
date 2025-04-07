@@ -1,4 +1,4 @@
-import { ROUTES } from '../../../@constants/routes.ts'
+import { ADS_ROUTES, ROUTES } from '../../../@constants/routes.ts'
 
 export const initialButtons = [
   {
@@ -13,7 +13,7 @@ export const initialButtons = [
   },
   {
     id: 'place-advertisement',
-    href: '#',
+    href: ADS_ROUTES.CREATE_AD,
     title: 'buttons.place-advertisement',
   },
 ]

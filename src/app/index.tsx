@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from 'react'
-import Routes from './Routes'
+import Routes from './routes'
 import { useAppDispatch } from '../store'
 import { fetchEstate } from '../store/estateSlice'
 import { useWindowDimensions } from '../helpers/hooks/useWindowDimensions.ts'

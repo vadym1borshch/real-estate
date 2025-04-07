@@ -3,7 +3,7 @@ import { createSelector } from 'reselect'
 import {
   BuyKeys,
   RentKeys,
-} from '../../app/Pages/Home/popular-block/filtersKeys.ts'
+} from '../../app/pages/home/popular-block/filtersKeys.ts'
 
 const parseFormattedPrice = (str: string): number => {
   const cleaned = str.replace(/\./g, '').replace(',', '.')
@@ -11,6 +11,7 @@ const parseFormattedPrice = (str: string): number => {
 }
 
 export const selectBuyFilter = (state: RootState) => state.estates.buyFilter
+export const selectIsLoading = (state: RootState) => state.estates.loading
 export const selectFilters = (state: RootState) => state.estates.filters
 export const selectListingType = (state: RootState) => state.estates.filters.listingType
 export const selectRentFilter = (state: RootState) => state.estates.rentFilter

@@ -4,7 +4,7 @@ import {
   buyFilters,
   FilterOption,
   rentFilters,
-} from '../../app/Pages/Home/popular-block/mock.ts'
+} from '../../app/pages/home/popular-block/mock.ts'
 import { houses, RealEstate } from '../commonMock.ts'
 
 export const fetchEstate = createAsyncThunk<RealEstate[], void>(

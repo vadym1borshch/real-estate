@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react'
 import ImagePreview from './index'
-import { images } from '../../../app/Pages/EstatesList/EstateDetails/mock.ts'
+import { images } from '../../../app/pages/estates-list/estate-details/mock.ts'
 
 export default {
   component: ImagePreview,

@@ -36,7 +36,7 @@ export const messagesArr: IMessage[] = [
         },
         timestamp: new Date().toISOString(),
         message:
-          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer Details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
+          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
       },
       {
         id: v4(),
@@ -47,7 +47,7 @@ export const messagesArr: IMessage[] = [
         },
         timestamp: new Date().toISOString(),
         message:
-          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer Details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
+          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
       },
       {
         id: v4(),
@@ -58,7 +58,7 @@ export const messagesArr: IMessage[] = [
         },
         timestamp: new Date().toISOString(),
         message:
-          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer Details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
+          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
       },
       {
         id: v4(),
@@ -69,7 +69,7 @@ export const messagesArr: IMessage[] = [
         },
         timestamp: new Date().toISOString(),
         message:
-          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer Details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
+          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
       },
     ],
   },
@@ -88,7 +88,7 @@ export const messagesArr: IMessage[] = [
         },
         timestamp: new Date().toISOString(),
         message:
-          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer Details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
+          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
       },
     ],
   },
@@ -107,7 +107,7 @@ export const messagesArr: IMessage[] = [
         },
         timestamp: new Date().toISOString(),
         message:
-          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer Details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
+          'Sehr geehrte Damen und Herren,\n\nich hoffe, diese Nachricht erreicht Sie wohlbehalten. Ich interessiere mich sehr für die von Ihnen angebotene Immobilie und würde gerne mehr darüber erfahren. Insbesondere interessiere ich mich für detaillierte Informationen über die Ausstattung, die Lage und die Umgebung der Immobilie.\n\nKönnen Sie mich bitte bezüglich weiterer details und möglicherweise auch zur Vereinbarung eines Besichtigungstermins kontaktieren? Ich bin flexibel und kann mich gerne nach Ihrem Zeitplan richten.\n\nVielen Dank im Voraus für Ihre Mühe und Ihre Zeit. Ich freue mich auf Ihre baldige Rückmeldung.\n\nMit freundlichen Grüßen,\nJohanna',
       },
     ],
   },

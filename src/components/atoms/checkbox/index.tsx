@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import { cn } from '../../../helpers/ui.ts'
+import Icon from '../icon'
 
 export interface CheckboxProps {
   checked: boolean
@@ -19,15 +20,16 @@ const Checkbox = ({ className, checked, setChecked }: CheckboxProps) => {
       <div
         role="checkbox"
         aria-checked={checked}
-        className={cn(
-          'border-blue-gray relative flex h-5 w-5 items-center justify-center rounded-md border-[2.5px]',
-          {
-            'border-0 bg-[url(/public/doneBg.png)] bg-cover bg-no-repeat':
-              checked,
-          },
-          className,
-        )}
-      />
+        className={cn('h-5 w-5', className)}
+      >
+        <Icon
+          id={checked ? 'checkedIconId' : 'uncheckedIconId'}
+          className={cn('h-5 w-5', {
+            'text-charcoal': checked,
+            'text-blue-gray': !checked,
+          })}
+        />
+      </div>
     </Fragment>
   )
 }

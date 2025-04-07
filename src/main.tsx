@@ -8,19 +8,13 @@ import { ThemeProvider } from '@material-tailwind/react'
 import { theme } from './theme.ts'
 import { Provider } from 'react-redux'
 import { store } from './store'
-import { ConfirmProvider } from './contexts/ConfirmationEmailContext.tsx'
-import { ModeProvider } from './contexts/ModContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <ThemeProvider value={theme}>
         <I18nextProvider i18n={config}>
-          <ModeProvider>
-            <ConfirmProvider>
-              <App />
-            </ConfirmProvider>
-          </ModeProvider>
+          <App />
         </I18nextProvider>
       </ThemeProvider>
     </Provider>

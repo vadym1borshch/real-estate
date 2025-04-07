@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Agent } from '../../app/Pages/ServiceAround/mock.ts'
+import { Agent } from '../../app/pages/service-around/mock.ts'
 
 const initialState: { user: Agent | null } = {
   user: null,

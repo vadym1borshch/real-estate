@@ -27,6 +27,7 @@ export enum ROUTES {
 
 export enum ADS_ROUTES {
   ADS = 'my-account/ads',
+  CREATE_AD = 'my-account/ads/create-ad',
   RENT_ADS = 'my-account/ads/rent-ads',
   SELL_ADS = 'my-account/ads/sell-ads',
   SELL_DETAILS = 'my-account/ads/sell-ads/details',
@@ -44,6 +45,7 @@ export enum AUTH_ROUTES {
 export enum MY_ACCOUNT {
   ROOT = 'my-account',
   ADS = 'ads',
+  CREATE_AD = 'ads/create-ad',
 
   PROFILE = 'profile',
 

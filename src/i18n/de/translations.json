@@ -8,13 +8,17 @@
         "de": "Deutschland",
         "at": "Österreich",
         "uk": "Ukraine"
-      }
+      },
+      "not-found": "Objekte nicht gefunden..."
     },
     "rent": {
       "title": "Mieten "
     },
     "buy": {
       "title": "Kaufen "
+    },
+    "create-ad": {
+      "title": "Anzeige erstellen"
     },
     "login": {
       "title": "ANMELDEN",
@@ -561,6 +565,7 @@
       "rooms": "Zimmer",
       "bathroom": "Bad",
       "details": {
+        "updated": "Aktualisiert:",
         "contact-provider": {
           "title": "KONTAKTIEREN SIE DEN ANBIETER",
           "p1": "Diese prächtige Residenz liegt hoch über den sanften Hügeln und bietet einen unvergleichlichen Ausblick bis über Wien herunter und auf die umliegende malerische Landschaft. Der großzügige Eingangsbereich vermittelt sofort das Gefühl von Luxus, Komfort und Exklusivität. Die  bodentiefen Fenster im zentralen Wohnbereich fluten den Raum mit\n          natürlichem Licht und bieten dabei einen zauberhaften Blick auf die\n          grüne Oase des hauseigenen Gartens, der sich harmonisch in die\n          Panoramalandschaft einfügt. Der Fitnessraum mit Indoor-Pool, Whirlpool\n          und Sauna bietet alles, was Sie benötigen, um Körper und Geist zu stärken und sich zu erholen. Die geräumige Garage verfügt über eine\n          Elektroladestation und bietet Parkplatz für drei Autos. Der Außenbereich dieses Anwesens bietet eine atemberaubende Aussicht und viel Platz für Terrassen, Grillabende, Sportaktivitäten und sogar eine Outdoor Sauna.",
