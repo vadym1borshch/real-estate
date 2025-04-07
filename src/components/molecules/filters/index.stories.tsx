@@ -1,7 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react'
 import { Filters } from './index'
 import Button from '../../atoms/button'
-import { ListingProvider } from '../../../contexts/ListingContext.tsx'
 
 export default {
   component: Filters,
@@ -9,13 +8,11 @@ export default {
 
 const Template: StoryFn<typeof Filters> = (args) => {
   return (
-    <ListingProvider>
-      <div className="bg-gray">
-        <Filters {...args}>
-          <Button>FILTER</Button>
-        </Filters>
-      </div>
-    </ListingProvider>
+    <div className="bg-gray">
+      <Filters {...args}>
+        <Button>FILTER</Button>
+      </Filters>
+    </div>
   )
 }
 

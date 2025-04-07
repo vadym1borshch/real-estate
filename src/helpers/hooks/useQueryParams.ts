@@ -1,8 +1,8 @@
 import { useAppDispatch } from '../../store'
 import { useSearchParams } from 'react-router-dom'
 import { useEffect } from 'react'
-import { refreshFilters } from '../../store/estateSlice'
-import { ListingType } from '../../contexts/ListingContext.tsx'
+import { ListingType, refreshFilters } from '../../store/estateSlice'
+
 
 export const useQueryParams = () => {
   const [searchParams] = useSearchParams()
