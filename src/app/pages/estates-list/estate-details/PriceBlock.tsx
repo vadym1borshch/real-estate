@@ -13,7 +13,7 @@ export const PriceBlock = ({price}: {price: string}) => {
         >
           <Icon
             id="standardShareIcon"
-            className="text-blue-gray h-[24px] w-[24px]"
+            className="text-blue-gray h-6 w-6"
           />
         </Button>
         <Button
@@ -22,7 +22,7 @@ export const PriceBlock = ({price}: {price: string}) => {
         >
           <Icon
             id="standardHeartIcon"
-            className="text-blue-gray h-[24px] w-[24px]"
+            className="text-blue-gray h-6 w-6"
           />
         </Button>
       </div>

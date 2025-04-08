@@ -38,7 +38,7 @@ const LinkCard = ({ src, descriptions, label, href = '/estates' }: Props) => {
         <span className="absolute top-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-white">
           <Icon
             id="arrowUpRightIcon"
-            className="text-charcoal h-[24px] w-[24px] lg:h-6 lg:w-6"
+            className="text-charcoal h-6 w-6 lg:h-6 lg:w-6"
           />
         </span>
         <img src={src} alt="buy" className="object-cover" />

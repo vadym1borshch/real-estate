@@ -31,7 +31,7 @@ export const AdsLayout = ({ children, anyAds, onClick }: Props) => {
   }
 
   return (
-    <div className="flex w-full flex-col gap-10">
+    <div className="flex w-full flex-col gap-6 lg:gap-10">
       <div className="flex flex-wrap gap-3">
         {adsFilterStatuses.map((status) => {
           return (

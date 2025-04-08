@@ -39,7 +39,7 @@ const Input = ({
           {label && <label className="w-fit pb-1.5 pr-3">{label}</label>}
           {error && errorPosition === 'top' && (
             <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end leading-4 text-center">
-              <Icon id="errorIconRed" className="h-[24px] min-w-[24px] max-w-[24px]" />
+              <Icon id="errorIconRed" className="h-6 min-w-6 max-w-6" />
               {error}
             </span>
           )}
@@ -52,7 +52,7 @@ const Input = ({
           placeholder={placeholder}
           onChange={(e) => onChange(e)}
           className={cn(
-            'border-blue-gray placeholder-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 min-h-[40px] w-full rounded-sm border px-6 autofill:shadow-[inset_0_0_0px_1000px_white] focus:ring-1 focus:outline-none md:h-12',
+            'border-blue-gray placeholder-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 min-h-10 w-full rounded-sm border px-6 autofill:shadow-[inset_0_0_0px_1000px_white] focus:ring-1 focus:outline-none md:h-12',
             { 'h-10': size === 'sm' },
             { 'border-red focus:outline-red focus:outline': error },
             { 'pl-[2.875rem]': iconSide === 'left' },
@@ -63,7 +63,7 @@ const Input = ({
         {iconId && (
           <span
             className={cn(
-              'text-blue-gray absolute top-1/2 right-3 z-20 flex h-[24px] w-[24px] -translate-y-1/2 items-center justify-center bg-white lg:h-6 lg:w-6',
+              'text-blue-gray absolute top-1/2 right-3 z-20 flex h-6 w-6 -translate-y-1/2 items-center justify-center bg-white',
               { 'left-3': iconSide === 'left' },
               iconClassName
             )}
@@ -75,7 +75,7 @@ const Input = ({
 
       {error && errorPosition === 'bottom' && (
         <span className="text-red flex items-center justify-end self-end leading-4 text-center">
-          <Icon id="errorIconRed" className="h-[24px] min-w-[24px] max-w-[24px]"  />
+          <Icon id="errorIconRed" className="h-6 min-w-6 max-w-6"  />
           {error}
         </span>
       )}

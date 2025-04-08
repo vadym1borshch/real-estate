@@ -24,7 +24,7 @@ const MobileMenu = ({ open, setOpen }: Props) => {
       <Button variant="outlined" className="h-fit w-fit !border-0 p-0">
         <Icon
           id="menuLineIcon"
-          className="text-charcoal hover:text-blue-gray h-[24px] w-[24px]"
+          className="text-charcoal hover:text-blue-gray h-6 w-6"
           onClick={() => setOpen(!open)}
         />
       </Button>
@@ -33,7 +33,7 @@ const MobileMenu = ({ open, setOpen }: Props) => {
           <div className="flex items-center gap-6">
             <Button
               size="sm"
-              className="text-charcoal hover:bg-seafoam-green focus:border-seafoam-green h-[40px] min-w-[80px] bg-white px-4 focus:border-4 focus:outline-none"
+              className="text-charcoal hover:bg-seafoam-green focus:border-seafoam-green h-10 min-w-[5rem] bg-white px-4 focus:border-4 focus:outline-none"
               onClick={() => {
                 if (!user) {
                   navigate(ROUTES.LOGIN)
@@ -47,13 +47,13 @@ const MobileMenu = ({ open, setOpen }: Props) => {
             <LanguageSwitcher className="hover:text-gray focus:!border-seafoam-green focus:!outline-seafoam-green text-white focus:!border-0 focus:!outline-4" />
           </div>
           <Button
-            className="hover:text-gray focus:!border-seafoam-green focus:!outline-seafoam-green h-[24px] w-[24px] !border-0 p-0 text-white focus:!outline-4"
+            className="hover:text-gray focus:!border-seafoam-green focus:!outline-seafoam-green h-6 w-6 !border-0 p-0 text-white focus:!outline-4"
             variant="outlined"
             onClick={() => setOpen(!open)}
           >
             <Icon
               id="closeIcon"
-              className="h-[24px] min-w-[24px]"
+              className="h-6 min-w-6"
               onClick={() => {
                 setOpen(!open)
               }}

@@ -25,7 +25,7 @@ export const RegisterPage = () => {
         <H3 text={t('register.title')} />
         <span className="text-gray flex items-center">
           {t('login.form.connection-secure')}
-          <Icon id="lockIcon" className="h-[24px] w-[24px]" />
+          <Icon id="lockIcon" className="h-6 w-6" />
         </span>
       </div>
       <Formik

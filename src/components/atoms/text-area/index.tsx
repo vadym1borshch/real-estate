@@ -39,7 +39,7 @@ const TextArea = ({
           {label && <label className="w-fit pb-1.5">{label}</label>}
           {error && errorPosition === 'top' && (
             <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end">
-              <Icon id="errorIconRed" className="h-[24px] w-[16px]" />
+              <Icon id="errorIconRed" className="h-6 w-4" />
               {error}
             </span>
           )}
@@ -52,25 +52,25 @@ const TextArea = ({
         placeholder={placeholder}
         onChange={(e) => onChange(e)}
         className={cn(
-          'border-blue-gray placeholder-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 h-full min-h-[220px] w-full resize-none rounded-sm border px-6 py-3 focus:ring-1 focus:outline-none',
+          'border-blue-gray placeholder-gray hover:border-charcoal focus:ring-charcoal focus:border-charcoal z-10 h-full min-h-[13.75rem] w-full resize-none rounded-sm border px-6 py-3 focus:ring-1 focus:outline-none',
           {
             'border-red focus:outline-red focus:outline': error,
           },
-          { 'pl-[36px]': iconSide === 'left' },
+          { 'pl-[2.25rem]': iconSide === 'left' },
           className
         )}
         {...rest}
       />
       {error && errorPosition === 'bottom' && (
         <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end">
-          <Icon id="errorIconRed" className="h-[24px] w-[16px]" />
+          <Icon id="errorIconRed" className="h-6 w-4" />
           {error}
         </span>
       )}
       {iconId && (
         <span
           className={cn(
-            'text-blue-gray absolute right-3 bottom-3 z-20 flex h-[24px] w-[24px] items-center justify-center bg-white lg:h-6 lg:w-6',
+            'text-blue-gray absolute right-3 bottom-3 z-20 flex h-6 w-6 items-center justify-center bg-white',
             { 'left-3': iconSide === 'left' },
             iconClassName
           )}

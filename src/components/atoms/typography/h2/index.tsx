@@ -9,7 +9,7 @@ interface Props extends React.HTMLAttributes<HTMLHeadingElement> {
 const H2 = ({ text, className, ...rest }: Props) => {
   return (
     <h2
-      className={cn('font-500 text-4xl leading-[2.925rem]', className)}
+      className={cn('font-500 text-2xl lg:text-4xl leading-[2.925rem]', className)}
       {...rest}
     >
       {text}

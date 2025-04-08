@@ -38,7 +38,7 @@ const Accordion = ({ label, children, open, setOpen }: Props) => {
         <Icon
           id="chevronDownIcon"
           className={cn(
-            'absolute right-0 top-1/2 -translate-y-1/2 text-charcoal h-[24px] w-[24px] self-end transition-transform lg:h-6 lg:w-6',
+            'absolute right-0 top-1/2 -translate-y-1/2 text-charcoal h-6 w-6 self-end transition-transform',
             { 'rotate-180 transition-transform': open }
           )}
         />

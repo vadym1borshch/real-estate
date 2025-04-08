@@ -84,7 +84,7 @@ export const EntityManageForm = ({ children }: Props) => {
             extra={
               <Icon
                 id="roundedQuestionMarkIcon"
-                className="text-blue-gray h-[24px] w-[24px]"
+                className="text-blue-gray h-6 w-6"
               />
             }
           >
@@ -157,7 +157,7 @@ export const EntityManageForm = ({ children }: Props) => {
                 >
                   <Icon
                     id="roundedSmallMinusIcon"
-                    className="text-blue-gray h-[24px] w-[24px] cursor-pointer"
+                    className="text-blue-gray h-6 w-6 cursor-pointer"
                     onClick={() => {
                       form.setFieldValue(
                         'rooms',
@@ -168,7 +168,7 @@ export const EntityManageForm = ({ children }: Props) => {
                   {field.value}
                   <Icon
                     id="roundedSmallPlusIcon"
-                    className="text-blue-gray h-[24px] w-[24px] cursor-pointer"
+                    className="text-blue-gray h-6 w-6 cursor-pointer"
                     onClick={() => {
                       form.setFieldValue('rooms', field.value + 1)
                     }}
@@ -230,12 +230,12 @@ export const EntityManageForm = ({ children }: Props) => {
               <FormInputWrapper fieldName="latitude" placeholder="48.2082" />
               <FormInputWrapper fieldName="longitude" placeholder="16.3738" />
               <Button
-                className="bg-charcoal hover:bg-seafoam-green h-[48px] min-w-[48px] p-3 text-white"
+                className="bg-charcoal hover:bg-seafoam-green h-12 min-w-12 p-3 text-white"
                 onClick={() => setOpenMap(true)}
               >
                 <Icon
                   id="navigateMarkerIcon"
-                  className="h-[24px] w-[24px] text-white"
+                  className="h-6 w-6 text-white"
                   onClick={() => setOpenMap(true)}
                 />
               </Button>
@@ -243,25 +243,25 @@ export const EntityManageForm = ({ children }: Props) => {
           </FieldWrapper>
           <FieldWrapper
             label={t('details.details-form.photos')}
-            className="items-start rounded-lg pt-[5.625rem]"
+            className="items-start rounded-lg pt-3 lg:pt-[5.625rem]"
           >
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] place-items-center gap-10 pt-3">
+            <div className="grid grid-cols-2 gap-5 pt-3 lg:gap-10">
               {images.map((image, index) => (
                 <img
                   key={image + index}
                   src={image}
                   alt={image + index}
-                  className="h-[7.5rem] w-[10rem] cursor-pointer items-center justify-center rounded-lg"
+                  className="max-h-full min-h-[6.5625rem] w-full cursor-pointer justify-center rounded-lg object-cover lg:h-[7.5rem] lg:object-center"
                 />
               ))}
-              <div className="bg-gray flex h-[7.5rem] w-[10rem] cursor-pointer items-center justify-center rounded-lg">
+              <div className="bg-gray flex max-h-full min-h-[6.5625rem] w-full cursor-pointer items-center justify-center rounded-lg lg:h-[7.5rem]">
                 <FileUpload
                   isMultiple
                   className="bg-transparent hover:bg-transparent hover:outline-0 focus:border-0"
                   buttonTitle={
                     <Icon
                       id="roundedPlusIcon"
-                      className="text-blue-gray h-[48px] w-[48px] cursor-pointer"
+                      className="text-blue-gray h-12 w-12 cursor-pointer"
                     />
                   }
                   callback={(files) => {

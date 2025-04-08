@@ -50,7 +50,7 @@ export const FormInputWrapper = ({
           placeholder={placeholder || t('details.details-form.placeholder')}
           id={fieldName}
           error={meta.touched && meta.error ? meta.error : undefined}
-          className="min-h-[48px]"
+          className="min-h-12"
           errorPosition="bottom"
         />
       )}
@@ -81,7 +81,7 @@ export const FormDropdownWrapper = ({
             id={fieldName}
             variant="outlined"
             withIcon
-            triggerButtonClassName="min-h-[48px] w-full"
+            triggerButtonClassName="min-h-12 w-full"
             dropdownClassName="top-16 md:top-14 lg:top-12 "
           >
             <div className="flex flex-col">
@@ -142,7 +142,7 @@ export const FormLayoutButtons = ({
 }) => {
   const { t } = useTranslation()
   return (
-    <div className="flex flex-col gap-3 pt-[5.625rem] whitespace-nowrap md:flex-row">
+    <div className="flex flex-col gap-3 pt-[3.75rem] lg:pt-[5.625rem] whitespace-nowrap md:flex-row">
       <Button
         size="sm"
         className="w-full lg:w-fit"
@@ -172,16 +172,16 @@ export const ActionsButtonsWrapper = ({
   return (
     <div className="flex gap-3">
       <Button
-        className="bg-charcoal hover:bg-seafoam-green h-[48px] w-full p-0 lg:w-[48px]"
+        className="bg-charcoal hover:bg-seafoam-green h-12 w-full p-0 lg:w-12"
         onClick={deleteHandler}
       >
-        <Icon id="deleteIcon" className="h-[24px] w-[24px]" />
+        <Icon id="deleteIcon" className="h-6 w-6" />
       </Button>
       <Button
-        className="bg-charcoal hover:bg-seafoam-green h-[48px] w-full p-0 lg:w-[48px]"
+        className="bg-charcoal hover:bg-seafoam-green h-12 w-full p-0 lg:w-12"
         onClick={addHandler}
       >
-        <Icon id="roundedSmallPlusIcon" className="h-[24px] w-[24px]" />
+        <Icon id="roundedSmallPlusIcon" className="h-6 w-6" />
       </Button>
     </div>
   )

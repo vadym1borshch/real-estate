@@ -10,7 +10,7 @@ const H1 = ({ text, className, ...rest }: Props) => {
   return (
     <h1
       className={cn(
-        'font-250 text-6xl leading-[4.125rem] tracking-[-1px]',
+        'font-250 lg:font-200 text-4xl leading-[4.125rem] tracking-[-1px] lg:text-6xl',
         className
       )}
       {...rest}

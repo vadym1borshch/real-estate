@@ -37,7 +37,7 @@ export const CardInfo = ({ card, setDefaultHandler, deleteHandler }: Props) => {
       <Button variant="text" className="self-start p-0 lg:self-center">
         <Icon
           id="deleteIcon"
-          className="text-blue-gray hover:text-charcoal h-[24px] w-[24px] transition-all duration-300"
+          className="text-blue-gray hover:text-charcoal h-6 w-6 transition-all duration-300"
           onClick={() => deleteHandler(card.id)}
         />
       </Button>

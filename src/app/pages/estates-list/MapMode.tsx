@@ -97,9 +97,9 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
           setOpen={(open) => setOpen(open)}
           variant="outlined"
           triggerButtonClassName="!w-full text-base"
-          dropdownClassName="min-w-[300px] w-[calc(100%+53px)] border border-blue-gray p-3 !min-h-[15.75rem] overflow-hidden"
+          dropdownClassName="min-w-[18.75rem] w-[calc(100%+53px)] border border-blue-gray p-3 !min-h-[15.75rem] overflow-hidden"
           iconId="filterIcon"
-          iconClassName="w-[24px] h-[24px] text-charcoal"
+          iconClassName="w-6 h-6 text-charcoal"
           withIcon
         >
           <Filters className="m-0 bg-transparent p-0">
@@ -109,22 +109,22 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
           </Filters>
         </Dropdown>
         <Button variant="outlined" className="h-12 w-12" onClick={changeMode}>
-          <Icon id="menuGridIcon" className="h-[24px] min-w-[24px]" />
+          <Icon id="menuGridIcon" className="h-6 min-w-6" />
         </Button>
       </div>
 
       <Filters className="m-0 hidden bg-transparent px-0 lg:flex">
         <Button className="h-12 w-12" variant="outlined" onClick={changeMode}>
-          <Icon id="menuGridIcon" className="h-[24px] min-w-[24px]" />
+          <Icon id="menuGridIcon" className="h-6 min-w-6" />
         </Button>
       </Filters>
       <div
         className={cn(
-          'mt-[1.125rem] grid w-full grid-cols-1 gap-5 md:grid-cols-[2fr_1fr] lg:gap-10'
+          'mt-5 grid w-full grid-cols-1 gap-5 md:grid-cols-[2fr_1fr]  gap-x-3'
         )}
       >
         <div className="w-full">
-          <Map loading={false} data={[1]} ref={mapRef} className="!h-[488px]">
+          <Map loading={false} data={[1]} ref={mapRef} className="!h-[30.5rem]">
             {estates.map((estate) => (
               <Marker
                 key={estate.id}
@@ -139,7 +139,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
         <div
           ref={listContainerRef}
           className={cn(
-            'grid w-full !min-w-[315px] grid-cols-1 gap-5 pb-[6.25rem] md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-auto lg:gap-10',
+            'grid w-full !min-w-[19.6875rem] grid-cols-1 gap-5 pb-[6.25rem] md:h-[37.5rem] md:overflow-x-hidden md:overflow-y-auto lg:gap-10',
             {
               'grid-cols-2': isMedium && mode !== 'map',
               'flex w-full items-center justify-center':
@@ -154,7 +154,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
               <EstateCard
                 key={estate.id}
                 realEstate={estate}
-                className="max-w-full"
+                className="max-w-full lg:mr-3"
               />
             )
           })}

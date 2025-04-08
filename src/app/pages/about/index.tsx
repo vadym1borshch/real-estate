@@ -18,7 +18,7 @@ export const About = () => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-[5.625rem]">
+    <div className="flex flex-col items-center gap-[6.25rem] lg:gap-[9.375rem]">
       <div className="flex max-w-[47.5rem] flex-col items-center gap-6">
         <H2 text={t('about.title')} />
         <p className="text-center">{t('about.main-descr')}</p>
@@ -52,11 +52,11 @@ export const About = () => {
           <p>{t('about.communication-descr')}</p>
         </div>
       </div>
-      <H2
-        className="mt-[3.75rem] max-w-[72.5rem] text-center"
+      <H3
+        className="max-w-[72.5rem] text-center"
         text={t('about.services-descr')}
       />
-      <div className="mt-[3.75rem] mb-[9.375rem] grid max-w-[72.5rem] grid-cols-1 justify-between gap-10 md:grid-cols-4">
+      <div className="mb-[6.25rem] grid max-w-[72.5rem] grid-cols-1 justify-between gap-10 md:grid-cols-4 lg:mb-[9.375rem]">
         {advantages.map((advantage) => (
           <div
             key={advantage.id}

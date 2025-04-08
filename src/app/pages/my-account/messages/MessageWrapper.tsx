@@ -67,7 +67,7 @@ export const MessageWrapper = ({ messages }: Props) => {
               <Button className="!max-h-fit w-fit p-0" variant="text">
                 <Icon
                   id={message.status === 'read' ? 'openEmailIcon' : 'emailIcon'}
-                  className="text-blue-gray hover:text-charcoal h-[24px] w-[24px] transition-all duration-300"
+                  className="text-blue-gray hover:text-charcoal h-6 w-6 transition-all duration-300"
                   onClick={(e) => {
                     actionHandler(e, makeAsRead(message.id))
                   }}
@@ -78,7 +78,7 @@ export const MessageWrapper = ({ messages }: Props) => {
                   id={
                     message.isArchived ? 'inboxArchiveIcon' : 'downSquareIcon'
                   }
-                  className="text-blue-gray hover:text-charcoal h-[24px] w-[24px] transition-all duration-300"
+                  className="text-blue-gray hover:text-charcoal h-6 w-6 transition-all duration-300"
                   onClick={(e) => {
                     actionHandler(e, moveToArchive(message.id))
                   }}
@@ -87,7 +87,7 @@ export const MessageWrapper = ({ messages }: Props) => {
               <Button className="!max-h-fit w-fit p-0" variant="text">
                 <Icon
                   id="deleteIcon"
-                  className="text-blue-gray hover:text-charcoal h-[24px] w-[24px] transition-all duration-300"
+                  className="text-blue-gray hover:text-charcoal h-6 w-6 transition-all duration-300"
                   onClick={(e) => {
                     actionHandler(e, deleteMessages(message.id))
                   }}
