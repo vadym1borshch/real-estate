@@ -38,7 +38,7 @@ export const MyAccount = () => {
   }, [path])
 
   return (
-    <div className="grid w-full max-w-[72.5rem] grid-cols-1 items-start gap-10 pb-[9.375rem] md:grid-cols-[22.5rem_auto]">
+    <div className="grid w-full max-w-[72.5rem] grid-cols-1 items-start gap-10 pb-[6.25rem] lg:pb-[9.375rem] md:grid-cols-[22.5rem_auto]">
       <div className="hidden flex-col md:flex">
         <AuthButtons
           onClick={() => {}}
