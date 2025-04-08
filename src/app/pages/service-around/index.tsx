@@ -100,7 +100,6 @@ export const ServiceAround = () => {
           />
         ))}
       </div>
-
       <div className="mt-[3.75rem] mb-[6.25rem] flex w-full flex-col items-center lg:mt-[5.625rem] lg:mb-[9.375rem]">
         <div className="flex w-full max-w-[47.5rem] items-center gap-3">
           <Input
@@ -113,6 +112,7 @@ export const ServiceAround = () => {
         {!!foundWorkers?.length && (
           <div className="border-t-gray mx-auto mt-[3.75rem] grid w-full max-w-[72.5rem] grid-cols-1 gap-5 lg:gap-10 border-t-1 pt-[3.75rem] sm:grid-cols-2 md:grid-cols-3 lg:mt-[5.625rem] lg:grid-cols-4 lg:pt-[5.625rem]">
             {foundWorkers?.map((item) => (
+
               <AssistantCard
                 assistant={item}
                 key={item.id}
