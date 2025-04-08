@@ -25,10 +25,10 @@ export const DefaultPageLayout = () => {
       let accumulatedPath = ''
 
       const newLinks = segments.map((segment) => {
-        accumulatedPath += `${segment}`
+        accumulatedPath += `/${segment}`
         return {
           id: accumulatedPath,
-          href: accumulatedPath,
+          href: accumulatedPath.substring(1),
           label: getTranslationByKey(`${segment}.title`) || segment,
         }
       })

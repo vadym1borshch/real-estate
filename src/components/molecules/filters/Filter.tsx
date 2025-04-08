@@ -123,9 +123,12 @@ export const Filter = ({ filter }: Props) => {
           return (
             <Button
               key={value as unknown as string}
-              className={cn('rooms-filter__button h-10 w-10', {
-                'bg-blue-gray border-blue-gray text-white': isSelected,
-              })}
+              className={cn(
+                'rooms-filter__button text-blue-gray border-blue-gray h-10 w-10',
+                {
+                  'bg-blue-gray border-blue-gray text-white': isSelected,
+                }
+              )}
               variant="outlined"
               selected={isSelected}
               onClick={() => {
@@ -137,6 +140,7 @@ export const Filter = ({ filter }: Props) => {
               }}
             >
               {value as number}
+              {value === 6 ? '+' : ''}
             </Button>
           )
         })

@@ -4,9 +4,11 @@ import { useAppDispatch } from '../store'
 import { fetchEstate } from '../store/estateSlice'
 import { useWindowDimensions } from '../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../@constants'
+import { Mode, setMode } from '../store/ui/modeSlice.ts'
+import { Loader } from '../components/atoms/loader'
 
 
-const Loading = () => <div>Loading translations...</div>
+const Loading = () => <Loader/>
 
 const App = () => {
   const {width} = useWindowDimensions()
@@ -14,6 +16,10 @@ const App = () => {
   const isLowMobile = width < BREAKPOINTS.SM
 
   useEffect(() => {
+    const mode = localStorage.getItem('mode')
+    if (mode) {
+      dispatch(setMode(mode as Mode))
+    }
     dispatch(fetchEstate())
   }, [])
 
