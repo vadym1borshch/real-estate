@@ -55,7 +55,7 @@ export const AddCardForm = ({submitHandler}: Props) => {
       }}
     >
       {({ isValid, dirty }) => (
-        <Form className="flex w-full flex-col gap-3 items-center max-w-[320px]">
+        <Form className="flex w-full flex-col gap-3 items-center max-w-[20rem]">
           <Field name="cardNumber">
             {({ field, meta, form }: FieldProps) => {
               return (
@@ -72,7 +72,7 @@ export const AddCardForm = ({submitHandler}: Props) => {
                     form.setFieldValue('system', system)
                   }}
                   error={meta.touched && meta.error ? meta.error : undefined}
-                  className="min-h-[48px]"
+                  className="min-h-12"
                   errorPosition="bottom"
                   iconId="bankCardIcon"
                   iconSide="left"
@@ -122,7 +122,7 @@ export const AddCardForm = ({submitHandler}: Props) => {
                     form.setFieldValue('validPeriod', `${mm}/${yy}`)
                     form.setFieldError('validPeriod', undefined)
                   }}
-                  className="min-h-[48px] px-4 md:max-w-[198px]"
+                  className="min-h-12 px-4 md:max-w-[12.375rem]"
                   errorPosition="bottom"
                 />
               )}
@@ -134,7 +134,7 @@ export const AddCardForm = ({submitHandler}: Props) => {
                   placeholder="CVV / CVC"
                   id="cvv"
                   error={meta.touched && meta.error ? meta.error : undefined}
-                  className="min-h-[48px] px-4"
+                  className="min-h-12 px-4"
                   errorPosition="bottom"
                 />
               )}

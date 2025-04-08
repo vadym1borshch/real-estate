@@ -23,7 +23,7 @@ export const DetailPage = () => {
       <Modal
         open={openInfoModal}
         setOpen={setOpenInfoModal}
-        className="max-h-[90svh] max-w-[560px] overflow-y-scroll"
+        className="max-h-[90svh] max-w-[35rem] overflow-y-scroll"
       >
         <ul className="whitespace-pre-wrap">
           <ReactMarkdown>{t(modalInfo)}</ReactMarkdown>

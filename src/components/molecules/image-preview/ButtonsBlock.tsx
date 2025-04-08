@@ -19,14 +19,14 @@ export const ButtonsBlock = ({ handleNext, handlePrev }: Props) => {
         className={cn(
           'absolute top-1/2 left-3 p-0 -translate-y-1/2 transform !rounded-full !border-transparent',
           {
-            'h-[48px] w-[48px] !border-white left-6': !isLarge,
+            'h-12 w-12 !border-white left-6': !isLarge,
           }
         )}
         onClick={handlePrev}
       >
         <Icon
           id={isLarge ? 'arrowLeftRoundedIcon' : 'chevronDownIcon'}
-          className={cn('h-[24px] w-[24px] text-white', {
+          className={cn('h-6 w-6 text-white', {
             'rotate-90': !isLarge,
           })}
           onClick={handlePrev}
@@ -37,14 +37,14 @@ export const ButtonsBlock = ({ handleNext, handlePrev }: Props) => {
         className={cn(
           'absolute top-1/2 right-3 p-0 -translate-y-1/2 transform !rounded-full !border-transparent',
           {
-            'h-[48px] w-[48px] !border-white right-6': !isLarge,
+            'h-12 w-12 !border-white right-6': !isLarge,
           }
         )}
         onClick={handleNext}
       >
         <Icon
           id={isLarge ? 'arrowLeftRoundedIcon' : 'chevronDownIcon'}
-          className={cn('h-[24px] w-[24px] rotate-180 text-white', {
+          className={cn('h-6 w-6 rotate-180 text-white', {
             '-rotate-90': !isLarge,
           })}
           onClick={handleNext}

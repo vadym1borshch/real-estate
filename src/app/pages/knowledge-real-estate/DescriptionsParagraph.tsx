@@ -40,13 +40,13 @@ export const DescriptionsParagraph = ({
   }, [Component])
 
   return (
-    <div className={cn('flex w-full flex-col items-center', className)}>
+    <div className={cn('flex w-full flex-col gap-6 items-center', className)}>
       <TitleComponent
         text={title}
-        className={cn('w-[200px] pb-6 text-center', titleClassName)}
+        className={cn('w-[200px] text-center', titleClassName)}
       />
       <p
-        className={cn('max-w-[47.5rem] pb-6 text-center', descriptionsClassName)}
+        className={cn('max-w-[47.5rem] text-center', descriptionsClassName)}
       >
         {description}
       </p>

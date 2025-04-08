@@ -40,7 +40,7 @@ const Footer = () => {
             href={''}
             iconId="youtubeIcon"
             className="text-white"
-            iconClassName="h-[48px] w-[48px] lg:w-12 lg:h-12"
+            iconClassName="h-12 w-12"
           >
             YouTube
           </Link>

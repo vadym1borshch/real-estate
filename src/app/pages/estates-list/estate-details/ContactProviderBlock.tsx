@@ -14,7 +14,7 @@ export const ContactProviderBlock = ({agent}: Props) => {
   const [openModal, setOpenModal] = useState(false)
   const { t } = useTranslation()
   return (
-    <div id="contactProviderBlock" className="flex w-full flex-col pt-[6.25rem] md:grid md:grid-cols-[2fr_1fr] md:gap-10 pb-[6.25rem]">
+    <div id="contactProviderBlock" className="flex w-full flex-col py-[6.25rem] lg:py-[9.375rem] md:grid md:grid-cols-[2fr_1fr] md:gap-10 ">
       <H3 text={t('real-estate.details.contact-provider.title')} className="max-w-[13.75rem] pb-6 md:pb-10"/>
       <div className="flex items-center gap-3 pb-6 md:pb-0 ">
         <Avatar size={3.75} src={agent.photo} />

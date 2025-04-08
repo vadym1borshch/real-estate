@@ -73,7 +73,7 @@ export const EstatesDetails = () => {
                 {estate.views}
                 <Icon
                   id="eyeIcon"
-                  className="h-[24px] w-[24px] lg:h-6 lg:w-6"
+                  className="h-6 w-6"
                 />
               </span>
             </div>

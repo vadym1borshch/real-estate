@@ -73,7 +73,7 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
         <div
           key={toast.id}
           className={cn(
-            'relative flex max-w-[300px] min-w-[250px] items-start justify-between overflow-hidden rounded-lg bg-transparent p-4 text-sm transition-all duration-500 ease-in-out',
+            'relative flex max-w-[18.75rem] min-w-[15.625rem] items-start justify-between overflow-hidden rounded-lg bg-transparent p-4 text-sm transition-all duration-500 ease-in-out',
             visibleToasts[toast.id]
               ? 'translate-x-0 opacity-100'
               : position.includes('right')
@@ -85,7 +85,7 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
         >
           <div className="flex items-center">
             <Icon id="errorIconOutlined" className="h-6 w-6 p-0" />
-            <span className="line-clamp-3 overflow-hidden px-4 text-ellipsis whitespace-normal max-w-[200px]">
+            <span className="line-clamp-3 overflow-hidden px-4 text-ellipsis whitespace-normal max-w-[12.5rem]">
               {toast.message}
             </span>
           </div>
@@ -102,7 +102,7 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
           >
             <Icon
               id="closeIcon"
-              className="text-charcoal h-[24px] w-[24px] p-0"
+              className="text-charcoal h-6 w-6 p-0"
             />
           </Button>
         </div>

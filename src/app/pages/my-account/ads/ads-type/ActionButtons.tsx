@@ -68,7 +68,7 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
     if (status === 'rejected') {
       return (
         <div
-          className={cn('flex w-full min-w-[300px] gap-1.5', {
+          className={cn('flex w-full min-w-[18.75rem] gap-1.5', {
             'grid max-w-[22.5rem] grid-cols-[7fr_1fr_1fr]': isLarge,
           })}
         >
@@ -89,7 +89,7 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
               ) : (
                 <Icon
                   id={button.children}
-                  className="h-[24px] w-[24px]"
+                  className="h-6 w-6"
                   onClick={onClickHandler(button.id)}
                 />
               )}
@@ -100,7 +100,7 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
     }
     return (
       <div
-        className={cn('flex w-full min-w-[300px] gap-1.5', {
+        className={cn('flex w-full min-w-[18.75rem] gap-1.5', {
           'grid max-w-[22.5rem] grid-cols-[3fr_1fr_1fr_1fr_1fr_1fr]': isLarge,
         })}
       >
@@ -126,7 +126,7 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
             >
               <Icon
                 id={button.children}
-                className="h-[24px] w-[24px]"
+                className="h-6 w-6"
                 onClick={onClickHandler(button.id)}
               />
             </Button>

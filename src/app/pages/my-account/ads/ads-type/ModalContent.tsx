@@ -91,7 +91,7 @@ export const ModalContent = ({ id, onClick, status }: Props) => {
               </Dropdown>
             </div>
             <span className="border-blue-gray flex w-full max-w-[6.875rem] items-center justify-center rounded-sm border">
-              {initPrice * currentPrice.key} <Icon id="euroCurrencyIcon" className="w-[24px] h-[24px]"/>
+              {initPrice * currentPrice.key} <Icon id="euroCurrencyIcon" className="w-6 h-6"/>
             </span>
           </div>
 

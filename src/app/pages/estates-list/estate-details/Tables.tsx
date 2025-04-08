@@ -28,15 +28,15 @@ export const Tables = ({ estate }: Props) => {
   return (
     <div className="flex flex-col items-center gap-10 md:grid md:grid-cols-[1fr_1fr] md:items-start">
       <Table
-        className="my-[6.25rem]"
+        className="my-[6.25rem] lg:my-[9.375rem]"
         tableRows={(isTablet ? dividedList : updatedEstateDetails).map(
           (row) => (
             <tr
               key={row.id}
               className="border-blue-gray border-b last-of-type:border-0"
             >
-              <td className="w-[24px] py-3 pl-6">
-                <Icon id={row.iconId} className="h-[24px] w-[24px]" />
+              <td className="w-6 py-3 pl-6">
+                <Icon id={row.iconId} className="h-6 w-6" />
               </td>
               <td className="py-3 pl-3">
                 <span className="flex items-center">
@@ -49,14 +49,14 @@ export const Tables = ({ estate }: Props) => {
       />
 
       <Table
-        className="my-[6.25rem] hidden md:block"
+        className="my-[6.25rem] lg:my-[9.375rem] hidden md:block"
         tableRows={secondPartList.map((row) => (
           <tr
             key={row.id}
             className="border-blue-gray border-b last-of-type:border-0"
           >
-            <td className="w-[24px] py-3 pl-6">
-              <Icon id={row.iconId} className="h-[24px] w-[24px]" />
+            <td className="w-6 py-3 pl-6">
+              <Icon id={row.iconId} className="h-6 w-6" />
             </td>
             <td className="py-3 pl-3">
               <span className="flex items-center">

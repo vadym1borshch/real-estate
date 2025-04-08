@@ -79,9 +79,9 @@ export const EstatesList = () => {
           setOpen={(open) => setOpenMobileDropdown(open)}
           variant="outlined"
           triggerButtonClassName="!min-w-full text-base"
-          dropdownClassName="min-w-[300px] w-[calc(100%+53px)] border border-blue-gray p-3 !min-h-[15.75rem] overflow-hidden"
+          dropdownClassName="min-w-[18.75rem] w-[calc(100%+53px)] border border-blue-gray p-3 !min-h-[15.75rem] overflow-hidden"
           iconId="filterIcon"
-          iconClassName="w-[24px] h-[24px] text-charcoal"
+          iconClassName="w-6 h-6 text-charcoal"
           withIcon
         >
           <Filters className="m-0 bg-transparent p-0">
@@ -95,7 +95,7 @@ export const EstatesList = () => {
           className="h-12 w-12"
           onClick={changeViewMode}
         >
-          <Icon id="mapIcon" className="h-[24px] min-w-[24px]" />
+          <Icon id="mapIcon" className="h-6 min-w-6" />
         </Button>
       </div>
 
@@ -105,7 +105,7 @@ export const EstatesList = () => {
           variant="outlined"
           onClick={changeViewMode}
         >
-          <Icon id="mapIcon" className="h-[24px] min-w-[24px]" />
+          <Icon id="mapIcon" className="h-6 min-w-6" />
         </Button>
       </Filters>
 

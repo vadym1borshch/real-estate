@@ -54,13 +54,13 @@ export const MapBlock = ({estate}:Props) => {
         <Link
           href="/buy/details"
           iconId="playIcon"
-          className="hidden md:flex md:mb-[100px]"
+          className="hidden md:flex "
         >
           {t('real-estate.details.click-here-tour')}
         </Link>
       </div>
 
-      <div className="flex min-w-[calc(50%-1.25rem)] flex-col gap-6 pt-6 pb-[100px] md:order-1 md:pt-0">
+      <div className="flex min-w-[calc(50%-1.25rem)] flex-col mb-[6.25rem] lg:mb-[9.375rem] gap-6 pt-6  md:order-1 md:pt-0">
         <Link href="/buy/details" iconId="playIcon" className="md:hidden">
           {t('real-estate.details.click-here-tour')}
         </Link>

@@ -68,7 +68,7 @@ const App = () => {
 
   if (isLowMobile) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen text-[24px]">No develop for this screen size</div>
+      <div className="flex flex-col items-center justify-center h-screen text-2xl">No develop for this screen size</div>
     )
   }
 

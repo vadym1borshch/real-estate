@@ -108,7 +108,7 @@
     {
       "id": "architect",
       "title": "service-around.services.architect",
-      "checked": true
+      "checked": false
     },
     {
       "id": "roofers",
@@ -123,7 +123,7 @@
     {
       "id": "interior-design",
       "title": "service-around.services.interior-design",
-      "checked": true
+      "checked": false
     },
     {
       "id": "kitchen-installation",
@@ -133,7 +133,7 @@
     {
       "id": "carpenter",
       "title": "service-around.services.carpenter",
-      "checked": false
+      "checked": true
     }
   ],
   "serviceWorkers": [

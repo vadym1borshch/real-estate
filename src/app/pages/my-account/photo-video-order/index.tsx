@@ -12,7 +12,7 @@ export const PhotoVideoOrderPage = () => {
   const [query, setQuery] = useState(initialValue)
   const [showModal, setShowModal] = useState(false)
   return (
-    <div className="flex flex-col gap-[5.625rem]">
+    <div className="flex flex-col gap-[3.75rem] lg:gap-[5.625rem]">
       <BlockWrapper
         title={t('order.price-list.title')}
         className="flex w-full flex-col gap-1.5 lg:flex-row"

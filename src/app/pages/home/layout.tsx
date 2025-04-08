@@ -18,17 +18,17 @@ export const HomePageLayout = () => {
 
   return (
     <div className="relative flex w-full flex-col items-center">
-      <div className="flex w-full flex-col items-center rounded-lg bg-[url('/HERO.png')] bg-cover bg-no-repeat px-5 xl:px-[7.5rem] lg:h-[720px] ">
+      <div className="flex w-full flex-col items-center rounded-lg bg-[url('/HERO.png')] bg-cover bg-no-repeat px-5 xl:px-[7.5rem] lg:h-[45rem] ">
         <Header />
         <H1
-          className="font-250 lg:font-200 max-w-[47.5rem] pt-[4.375rem] text-center text-[36px] leading-[2.1rem] lg:text-6xl lg:leading-[4.125rem]"
+          className="font-250 lg:font-200 max-w-[47.5rem] pt-[4.375rem] text-center text-4xl leading-[2.1rem] lg:text-6xl lg:leading-[4.125rem]"
           text={t('title')}
         />
 
         <Filters className="bg-light-gray3/80 mt-[3.75rem] max-w-[72.5rem] backdrop-blur-[5px] lg:mt-[9.75rem]">
           <Button
             onClick={() => navigate(listingType, true)}
-            className="col-span-full mx-auto w-full max-w-[420px] lg:w-fit"
+            className="col-span-full mx-auto w-full max-w-[26.25rem] lg:w-fit"
           >
             {t('buttons.find')}
           </Button>

@@ -12,13 +12,13 @@ export const ContactUsPage = () => {
     <div className="flex w-full max-w-[72.5rem] flex-col items-center">
       <div className="flex w-full max-w-[47.5rem] flex-col items-center">
         <H2 text={t('contact-us.title')} className="text-center" />
-        <p className="mt-6 mb-[5.625rem] text-center">
+        <p className="mt-6 mb-[3.75rem] text-center lg:mb-[5.625rem]">
           {t('contact-us.descriptions')}
         </p>
       </div>
-      <div className="grid w-full grid-cols-1 gap-10 pb-[9.375rem] md:grid-cols-[2fr_1fr]">
-       <ContactUsForm callback={() => setOpenModal(true)} withAgreeField />
-        <div className="mt-6 flex flex-col items-center gap-6 md:items-start">
+      <div className="grid w-full grid-cols-1 gap-[6.25rem] gap-x-10 pb-[6.25rem] md:grid-cols-[2fr_1fr] lg:pb-[9.375rem]">
+        <ContactUsForm callback={() => setOpenModal(true)} withAgreeField />
+        <div className="flex flex-col items-center gap-6 md:items-start">
           <p className="text-center md:text-start">
             {t('contact-us.assistance.descriptions')}
           </p>

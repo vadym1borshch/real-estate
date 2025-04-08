@@ -24,22 +24,22 @@ export const KnowledgeRealEstate = () => {
       <DescriptionsParagraph
         title={t('knowledge-real-estate.p1.title')}
         description={t('knowledge-real-estate.p1.description')}
-        className="max-w-[47.5rem] gap-6"
+        className="max-w-[47.5rem]"
         titleClassName="text-center w-full"
         Component={H2}
       />
-      <div className="flex flex-col items-center pt-[3.75rem] pb-[6.25rem] md:grid md:grid-cols-[2fr_1fr] md:gap-10">
+      <div className="flex flex-col items-center pt-[3.75rem] pb-[6.25rem] md:grid md:grid-cols-[2fr_1fr] md:gap-10 lg:pt-[5.625rem] lg:pb-[9.375rem]">
         <img
           src="/man-with-laptop.png"
           alt="image"
-          className="w-full rounded-lg object-cover md:h-[420px]"
+          className="w-full rounded-lg object-cover md:h-[26.25rem]"
         />
         <DescriptionsParagraph
           title={t('knowledge-real-estate.p2.title')}
           description={t('knowledge-real-estate.p2.description')}
           titleClassName="md:text-start"
           descriptionsClassName="md:text-start"
-          className="pt-6 md:items-start md:pt-0"
+          className="pt-10 md:items-start md:pt-0"
         >
           <Button iconId="downloadIcon">Herunterladen</Button>
         </DescriptionsParagraph>
@@ -50,7 +50,7 @@ export const KnowledgeRealEstate = () => {
         titleClassName="md:w-full"
       />
 
-      <div className="flex w-full max-w-[47.5rem] flex-col items-center pt-[4.125rem] pb-[9.375rem] gap-3">
+      <div className="flex w-full max-w-[47.5rem] flex-col items-center gap-3 pt-[3.75rem] pb-[6.25rem] lg:pt-[5.625rem] lg:pb-[9.375rem]">
         {pieces_of_knowledge.map((item) => (
           <Accordion
             key={item.id}
@@ -70,7 +70,7 @@ export const KnowledgeRealEstate = () => {
         description={t('knowledge-real-estate.p4.description')}
         titleClassName="md:w-full"
       />
-      <div className="flex w-full max-w-[47.5rem] flex-col items-center pt-[4.125rem] pb-[9.375rem]">
+      <div className="flex w-full max-w-[47.5rem] flex-col items-center pt-[3.75rem] pb-[6.25rem] lg:pt-[5.625rem] lg:pb-[9.375rem]">
         <ContactUsForm withAgreeField />
       </div>
     </div>

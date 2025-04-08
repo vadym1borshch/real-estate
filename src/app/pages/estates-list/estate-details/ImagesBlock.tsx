@@ -31,7 +31,7 @@ export const ImagesBlock = ({ agent, ref }: Props) => {
   return (
     <div className="flex flex-col items-center md:grid md:grid-cols-[2fr_1fr] md:items-start md:gap-10">
       <ImagePreview images={images} withButtons width={containerDimension} />
-      <div className="border-blue-gray flex min-w-[300px] w-full flex-col items-center rounded-lg border p-3 md:px-7.5 pt-7.5 md:h-full md:min-w-[22.5rem]">
+      <div className="border-blue-gray flex min-w-[18.75rem] w-full flex-col items-center rounded-lg border p-3 md:px-7.5 pt-7.5 md:h-full md:min-w-[22.5rem]">
         <Avatar userName={agent.name} size={10} src={agent.photo} />
         <div className="flex w-full flex-col items-center pt-6">
           <span className="text-[1.125rem]">{agent.name}</span>
@@ -43,7 +43,7 @@ export const ImagesBlock = ({ agent, ref }: Props) => {
         <div className="flex w-full flex-col items-center py-9">
           <p className="font-500 text-xl">{agent.phone}</p>
           <p className="flex items-center pt-1.5">
-            <Icon id="checkBadgeBlueIcon" className="h-[24px] w-[24px]" />
+            <Icon id="checkBadgeBlueIcon" className="h-6 w-6" />
             <Caption text={t(agent.verified.title)} />
           </p>
         </div>

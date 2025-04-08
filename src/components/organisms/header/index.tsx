@@ -45,7 +45,7 @@ const Header = ({ className }: Props) => {
   return (
     <header
       className={cn(
-        'z-1001 flex w-full justify-between bg-transparent pt-[0.875rem] pb-6 lg:py-[1.875rem]',
+        'z-1001 flex w-full max-w-[72.5rem] justify-between bg-transparent pt-[0.875rem] pb-6 lg:py-[1.875rem]',
         className
       )}
     >

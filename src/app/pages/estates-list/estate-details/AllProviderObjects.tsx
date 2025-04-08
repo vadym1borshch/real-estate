@@ -11,13 +11,13 @@ export const AllProviderObjects = () => {
   return (
     <div
       id="allProviderObjects"
-      className="flex flex-col items-center pb-[6.25rem]"
+      className="flex flex-col items-center pb-[6.25rem] lg:pb-[9.375rem]"
     >
       <H3
         text={t('real-estate.details.providers-objects.title')}
-        className="max-w-[220px] self-start pb-6 md:pb-10"
+        className="max-w-[220px] self-start pb-6 md:pb-10 text-2xl"
       />
-      <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid w-full grid-cols-1 gap-5 lg:gap-10 md:grid-cols-2 lg:grid-cols-3">
         {estates.slice(0, 4).map((estate) => (
           <EstateCard
             key={estate.id}

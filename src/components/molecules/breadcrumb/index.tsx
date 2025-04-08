@@ -17,7 +17,7 @@ interface Props {
 const Breadcrumb = ({ items }: Props) => {
   const { t } = useTranslation()
   return (
-    <div className="mb-[30px] w-full">
+    <div className="mb-5 w-full max-w-[72.5rem] lg:mb-7.5">
       <Breadcrumbs
         fullWidth
         className="breadcrumb flex gap-1.5"
@@ -28,8 +28,8 @@ const Breadcrumb = ({ items }: Props) => {
           />
         }
         placeholder={null}
-        onPointerEnterCapture={()=>{}}
-        onPointerLeaveCapture={()=>{}}
+        onPointerEnterCapture={() => {}}
+        onPointerLeaveCapture={() => {}}
       >
         {items.map(({ id, href, label }, idx) => {
           const isDisabled = idx === items.length - 1

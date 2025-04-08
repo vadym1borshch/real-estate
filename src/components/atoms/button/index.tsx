@@ -78,7 +78,7 @@ const Button = ({
             }}
             id={iconId}
             className={cn(
-              'h-[24px] w-[24px] max-w-[24px] min-w-[24px]',
+              'h-6 w-6 max-w-6 min-w-6',
               { 'order-first': iconSide === 'left' },
               iconClassName
             )}

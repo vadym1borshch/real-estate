@@ -60,7 +60,7 @@ const Modal = ({
       <div
         id="modal"
         className={cn(
-          'relative z-10 mx-4 w-full rounded-lg bg-white p-6 shadow-lg',
+          'relative z-10 mx-7.5 w-full rounded-lg bg-white p-6 shadow-lg',
           className
         )}
       >
@@ -72,7 +72,7 @@ const Modal = ({
           >
             <Icon
               id="closeIcon"
-              className="text-charcoal h-[24px] w-[24px]"
+              className="text-charcoal h-6 w-6"
               onClick={() => setOpen(false)}
             />
           </Button>

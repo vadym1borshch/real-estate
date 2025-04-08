@@ -12,7 +12,7 @@ export const Filters = ({ className, children }: Props) => {
   return (
     <div
       className={cn(
-        'z-1000 grid w-full grid-cols-2 justify-center gap-3 rounded-md p-3 backdrop-blur-[20px] lg:flex lg:flex-nowrap',
+        'z-1000 grid w-full grid-cols-2 justify-center gap-3 rounded-md p-2.5 backdrop-blur-[20px] lg:flex lg:flex-nowrap',
         className
       )}
     >

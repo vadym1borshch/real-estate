@@ -75,6 +75,7 @@ export const ServiceAround = () => {
     )
   }, [foundWorkers, currentAssistantId])
 
+
   useEffect(() => {
     fetchServices()
     fetchServiceWorkers()
@@ -85,7 +86,7 @@ export const ServiceAround = () => {
   return (
     <div className="flex w-full flex-col items-center">
       <H2 text={t('service-around.title')} className="text-center" />
-      <p className="mt-6 mb-[5.625rem] w-full max-w-[47.5rem] text-center">
+      <p className="mt-6 mb-[3.75rem] w-full max-w-[47.5rem] text-center lg:mb-[5.625rem]">
         {t('service-around.descriptions')}
       </p>
 
@@ -100,7 +101,7 @@ export const ServiceAround = () => {
         ))}
       </div>
 
-      <div className="mt-[5.625rem] mb-[9.375rem] flex w-full flex-col items-center">
+      <div className="mt-[3.75rem] mb-[6.25rem] flex w-full flex-col items-center lg:mt-[5.625rem] lg:mb-[9.375rem]">
         <div className="flex w-full max-w-[47.5rem] items-center gap-3">
           <Input
             value={query}
@@ -109,10 +110,9 @@ export const ServiceAround = () => {
           />
           <Button onClick={addPostalCode}>{t('buttons.find')}</Button>
         </div>
-
-        {!!foundWorkers.length && (
-          <div className="border-t-gray mx-auto mt-[5.625rem] grid w-full max-w-[72.5rem] grid-cols-[repeat(auto-fill,minmax(16.25rem,1fr))] place-items-center gap-10 border-t-1 pt-[5.625rem]">
-            {foundWorkers.map((item) => (
+        {!!foundWorkers?.length && (
+          <div className="border-t-gray mx-auto mt-[3.75rem] grid w-full max-w-[72.5rem] grid-cols-1 gap-5 lg:gap-10 border-t-1 pt-[3.75rem] sm:grid-cols-2 md:grid-cols-3 lg:mt-[5.625rem] lg:grid-cols-4 lg:pt-[5.625rem]">
+            {foundWorkers?.map((item) => (
               <AssistantCard
                 assistant={item}
                 key={item.id}
@@ -126,32 +126,30 @@ export const ServiceAround = () => {
       <Modal
         open={!!currentAssistantId}
         setOpen={() => setCurrentAssistantId(null)}
-        className="max-w-[560px]"
+        className="max-w-[560px] h-[92svh] md:h-fit"
       >
-        {currentAssistant && (
-          <div className="flex flex-col items-center gap-6">
-            <Avatar
-              userName={currentAssistant.name}
-              src={currentAssistant.photo}
-              size={10}
-            />
-            <div className="flex w-full max-w-[360px] flex-col items-center gap-1.5">
-              <H3 text={currentAssistant.name} />
-              <span className="text-blue-gray text-center text-xs">
-                {t(currentAssistant.profession.title)}
-              </span>
-            </div>
-            <p className="text-center">{currentAssistant.description}</p>
-            <p className="flex w-full max-w-[360px] flex-col items-center">
-              <span className="font-700">
-                {t('contacts.tel')}: {currentAssistant.phone}
-              </span>
-              <span className="font-700">
-                {t('contact-us.assistance.email')} {currentAssistant.email}
-              </span>
-            </p>
+        <div className="flex flex-col items-center h-[calc(92svh-48px)] md:h-fit justify-center gap-6">
+          <Avatar
+            userName={currentAssistant?.name}
+            src={currentAssistant?.photo}
+            size={10}
+          />
+          <div className="flex w-full max-w-[360px] flex-col items-center gap-1.5">
+            <H3 text={currentAssistant?.name as string} />
+            <span className="text-blue-gray text-center text-xs">
+              {t(currentAssistant?.profession.title)}
+            </span>
           </div>
-        )}
+          <p className="text-center">{currentAssistant?.description}</p>
+          <p className="flex w-full max-w-[360px] flex-col items-center">
+            <span className="font-700">
+              {t('contacts.tel')}: {currentAssistant?.phone}
+            </span>
+            <span className="font-700 text-center">
+              {t('contact-us.assistance.email')} {currentAssistant?.email}
+            </span>
+          </p>
+        </div>
       </Modal>
     </div>
   )

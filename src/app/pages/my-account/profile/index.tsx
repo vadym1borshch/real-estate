@@ -80,11 +80,11 @@ export const ProfilePage = () => {
           <div className="flex flex-col items-center md:flex-row md:gap-3">
             <span className="text-blue-gray text-lg">{agent.agency?.name}</span>
             {agent.verified.value ? (
-              <span className="text-blue flex h-full items-center gap-[2px]">
+              <span className="text-blue flex h-full items-center gap-0.5">
                 {t('profile.verification.title.verified')}
                 <Icon
                   id="checkBadgeOutlinedIcon"
-                  className="h-[24px] w-[24px]"
+                  className="h-6 w-6"
                 />
               </span>
             ) : (
@@ -108,7 +108,7 @@ export const ProfilePage = () => {
           setFile(null)
           setOpenModal(open)
         }}
-        className="max-w-[560px]"
+        className="max-w-[35rem]"
         title="VERIFIZIERUNG"
       >
         {modalChild}
