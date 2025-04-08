@@ -1,13 +1,16 @@
 import { cn } from '../../../../helpers/ui.ts'
+import React from 'react'
 
-interface Props {
-  text: string;
-  className?: string;
+interface Props extends React.HTMLAttributes<HTMLSpanElement> {
+  text: string
+  className?: string
 }
 
-const SmallFont = ({ text, className }: Props) => {
+const SmallFont = ({ text, className, ...rest }: Props) => {
   return (
-    <span className={cn('text-xs leading-[1.125rem]', className)}>{text}</span>
+    <span className={cn('text-xs leading-[1.125rem]', className)} {...rest}>
+      {text}
+    </span>
   )
 }
 

@@ -8,13 +8,17 @@
         "de": "Germany",
         "at": "Austria",
         "uk": "Ukraine"
-      }
+      },
+      "not-found": "Objects not found..."
     },
     "rent": {
       "title": "Rent "
     },
     "buy": {
       "title": "Buy "
+    },
+    "create-ad": {
+      "title": "Create Ad"
     },
     "login": {
       "title": "LOGIN",
@@ -561,6 +565,7 @@
       "rooms": "Rooms",
       "bathroom": "Bathroom",
       "details": {
+        "updated": "Updated:",
         "contact-provider": {
           "title": "CONTACT THE PROVIDER",
           "p1": "This magnificent residence is located high above the rolling hills and offers an incomparable view down over Vienna and the surrounding picturesque landscape. The spacious entrance area immediately conveys a feeling of luxury, comfort and exclusivity. The floor-to-ceiling windows in the central living area flood the room with natural light and offer a magical view of the green oasis of the property's own garden, which blends harmoniously into the panoramic landscape. The fitness room with indoor pool, whirlpool and sauna offers everything you need to strengthen and relax your body and mind. The spacious garage has an electric charging station and offers parking for three cars. The outdoor area of this property offers breathtaking views and plenty of space for terraces, barbecues, sports activities and even an outdoor sauna.",

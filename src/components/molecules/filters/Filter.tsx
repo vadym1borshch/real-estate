@@ -7,23 +7,28 @@ import Button from '../../atoms/button'
 import { cn, textEllipsis } from '../../../helpers/ui.ts'
 import DropdownInput from '../input-dropdown'
 import Dropdown from '../../atoms/dropdown'
-import { ListingType, useListing } from '../../../contexts/ListingContext.tsx'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
+import { useQueryParams } from '../../../helpers/hooks/useQueryParams.ts'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { ListingType, setListingType } from '../../../store/estateSlice'
+import { selectListingType } from '../../../store/estateSlice/selectors.ts'
 
 interface Props {
   filter: IFilter
 }
 
 export const Filter = ({ filter }: Props) => {
+  useQueryParams()
   const [searchParams, setSearchParams] = useSearchParams()
   const { t, i18n } = useTranslation()
   const [query, setQuery] = useState(searchParams.get(filter.key) || '')
   const [open, setOpen] = useState(false)
-  const { listingType, setListingType } = useListing()
+  const listingType = useAppSelector(selectListingType)
   const navigate = useNavigate()
   const path = usePathname()
+  const dispatch = useAppDispatch()
 
   const label = filter.values.find(
     (val) => typeof val !== 'number' && val.id === listingType
@@ -95,8 +100,8 @@ export const Filter = ({ filter }: Props) => {
             iconId="euroCurrencyIcon"
             searchParams={searchParams}
             updateParams={updateParams}
-            maxKey="price_max"
-            minKey="price_min"
+            maxKey="priceMax"
+            minKey="priceMin"
           />
         )
       case 'm2':
@@ -105,8 +110,8 @@ export const Filter = ({ filter }: Props) => {
             iconId="m2Icon"
             searchParams={searchParams}
             updateParams={updateParams}
-            maxKey="area_max"
-            minKey="area_min"
+            maxKey="areaMax"
+            minKey="areaMin"
           />
         )
       case 'rooms': {
@@ -118,9 +123,12 @@ export const Filter = ({ filter }: Props) => {
           return (
             <Button
               key={value as unknown as string}
-              className={cn('rooms-filter__button h-10 w-10', {
-                'bg-blue-gray border-blue-gray text-white': isSelected,
-              })}
+              className={cn(
+                'rooms-filter__button text-blue-gray border-blue-gray h-10 w-10',
+                {
+                  'bg-blue-gray border-blue-gray text-white': isSelected,
+                }
+              )}
               variant="outlined"
               selected={isSelected}
               onClick={() => {
@@ -132,6 +140,7 @@ export const Filter = ({ filter }: Props) => {
               }}
             >
               {value as number}
+              {value === 6 ? '+' : ''}
             </Button>
           )
         })
@@ -142,18 +151,16 @@ export const Filter = ({ filter }: Props) => {
             return (
               <span
                 key={item.id}
-                className={
-                cn("hover:bg-blue-gray px-4 py-2 text-base", {
-                  "bg-coral": item.id === filter.key,
-                })
-                }
+                className={cn('hover:bg-blue-gray px-4 py-2 text-base', {
+                  'bg-coral': item.id === filter.key,
+                })}
                 onClick={() => {
                   if (filter.key === 'operation') {
-                    setListingType(item.id as ListingType)
+                    dispatch(setListingType(item.id as ListingType))
                     localStorage.setItem('operation', item.id)
                     setOpen(false)
-                    if (path !== ROUTES.home) {
-                      navigate(`/${item.id}`, true)
+                    if (path !== ROUTES.HOME) {
+                      navigate(`${item.id}`, true)
                     }
                     return
                   }
@@ -181,7 +188,7 @@ export const Filter = ({ filter }: Props) => {
           setQuery(value)
           updateParams(filter.key, value)
         }}
-        dropdownClassName="top-14"
+        dropdownClassName="top-12"
       >
         {filter.values.map((item) => {
           if (typeof item !== 'number') {
@@ -220,7 +227,7 @@ export const Filter = ({ filter }: Props) => {
       triggerButtonClassName="min-w-[8.25rem] w-full"
       dropdownClassName={cn(
         filter.key === 'rooms'
-          ? 'flex flex-row py-3 gap-1.5 w-fit !right-0'
+          ? 'flex flex-row py-3 gap-1.5 w-fit !right-0 px-4'
           : '',
         filter.key === 'price' ? '!right-0 lg:!left-0' : ''
       )}

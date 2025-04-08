@@ -5,11 +5,11 @@ import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { authButtons } from './mock.ts'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../helpers/common.ts'
-import { ROUTES } from '../../../@constants/routes.ts'
+import { MY_ACCOUNT, ROUTES } from '../../../@constants/routes.ts'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import { selectCountNewMessages } from '../../../store/messagesSlice/selectors.ts'
 import { deleteUser } from '../../../store/userSlice'
+import { BREAKPOINTS } from '../../../@constants'
 
 interface Props {
   onClick?: () => void
@@ -21,7 +21,7 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
   const pathname = usePathname()
   const navigate = useNavigate()
   const { width } = useWindowDimensions()
-  const isTablet = width <= BREAKPOINTS.md
+  const isTablet = width <= BREAKPOINTS.MD
   const newMessagesCount = useAppSelector(selectCountNewMessages)
   const dispatch = useAppDispatch()
 
@@ -56,8 +56,8 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
             if (onClick) {
               onClick()
             }
-            if (button.href == ROUTES.messages) {
-              navigate(button.href + '/inboxes')
+            if (button.href == ROUTES.MY_ACCOUNT) {
+              navigate(button.href + `/${MY_ACCOUNT.INBOXES}`)
               return
             }
             navigate(button.href)
@@ -65,7 +65,7 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
         >
           <span className="flex w-full justify-between">
             {t(button.title)}
-            {button.href === ROUTES.messages && !!newMessagesCount && (
+            {button.href === ROUTES.MESSAGES && !!newMessagesCount && (
               <span className="bg-coral h-6 w-6 rounded-full text-center text-white">
                 {newMessagesCount}
               </span>

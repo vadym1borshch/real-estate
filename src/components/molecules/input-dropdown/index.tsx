@@ -42,7 +42,7 @@ const DropdownInput = ({
           iconId="navigationIcon"
           iconClassName="w-[24px] h-[24px] bg-transparent text-charcoal"
           placeholder={inputValue || t('filters.address')}
-          className="min-h-[40px] capitalize placeholder:text-blue-gray"
+          className="min-h-[48px] capitalize placeholder:text-blue-gray"
           iconSide="left"
           onFocus={() => {
             setOpen(true)

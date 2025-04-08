@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { sleep } from '../../helpers/common.ts'
+import { sleep } from '../../helpers'
 import { IMessage, Message, messagesArr } from './mock.ts'
 
 export const fetchMessages = createAsyncThunk<IMessage[], void>(

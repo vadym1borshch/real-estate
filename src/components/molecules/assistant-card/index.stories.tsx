@@ -1,6 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react'
 import AssistantCard from './index'
-import { serviceMen } from '../../../app/Pages/ServiceAround/mock.ts'
+import { serviceMen } from '../../../app/pages/service-around/mock.ts'
 
 const assistant = serviceMen[0]
 

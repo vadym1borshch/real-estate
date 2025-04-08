@@ -9,7 +9,7 @@ import { ROUTES } from '../../../../@constants/routes.ts'
 const initLinks = [
   {
     id: '1',
-    href: '/',
+    href: '',
     label: 'links.home',
   },
 ]
@@ -28,7 +28,7 @@ export const DefaultPageLayout = () => {
         accumulatedPath += `/${segment}`
         return {
           id: accumulatedPath,
-          href: accumulatedPath,
+          href: accumulatedPath.substring(1),
           label: getTranslationByKey(`${segment}.title`) || segment,
         }
       })
@@ -40,9 +40,9 @@ export const DefaultPageLayout = () => {
   return (
     <div className="flex w-full flex-col items-center">
       <Header />
-      {path !== ROUTES.rent &&
-        path !== ROUTES.buy &&
-        path !== ROUTES.estates && <Breadcrumb items={links} />}
+      {path !== `/${ROUTES.RENT}` &&
+        path !==`/${ROUTES.BUY}` &&
+        path !== `/${ROUTES.ESTATES}` && <Breadcrumb items={links} />}
       <Outlet />
     </div>
   )

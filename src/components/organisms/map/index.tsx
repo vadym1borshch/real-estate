@@ -1,4 +1,3 @@
-'use client'
 import { useState, ReactNode, RefObject } from 'react'
 import Map, { ViewState, MapRef } from 'react-map-gl'
 import { MapMouseEvent } from 'mapbox-gl'

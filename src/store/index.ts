@@ -5,6 +5,9 @@ import toastSlice from './toastSlise'
 import userSlice from './userSlice'
 import adsSlice from './adsSlice'
 import messagesSlice from './messagesSlice'
+import confirmEmailSlice from './ui/confirmEmailSlice'
+import modeSlice from './ui/modeSlice.ts'
+
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +16,8 @@ export const store = configureStore({
     user: userSlice,
     ads: adsSlice,
     messages: messagesSlice,
+    confirmEmail: confirmEmailSlice,
+    mode: modeSlice,
   },
 })
 

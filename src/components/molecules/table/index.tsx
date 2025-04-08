@@ -17,7 +17,7 @@ const Table = ({ tableHead, tableRows, className }: Props) => {
     >
       <table className="w-full text-left">
         {tableHead && (
-          <thead>
+          <thead className="border-b">
             <tr>
               {tableHead.map((head) => (
                 <th key={head}>

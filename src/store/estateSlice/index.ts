@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { sleep } from '../../helpers/common.ts'
+import { sleep } from '../../helpers'
 import {
   buyFilters,
   FilterOption,
   rentFilters,
-} from '../../components/organisms/home-page/popular-block/mock.ts'
+} from '../../app/pages/home/popular-block/mock.ts'
 import { houses, RealEstate } from '../commonMock.ts'
 
 export const fetchEstate = createAsyncThunk<RealEstate[], void>(
@@ -16,6 +16,19 @@ export const fetchEstate = createAsyncThunk<RealEstate[], void>(
   }
 )
 
+export type ListingType = 'buy' | 'rent'
+
+export interface IFilters {
+  address: string | null
+  priceMin: string | null
+  priceMax: string | null
+  areaMin: string | null
+  areaMax: string | null
+  rooms: string | null
+  listingType: ListingType
+  type: string | null
+}
+
 export interface IState {
   data: RealEstate[] | null
   buyFilter: FilterOption
@@ -24,6 +37,7 @@ export interface IState {
   error: Error | null
   currentPage: number
   currentEstate: RealEstate | null
+  filters: IFilters
 }
 
 const initialState: IState = {
@@ -34,6 +48,16 @@ const initialState: IState = {
   error: null,
   currentPage: 1,
   currentEstate: null,
+  filters: {
+    address: null,
+    priceMin: null,
+    priceMax: null,
+    areaMin: null,
+    areaMax: null,
+    rooms: null,
+    listingType: 'rent',
+    type: null,
+  },
 }
 
 export const realEstateSlice = createSlice({
@@ -47,6 +71,20 @@ export const realEstateSlice = createSlice({
           ? { ...item, favorite: !item.favorite }
           : item
       )
+    },
+
+    refreshFilters: (state, action: PayloadAction<Partial<IFilters>>) => {
+      state.filters = {
+        ...state.filters,
+        ...action.payload,
+      }
+    },
+
+    setListingType: (state, action: PayloadAction<ListingType>) => {
+      state.filters = {
+        ...state.filters,
+        listingType: action.payload,
+      }
     },
 
     setBuyFilter: (
@@ -110,6 +148,8 @@ export const {
   setCurrentPage,
   setCurrentEstate,
   changeCurrentEstate,
+  setListingType,
+  refreshFilters
 } = realEstateSlice.actions
 
 export default realEstateSlice.reducer

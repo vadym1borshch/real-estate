@@ -42,7 +42,7 @@ const Dropdown = ({
           setOpen(false)
         }
       }}
-      className="relative w-full md:w-auto"
+      className="relative w-full lg:w-auto"
     >
       <div ref={ref}>
         <Button

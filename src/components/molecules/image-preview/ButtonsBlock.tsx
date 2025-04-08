@@ -2,7 +2,7 @@ import Button from '../../atoms/button'
 import { cn } from '../../../helpers/ui.ts'
 import Icon from '../../atoms/icon'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
-import { BREAKPOINTS } from '../../../helpers/common.ts'
+import { BREAKPOINTS } from '../../../@constants'
 
 interface Props {
   handleNext: () => void
@@ -11,7 +11,7 @@ interface Props {
 
 export const ButtonsBlock = ({ handleNext, handlePrev }: Props) => {
   const { width: windowWidth } = useWindowDimensions()
-  const isLarge = windowWidth <= BREAKPOINTS.lg
+  const isLarge = windowWidth <= BREAKPOINTS.LG
   return (
     <>
       <Button

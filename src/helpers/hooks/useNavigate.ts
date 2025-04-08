@@ -9,6 +9,6 @@ export const useNavigate = () => {
   return (path: string, keepSearchParams = false) => {
     const langPrefix = `/${i18n.language}`
     const search = keepSearchParams ? location.search : ''
-    navigate(`${langPrefix}${path}${search}`)
+    navigate(`${langPrefix}/${path}${search}`)
   }
 }

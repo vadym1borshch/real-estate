@@ -1,16 +1,15 @@
-import './../src/index.css'
-import { theme } from '../src/theme'
-import { ThemeProvider } from '@material-tailwind/react'
 import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider } from '@material-tailwind/react'
+import { theme } from '../src/theme'
+import './../src/index.css'
 
-export const PreviewDecorator =
-  (Story: any) => {
-    return (
-      <ThemeProvider value={theme}>
-        <BrowserRouter>
-          <Story />
-        </BrowserRouter>
-      </ThemeProvider>
-    )
-  }
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const PreviewDecorator = (Story: any ) => {
+  return (
+    <ThemeProvider value={theme}>
+      <BrowserRouter>
+        <Story />
+      </BrowserRouter>
+    </ThemeProvider>
+  )
+}
