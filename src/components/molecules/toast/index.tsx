@@ -79,19 +79,22 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
               : position.includes('right')
                 ? 'translate-x-full opacity-0'
                 : '-translate-x-full opacity-0',
-            getToastColor(toast.type, 0.1),
-            `border-2 ${getToastColor(toast.type, 0.5)}`
+            getToastColor(toast.type),
+            `border-2 ${getToastColor(toast.type)}`
           )}
         >
           <div className="flex items-center">
-            <Icon id="errorIconOutlined" className="h-6 w-6 p-0" />
-            <span className="line-clamp-3 overflow-hidden px-4 text-ellipsis whitespace-normal max-w-[12.5rem]">
+            <Icon
+              id="errorIconOutlined"
+              className={`h-6 w-6 p-0 ${getToastColor(toast.type)}`}
+            />
+            <span className="line-clamp-3 max-w-[12.5rem] overflow-hidden px-4 text-ellipsis whitespace-normal">
               {toast.message}
             </span>
           </div>
           <Button
             variant="text"
-            className="text-charcoal h-fit w-fit p-0"
+            className="h-fit w-fit p-0"
             onClick={() => {
               setVisibleToasts((prev) => ({ ...prev, [toast.id]: false }))
               setTimeout(() => {
@@ -100,10 +103,7 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
               }, 500)
             }}
           >
-            <Icon
-              id="closeIcon"
-              className="text-charcoal h-6 w-6 p-0"
-            />
+              <Icon id="closeIcon" className={`${getToastColor(toast.type)} h-6 w-6 p-0`} />
           </Button>
         </div>
       ))}

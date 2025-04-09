@@ -335,7 +335,8 @@
     },
     "errors": {
       "invalid-number": "Invalid input: \"{{value}}\". Only numbers are allowed.",
-      "min-greater-max": "Min value cannot be greater than Max value"
+      "min-greater-max": "Min value cannot be greater than Max value",
+      "login-failed": "Incorrect Login or Password"
     },
     "my-account": {
       "title": "My account "

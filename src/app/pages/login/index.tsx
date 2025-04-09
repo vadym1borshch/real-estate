@@ -3,7 +3,7 @@ import Input from '../../../components/atoms/input'
 import { useTranslation } from 'react-i18next'
 import Button from '../../../components/atoms/button'
 import Checkbox from '../../../components/atoms/checkbox'
-import { realEstateAgents } from '../service-around/mock.ts'
+import { Agent } from '../service-around/mock.ts'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import { setUser } from '../../../store/userSlice'
 import { selectUser } from '../../../store/userSlice/selectors.ts'
@@ -13,14 +13,20 @@ import { ROUTES } from '../../../@constants/routes.ts'
 import H3 from '../../../components/atoms/typography/h3'
 import Icon from '../../../components/atoms/icon'
 import { useValidationLoginSchema } from './validation.ts'
-
-const agent = realEstateAgents[0]
+import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
+import { AUTH } from '../../../@constants/URLS.ts'
+import { addToast } from '../../../store/toastSlise'
 
 export const LoginPage = () => {
   const { t } = useTranslation()
   const user = useAppSelector(selectUser)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+
+  const { execute: login } = useAxiosHook<{ user: Agent }>(
+    { url: AUTH.LOGIN, method: 'POST' },
+    { manual: true }
+  )
 
   useEffect(() => {
     if (user) {
@@ -29,8 +35,8 @@ export const LoginPage = () => {
   }, [user])
 
   return (
-    <div className="flex h-[calc(100svh-78px)] lg:h-[calc(100svh-120px)] w-full max-w-[22.5rem] flex-col items-center justify-center">
-      <div className="flex items-center justify-between pb-10 w-full">
+    <div className="flex h-[calc(100svh-78px)] w-full max-w-[22.5rem] flex-col items-center justify-center lg:h-[calc(100svh-120px)]">
+      <div className="flex w-full items-center justify-between pb-10">
         <H3 text={t('login.title')} />
         <span className="text-gray flex items-center">
           {t('login.form.connection-secure')}
@@ -43,8 +49,19 @@ export const LoginPage = () => {
           password: '',
           savePassword: false,
         }}
-        onSubmit={() => {
-          dispatch(setUser(agent))
+        onSubmit={async (values) => {
+          try {
+            const res = await login({
+              data: {
+                email: values.email,
+                password: values.password,
+              },
+            })
+            dispatch(setUser(res.data.user))
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          } catch (err) {
+            dispatch(addToast({ type: 'error', message: t('errors.login-failed') }))
+          }
         }}
         validationSchema={useValidationLoginSchema()}
       >

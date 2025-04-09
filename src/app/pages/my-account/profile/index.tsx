@@ -17,7 +17,7 @@ export const ProfilePage = () => {
   const [file, setFile] = useState<File | File[] | null>(null)
   const [send, setSend] = useState(false)
   const { t } = useTranslation()
-  const agent = useAppSelector(selectUser)
+  const user = useAppSelector(selectUser)
 
   const modalChild = useMemo(() => {
     if (!Array.isArray(file)) {
@@ -64,22 +64,22 @@ export const ProfilePage = () => {
     )
   }, [file, send])
 
-  if (!agent) {
+  if (!user) {
     return null
   }
 
   return (
     <div className="flex w-full flex-col items-center">
       <div className="flex w-full flex-col items-center pb-[4.0625rem] md:flex-row md:items-start md:justify-between">
-        <Avatar size={7} src={agent.photo} className="md:order-2" />
+        <Avatar size={7} src={user.photo} className="md:order-2" />
         <div className="flex flex-col items-center gap-1.5 pt-3 md:order-1 md:items-start">
           <H2
-            text={`${agent.name} ${agent.lastName}`}
+            text={`${user.name} ${user.lastName}`}
             className="md:text-start"
           />
           <div className="flex flex-col items-center md:flex-row md:gap-3">
-            <span className="text-blue-gray text-lg">{agent.agency?.name}</span>
-            {agent.verified.value ? (
+            <span className="text-blue-gray text-lg">{user.agency?.name}</span>
+            {user.verified?.value ? (
               <span className="text-blue flex h-full items-center gap-0.5">
                 {t('profile.verification.title.verified')}
                 <Icon
@@ -100,7 +100,7 @@ export const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <ProfileForm user={agent} />
+      <ProfileForm user={user} />
       <Modal
         open={openModal}
         setOpen={(open) => {

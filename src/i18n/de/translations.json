@@ -414,7 +414,8 @@
     },
     "errors": {
       "invalid-number": "Ungültige Eingabe: \"{{value}}\". Es sind nur Zahlen erlaubt.",
-      "min-greater-max": "Der Mindestwert kann nicht größer sein als der Höchstwert"
+      "min-greater-max": "Der Mindestwert kann nicht größer sein als der Höchstwert",
+      "login-failed": "Falsches Login oder Passwort"
     },
     "buttons": {
       "prev": "Zurück",

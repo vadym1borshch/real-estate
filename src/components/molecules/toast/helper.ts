@@ -1,29 +1,13 @@
-
-
-export const getToastColor = (type: string, opacity: number = 1) => {
+export const getToastColor = (type: string) => {
   switch (type) {
     case 'success':
-      return `rgba(214,253,176, ${opacity})`;
+      return `text-green`
     case 'error':
-      return `rgba(247,100,111, ${opacity})`;
+      return `text-red `
     case 'warning':
-      return `rgba(255,188,62, ${opacity})`;
+      return `text-coral`
     case 'info':
     default:
-      return `rgba(0,190,250, ${opacity})`;
+      return `text-blue`
   }
-};
-
-export const getToastTextColor = (type: string) => {
-  switch (type) {
-    case 'success':
-      return 'green';
-    case 'error':
-      return `red`;
-    case 'warning':
-      return 'yellow';
-    case 'info':
-    default:
-      return 'rgba(0,190,250)';
-  }
-};
+}

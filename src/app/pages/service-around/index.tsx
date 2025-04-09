@@ -11,11 +11,8 @@ import AssistantCard from '../../../components/molecules/assistant-card'
 import Modal from '../../../components/molecules/modal'
 
 import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
-import {
-  Service,
-  ServiceWorkers,
-  updateService,
-} from '../../../api/services.ts'
+import { Service, ServiceWorkers } from '../../../@types'
+import { URL } from '../../../@constants/URLS.ts'
 
 export const ServiceAround = () => {
   const { t } = useTranslation()
@@ -23,51 +20,63 @@ export const ServiceAround = () => {
   const [postalCode, setPostalCode] = useState('')
   const [selectedFields, setSelectedFields] = useState<string[]>([])
   const [currentAssistantId, setCurrentAssistantId] = useState<string | null>(
-    null
+    null,
   )
   const [query, setQuery] = useState('')
 
-  const { data: services, execute: fetchServices } = useAxiosHook<Service[]>(
-    { url: '/services', method: 'GET' },
-    { manual: true }
+  const { data: servicesData, execute: fetchServices } = useAxiosHook<{
+    services: Service[]
+  }>({ url: URL.SERVICES, method: 'GET' }, { manual: true })
+
+  const { execute: updateServices } = useAxiosHook(
+    { url: URL.SERVICES, method: 'PATCH' },
+    { manual: true },
   )
 
-  const { data: serviceWorkers, execute: fetchServiceWorkers } = useAxiosHook<
-    ServiceWorkers[]
-  >({ url: '/serviceWorkers', method: 'GET' }, { manual: true })
+  const services = servicesData?.services ?? []
 
+  const { data: serviceWorkersData, execute: fetchServiceWorkers } =
+    useAxiosHook<{ workers: ServiceWorkers[] }>(
+      { url: URL.SERVICE_WORKERS, method: 'GET' },
+      { manual: true },
+    )
+
+  const workers: ServiceWorkers[] = useMemo(() => {
+    return serviceWorkersData?.workers ?? []
+  }, [serviceWorkersData])
+
+  const addPostalCode = () => {
+    setPostalCode(query)
+    setQuery('')
+  }
   const handlePostalCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.currentTarget.value
     if (/^\d{0,4}$/.test(value)) {
       setQuery(value)
     }
   }
-
-  const addPostalCode = () => {
-    setPostalCode(query)
-    setQuery('')
-  }
-
   const checkedHandler = useCallback(
     async (id: string, checked: boolean) => {
-      await updateService(id, checked)
+      await updateServices({
+        data: { id, checked },
+      })
       await fetchServices()
 
       setSelectedFields((prev) =>
-        checked ? [...prev, id] : prev.filter((field) => field !== id)
+        checked ? [...prev, id] : prev.filter((field) => field !== id),
       )
 
       setPostalCode('')
     },
-    [fetchServices]
+    [],
   )
 
   const foundWorkers = useMemo(() => {
-    if (!serviceWorkers) return []
-    return serviceWorkers
+    if (!workers) return []
+    return workers
       .filter((worker) => worker.address.includes(postalCode))
       .filter((worker) => selectedFields.includes(worker.profession.key))
-  }, [postalCode, selectedFields, serviceWorkers])
+  }, [postalCode, selectedFields, workers])
 
   const currentAssistant = useMemo(() => {
     return (
@@ -75,13 +84,16 @@ export const ServiceAround = () => {
     )
   }, [foundWorkers, currentAssistantId])
 
-
   useEffect(() => {
-    fetchServices()
-    fetchServiceWorkers()
-  }, [fetchServices, fetchServiceWorkers])
+    const fetchData = async () => {
+      await fetchServices()
+      await fetchServiceWorkers()
+    }
+    fetchData()
+  }, [])
 
-  if (!services) return null
+
+  if (!services.length) return null
 
   return (
     <div className="flex w-full flex-col items-center">
@@ -110,9 +122,9 @@ export const ServiceAround = () => {
           <Button onClick={addPostalCode}>{t('buttons.find')}</Button>
         </div>
         {!!foundWorkers?.length && (
-          <div className="border-t-gray mx-auto mt-[3.75rem] grid w-full max-w-[72.5rem] grid-cols-1 gap-5 lg:gap-10 border-t-1 pt-[3.75rem] sm:grid-cols-2 md:grid-cols-3 lg:mt-[5.625rem] lg:grid-cols-4 lg:pt-[5.625rem]">
+          <div
+            className="border-t-gray mx-auto mt-[3.75rem] grid w-full max-w-[72.5rem] grid-cols-1 gap-5 border-t-1 pt-[3.75rem] sm:grid-cols-2 md:grid-cols-3 lg:mt-[5.625rem] lg:grid-cols-4 lg:gap-10 lg:pt-[5.625rem]">
             {foundWorkers?.map((item) => (
-
               <AssistantCard
                 assistant={item}
                 key={item.id}
@@ -126,9 +138,9 @@ export const ServiceAround = () => {
       <Modal
         open={!!currentAssistantId}
         setOpen={() => setCurrentAssistantId(null)}
-        className="max-w-[560px] h-[92svh] md:h-fit"
+        className="h-[92svh] max-w-[560px] md:h-fit"
       >
-        <div className="flex flex-col items-center h-[calc(92svh-48px)] md:h-fit justify-center gap-6">
+        <div className="flex h-[calc(92svh-48px)] flex-col items-center justify-center gap-6 md:h-fit">
           <Avatar
             userName={currentAssistant?.name}
             src={currentAssistant?.photo}

@@ -58,6 +58,7 @@ const Input = ({
             { 'pl-[2.875rem]': iconSide === 'left' },
             className
           )}
+          autoComplete={rest.id}
           {...rest}
         />
         {iconId && (

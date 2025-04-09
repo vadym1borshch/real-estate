@@ -14,7 +14,7 @@ export const FavoritesPage = () => {
       "lg:grid-cols-2": isLarge
     })}>
       {estates.map((estate) => {
-        return <EstateCard realEstate={estate} className="!max-w-full"/>
+        return <EstateCard key={estate.id} realEstate={estate} className="!max-w-full"/>
       })}
     </div>
   )

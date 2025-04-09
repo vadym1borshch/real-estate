@@ -18,7 +18,6 @@ export const MyAccount = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
     if (path === `/${MY_ACCOUNT.ROOT}`) {
-      console.log('here')
       navigate(MY_ACCOUNT.ROOT + `/${MY_ACCOUNT.PROFILE}`)
     }
   }, [path])

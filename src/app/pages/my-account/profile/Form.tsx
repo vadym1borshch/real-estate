@@ -4,18 +4,36 @@ import Input from '../../../../components/atoms/input'
 import { useValidationSchema } from './validation.ts'
 import { Agent } from '../../service-around/mock.ts'
 import RadioButton from '../../../../components/atoms/radio-button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '../../../../components/atoms/button'
+import { useAxiosHook } from '../../../../helpers/hooks/useAxios.ts'
+import { AUTH } from '../../../../@constants/URLS.ts'
+import { addToast } from '../../../../store/toastSlise'
+import { useAppDispatch } from '../../../../store'
+import { setUser } from '../../../../store/userSlice'
 
 type User = 'agency' | 'private'
 
 interface Props {
-  user: Agent
+  user: Partial<Agent & { province: string }>
 }
 
 export const ProfileForm = ({ user }: Props) => {
   const { t } = useTranslation()
   const [userType, setUserType] = useState<User>('private')
+  const dispatch = useAppDispatch()
+
+  const { execute: update } = useAxiosHook<{ user: Agent }>(
+    { url: AUTH.UPDATE, method: 'PUT' },
+    { manual: true }
+  )
+  useEffect(() => {
+    if (user.agency !== null) {
+      setUserType('agency')
+    }
+  }, [user.agency])
+
+  console.log(userType)
 
   return (
     <Formik
@@ -25,18 +43,43 @@ export const ProfileForm = ({ user }: Props) => {
         email: user.email,
         phone: user.phone,
         password: '',
-        agency: '',
-        city: '',
-        province: '',
+        agency: user.agency?.name,
+        city: user?.address,
+        province: user?.province,
       }}
-      onSubmit={async (_values, { resetForm }) => {
-        resetForm()
+      onSubmit={async (_values) => {
+        try {
+          const res = await update({
+            data: {
+              id: user.id,
+              name: _values.name,
+              lastName: _values.lastName,
+              email: _values.email,
+              phone: _values.phone,
+              password: _values.password,
+              agency: _values.agency,
+              address: _values.city || user?.address,
+              province: _values.province,
+              userType,
+            },
+          })
+          console.log(res.data.user)
+          dispatch(setUser(res.data.user))
+          dispatch(
+            addToast({ type: 'info', message: t('data saved...') })
+          )
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (error) {
+          dispatch(
+            addToast({ type: 'error', message: t('something went wrong...') })
+          )
+        }
       }}
       validationSchema={useValidationSchema()}
     >
       {() => (
         <Form className="flex w-full flex-col gap-3">
-          <div className="flex flex-col gap-4 md:flex-row md:gap-10">
+          <div className="flex flex-col gap-4 lg:flex-row lg:gap-10">
             <Field name="name">
               {({ field, meta }: FieldProps) => (
                 <Input
@@ -66,7 +109,7 @@ export const ProfileForm = ({ user }: Props) => {
               )}
             </Field>
           </div>
-          <div className="flex flex-col gap-4 md:flex-row md:gap-10">
+          <div className="flex flex-col gap-4 lg:flex-row lg:gap-10">
             <Field name="email">
               {({ field, meta }: FieldProps) => (
                 <Input
@@ -129,7 +172,7 @@ export const ProfileForm = ({ user }: Props) => {
                 )}
               </Field>
             )}
-            <div className="flex flex-col gap-3 md:flex-row md:gap-10">
+            <div className="flex flex-col gap-3 lg:flex-row lg:gap-10">
               <Field name="city">
                 {({ field, meta }: FieldProps) => (
                   <Input
