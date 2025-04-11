@@ -18,10 +18,10 @@ export const RegisterPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const { execute: register } = useAxiosHook<{ user: Agent }>(
-    { url: AUTH.REGISTER, method: 'POST' },
-    { manual: true }
-  )
+  const { execute: register } = useAxiosHook<{
+    user: Agent
+    token: string
+  }>({ url: AUTH.REGISTER, method: 'POST' }, { manual: true })
 
   return (
     <div className="flex h-[calc(100svh-78px)] w-full max-w-[22.5rem] flex-col items-center justify-center lg:h-[calc(100svh-120px)]">

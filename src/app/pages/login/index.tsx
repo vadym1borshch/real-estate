@@ -23,10 +23,10 @@ export const LoginPage = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
-  const { execute: login } = useAxiosHook<{ user: Agent }>(
-    { url: AUTH.LOGIN, method: 'POST' },
-    { manual: true }
-  )
+  const { execute: login } = useAxiosHook<{
+    user: Agent
+    token: string
+  }>({ url: AUTH.LOGIN, method: 'POST' }, { manual: true })
 
   useEffect(() => {
     if (user) {
@@ -62,7 +62,9 @@ export const LoginPage = () => {
             dispatch(setUser(res.data.user))
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (err) {
-            dispatch(addToast({ type: 'error', message: t('errors.login-failed') }))
+            dispatch(
+              addToast({ type: 'error', message: t('errors.login-failed') })
+            )
           }
         }}
         validationSchema={useValidationLoginSchema()}
