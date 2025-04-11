@@ -6,11 +6,14 @@ import { useWindowDimensions } from '../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../@constants'
 import { Mode, setMode } from '../store/ui/modeSlice.ts'
 import { Loader } from '../components/atoms/loader'
+import { useAuthInit } from '../helpers/hooks/useAuthInit.ts'
 
 
 const Loading = () => <Loader/>
 
 const App = () => {
+  useAuthInit()
+
   const {width} = useWindowDimensions()
   const dispatch = useAppDispatch()
   const isLowMobile = width < BREAKPOINTS.SM

@@ -85,6 +85,8 @@ const AuthButtons = ({ onClick, buttonClassName }: Props) => {
         )}
         onClick={() => {
           dispatch(deleteUser())
+          navigate(ROUTES.HOME)
+          localStorage.removeItem('token')
         }}
       >
         {t('buttons.logout')}

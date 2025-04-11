@@ -6,18 +6,22 @@ import { setUser } from '../../../store/userSlice'
 import Input from '../../../components/atoms/input'
 import Checkbox from '../../../components/atoms/checkbox'
 import Button from '../../../components/atoms/button'
-import { realEstateAgents } from '../service-around/mock.ts'
+import { Agent } from '../service-around/mock.ts'
 import { useAppDispatch } from '../../../store'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
 import { useValidationRegisterSchema } from './validation.ts'
-
-const agent = realEstateAgents[0]
+import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
+import { AUTH } from '../../../@constants/URLS.ts'
 
 export const RegisterPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const { execute: register } = useAxiosHook<{ user: Agent }>(
+    { url: AUTH.REGISTER, method: 'POST' },
+    { manual: true }
+  )
 
   return (
     <div className="flex h-[calc(100svh-78px)] w-full max-w-[22.5rem] flex-col items-center justify-center lg:h-[calc(100svh-120px)]">
@@ -36,9 +40,23 @@ export const RegisterPage = () => {
           password: '',
           termsOfUse: false,
         }}
-        onSubmit={() => {
-          navigate(ROUTES.CONFIRM_REGISTER)
-          dispatch(setUser(agent))
+        onSubmit={async (values) => {
+          try {
+            const res = await register({
+              data: {
+                name: values.firstName,
+                lastName: values.lastName,
+                email: values.email,
+                password: values.password,
+              },
+            })
+            console.log(res.data)
+            localStorage.setItem('token', res.data.token)
+            navigate(ROUTES.CONFIRM_REGISTER)
+            dispatch(setUser(res.data.user))
+          } catch (err) {
+            console.log(err)
+          }
         }}
         validationSchema={useValidationRegisterSchema()}
       >

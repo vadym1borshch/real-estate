@@ -3,9 +3,8 @@ import AuthButtons from '../../../components/molecules/auth-buttons'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { useEffect } from 'react'
-import { MY_ACCOUNT, ROUTES } from '../../../@constants/routes.ts'
-import { useAppDispatch, useAppSelector } from '../../../store'
-import { selectUser } from '../../../store/userSlice/selectors.ts'
+import { MY_ACCOUNT } from '../../../@constants/routes.ts'
+import { useAppDispatch } from '../../../store'
 import {
   fetchMessages,
   setCurrentMessagesId,
@@ -14,19 +13,12 @@ import {
 export const MyAccount = () => {
   const path = usePathname()
   const navigate = useNavigate()
-  const user = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
   useEffect(() => {
     if (path === `/${MY_ACCOUNT.ROOT}`) {
       navigate(MY_ACCOUNT.ROOT + `/${MY_ACCOUNT.PROFILE}`)
     }
   }, [path])
-
-  useEffect(() => {
-    if (!user) {
-      navigate(ROUTES.LOGIN)
-    }
-  }, [user])
 
   useEffect(() => {
     dispatch(fetchMessages())

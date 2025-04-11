@@ -4,33 +4,38 @@ import { useAppDispatch } from '../../../store'
 import { addToast } from '../../../store/toastSlise'
 
 interface IFileUpload {
-  callback: (files: File | File[]) => void;
+  callback: (files: File | File[] | null) => void;
   buttonTitle?: ReactNode;
   className?: string;
   isMultiple?: boolean;
 }
+const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
 
 const FileUpload = ({ callback, buttonTitle, className, isMultiple = false }: IFileUpload) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
+    const fileList = event.target.files;
 
-    const validFiles = files.filter(file => ['image/jpeg', 'image/png', 'application/pdf'].includes(file.type));
+    if (!fileList) {
+      callback(null);
+      return;
+    }
+
+    const files = Array.from(fileList);
+    const validFiles = files.filter(file => validTypes.includes(file.type));
 
     if (validFiles.length > 0) {
-      if (isMultiple) {
-        callback(validFiles);
-      } else {
-        callback(validFiles[0]);
-      }
+      callback(isMultiple ? validFiles : validFiles[0]);
 
+      // reset input to allow reselecting same file
       if (inputRef.current) {
         inputRef.current.value = '';
       }
     } else {
       dispatch(addToast({ message: "File format not supported", type: 'error' }));
+      callback(null);
     }
   };
 
@@ -41,7 +46,7 @@ const FileUpload = ({ callback, buttonTitle, className, isMultiple = false }: IF
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-full w-full">
       <input
         ref={inputRef}
         type="file"

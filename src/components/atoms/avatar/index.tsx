@@ -33,7 +33,7 @@ const Avatar = ({
           alt={userName}
           className={className}
           style={{
-            width: `${size}rem`,
+            minWidth: `${size}rem`,
             height: `${size}rem`,
           }}
           placeholder={null}

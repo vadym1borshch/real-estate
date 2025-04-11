@@ -26,7 +26,7 @@ const Header = ({ className }: Props) => {
   const { width } = useWindowDimensions()
   const navigate = useNavigate()
   const isMedium = width > BREAKPOINTS.MD
-  const isSmall = width < BREAKPOINTS.MD
+  const isSmall = width < BREAKPOINTS.XLG
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const dispatch = useAppDispatch()
@@ -72,6 +72,7 @@ const Header = ({ className }: Props) => {
             onClick={() => {
               if (button.id === 'buy' || button.id === 'rent') {
                 dispatch(setListingType(button.id))
+                localStorage.setItem('operation', button.id)
               }
               navigate(button.href)
             }}

@@ -4,13 +4,15 @@ import Input from '../../../../components/atoms/input'
 import { useValidationSchema } from './validation.ts'
 import { Agent } from '../../service-around/mock.ts'
 import RadioButton from '../../../../components/atoms/radio-button'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from '../../../../components/atoms/button'
 import { useAxiosHook } from '../../../../helpers/hooks/useAxios.ts'
-import { AUTH } from '../../../../@constants/URLS.ts'
+import { USER } from '../../../../@constants/URLS.ts'
 import { addToast } from '../../../../store/toastSlise'
 import { useAppDispatch } from '../../../../store'
 import { setUser } from '../../../../store/userSlice'
+import { Loader } from '../../../../components/atoms/loader'
+import { useElementSizes } from '../../../../helpers/hooks/useElementsSizes.ts'
 
 type User = 'agency' | 'private'
 
@@ -22,18 +24,20 @@ export const ProfileForm = ({ user }: Props) => {
   const { t } = useTranslation()
   const [userType, setUserType] = useState<User>('private')
   const dispatch = useAppDispatch()
-
-  const { execute: update } = useAxiosHook<{ user: Agent }>(
-    { url: AUTH.UPDATE, method: 'PUT' },
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
+  const { containerDimension } = useElementSizes({
+    containerRef: buttonRef,
+    containerDimensionProp: 'width',
+  })
+  const { execute: update, loading } = useAxiosHook<{ user: Agent }>(
+    { url: USER.UPDATE, method: 'PATCH' },
     { manual: true }
   )
   useEffect(() => {
-    if (user.agency !== null) {
+    if (user.agency) {
       setUserType('agency')
     }
   }, [user.agency])
-
-  console.log(userType)
 
   return (
     <Formik
@@ -63,11 +67,8 @@ export const ProfileForm = ({ user }: Props) => {
               userType,
             },
           })
-          console.log(res.data.user)
           dispatch(setUser(res.data.user))
-          dispatch(
-            addToast({ type: 'info', message: t('data saved...') })
-          )
+          dispatch(addToast({ type: 'info', message: t('data saved...') }))
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
           dispatch(
@@ -91,6 +92,7 @@ export const ProfileForm = ({ user }: Props) => {
                   error={meta.touched && meta.error ? meta.error : undefined}
                   className="placeholder-gray min-h-[48px]"
                   errorPosition="bottom"
+                  disabled={loading}
                 />
               )}
             </Field>
@@ -105,6 +107,7 @@ export const ProfileForm = ({ user }: Props) => {
                   error={meta.touched && meta.error ? meta.error : undefined}
                   className="placeholder-gray min-h-[48px]"
                   errorPosition="bottom"
+                  disabled={loading}
                 />
               )}
             </Field>
@@ -121,6 +124,7 @@ export const ProfileForm = ({ user }: Props) => {
                   error={meta.touched && meta.error ? meta.error : undefined}
                   className="placeholder-gray min-h-[48px]"
                   errorPosition="bottom"
+                  disabled={loading}
                 />
               )}
             </Field>
@@ -135,6 +139,7 @@ export const ProfileForm = ({ user }: Props) => {
                   error={meta.touched && meta.error ? meta.error : undefined}
                   className="placeholder-gray min-h-[48px]"
                   errorPosition="bottom"
+                  disabled={loading}
                 />
               )}
             </Field>
@@ -168,6 +173,7 @@ export const ProfileForm = ({ user }: Props) => {
                     error={meta.touched && meta.error ? meta.error : undefined}
                     className="placeholder-gray min-h-[48px]"
                     errorPosition="bottom"
+                    disabled={loading}
                   />
                 )}
               </Field>
@@ -184,6 +190,7 @@ export const ProfileForm = ({ user }: Props) => {
                     error={meta.touched && meta.error ? meta.error : undefined}
                     className="placeholder-gray min-h-[48px]"
                     errorPosition="bottom"
+                    disabled={loading}
                   />
                 )}
               </Field>
@@ -198,6 +205,7 @@ export const ProfileForm = ({ user }: Props) => {
                     error={meta.touched && meta.error ? meta.error : undefined}
                     className="placeholder-gray min-h-[48px]"
                     errorPosition="bottom"
+                    disabled={loading}
                   />
                 )}
               </Field>
@@ -214,13 +222,22 @@ export const ProfileForm = ({ user }: Props) => {
                   error={meta.touched && meta.error ? meta.error : undefined}
                   className="placeholder-gray min-h-[48px]"
                   errorPosition="bottom"
+                  disabled={loading}
                 />
               )}
             </Field>
           </div>
 
-          <Button type="submit" className="w-full md:w-fit">
-            {t('buttons.save')}
+          <Button
+            ref={buttonRef}
+            type="submit"
+            className="w-full md:w-fit"
+            disabled={loading}
+            style={{
+              minWidth: loading ? `${containerDimension}px` : 'auto',
+            }}
+          >
+            {loading ? <Loader size={25} /> : t('buttons.save')}
           </Button>
         </Form>
       )}

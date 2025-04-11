@@ -5,5 +5,11 @@ export enum URL {
 
 export enum AUTH {
   LOGIN = "/auth/login",
-  UPDATE = "/auth/update"
+  REGISTER = "/auth/register"
+}
+
+export enum USER {
+  UPDATE_PHOTO = "/user/update-photo",
+  UPDATE = "/user/update",
+  ME = "/user/me",
 }

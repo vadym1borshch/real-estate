@@ -57,6 +57,8 @@ export const LoginPage = () => {
                 password: values.password,
               },
             })
+            console.log(res.data)
+            localStorage.setItem('token', res.data.token)
             dispatch(setUser(res.data.user))
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (err) {
