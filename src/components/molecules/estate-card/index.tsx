@@ -23,7 +23,6 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
     label,
     isTop,
     favorite,
-    selectedOnMap,
     type,
     address,
     rooms,
@@ -39,7 +38,6 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
       href={`${operation.key}/details`}
       className={cn(
         'group z-0 flex min-h-[26.75rem] max-w-[22.5rem] min-w-[18.75rem] flex-col gap-0 hover:border-0 focus:border-0',
-        { 'border-charcoal rounded-lg border-2 hover:border-2': selectedOnMap },
         className
       )}
       onClick={() => {
@@ -47,6 +45,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }}
       disabled={disabled}
+      id={id}
     >
       <div className="relative w-full">
         <div className="absolute top-0 flex w-full min-w-[18.75rem] justify-between p-6">

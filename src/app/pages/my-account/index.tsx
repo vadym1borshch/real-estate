@@ -4,16 +4,18 @@ import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { useEffect } from 'react'
 import { MY_ACCOUNT } from '../../../@constants/routes.ts'
-import { useAppDispatch } from '../../../store'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import {
   fetchMessages,
   setCurrentMessagesId,
 } from '../../../store/messagesSlice'
+import { selectUser } from '../../../store/userSlice/selectors.ts'
 
 export const MyAccount = () => {
   const path = usePathname()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const user = useAppSelector(selectUser)
   useEffect(() => {
     if (path === `/${MY_ACCOUNT.ROOT}`) {
       navigate(MY_ACCOUNT.ROOT + `/${MY_ACCOUNT.PROFILE}`)
@@ -21,8 +23,11 @@ export const MyAccount = () => {
   }, [path])
 
   useEffect(() => {
-    dispatch(fetchMessages())
-  }, [])
+    if (user) {
+      dispatch(fetchMessages({ userId: user.id }))
+    }
+
+  }, [user])
 
   useEffect(() => {
     dispatch(setCurrentMessagesId(null))

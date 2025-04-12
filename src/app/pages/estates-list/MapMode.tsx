@@ -6,7 +6,7 @@ import EstateCard from '../../../components/molecules/estate-card'
 import { useTranslation } from 'react-i18next'
 import { setCurrentPage } from '../../../store/estateSlice'
 import Map from '../../../components/organisms/map'
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { MapRef, Marker } from 'react-map-gl'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import {
@@ -22,6 +22,7 @@ import Icon from '../../../components/atoms/icon'
 import { BREAKPOINTS } from '../../../@constants'
 import { Loader } from '../../../components/atoms/loader'
 import { selectMode } from '../../../store/ui/selectors.ts'
+import { scrollToPageBlock } from './estate-details/helpers.ts'
 
 interface Props {
   open: boolean
@@ -37,6 +38,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
   const mapRef = useRef<MapRef | null>(null)
   const listContainerRef = useRef<HTMLDivElement | null>(null)
   const { mode } = useAppSelector(selectMode)
+  const [currentEstateId, setCurrentEstateId] = useState<string | null>(null)
 
   const dispatch = useAppDispatch()
   const totalPages = useAppSelector(selectTotalPages(itemsPerPage))
@@ -130,6 +132,10 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
                 key={estate.id}
                 longitude={estate.address.coordinates[1]}
                 latitude={estate.address.coordinates[0]}
+                onClick={() => {
+                  scrollToPageBlock(estate.id, listContainerRef.current)
+                  setCurrentEstateId(estate.id)
+                }}
               >
                 <MapMarker limited={estate.operation.key === 'buy'} />
               </Marker>
@@ -154,7 +160,10 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
               <EstateCard
                 key={estate.id}
                 realEstate={estate}
-                className="max-w-full lg:mr-3"
+                className={cn("max-w-full lg:mr-3", {
+                  "border-2 border-coral rounded-lg !min-h-[27rem]": currentEstateId === estate.id,
+                })}
+
               />
             )
           })}

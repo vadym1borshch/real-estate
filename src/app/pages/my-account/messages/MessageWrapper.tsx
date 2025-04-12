@@ -1,5 +1,4 @@
 import { cn } from '../../../../helpers/ui.ts'
-import { IMessage } from '../../../../store/messagesSlice/mock.ts'
 import { useAppDispatch, useAppSelector } from '../../../../store'
 import { selectUser } from '../../../../store/userSlice/selectors.ts'
 import Button from '../../../../components/atoms/button'
@@ -8,8 +7,10 @@ import { formatDate } from '../../../../helpers'
 import { useTranslation } from 'react-i18next'
 import {
   deleteMessages,
+  IMessage,
   makeAsRead,
-  moveToArchive, setCurrentMessagesId,
+  moveToArchive,
+  setCurrentMessagesId,
 } from '../../../../store/messagesSlice'
 import React from 'react'
 import { UnknownAction } from '@reduxjs/toolkit'
@@ -35,7 +36,8 @@ export const MessageWrapper = ({ messages }: Props) => {
   return (
     <div className="flex cursor-pointer flex-col gap-3">
       {messages.map((message) => {
-        const sender = message.replies[0].sender
+        const name = message.replies[0].senderName
+        const lastName = message.replies[0].senderLastName
         const text = message.replies[0].message
         const date = formatDate(
           message.replies[0].timestamp,
@@ -56,8 +58,8 @@ export const MessageWrapper = ({ messages }: Props) => {
           >
             <div className="text-charcoal self-center">
               {user?.email === message.email
-                ? `${t('messages.common.to')}: ${sender.name} ${sender.lastName}`
-                : `${sender.name} ${sender.lastName}`}
+                ? `${t('messages.common.to')}: ${name} ${lastName}`
+                : `${name} ${lastName}`}
             </div>
             <div className="text-charcoal hidden w-[45%] lg:flex">
               <span className="line-clamp-1 overflow-hidden">{text}</span>

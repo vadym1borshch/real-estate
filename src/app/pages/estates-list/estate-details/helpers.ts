@@ -26,9 +26,14 @@ export const extractValuesToTable = (
   })
 }
 
-export const scrollToPageBlock = (blockId: string) => {
+export const scrollToPageBlock = (blockId: string, container?: HTMLElement | null) => {
   const target = document.getElementById(blockId)
-  if (target) {
+  if (!target) return
+
+  if (container) {
+    const top = target.offsetTop - container.offsetTop
+    container.scrollTo({ top, behavior: 'smooth' })
+  } else {
     target.scrollIntoView({ behavior: 'smooth' })
   }
 }
