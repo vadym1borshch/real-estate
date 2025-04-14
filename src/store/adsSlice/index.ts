@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { sleep } from '../../helpers'
-import { houses, RealEstate } from '../commonMock.ts'
+import { RealEstate } from '../estateSlice'
+import { api } from '../../helpers/hooks/useAxios.ts'
 
-export const fetchAds = createAsyncThunk<RealEstate[], void>(
+export const fetchAds = createAsyncThunk<RealEstate[], { userId: string | null }>(
   'ads',
-  async () => {
-    // simulate api call
-    await sleep(1000)
-    return [...houses]
+  async ({ userId }) => {
+    const res = await api.get<{ estates: RealEstate[] }>(
+      `/real-estates/user-ads?id=${userId}`
+    )
+    return res.data.estates
   }
 )
 
@@ -67,7 +68,7 @@ export const realEstateSlice = createSlice({
         state.data = state.data.filter((item) => item.id !== action.payload.id)
       }
     },
-    setTopAd: (state, action: PayloadAction<{id:string}>) => {
+    setTopAd: (state, action: PayloadAction<{ id: string }>) => {
       if (state.data) {
         state.data = state.data.map((item) => {
           if (item.id === action.payload.id) {
@@ -119,7 +120,12 @@ export const realEstateSlice = createSlice({
   },
 })
 
-export const { addAd, setCurrentAdsStatus, deleteAd, refreshRejection, setTopAd } =
-  realEstateSlice.actions
+export const {
+  addAd,
+  setCurrentAdsStatus,
+  deleteAd,
+  refreshRejection,
+  setTopAd,
+} = realEstateSlice.actions
 
 export default realEstateSlice.reducer

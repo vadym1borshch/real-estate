@@ -4,9 +4,10 @@ import Icon from '../../atoms/icon'
 import { useTranslation } from 'react-i18next'
 import H3 from '../../atoms/typography/h3'
 import { cn } from '../../../helpers/ui.ts'
-import { setCurrentEstate, setFavorite } from '../../../store/estateSlice'
+import { RealEstate, setCurrentEstate } from '../../../store/estateSlice'
 import { useAppDispatch } from '../../../store'
-import { RealEstate } from '../../../store/commonMock.ts'
+import { Loader } from '../../atoms/loader'
+import { useSetFavoriteEstate } from '../../../helpers/hooks/useSetFavoriteEstate.ts'
 
 interface Props {
   realEstate: RealEstate
@@ -19,29 +20,37 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
   const dispatch = useAppDispatch()
   const {
     id,
-    image,
+    images,
     label,
     isTop,
     favorite,
-    type,
-    address,
+    typeValue,
+    addressLocation,
     rooms,
-    bathrooms,
-    operation,
-    size,
+    bathroomsTotal,
+    operationValue,
+    operationKey,
+    livingAreaM2,
     price,
     views,
+    favoredBy,
   } = realEstate
+
+  const { loading, setFavoriteCallBack, favorite: isFavorite } = useSetFavoriteEstate({
+    estateId: id,
+    favoredByArr: favoredBy,
+    isFavorite: favorite
+  })
 
   return (
     <Link
-      href={`${operation.key}/details`}
+      href={`${operationKey}/details`}
       className={cn(
         'group z-0 flex min-h-[26.75rem] max-w-[22.5rem] min-w-[18.75rem] flex-col gap-0 hover:border-0 focus:border-0',
         className
       )}
       onClick={() => {
-        dispatch(setCurrentEstate(id))
+        dispatch(setCurrentEstate(realEstate))
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }}
       disabled={disabled}
@@ -50,21 +59,25 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
       <div className="relative w-full">
         <div className="absolute top-0 flex w-full min-w-[18.75rem] justify-between p-6">
           {isTop && <Chip value="Top" />}
-          <Icon
-            id={favorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
-            className={cn(
-              'z-100 ml-auto h-5 w-5 text-white lg:h-5 lg:w-5',
-              { 'text-coral': favorite }
-            )}
-            onClick={(e) => {
-              e.stopPropagation()
-              e.preventDefault()
-              dispatch(setFavorite({ id }))
-            }}
-          />
+          {loading ? (
+            <Loader className="z-100 ml-auto w-fit" size={20} />
+          ) : (
+            <Icon
+              id={isFavorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
+              className={cn('z-100 ml-auto h-5 w-5 text-white lg:h-5 lg:w-5', {
+                'text-coral': isFavorite,
+              })}
+              onClick={async (e) => {
+                e.stopPropagation()
+                e.preventDefault()
+                dispatch(setCurrentEstate(realEstate))
+                setFavoriteCallBack()
+              }}
+            />
+          )}
         </div>
         <img
-          src={image}
+          src={images[0].url}
           alt="house"
           className="min-h-[15rem] w-full min-w-[18.75rem] rounded-t-lg object-cover lg:h-[15rem]"
         />
@@ -76,18 +89,18 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
         <div className="flex flex-col gap-1.5">
           <p className="r-estate-descriptions">
             <span className="whitespace-nowrap">ID: {id}</span>
-            <span>{t(type.value)}</span>
-            <span className="truncate">{address.location}</span>
+            <span>{t(typeValue)}</span>
+            <span className="truncate">{addressLocation}</span>
           </p>
           <p className="r-estate-descriptions">
             <span>
               {rooms} {t('real-estate.rooms')}
             </span>
             <span>
-              {bathrooms.total} {t('real-estate.bathroom')}
+              {bathroomsTotal} {t('real-estate.bathroom')}
             </span>
-            <span>{size.livingAreaM2}</span>
-            <span>{t(operation.value)}</span>
+            <span>{livingAreaM2}</span>
+            <span>{t(operationValue)}</span>
           </p>
         </div>
         <div className="flex w-full justify-between">

@@ -9,5 +9,5 @@ export const selectAdStatus = (state: RootState) => state.ads.currentAdStatus
 export const selectCurrentAds = (filterBy?: string) =>
   createSelector([selectAds, selectAdStatus], (data, status) => {
     const filteredData = data?.filter((el) => el.status === status)
-    return filteredData?.filter((el) => el.operation.key === filterBy)
+    return filteredData?.filter((el) => el.operationKey === filterBy)
   })

@@ -3,8 +3,8 @@ import Icon from '../../../../components/atoms/icon'
 import { extractValuesToTable } from './helpers.ts'
 import { estateFullDetails } from './mock.ts'
 import { useWindowDimensions } from '../../../../helpers/hooks/useWindowDimensions.ts'
-import { RealEstate } from '../../../../store/commonMock.ts'
 import { BREAKPOINTS } from '../../../../@constants'
+import { RealEstate } from '../../../../store/estateSlice'
 
 interface Props {
   estate: RealEstate

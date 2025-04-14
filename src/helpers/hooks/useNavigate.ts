@@ -6,7 +6,12 @@ export const useNavigate = () => {
   const { i18n } = useTranslation()
   const location = useLocation()
 
-  return (path: string, keepSearchParams = false) => {
+  return (path: string | number, keepSearchParams = false) => {
+    if (path === -1) {
+      navigate(-1)
+      return
+    }
+
     const langPrefix = `/${i18n.language}`
     const search = keepSearchParams ? location.search : ''
     navigate(`${langPrefix}/${path}${search}`)

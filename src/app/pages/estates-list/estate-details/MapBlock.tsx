@@ -6,7 +6,7 @@ import { Layer, MapRef, Source } from 'react-map-gl'
 import { useTranslation } from 'react-i18next'
 import { useRef } from 'react'
 import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
-import { RealEstate } from '../../../../store/commonMock.ts'
+import { RealEstate } from '../../../../store/estateSlice'
 
 interface Props {
   estate: RealEstate
@@ -25,7 +25,7 @@ export const MapBlock = ({estate}:Props) => {
       {
         type: 'Feature',
         properties: {
-          city: estate.address.location,
+          city: estate.addressLocation,
           size: 30,
         },
         geometry: {

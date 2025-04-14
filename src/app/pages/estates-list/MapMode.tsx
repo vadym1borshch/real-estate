@@ -130,14 +130,14 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
             {estates.map((estate) => (
               <Marker
                 key={estate.id}
-                longitude={estate.address.coordinates[1]}
-                latitude={estate.address.coordinates[0]}
+                longitude={estate.addressLng}
+                latitude={estate.addressLat}
                 onClick={() => {
                   scrollToPageBlock(estate.id, listContainerRef.current)
                   setCurrentEstateId(estate.id)
                 }}
               >
-                <MapMarker limited={estate.operation.key === 'buy'} />
+                <MapMarker limited={estate.operationKey === 'buy'} />
               </Marker>
             ))}
           </Map>

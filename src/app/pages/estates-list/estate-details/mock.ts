@@ -1,3 +1,5 @@
+import { v4 } from 'uuid'
+
 export type EstateDetails = {
   id: string
   iconId: string
@@ -7,28 +9,10 @@ export type EstateDetails = {
 
 export const images = [
   {
-    id: '1',
-    src: '/house1.png',
-  },
-  {
-    id: '2',
-    src: '/house2.png',
-  },
-  {
-    id: '3',
-    src: '/house3.png',
-  },
-  {
-    id: '4',
-    src: '/house4.png',
-  },
-  {
-    id: '5',
-    src: '/house5.png',
-  },
-  {
-    id: '6',
-    src: '/house6.png',
+    createdAt: new Date().toISOString(),
+    estateId: '1',
+    id: v4(),
+    url: 'https://images.pexels.com/photos/314937/pexels-photo-314937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
 ]
 

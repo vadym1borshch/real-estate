@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
 import { BREAKPOINTS } from '../../../@constants'
+import { cn } from '../../../helpers/ui.ts'
 
 const Footer = () => {
   const { t } = useTranslation()
@@ -12,7 +13,11 @@ const Footer = () => {
   const isMedium = width <= BREAKPOINTS.XL
 
   return (
-    <footer className="bg-jungle-green flex min-h-[27.8125rem] flex-col rounded-lg px-6 py-[1.875rem] lg:px-[7.5rem]">
+    <footer
+      className={cn(
+        'bg-jungle-green relative flex min-h-[27.8125rem] flex-col rounded-lg px-6 py-[1.875rem] lg:w-full lg:px-[7.5rem]'
+      )}
+    >
       <div className="flex w-full justify-center md:justify-start">
         <Logo variant="white" />
       </div>
@@ -63,7 +68,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-seafoam-green flex flex-col items-center justify-between border-t py-6 md:flex-row">
-        <p className="text-seafoam-green order-3 pt-3 md:order-1 md:pt-0 text-center">
+        <p className="text-seafoam-green order-3 pt-3 text-center md:order-1 md:pt-0">
           © 2024 Fylpi. Alle Rechte vorbehalten.
         </p>
         <p className="flex flex-col items-center gap-3 pt-6 md:order-2 md:flex-row md:gap-6 md:pt-0">

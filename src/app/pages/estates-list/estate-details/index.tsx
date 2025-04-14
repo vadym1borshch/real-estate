@@ -7,7 +7,7 @@ import Icon from '../../../../components/atoms/icon'
 import { PriceBlock } from './PriceBlock.tsx'
 import { ActionButtons } from './ActionButtons.tsx'
 import { CommonInfoBlock } from './CommonInfoBlock.tsx'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { realEstateAgents } from '../../service-around/mock.ts'
 import { ImagesBlock } from './ImagesBlock.tsx'
 import { Tables } from './Tables.tsx'
@@ -16,6 +16,7 @@ import { DetailedInfoBlock } from './DetailedInfoBlock.tsx'
 import { ContactProviderBlock } from './ContactProviderBlock.tsx'
 import { AllProviderObjects } from './AllProviderObjects.tsx'
 import { useDayTransformation } from '../../../../helpers/hooks/useDayTransformation.ts'
+import { useNavigate } from '../../../../helpers/hooks/useNavigate.ts'
 
 const agent = realEstateAgents[0]
 
@@ -23,6 +24,7 @@ export const EstatesDetails = () => {
   const ref = useRef<HTMLDivElement | null>(null)
   const estate = useAppSelector(selectCurrentEstate)
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
 
   const updated = useDayTransformation({
     numberValue: 5,
@@ -38,6 +40,12 @@ export const EstatesDetails = () => {
       i18n.language === 'en' ? 'day' : i18n.language === 'de' ? 'tag' : 'день',
   })
 
+  useEffect(() => {
+    if (!estate) {
+     navigate('')
+    }
+  }, [estate])
+
   if (!estate) {
     return null
   }
@@ -50,16 +58,16 @@ export const EstatesDetails = () => {
 
           <CommonInfoBlock
             id={estate.id}
-            type={t(estate.type.value)}
-            address={estate.address.location}
+            type={t(estate.typeValue)}
+            address={estate.addressLocation}
             rooms={estate.rooms}
-            bathrooms={estate.bathrooms.total}
-            m2={estate.size.livingAreaM2}
+            bathrooms={estate.bathroomsTotal}
+            m2={estate.livingAreaM2}
           />
 
           <span className="bg-light-gray2 mt-3 flex w-fit items-center gap-1.5 rounded-sm px-3 py-[0.4375rem]">
             <span className="bg-dark-coral h-2 w-2 rounded-full" />
-            <Caption text={t(estate.operation.value)} className="uppercase" />
+            <Caption text={t(estate.operationValue)} className="uppercase" />
           </span>
 
           <div className="flex flex-col pt-6 lg:flex-row lg:items-center lg:justify-between">
@@ -79,10 +87,10 @@ export const EstatesDetails = () => {
             </div>
           </div>
         </div>
-        <ActionButtons estateId={estate.id} isFavorite={estate.favorite} />
+        <ActionButtons estate={estate} />
       </div>
 
-      <ImagesBlock agent={agent} ref={ref} />
+      <ImagesBlock agent={agent} ref={ref} images={estate.images} />
 
       <Tables estate={estate} />
 

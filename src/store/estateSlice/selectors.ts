@@ -4,6 +4,7 @@ import {
   BuyKeys,
   RentKeys,
 } from '../../app/pages/home/popular-block/filtersKeys.ts'
+import { selectUser } from '../userSlice/selectors.ts'
 
 const parseFormattedPrice = (str: string): number => {
   const cleaned = str.replace(/\./g, '').replace(',', '.')
@@ -13,7 +14,8 @@ const parseFormattedPrice = (str: string): number => {
 export const selectBuyFilter = (state: RootState) => state.estates.buyFilter
 export const selectIsLoading = (state: RootState) => state.estates.loading
 export const selectFilters = (state: RootState) => state.estates.filters
-export const selectListingType = (state: RootState) => state.estates.filters.listingType
+export const selectListingType = (state: RootState) =>
+  state.estates.filters.listingType
 export const selectRentFilter = (state: RootState) => state.estates.rentFilter
 export const selectCurrentEstate = (state: RootState) =>
   state.estates.currentEstate
@@ -25,20 +27,16 @@ export const selectEstates = createSelector(
 
 export const selectCurrentPage = (state: RootState) => state.estates.currentPage
 
-export const selectPaginatedEstates = (
-  itemsPerPage: number,
-) =>
+export const selectPaginatedEstates = (itemsPerPage: number) =>
   createSelector(
     [selectEstates, selectCurrentPage, selectFilters],
     (estates, currentPage, filters) => {
       const filtered = estates.filter((estate) => {
-        const size = +estate.size.livingAreaM2.split(' ')[0]
+        const size = +estate.livingAreaM2.split(' ')[0]
         const price = parseFormattedPrice(estate.price.split(' ')[0])
 
-        if (filters.priceMin && price < +filters.priceMin)
-          return false
-        if (filters.priceMax && price > +filters.priceMax)
-          return false
+        if (filters.priceMin && price < +filters.priceMin) return false
+        if (filters.priceMax && price > +filters.priceMax) return false
         if (filters.areaMin && size < +filters.areaMin) return false
         if (filters.areaMax && size > +filters.areaMax) return false
 
@@ -56,17 +54,13 @@ export const selectPaginatedEstates = (
 
           if (!hasMatch) return false
         }
-        if (
-          filters.listingType &&
-          estate.operation.key !== filters.listingType
-        )
+        if (filters.listingType && estate.operationKey !== filters.listingType)
           return false
-        if (filters.type && estate.type.key !== filters.type)
-          return false
+        if (filters.type && estate.typeKey !== filters.type) return false
 
         if (
           filters.address &&
-          !estate.address.location.toLowerCase().includes(filters.address)
+          !estate.addressLocation.toLowerCase().includes(filters.address)
         )
           return false
 
@@ -87,21 +81,27 @@ export const selectTopEstates = createSelector([selectEstates], (data) =>
   data.filter((el) => el.isTop)
 )
 
-export const selectFavoritesEstates = createSelector([selectEstates], (data) =>
-  data.filter((el) => el.favorite)
+export const selectFavoritesEstates = createSelector(
+  [selectEstates, selectUser],
+  (data, user) => {
+    if (user) {
+      return data.filter((el) => el.favoredBy.includes(user.id))
+    }
+    return []
+  }
 )
 
 export const selectBuyEstates = createSelector(
   [selectEstates, selectBuyFilter],
   (data, buyFilter) =>
     data
-      .filter((el) => el.operation.key === 'buy' && !el.isTop)
+      .filter((el) => el.operationKey === 'buy' && !el.isTop)
       .filter((el) => {
         if (buyFilter.key === BuyKeys.housing) {
-          return el.type.key === 'house'
+          return el.typeKey === 'house'
         }
         if (buyFilter.key === BuyKeys.multifamilyHousing) {
-          return el.type.key === 'apartment'
+          return el.typeKey === 'apartment'
         }
 
         if (buyFilter.key === BuyKeys.other) {
@@ -115,13 +115,13 @@ export const selectRentEstates = createSelector(
   [selectEstates, selectRentFilter],
   (data, rentFilter) =>
     data
-      .filter((el) => el.operation.key === 'rent')
+      .filter((el) => el.operationKey === 'rent')
       .filter((el) => {
         if (rentFilter.key === RentKeys.houses) {
-          return el.type.key === 'house'
+          return el.typeKey === 'house'
         }
         if (rentFilter.key === RentKeys.apartments) {
-          return el.type.key === 'apartment'
+          return el.typeKey === 'apartment'
         }
         if (rentFilter.key === RentKeys.other) {
           return el

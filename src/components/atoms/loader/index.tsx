@@ -1,14 +1,18 @@
+import { cn } from '../../../helpers/ui.ts'
+
 export const Loader = ({
   size = 50,
   color = '#33443c',
   speed = 1,
+  className,
 }: {
   size?: number
   color?: string
   speed?: number
+  className?: string
 }) => {
   return (
-    <div className="flex h-full w-full items-center justify-center">
+    <div className={cn("flex h-full w-full items-center justify-center", className)}>
       <div
         style={{
           width: `${size}px`,

@@ -4,49 +4,60 @@ import { useAppDispatch } from '../../../store'
 import { addToast } from '../../../store/toastSlise'
 
 interface IFileUpload {
-  callback: (files: File | File[] | null) => void;
-  buttonTitle?: ReactNode;
-  className?: string;
-  isMultiple?: boolean;
+  callback: (files: File | File[] | null) => void
+  buttonTitle?: ReactNode
+  className?: string
+  isMultiple?: boolean
 }
-const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
 
-const FileUpload = ({ callback, buttonTitle, className, isMultiple = false }: IFileUpload) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const dispatch = useAppDispatch();
+const validTypes = ['image/jpeg', 'image/png', 'application/pdf']
+
+const FileUpload = ({
+  callback,
+  buttonTitle,
+  className,
+  isMultiple = false,
+}: IFileUpload) => {
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const dispatch = useAppDispatch()
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const fileList = event.target.files;
+    const fileList = event.target.files
 
     if (!fileList) {
-      callback(null);
-      return;
+      callback(null)
+      return
     }
 
-    const files = Array.from(fileList);
-    const validFiles = files.filter(file => validTypes.includes(file.type));
+    const files = Array.from(fileList)
+    const validFiles = files.filter((file) => validTypes.includes(file.type))
 
     if (validFiles.length > 0) {
-      callback(isMultiple ? validFiles : validFiles[0]);
+      callback(isMultiple ? validFiles : validFiles[0])
 
       // reset input to allow reselecting same file
       if (inputRef.current) {
-        inputRef.current.value = '';
+        inputRef.current.value = ''
       }
     } else {
-      dispatch(addToast({ message: "File format not supported", type: 'error' }));
-      callback(null);
+      dispatch(
+        addToast({ message: 'File format not supported', type: 'error' })
+      )
+      callback(null)
     }
-  };
+  }
 
   const handleButtonClick = () => {
     if (inputRef.current) {
-      inputRef.current.click();
+      inputRef.current.click()
     }
-  };
+  }
 
   return (
-    <div className="flex flex-col items-center h-full w-full">
+    <div
+      className="flex h-full w-full flex-col items-center justify-center"
+      onClick={handleButtonClick}
+    >
       <input
         ref={inputRef}
         type="file"
@@ -56,14 +67,11 @@ const FileUpload = ({ callback, buttonTitle, className, isMultiple = false }: IF
         className="hidden"
       />
 
-      <Button
-        onClick={handleButtonClick}
-        className={className}
-      >
-        {buttonTitle || (isMultiple ? "Add files" : "Add file")}
+      <Button onClick={handleButtonClick} className={className}>
+        {buttonTitle || (isMultiple ? 'Add files' : 'Add file')}
       </Button>
     </div>
-  );
-};
+  )
+}
 
-export default FileUpload;
+export default FileUpload

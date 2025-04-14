@@ -1,6 +1,7 @@
 export enum URL {
   SERVICES = '/services',
   SERVICE_WORKERS = '/service-workers',
+  ESTATES = '/real-estates',
 }
 
 export enum AUTH {
@@ -12,4 +13,8 @@ export enum USER {
   UPDATE_PHOTO = "/user/update-photo",
   UPDATE = "/user/update",
   ME = "/user/me",
+}
+
+export enum ESTATES {
+  UPDATE  = '/real-estates/user-ads',
 }

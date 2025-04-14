@@ -1,5 +1,4 @@
 import ImagePreview from '../../../../components/molecules/image-preview'
-import { images } from './mock.ts'
 import Avatar from '../../../../components/atoms/avatar'
 import Icon from '../../../../components/atoms/icon'
 import Caption from '../../../../components/atoms/typography/caption'
@@ -12,13 +11,15 @@ import { scrollToPageBlock } from './helpers.ts'
 import Modal from '../../../../components/molecules/modal'
 import H3 from '../../../../components/atoms/typography/h3'
 import Input from '../../../../components/atoms/input'
+import { estateImage } from '../../../../store/estateSlice'
 
 interface Props {
   agent: Agent
   ref: RefObject<HTMLDivElement | null>
+  images: estateImage[]
 }
 
-export const ImagesBlock = ({ agent, ref }: Props) => {
+export const ImagesBlock = ({ agent, ref, images}: Props) => {
   const { containerDimension } = useElementSizes({
     containerRef: ref,
     containerDimensionProp: 'width',

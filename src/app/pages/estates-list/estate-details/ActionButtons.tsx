@@ -1,16 +1,20 @@
 import Button from '../../../../components/atoms/button'
-import { changeCurrentEstate, setFavorite } from '../../../../store/estateSlice'
-import { useAppDispatch } from '../../../../store'
+import { RealEstate } from '../../../../store/estateSlice'
 import { useTranslation } from 'react-i18next'
 import { cn } from '../../../../helpers/ui.ts'
+import { useSetFavoriteEstate } from '../../../../helpers/hooks/useSetFavoriteEstate.ts'
+import { Loader } from '../../../../components/atoms/loader'
 
 interface Props {
-  estateId: string
-  isFavorite: boolean
+  estate: RealEstate
 }
 
-export const ActionButtons = ({ estateId, isFavorite }: Props) => {
-  const dispatch = useAppDispatch()
+export const ActionButtons = ({ estate }: Props) => {
+  const { loading, setFavoriteCallBack, favorite } = useSetFavoriteEstate({
+    estateId: estate.id,
+    favoredByArr: estate.favoredBy,
+    isFavorite: estate.favorite,
+  })
   const { t } = useTranslation()
   return (
     <div className="hidden justify-end gap-3 lg:flex">
@@ -25,18 +29,18 @@ export const ActionButtons = ({ estateId, isFavorite }: Props) => {
       </Button>
       <Button
         variant="text"
-        className="text-blue-gray hover:text-charcoal  w-auto !border-0"
-        iconId={isFavorite ? 'bigHeartFilledIcon' : 'bigHeartIcon'}
+        className="text-blue-gray hover:text-charcoal w-auto !border-0"
+        iconId={favorite ? 'bigHeartFilledIcon' : 'bigHeartIcon'}
         iconSide="left"
         iconClassName={cn('!min-h-[48px] !min-w-[48px] ', {
-          'text-coral': isFavorite,
+          'text-coral': favorite,
         })}
         onClick={() => {
-          dispatch(setFavorite({ id: estateId }))
-          dispatch(changeCurrentEstate({ favorite: !isFavorite }))
+          setFavoriteCallBack()
         }}
+        disabled={loading}
       >
-        {t('buttons.like')}
+        {loading ? <Loader size={30} className="mx-5"/> : t('buttons.like')}
       </Button>
     </div>
   )

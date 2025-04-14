@@ -2,8 +2,8 @@ import { OperationFilter } from './OperationFilter.tsx'
 import EstateCard from '../../../../components/molecules/estate-card'
 import { cn } from '../../../../helpers/ui.ts'
 import { FilterOption } from './mock.ts'
-import { RealEstate } from '../../../../store/commonMock.ts'
 import { useTranslation } from 'react-i18next'
+import { RealEstate } from '../../../../store/estateSlice'
 
 interface Props {
   label: string

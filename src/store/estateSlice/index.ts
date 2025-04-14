@@ -1,20 +1,66 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { sleep } from '../../helpers'
 import {
   buyFilters,
   FilterOption,
   rentFilters,
 } from '../../app/pages/home/popular-block/mock.ts'
-import { houses, RealEstate } from '../commonMock.ts'
+import { api } from '../../helpers/hooks/useAxios.ts'
+import { URL } from '../../@constants/URLS.ts'
 
 export const fetchEstate = createAsyncThunk<RealEstate[], void>(
   'estate',
   async () => {
-    // simulate api call
-    await sleep(1000)
-    return [...houses]
+    const res = await api.get<{ estates: RealEstate[] }>(URL.ESTATES)
+    console.log('res', res.data.estates)
+    return res.data.estates
   }
 )
+
+export interface estateImage {
+  createdAt: string
+  estateId: string
+  id: string
+  url: string
+}
+
+export interface RealEstate {
+  additionalFeatures: string | null
+  additionalInfo: string | null
+  addressLat: number
+  addressLng: number
+  addressLocation: string
+  availability: string | null
+  bathroomsDesc: string
+  bathroomsTotal: number
+  commissionFree: string
+  condition: string
+  createdAt: string
+  favoredBy: string[]
+  favorite: boolean
+  floors: string
+  furnished: string | null
+  garage: string
+  heating: string
+  id: string
+  images: estateImage[]
+  isTop: boolean
+  kitchen: string | null
+  label: string
+  landAreaM2: string
+  livingAreaM2: string
+  loungeArea: string | null
+  operationKey: string
+  operationValue: string
+  ownerId: string
+  price: string
+  rooms: number
+  selectedOnMap: boolean
+  typeKey: string
+  typeValue: string
+  updatedAt: string
+  views: number
+  yearBuilt: number
+}
 
 export type ListingType = 'buy' | 'rent'
 
@@ -64,13 +110,35 @@ export const realEstateSlice = createSlice({
   name: 'estate',
   initialState,
   reducers: {
-    setFavorite: (state, action: PayloadAction<{ id: string }>) => {
+    setFavorite: (
+      state,
+      action: PayloadAction<{ id: string; favoredBy?: string[] }>
+    ) => {
       if (!state.data) return
-      state.data = state.data.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, favorite: !item.favorite }
-          : item
-      )
+      state.data = state.data.map((item) => {
+        if (item.id === action.payload.id) {
+          const payloadIds = action.payload.favoredBy || []
+
+          const newFavoredBy = [...item.favoredBy]
+
+          payloadIds.forEach((id) => {
+            const index = newFavoredBy.indexOf(id)
+            if (index !== -1) {
+              newFavoredBy.splice(index, 1)
+            } else {
+              newFavoredBy.push(id)
+            }
+          })
+
+          return {
+            ...item,
+            favorite: !item.favorite,
+            favoredBy: newFavoredBy,
+          }
+        }
+
+        return item
+      })
     },
 
     refreshFilters: (state, action: PayloadAction<Partial<IFilters>>) => {
@@ -103,11 +171,8 @@ export const realEstateSlice = createSlice({
       state.currentPage = action.payload
     },
 
-    setCurrentEstate: (state, action: PayloadAction<string>) => {
-      const estate = state.data?.find((est) => est.id === action.payload)
-      if (estate) {
-        state.currentEstate = estate
-      }
+    setCurrentEstate: (state, action: PayloadAction<RealEstate>) => {
+      state.currentEstate = action.payload
     },
     changeCurrentEstate: (
       state,
@@ -149,7 +214,7 @@ export const {
   setCurrentEstate,
   changeCurrentEstate,
   setListingType,
-  refreshFilters
+  refreshFilters,
 } = realEstateSlice.actions
 
 export default realEstateSlice.reducer
