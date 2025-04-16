@@ -7,7 +7,6 @@ import { usePathname } from '../../../../helpers/hooks/usePathname'
 import { ADS_ROUTES } from '../../../../@constants/routes'
 import {
   countries,
-  initialValuesForm,
   objectsTypes,
   parkingTypes,
   permittedRentInfos,
@@ -26,6 +25,16 @@ import Button from '../../../../components/atoms/button'
 import FileUpload from '../../../../components/molecules/file-upload'
 import Modal from '../../../../components/molecules/modal'
 import Map from '../../../../components/organisms/map'
+import { useAxiosHook } from '../../../../helpers/hooks/useAxios.ts'
+import { ESTATES, URL as ROUTE } from '../../../../@constants/URLS.ts'
+import { useAppSelector } from '../../../../store'
+import { selectUser } from '../../../../store/userSlice/selectors.ts'
+import { RealEstate } from '../../../../store/estateSlice'
+import { useValidationSchema } from './useValidationSchema.ts'
+import { useImagesUpload } from '../../../../helpers/hooks/useImagesUpload.ts'
+import { useInitialValues } from './useInitialValues.ts'
+import { cn } from '../../../../helpers/ui.ts'
+import { selectCurrentEstate } from '../../../../store/estateSlice/selectors.ts'
 
 interface Props {
   children?: ReactNode
@@ -34,29 +43,78 @@ interface Props {
 export const EntityManageForm = ({ children }: Props) => {
   const { t } = useTranslation()
   const [openMap, setOpenMap] = useState(false)
-  const [images, setImages] = useState<string[]>([])
+  const [imgs, setImgs] = useState<string[]>([])
   const mapRef = useRef<MapRef | null>(null)
   const path = usePathname()
-
+  const [currImageIdx, setCurrImageIdx] = useState<number | null>(null)
   const isSellPath = path.includes(ADS_ROUTES.SELL_ADS)
+  const user = useAppSelector(selectUser)
+  const currEstate = useAppSelector(selectCurrentEstate)
+
+  const { execute: create } = useAxiosHook<{ estate: RealEstate }>(
+    { url: ROUTE.ESTATES, method: 'POST' },
+    { manual: true }
+  )
+
+  const { execute: update } = useAxiosHook(
+    { url: ESTATES.UPDATE, method: 'PATCH' },
+    { manual: true }
+  )
+
+  const uploadImages = useImagesUpload()
+
+  const initValues = useInitialValues({ callback: setImgs })
 
   return (
     <Formik
-      initialValues={initialValuesForm}
+      initialValues={initValues}
+      validationSchema={useValidationSchema(
+        path.includes(ADS_ROUTES.CREATE_AD)
+      )}
       onSubmit={async (_values, { resetForm }) => {
-        resetForm()
+        if (path.includes(ADS_ROUTES.CREATE_AD)) {
+
+          if (!imgs.length) {
+            return
+          } else {
+            console.log("here", _values)
+            const createRes = await create({
+              data: {
+                ..._values,
+                images: imgs,
+                userId: user?.id,
+              },
+            })
+
+            console.log(createRes.data.estate)
+          }
+          resetForm()
+        } else {
+          if (currEstate) {
+            await update({
+              data: {
+                id: +currEstate?.id,
+                ..._values,
+                images: imgs,
+              }
+            })
+          }
+
+        }
+
+
       }}
     >
       {({ setFieldValue }) => (
         <Form className="flex flex-col gap-3">
           <FieldWrapper label={t('details.details-form.object')}>
             <FormDropdownWrapper
-              fieldName="object"
+              fieldName="typeKey"
               dropdownElements={objectsTypes}
             />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.title')}>
-            <FormInputWrapper fieldName="title" />
+            <FormInputWrapper fieldName="label" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.country')}>
             <FormDropdownWrapper
@@ -71,7 +129,7 @@ export const EntityManageForm = ({ children }: Props) => {
             <FormInputWrapper fieldName="postCode" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.visible-addresses')}>
-            <FormRadioWrapper fieldName="visibleAddresses" />
+            <FormRadioWrapper fieldName="visibleDetailedAddress" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.street')}>
             <FormInputWrapper fieldName="street" />
@@ -89,20 +147,20 @@ export const EntityManageForm = ({ children }: Props) => {
             }
           >
             <FormDropdownWrapper
-              fieldName="permittedRentForm"
+              fieldName="rentFormation"
               dropdownElements={
                 isSellPath ? permittedSellInfos : permittedRentInfos
               }
             />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.build-year')}>
-            <FormInputWrapper fieldName="buildYear" />
+            <FormInputWrapper fieldName="yearBuilt" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.nums-of-floors')}>
-            <FormInputWrapper fieldName="numsOfFloors" />
+            <FormInputWrapper fieldName="floors" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.living-spase')}>
-            <FormInputWrapper fieldName="livingSpase" />
+            <FormInputWrapper fieldName="livingAreaM2" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.balcony')}>
             <FormInputWrapper fieldName="balcony" />
@@ -114,7 +172,10 @@ export const EntityManageForm = ({ children }: Props) => {
             <FormInputWrapper fieldName="garden" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.heating-type')}>
-            <FormInputWrapper fieldName="heatingType" />
+            <FormInputWrapper fieldName="heating" />
+          </FieldWrapper>
+          <FieldWrapper label={t('condition')}>
+            <FormInputWrapper fieldName="condition" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.energy-certificate')}>
             <FormInputWrapper fieldName="energyCertificate" />
@@ -144,7 +205,7 @@ export const EntityManageForm = ({ children }: Props) => {
           )}
           <FieldWrapper label={t('details.details-form.park-place')}>
             <FormDropdownWrapper
-              fieldName="parkPlace"
+              fieldName="garage"
               dropdownElements={parkingTypes}
             />
           </FieldWrapper>
@@ -178,11 +239,11 @@ export const EntityManageForm = ({ children }: Props) => {
             </Field>
           </FieldWrapper>
           <FieldWrapper label="WC">
-            <FormInputWrapper fieldName="WC" />
+            <FormInputWrapper fieldName="bathroomsTotal" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.state')}>
             <FormDropdownWrapper
-              fieldName="storage"
+              fieldName="state"
               dropdownElements={stateTypes}
             />
           </FieldWrapper>
@@ -227,8 +288,8 @@ export const EntityManageForm = ({ children }: Props) => {
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.coordinates')}>
             <div className="flex gap-3">
-              <FormInputWrapper fieldName="latitude" placeholder="48.2082" />
-              <FormInputWrapper fieldName="longitude" placeholder="16.3738" />
+              <FormInputWrapper fieldName="addressLng" placeholder="48.2082" />
+              <FormInputWrapper fieldName="addressLat" placeholder="16.3738" />
               <Button
                 className="bg-charcoal hover:bg-seafoam-green h-12 min-w-12 p-3 text-white"
                 onClick={() => setOpenMap(true)}
@@ -246,13 +307,44 @@ export const EntityManageForm = ({ children }: Props) => {
             className="items-start rounded-lg pt-3 lg:pt-[5.625rem]"
           >
             <div className="grid grid-cols-2 gap-5 pt-3 lg:gap-10">
-              {images.map((image, index) => (
-                <img
+              {imgs.map((image, index) => (
+                <div
                   key={image + index}
-                  src={image}
-                  alt={image + index}
-                  className="max-h-full min-h-[6.5625rem] w-full cursor-pointer justify-center rounded-lg object-cover lg:h-[7.5rem] lg:object-center"
-                />
+                  className="relative"
+                  onPointerEnter={() => {
+                    setCurrImageIdx(index)
+                  }}
+                  onPointerLeave={() => {
+                    setCurrImageIdx(null)
+                  }}
+                  onTouchStart={() => {
+                    console.log('holded')
+                  }}
+                >
+                  <span
+                    className={cn(
+                      'bg-light-gray2 absolute top-2 right-2 hidden cursor-pointer rounded-full opacity-0 transition-all duration-300 lg:block',
+                      {
+                        'opacity-100 transition-all duration-300':
+                          currImageIdx === index,
+                      }
+                    )}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      setImgs((state) =>
+                        state.filter((_, idx) => idx !== index)
+                      )
+                    }}
+                  >
+                    <Icon id="deleteIcon" className="text-red h-6 w-6" />
+                  </span>
+                  <img
+                    src={image}
+                    alt={image + index}
+                    className="max-h-full min-h-[6.5625rem] w-full cursor-pointer justify-center rounded-lg object-cover lg:h-[7.5rem] lg:object-center"
+                  />
+                </div>
               ))}
               <div className="bg-gray flex max-h-full min-h-[6.5625rem] w-full cursor-pointer items-center justify-center rounded-lg lg:h-[7.5rem]">
                 <FileUpload
@@ -264,13 +356,15 @@ export const EntityManageForm = ({ children }: Props) => {
                       className="text-blue-gray h-12 w-12 cursor-pointer"
                     />
                   }
-                  callback={(files) => {
+                  callback={async (files) => {
                     if (Array.isArray(files)) {
-                      const urls = files.map((file) =>
-                        URL.createObjectURL(file)
-                      )
-                      setImages(urls)
-                      setFieldValue('photos', files)
+                      const res = await uploadImages({
+                        urlsArr: files,
+                      })
+                      if (res) {
+                        setImgs((state) => [...state, ...res])
+                        setFieldValue('images', files)
+                      }
                     }
                   }}
                 />
@@ -285,8 +379,8 @@ export const EntityManageForm = ({ children }: Props) => {
               data={[1]}
               ref={mapRef}
               onClick={(e) => {
-                setFieldValue('longitude', e.lngLat.lng.toFixed(5))
-                setFieldValue('latitude', e.lngLat.lat.toFixed(5))
+                setFieldValue('addressLng', e.lngLat.lng.toFixed(5))
+                setFieldValue('addressLat', e.lngLat.lat.toFixed(5))
                 setOpenMap(false)
               }}
             >

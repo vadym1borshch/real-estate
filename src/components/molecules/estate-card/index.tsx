@@ -23,7 +23,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
     images,
     label,
     isTop,
-    favorite,
+    isFavorite,
     typeValue,
     addressLocation,
     rooms,
@@ -36,10 +36,10 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
     favoredBy,
   } = realEstate
 
-  const { loading, setFavoriteCallBack, favorite: isFavorite } = useSetFavoriteEstate({
+  const { loading, setFavoriteCallBack, favorite } = useSetFavoriteEstate({
     estateId: id,
     favoredByArr: favoredBy,
-    isFavorite: favorite
+    isFavorite: isFavorite
   })
 
   return (
@@ -63,9 +63,9 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
             <Loader className="z-100 ml-auto w-fit" size={20} />
           ) : (
             <Icon
-              id={isFavorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
+              id={favorite ? 'filledSmallHeartIcon' : 'smallHeartIcon'}
               className={cn('z-100 ml-auto h-5 w-5 text-white lg:h-5 lg:w-5', {
-                'text-coral': isFavorite,
+                'text-coral': favorite,
               })}
               onClick={async (e) => {
                 e.stopPropagation()

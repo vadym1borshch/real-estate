@@ -24,7 +24,7 @@ export const useSetFavoriteEstate = ({
       estateId: string
       favoredBy: string[]
     }
-  }>({ url: ESTATES.UPDATE, method: 'PATCH' }, { manual: true })
+  }>({ url: ESTATES.TOGGLE_FAVORITE, method: 'PATCH' }, { manual: true })
   const user = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
 
@@ -39,7 +39,7 @@ export const useSetFavoriteEstate = ({
       if (res.data) {
         dispatch(
           changeCurrentEstate({
-            favorite: isFavorite,
+            isFavorite: isFavorite,
             favoredBy: [...res.data.estate.favoredBy],
           })
         )
@@ -53,7 +53,7 @@ export const useSetFavoriteEstate = ({
       dispatch(fetchEstate())
     } else {
       dispatch(setFavorite({ id: estateId }))
-      dispatch(changeCurrentEstate({ favorite: !isFavorite }))
+      dispatch(changeCurrentEstate({ isFavorite: !isFavorite }))
     }
   }
 

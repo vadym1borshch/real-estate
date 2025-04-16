@@ -6,6 +6,7 @@ import Icon from '../../../../../components/atoms/icon'
 import {
   AdsFilterStatus,
   deleteAd,
+  I_ADS,
   refreshRejection,
 } from '../../../../../store/adsSlice'
 import { actionButtons, rejectedButtons } from './common.ts'
@@ -15,20 +16,28 @@ import { usePathname } from '../../../../../helpers/hooks/usePathname.ts'
 import { ADS_ROUTES } from '../../../../../@constants/routes.ts'
 import { useWindowDimensions } from '../../../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../../../@constants'
+import { setCurrentEstate } from '../../../../../store/estateSlice'
+import { api } from '../../../../../helpers/hooks/useAxios.ts'
+import { URL } from '../../../../../@constants/URLS.ts'
 
 interface Props {
   status: AdsFilterStatus
   adId: string
   callback: (modalId: string, adId?: string) => void
+  ad: I_ADS
 }
 
-export const ActionButtons = ({ status, adId, callback }: Props) => {
+export const ActionButtons = ({ status, adId, callback, ad }: Props) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const path = usePathname()
   const { width } = useWindowDimensions()
   const isLarge = width >= BREAKPOINTS.PRE_LG
+
+const deleteHandler = async (id: string) => {
+    await api.delete(`${URL.ESTATES}?id=${id}`)
+}
 
   const correctDetailsRoute = path.includes(ADS_ROUTES.RENT_ADS)
     ? ADS_ROUTES.RENT_DETAILS
@@ -51,7 +60,10 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
   const onClickHandler = (id: string) => {
     switch (id) {
       case 'delete':
-        return () => dispatch(deleteAd({ id: adId }))
+        return () => {
+          dispatch(deleteAd({ id: adId }))
+          deleteHandler(adId)
+        }
 
       case 'refresh':
         return () => dispatch(refreshRejection({ id: adId }))
@@ -60,7 +72,10 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
       case 'rejected-reason':
         return () => callback(id)
       case 'edit':
-        return () => navigate(correctDetailsRoute)
+        return () => {
+          dispatch(setCurrentEstate(ad))
+          navigate(correctDetailsRoute)
+        }
     }
   }
 
@@ -75,13 +90,10 @@ export const ActionButtons = ({ status, adId, callback }: Props) => {
           {rejectedButtons.map((button) => (
             <Button
               key={button.id}
-              className={cn(
-                'h-10 w-full max-w-full truncate',
-                {
-                  'bg-charcoal hover:bg-seafoam-green !max-w-10 !min-w-10 px-0 text-white':
-                    button.type !== 'default',
-                }
-              )}
+              className={cn('h-10 w-full max-w-full truncate', {
+                'bg-charcoal hover:bg-seafoam-green !max-w-10 !min-w-10 px-0 text-white':
+                  button.type !== 'default',
+              })}
               onClick={onClickHandler(button.id)}
             >
               {button.type === 'default' ? (

@@ -105,10 +105,9 @@ export const realEstateSlice = createSlice({
         fetchAds.fulfilled,
         (state, action: PayloadAction<RealEstate[]>) => {
           state.loading = false
-          state.data = action.payload.map((el, index) => {
+          state.data = action.payload.map((el) => {
             return {
               ...el,
-              status: adsFilterStatuses[index % adsFilterStatuses.length].type,
             }
           })
         }

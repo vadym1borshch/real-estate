@@ -6,6 +6,7 @@ import {
 } from '../../app/pages/home/popular-block/mock.ts'
 import { api } from '../../helpers/hooks/useAxios.ts'
 import { URL } from '../../@constants/URLS.ts'
+import { AdsFilterStatus } from '../adsSlice'
 
 export const fetchEstate = createAsyncThunk<RealEstate[], void>(
   'estate',
@@ -24,42 +25,79 @@ export interface estateImage {
 }
 
 export interface RealEstate {
-  additionalFeatures: string | null
-  additionalInfo: string | null
-  addressLat: number
-  addressLng: number
-  addressLocation: string
-  availability: string | null
-  bathroomsDesc: string
-  bathroomsTotal: number
-  commissionFree: string
-  condition: string
-  createdAt: string
-  favoredBy: string[]
-  favorite: boolean
-  floors: string
-  furnished: string | null
-  garage: string
-  heating: string
   id: string
   images: estateImage[]
-  isTop: boolean
-  kitchen: string | null
   label: string
-  landAreaM2: string
-  livingAreaM2: string
-  loungeArea: string | null
-  operationKey: string
-  operationValue: string
-  ownerId: string
-  price: string
-  rooms: number
-  selectedOnMap: boolean
+  isTop: boolean
+  isFavorite: boolean
+  status: AdsFilterStatus
   typeKey: string
   typeValue: string
-  updatedAt: string
-  views: number
+  country: string | null
+  state: string | null
+
+  addressLocation: string
+  addressLat: number
+  addressLng: number
+
+  rooms: number
+  bathroomsTotal: number | null
+  bathroomsDesc: string | null
+
+  operationKey: ListingType
+  operationValue: string
+
+  livingAreaM2: string
+  landAreaM2: string | null
+
+  price: string
+  parkPlacePrice: string | null
+  views: number | null
+
   yearBuilt: number
+  floors: string | null
+  garage: string | null
+  heating: string | null
+  condition: string | null
+  commissionFree: string | null
+  balcony: string | null
+  terrace: string | null
+  garden: string | null
+  energyCertificate: string | null
+  HBW: string | null
+  HBWEnergyClass: string | null
+  fGEE: string | null
+  fGEEEnergyClass: string | null
+  cellar: boolean
+  netOperationCosts: string | null
+  brokerCommissions: string | null
+  brokerCommissionsPercentage: string | null
+  propertyDescriptions: string | null
+  locationDescriptions: string | null
+
+  additionalFeatures: string | null
+  kitchen: string | null
+  loungeArea: string | null
+  furnished: string | null
+  availability: string | null
+  additionalInfo: string | null
+
+  ownerId: string
+
+  favoredBy: string[]
+
+  createdAt: Date
+  updatedAt: Date
+
+  street: string | null
+  number: string | null
+  visibleDetailedAddress: boolean
+  rentFormation: string | null
+
+  premises: []
+  equipments: []
+  fees: []
+  monthlyCosts: []
 }
 
 export type ListingType = 'buy' | 'rent'
@@ -132,7 +170,7 @@ export const realEstateSlice = createSlice({
 
           return {
             ...item,
-            favorite: !item.favorite,
+            favorite: !item.isFavorite,
             favoredBy: newFavoredBy,
           }
         }
@@ -173,6 +211,9 @@ export const realEstateSlice = createSlice({
 
     setCurrentEstate: (state, action: PayloadAction<RealEstate>) => {
       state.currentEstate = action.payload
+    },
+    deleteCurrentEstate: (state) => {
+      state.currentEstate = null
     },
     changeCurrentEstate: (
       state,
@@ -215,6 +256,7 @@ export const {
   changeCurrentEstate,
   setListingType,
   refreshFilters,
+  deleteCurrentEstate,
 } = realEstateSlice.actions
 
 export default realEstateSlice.reducer

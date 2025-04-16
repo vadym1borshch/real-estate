@@ -5,7 +5,7 @@ interface Props {
   type: string
   address: string
   rooms: number
-  bathrooms: number
+  bathrooms: number | null
   m2: string
 }
 

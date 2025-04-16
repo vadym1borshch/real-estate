@@ -16,5 +16,6 @@ export enum USER {
 }
 
 export enum ESTATES {
-  UPDATE  = '/real-estates/user-ads',
+  TOGGLE_FAVORITE  = '/real-estates/toggle-favorite',
+  UPDATE = '/real-estates/update-estate',
 }

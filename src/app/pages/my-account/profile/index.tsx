@@ -38,7 +38,7 @@ export const ProfilePage = () => {
         formData.append('file', files)
         formData.append('id', user.id)
 
-        const userRes = await update({ data: formData }) // ✅ без загортання в об'єкт
+        const userRes = await update({ data: formData })
 
         if (userRes.data.user) {
           dispatch(setUser(userRes.data.user))

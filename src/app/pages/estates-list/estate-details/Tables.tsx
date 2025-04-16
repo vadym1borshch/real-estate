@@ -40,7 +40,7 @@ export const Tables = ({ estate }: Props) => {
               </td>
               <td className="py-3 pl-3">
                 <span className="flex items-center">
-                  {row.key === 'rooms' ? `${row.value} Zimmer` : row.value}
+                  {row.key === 'rooms'? `${row.value} Zimmer` : row.value as string}
                 </span>
               </td>
             </tr>
@@ -60,7 +60,7 @@ export const Tables = ({ estate }: Props) => {
             </td>
             <td className="py-3 pl-3">
               <span className="flex items-center">
-                {row.key === 'rooms' ? `${row.value} Zimmer` : row.value}
+                {row.key === 'rooms' ? `${row.value} Zimmer` : row.value as string}
               </span>
             </td>
           </tr>

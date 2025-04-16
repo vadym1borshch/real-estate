@@ -87,6 +87,7 @@ export const AdsType = () => {
               })}
             />
             <ActionButtons
+              ad={ad}
               status={ad.status}
               adId={ad.id}
               callback={(modalId, adId) => modalStatusHandler(modalId, adId)}

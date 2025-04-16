@@ -13,7 +13,7 @@ export const ActionButtons = ({ estate }: Props) => {
   const { loading, setFavoriteCallBack, favorite } = useSetFavoriteEstate({
     estateId: estate.id,
     favoredByArr: estate.favoredBy,
-    isFavorite: estate.favorite,
+    isFavorite: estate.isFavorite,
   })
   const { t } = useTranslation()
   return (

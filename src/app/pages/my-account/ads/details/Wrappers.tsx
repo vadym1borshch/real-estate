@@ -69,38 +69,47 @@ export const FormDropdownWrapper = ({
   const { t } = useTranslation()
   return (
     <Field name={fieldName}>
-      {({ field, form }: FieldProps) => {
+      {({ field, form, meta }: FieldProps) => {
         const label = dropdownElements.find((el) => el.value === field.value)
         return (
-          <Dropdown
-            label={
-              field.value ? t(label?.title) : t('details.details-form.choose')
-            }
-            open={open}
-            setOpen={(value: boolean) => setOpen(value)}
-            id={fieldName}
-            variant="outlined"
-            withIcon
-            triggerButtonClassName="min-h-12 w-full"
-            dropdownClassName="top-16 md:top-14 lg:top-12 "
-          >
-            <div className="flex flex-col">
-              {dropdownElements.map((el) => {
-                return (
-                  <span
-                    className="hover:bg-charcoal py-3 pl-3 hover:text-white"
-                    key={el.value}
-                    onClick={() => {
-                      form.setFieldValue(fieldName, el.value)
-                      setOpen(false)
-                    }}
-                  >
-                    {t(el.title)}
-                  </span>
-                )
-              })}
-            </div>
-          </Dropdown>
+          <div>
+            <Dropdown
+              label={
+                field.value ? t(label?.title) : t('details.details-form.choose')
+              }
+              open={open}
+              setOpen={(value: boolean) => setOpen(value)}
+              id={fieldName}
+              variant="outlined"
+              withIcon
+              triggerButtonClassName="min-h-12 w-full"
+              dropdownClassName="top-16 md:top-14 lg:top-12 "
+            >
+              <div className="flex flex-col">
+                {dropdownElements.map((el) => {
+                  return (
+                    <span
+                      className="hover:bg-charcoal py-3 pl-3 hover:text-white"
+                      key={el.value}
+                      onClick={() => {
+                        form.setFieldValue(fieldName, el.value)
+                        setOpen(false)
+                      }}
+                    >
+                      {t(el.title)}
+                    </span>
+                  )
+                })}
+              </div>
+            </Dropdown>
+            {!field.value && meta.touched && meta.error ? (
+              <span className="text-red flex w-full justify-end">
+                {' '}
+                <Icon id="errorIconRed" className="h-6 max-w-6 min-w-6" />
+                {meta.error}
+              </span>
+            ) : null}
+          </div>
         )
       }}
     </Field>
@@ -142,7 +151,7 @@ export const FormLayoutButtons = ({
 }) => {
   const { t } = useTranslation()
   return (
-    <div className="flex flex-col gap-3 pt-[3.75rem] lg:pt-[5.625rem] whitespace-nowrap md:flex-row">
+    <div className="flex flex-col gap-3 pt-[3.75rem] whitespace-nowrap md:flex-row lg:pt-[5.625rem]">
       <Button
         size="sm"
         className="w-full lg:w-fit"

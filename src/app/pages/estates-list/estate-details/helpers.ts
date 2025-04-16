@@ -6,23 +6,12 @@ export const extractValuesToTable = (
   dataObject: RealEstate
 ) => {
   return detailsArray.map((detail) => {
-    const keys = detail.key.split('.')
-    let value: string | null | RealEstate = dataObject
 
-    for (const k of keys) {
-      if (typeof value === 'object' && value !== null && k in value) {
-        value = (value as never)[k]
-      } else {
-        value = null
-        break
-      }
+    return { ...detail,
+
+
+      value: dataObject[detail.key as keyof RealEstate]
     }
-
-    if (typeof value === 'object' && value !== null) {
-      value = JSON.stringify(value)
-    }
-
-    return { ...detail, value }
   })
 }
 

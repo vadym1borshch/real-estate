@@ -14,7 +14,7 @@ export const NotFoundPage = () => {
       </p>
       <Button
         className="mb-[6.25rem] lg:mb-[9.375rem]"
-        onClick={() => navigate('/')}
+        onClick={() => navigate('')}
       >
         {t('not-found.button')}
       </Button>
