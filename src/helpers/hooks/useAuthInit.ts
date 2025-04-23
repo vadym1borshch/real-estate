@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../store'
 import { setUser } from '../../store/userSlice'
 import { useAxiosHook } from './useAxios.ts'
 import { Agent } from '../../app/pages/service-around/mock.ts'
-import { USER } from '../../@constants/URLS.ts'
+import { USER } from '../../@constants/urls.ts'
 
 type DecodedToken = {
   exp: number

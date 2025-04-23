@@ -12,7 +12,7 @@ import Modal from '../../../components/molecules/modal'
 
 import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
 import { Service, ServiceWorkers } from '../../../@types'
-import { URL } from '../../../@constants/URLS.ts'
+import { URL } from '../../../@constants/urls.ts'
 
 export const ServiceAround = () => {
   const { t } = useTranslation()

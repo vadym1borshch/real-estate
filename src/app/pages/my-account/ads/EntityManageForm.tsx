@@ -26,8 +26,8 @@ import FileUpload from '../../../../components/molecules/file-upload'
 import Modal from '../../../../components/molecules/modal'
 import Map from '../../../../components/organisms/map'
 import { useAxiosHook } from '../../../../helpers/hooks/useAxios.ts'
-import { ESTATES, URL as ROUTE } from '../../../../@constants/URLS.ts'
-import { useAppSelector } from '../../../../store'
+import { ESTATES, URL as ROUTE } from '../../../../@constants/urls.ts'
+import { useAppDispatch, useAppSelector } from '../../../../store'
 import { selectUser } from '../../../../store/userSlice/selectors.ts'
 import { RealEstate } from '../../../../store/estateSlice'
 import { useValidationSchema } from './useValidationSchema.ts'
@@ -35,6 +35,9 @@ import { useImagesUpload } from '../../../../helpers/hooks/useImagesUpload.ts'
 import { useInitialValues } from './useInitialValues.ts'
 import { cn } from '../../../../helpers/ui.ts'
 import { selectCurrentEstate } from '../../../../store/estateSlice/selectors.ts'
+import { useWindowDimensions } from '../../../../helpers/hooks/useWindowDimensions.ts'
+import { BREAKPOINTS } from '../../../../@constants'
+import { addToast } from '../../../../store/toastSlise'
 
 interface Props {
   children?: ReactNode
@@ -50,6 +53,8 @@ export const EntityManageForm = ({ children }: Props) => {
   const isSellPath = path.includes(ADS_ROUTES.SELL_ADS)
   const user = useAppSelector(selectUser)
   const currEstate = useAppSelector(selectCurrentEstate)
+  const { width } = useWindowDimensions()
+  const dispatch = useAppDispatch()
 
   const { execute: create } = useAxiosHook<{ estate: RealEstate }>(
     { url: ROUTE.ESTATES, method: 'POST' },
@@ -73,11 +78,10 @@ export const EntityManageForm = ({ children }: Props) => {
       )}
       onSubmit={async (_values, { resetForm }) => {
         if (path.includes(ADS_ROUTES.CREATE_AD)) {
-
           if (!imgs.length) {
+            dispatch(addToast({type:"error", message:"please add images"}))
             return
           } else {
-            console.log("here", _values)
             const createRes = await create({
               data: {
                 ..._values,
@@ -96,13 +100,11 @@ export const EntityManageForm = ({ children }: Props) => {
                 id: +currEstate?.id,
                 ..._values,
                 images: imgs,
-              }
+              },
             })
+            dispatch(addToast({type:"success", message:"updated successfully"}))
           }
-
         }
-
-
       }}
     >
       {({ setFieldValue }) => (
@@ -310,22 +312,19 @@ export const EntityManageForm = ({ children }: Props) => {
               {imgs.map((image, index) => (
                 <div
                   key={image + index}
-                  className="relative"
+                  className="relative h-full"
                   onPointerEnter={() => {
                     setCurrImageIdx(index)
                   }}
                   onPointerLeave={() => {
                     setCurrImageIdx(null)
                   }}
-                  onTouchStart={() => {
-                    console.log('holded')
-                  }}
                 >
                   <span
                     className={cn(
-                      'bg-light-gray2 absolute top-2 right-2 hidden cursor-pointer rounded-full opacity-0 transition-all duration-300 lg:block',
+                      'bg-light-gray2 absolute top-2 right-2 cursor-pointer rounded-md opacity-100 transition-all duration-300 lg:opacity-0',
                       {
-                        'opacity-100 transition-all duration-300':
+                        'transition-all duration-300 lg:opacity-100':
                           currImageIdx === index,
                       }
                     )}
@@ -342,14 +341,22 @@ export const EntityManageForm = ({ children }: Props) => {
                   <img
                     src={image}
                     alt={image + index}
-                    className="max-h-full min-h-[6.5625rem] w-full cursor-pointer justify-center rounded-lg object-cover lg:h-[7.5rem] lg:object-center"
+                    style={{
+                      height:
+                        width < BREAKPOINTS.MD
+                          ? '30vw'
+                          : width < BREAKPOINTS.LG
+                            ? '20vw'
+                            : '',
+                    }}
+                    className="h-[7.5rem] max-h-full min-h-[6.5625rem] w-full cursor-pointer justify-center rounded-lg object-cover lg:object-center"
                   />
                 </div>
               ))}
               <div className="bg-gray flex max-h-full min-h-[6.5625rem] w-full cursor-pointer items-center justify-center rounded-lg lg:h-[7.5rem]">
                 <FileUpload
                   isMultiple
-                  className="bg-transparent hover:bg-transparent hover:outline-0 focus:border-0"
+                  className="bg-transparent hover:bg-transparent hover:outline-0 focus:border-0 z-1000"
                   buttonTitle={
                     <Icon
                       id="roundedPlusIcon"

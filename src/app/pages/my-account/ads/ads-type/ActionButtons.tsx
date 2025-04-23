@@ -18,7 +18,7 @@ import { useWindowDimensions } from '../../../../../helpers/hooks/useWindowDimen
 import { BREAKPOINTS } from '../../../../../@constants'
 import { setCurrentEstate } from '../../../../../store/estateSlice'
 import { api } from '../../../../../helpers/hooks/useAxios.ts'
-import { URL } from '../../../../../@constants/URLS.ts'
+import { URL } from '../../../../../@constants/urls.ts'
 
 interface Props {
   status: AdsFilterStatus

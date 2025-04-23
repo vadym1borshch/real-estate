@@ -14,7 +14,7 @@ import H3 from '../../../components/atoms/typography/h3'
 import Icon from '../../../components/atoms/icon'
 import { useValidationLoginSchema } from './validation.ts'
 import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
-import { AUTH } from '../../../@constants/URLS.ts'
+import { AUTH } from '../../../@constants/urls.ts'
 import { addToast } from '../../../store/toastSlise'
 
 export const LoginPage = () => {

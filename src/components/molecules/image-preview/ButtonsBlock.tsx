@@ -29,7 +29,7 @@ export const ButtonsBlock = ({ handleNext, handlePrev }: Props) => {
           className={cn('h-6 w-6 text-white', {
             'rotate-90': !isLarge,
           })}
-          onClick={handlePrev}
+          onClick={()=>handlePrev()}
         />
       </Button>
       <Button
@@ -47,7 +47,7 @@ export const ButtonsBlock = ({ handleNext, handlePrev }: Props) => {
           className={cn('h-6 w-6 rotate-180 text-white', {
             '-rotate-90': !isLarge,
           })}
-          onClick={handleNext}
+          onClick={()=>handleNext()}
         />
       </Button>
     </>

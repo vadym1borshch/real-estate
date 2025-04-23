@@ -5,7 +5,7 @@ import {
   rentFilters,
 } from '../../app/pages/home/popular-block/mock.ts'
 import { api } from '../../helpers/hooks/useAxios.ts'
-import { URL } from '../../@constants/URLS.ts'
+import { URL } from '../../@constants/urls.ts'
 import { AdsFilterStatus } from '../adsSlice'
 
 export const fetchEstate = createAsyncThunk<RealEstate[], void>(

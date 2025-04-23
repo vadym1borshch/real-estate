@@ -53,11 +53,10 @@ const EmptyUrlRedirect = () => {
   const pathname = usePathname()
   const navigate = useNavigate()
   useEffect(() => {
-    if (pathname === ROUTES.HOME) {
-      navigate(ROUTES.HOME)
-    }
     const savedLang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG
-    navigate(`${savedLang}`, { replace: true })
+    if (pathname === '/' || pathname === '') {
+      navigate(`/${savedLang}/`, { replace: true })
+    }
   }, [navigate, pathname])
 
   return null
@@ -75,7 +74,7 @@ const routes: RouteObject[] = [
  
    },*/
   {
-    path: '',
+    path: '/',
     element: <EmptyUrlRedirect />,
   },
   {

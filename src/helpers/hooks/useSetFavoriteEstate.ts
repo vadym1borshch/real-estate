@@ -6,7 +6,7 @@ import {
   fetchEstate,
   setFavorite,
 } from '../../store/estateSlice'
-import { ESTATES } from '../../@constants/URLS.ts'
+import { ESTATES } from '../../@constants/urls.ts'
 
 interface Props {
   estateId: string

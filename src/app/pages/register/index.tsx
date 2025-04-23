@@ -12,7 +12,7 @@ import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
 import { useValidationRegisterSchema } from './validation.ts'
 import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
-import { AUTH } from '../../../@constants/URLS.ts'
+import { AUTH } from '../../../@constants/urls.ts'
 
 export const RegisterPage = () => {
   const { t } = useTranslation()

@@ -2,6 +2,7 @@ import React, { ReactNode, useRef } from 'react'
 import Button from '../../atoms/button'
 import { useAppDispatch } from '../../../store'
 import { addToast } from '../../../store/toastSlise'
+import { cn } from '../../../helpers/ui.ts'
 
 interface IFileUpload {
   callback: (files: File | File[] | null) => void
@@ -67,7 +68,7 @@ const FileUpload = ({
         className="hidden"
       />
 
-      <Button onClick={handleButtonClick} className={className}>
+      <Button onClick={handleButtonClick} className={cn("w-full h-full", className)}>
         {buttonTitle || (isMultiple ? 'Add files' : 'Add file')}
       </Button>
     </div>

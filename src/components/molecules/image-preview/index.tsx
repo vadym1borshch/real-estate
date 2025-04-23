@@ -58,8 +58,8 @@ const ImagePreview = ({
             alt={`Image ${currentIndex + 1}`}
             style={{
               width,
-              maxHeight: isLarge ? height: "auto",
-              height: '100%',
+              maxHeight: isLarge ? height: "60vw",
+              height: '60vw',
             }}
             className="h-auto w-full rounded-xl object-cover"
           />
