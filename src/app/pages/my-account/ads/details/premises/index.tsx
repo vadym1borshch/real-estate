@@ -8,14 +8,38 @@ import { initialFields } from './mock.ts'
 import Input from '../../../../../../components/atoms/input'
 import { useWindowDimensions } from '../../../../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../../../../@constants'
+import { useAxiosHook } from '../../../../../../helpers/hooks/useAxios.ts'
+import { RealEstate } from '../../../../../../store/estateSlice'
+import { ESTATES } from '../../../../../../@constants/urls.ts'
+import { useAppSelector } from '../../../../../../store'
+import { selectCurrentEstate } from '../../../../../../store/estateSlice/selectors.ts'
 
 export const Premises = () => {
+  const currentEstate = useAppSelector(selectCurrentEstate)
+  const { execute: update } = useAxiosHook<{ estate: RealEstate }>(
+    { url: ESTATES.UPDATE_INFO, method: 'PATCH' },
+    { manual: true }
+  )
+
   const formik = useFormik({
     initialValues: {
       premises: initialFields,
     },
-    onSubmit: () => {
-
+    onSubmit: async (values) => {
+      const ls = values.premises.find((p) => p.key === 'living-space')
+      if (ls) {
+        if (ls.name && ls.value && currentEstate) {
+          const res = await update({
+            data: {
+              id: +currentEstate?.id,
+              premises: values.premises,
+            },
+          })
+          console.log(res)
+        } else {
+          console.log('error')
+        }
+      }
     },
   })
 
@@ -87,15 +111,16 @@ export const Premises = () => {
                 </div>
                 <div ref={squareRef}>
                   <Input
-                    name={`premises.${index}.square`}
+                    name={`premises.${index}.value`}
                     placeholder="1,00"
                     onChange={formik.handleChange}
-                    value={formik.values.premises[index].square}
+                    value={formik.values.premises[index].value}
                     label={
                       !isLarge
                         ? t('details.premises-form.labels.square')
                         : undefined
                     }
+                    type="number"
                   />
                 </div>
                 <ActionsButtonsWrapper

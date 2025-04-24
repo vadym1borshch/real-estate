@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react'
+import { HTMLProps, ReactNode, useState } from 'react'
 import { cn } from '../../../../../helpers/ui.ts'
 import { useTranslation } from 'react-i18next'
 import { Field, FieldArray, FieldArrayRenderProps, FieldProps } from 'formik'
@@ -34,24 +34,32 @@ export const FieldWrapper = ({
   )
 }
 
+interface FormInputWrapperProps {
+  fieldName: string
+  placeholder?: string
+  type?: HTMLProps<HTMLInputElement>['type']
+  disabled?: boolean
+}
+
 export const FormInputWrapper = ({
   fieldName,
   placeholder,
-}: {
-  fieldName: string
-  placeholder?: string
-}) => {
+  type,
+  disabled = false,
+}: FormInputWrapperProps) => {
   const { t } = useTranslation()
   return (
     <Field name={fieldName}>
       {({ field, meta }: FieldProps) => (
         <Input
           {...field}
+          type={type}
           placeholder={placeholder || t('details.details-form.placeholder')}
           id={fieldName}
           error={meta.touched && meta.error ? meta.error : undefined}
           className="min-h-12"
           errorPosition="bottom"
+          disabled={disabled}
         />
       )}
     </Field>

@@ -27,6 +27,37 @@ const findKeyByValue = (obj: Record<string, any>, value: string): string | null 
   return null;
 };
 
+
+const findValueByKey = (
+  obj: Record<string, any>,
+  searchKey: string
+): string | null => {
+  let foundValue: string | null = null;
+
+  const search = (current: any, path: string[]) => {
+    if (typeof current !== 'object' || current === null) return;
+
+    for (const key in current) {
+      const newPath = [...path, key];
+      const fullKey = newPath.join('.');
+
+      if (key === searchKey || fullKey === searchKey) {
+        if (typeof current[key] === 'string') {
+          foundValue = current[key];
+          return;
+        }
+      }
+
+      if (typeof current[key] === 'object') {
+        search(current[key], newPath);
+      }
+    }
+  };
+
+  search(obj, []);
+  return foundValue;
+};
+
 const useTranslationSearch = () => {
   const { t, i18n } = useTranslation();
   const [translations, setTranslations] = useState<Record<string, any>>(getTranslationFile(i18n.language));
@@ -35,7 +66,12 @@ const useTranslationSearch = () => {
     setTranslations(getTranslationFile(i18n.language));
   }, [i18n.language]);
 
-  const getTranslationByKey = (key: string) => t(key);
+  const getTranslationByKey = (key: string) => {
+    const fallback = t(key, { defaultValue: '' });
+    const found = findValueByKey(translations, key);
+    return found || fallback || key;
+  };
+
 
   const getKeyByValue = (searchValue: string): string | null => {
     return findKeyByValue(translations, searchValue);

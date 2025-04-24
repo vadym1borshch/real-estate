@@ -18,4 +18,5 @@ export enum USER {
 export enum ESTATES {
   TOGGLE_FAVORITE  = '/real-estates/toggle-favorite',
   UPDATE = '/real-estates/update-estate',
+  UPDATE_INFO = '/real-estates/update-estate-info',
 }

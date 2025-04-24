@@ -15,8 +15,6 @@ export const useValidationSchema = (validate: boolean) => {
         yearBuilt: Yup.string().required(t('validation.required')),
         floors: Yup.string()
           .required(t('validation.required')),
-        livingAreaM2: Yup.string()
-          .required(t('validation.required')),
         price: Yup.string()
           .required(t('validation.required')),
         addressLat: Yup.number()

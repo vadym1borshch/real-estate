@@ -29,7 +29,12 @@ import { useAxiosHook } from '../../../../helpers/hooks/useAxios.ts'
 import { ESTATES, URL as ROUTE } from '../../../../@constants/urls.ts'
 import { useAppDispatch, useAppSelector } from '../../../../store'
 import { selectUser } from '../../../../store/userSlice/selectors.ts'
-import { RealEstate } from '../../../../store/estateSlice'
+import {
+  addNewEstate,
+  changeCurrentEstate,
+  changeEstate,
+  RealEstate,
+} from '../../../../store/estateSlice'
 import { useValidationSchema } from './useValidationSchema.ts'
 import { useImagesUpload } from '../../../../helpers/hooks/useImagesUpload.ts'
 import { useInitialValues } from './useInitialValues.ts'
@@ -61,7 +66,7 @@ export const EntityManageForm = ({ children }: Props) => {
     { manual: true }
   )
 
-  const { execute: update } = useAxiosHook(
+  const { execute: update } = useAxiosHook<{ estate: RealEstate }>(
     { url: ESTATES.UPDATE, method: 'PATCH' },
     { manual: true }
   )
@@ -79,7 +84,7 @@ export const EntityManageForm = ({ children }: Props) => {
       onSubmit={async (_values, { resetForm }) => {
         if (path.includes(ADS_ROUTES.CREATE_AD)) {
           if (!imgs.length) {
-            dispatch(addToast({type:"error", message:"please add images"}))
+            dispatch(addToast({ type: 'error', message: 'please add images' }))
             return
           } else {
             const createRes = await create({
@@ -89,20 +94,38 @@ export const EntityManageForm = ({ children }: Props) => {
                 userId: user?.id,
               },
             })
-
-            console.log(createRes.data.estate)
+            if (createRes.data) {
+              dispatch(addNewEstate(createRes.data.estate))
+              dispatch(
+                addToast({ type: 'success', message: 'created successfully' })
+              )
+            } else {
+              dispatch(
+                addToast({ type: 'error', message: 'something went wrong' })
+              )
+            }
           }
           resetForm()
         } else {
           if (currEstate) {
-            await update({
+            const res = await update({
               data: {
                 id: +currEstate?.id,
                 ..._values,
                 images: imgs,
               },
             })
-            dispatch(addToast({type:"success", message:"updated successfully"}))
+            if (res.data) {
+              dispatch(
+                addToast({ type: 'success', message: 'updated successfully' })
+              )
+              dispatch(changeCurrentEstate({ ...res.data.estate }))
+              dispatch(changeEstate({ ...res.data.estate }))
+            } else {
+              dispatch(
+                addToast({ type: 'error', message: 'something went wrong' })
+              )
+            }
           }
         }
       }}
@@ -128,7 +151,7 @@ export const EntityManageForm = ({ children }: Props) => {
             <FormInputWrapper fieldName="city" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.post-code')}>
-            <FormInputWrapper fieldName="postCode" />
+            <FormInputWrapper fieldName="postCode" type="number" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.visible-addresses')}>
             <FormRadioWrapper fieldName="visibleDetailedAddress" />
@@ -156,13 +179,13 @@ export const EntityManageForm = ({ children }: Props) => {
             />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.build-year')}>
-            <FormInputWrapper fieldName="yearBuilt" />
+            <FormInputWrapper fieldName="yearBuilt" type="number" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.nums-of-floors')}>
             <FormInputWrapper fieldName="floors" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.living-spase')}>
-            <FormInputWrapper fieldName="livingAreaM2" />
+            <FormInputWrapper fieldName="livingAreaM2" disabled />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.balcony')}>
             <FormInputWrapper fieldName="balcony" />
@@ -175,9 +198,6 @@ export const EntityManageForm = ({ children }: Props) => {
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.heating-type')}>
             <FormInputWrapper fieldName="heating" />
-          </FieldWrapper>
-          <FieldWrapper label={t('condition')}>
-            <FormInputWrapper fieldName="condition" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.energy-certificate')}>
             <FormInputWrapper fieldName="energyCertificate" />
@@ -241,7 +261,7 @@ export const EntityManageForm = ({ children }: Props) => {
             </Field>
           </FieldWrapper>
           <FieldWrapper label="WC">
-            <FormInputWrapper fieldName="bathroomsTotal" />
+            <FormInputWrapper fieldName="bathroomsTotal" type="number" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.state')}>
             <FormDropdownWrapper
@@ -290,8 +310,16 @@ export const EntityManageForm = ({ children }: Props) => {
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.coordinates')}>
             <div className="flex gap-3">
-              <FormInputWrapper fieldName="addressLng" placeholder="48.2082" />
-              <FormInputWrapper fieldName="addressLat" placeholder="16.3738" />
+              <FormInputWrapper
+                fieldName="addressLng"
+                placeholder="48.2082"
+                type="number"
+              />
+              <FormInputWrapper
+                fieldName="addressLat"
+                placeholder="16.3738"
+                type="number"
+              />
               <Button
                 className="bg-charcoal hover:bg-seafoam-green h-12 min-w-12 p-3 text-white"
                 onClick={() => setOpenMap(true)}
@@ -356,7 +384,7 @@ export const EntityManageForm = ({ children }: Props) => {
               <div className="bg-gray flex max-h-full min-h-[6.5625rem] w-full cursor-pointer items-center justify-center rounded-lg lg:h-[7.5rem]">
                 <FileUpload
                   isMultiple
-                  className="bg-transparent hover:bg-transparent hover:outline-0 focus:border-0 z-1000"
+                  className="z-1000 bg-transparent hover:bg-transparent hover:outline-0 focus:border-0"
                   buttonTitle={
                     <Icon
                       id="roundedPlusIcon"

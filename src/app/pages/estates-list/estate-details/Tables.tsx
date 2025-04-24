@@ -5,6 +5,7 @@ import { estateFullDetails } from './mock.ts'
 import { useWindowDimensions } from '../../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../../@constants'
 import { RealEstate } from '../../../../store/estateSlice'
+import useTranslationSearch from '../../../../helpers/hooks/useTranslationSearch.ts'
 
 interface Props {
   estate: RealEstate
@@ -13,7 +14,7 @@ interface Props {
 export const Tables = ({ estate }: Props) => {
   const { width } = useWindowDimensions()
   const isTablet = width >= BREAKPOINTS.MD
-
+  const { getTranslationByKey } = useTranslationSearch()
   const updatedEstateDetails = extractValuesToTable(
     estateFullDetails,
     estate
@@ -40,7 +41,9 @@ export const Tables = ({ estate }: Props) => {
               </td>
               <td className="py-3 pl-3">
                 <span className="flex items-center">
-                  {row.key === 'rooms'? `${row.value} Zimmer` : row.value as string}
+                  {row.key === 'rooms'
+                    ? `${row.value} Zimmer`
+                    : `${getTranslationByKey(row.value as string)}`}
                 </span>
               </td>
             </tr>
@@ -49,7 +52,7 @@ export const Tables = ({ estate }: Props) => {
       />
 
       <Table
-        className="my-[6.25rem] lg:my-[9.375rem] hidden md:block"
+        className="my-[6.25rem] hidden md:block lg:my-[9.375rem]"
         tableRows={secondPartList.map((row) => (
           <tr
             key={row.id}
@@ -60,7 +63,9 @@ export const Tables = ({ estate }: Props) => {
             </td>
             <td className="py-3 pl-3">
               <span className="flex items-center">
-                {row.key === 'rooms' ? `${row.value} Zimmer` : row.value as string}
+                {row.key === 'rooms'
+                  ? `${row.value} Zimmer`
+                  : `${getTranslationByKey(row.value as string)}`}
               </span>
             </td>
           </tr>

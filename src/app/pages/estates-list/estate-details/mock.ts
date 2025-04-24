@@ -74,7 +74,7 @@ export const estateFullDetails: EstateDetails[] = [
   {
     id: '10',
     iconId: 'conditionHomeIcon',
-    key: 'condition',
+    key: 'state',
     value: '',
   },
   {

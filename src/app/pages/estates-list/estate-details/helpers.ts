@@ -6,10 +6,7 @@ export const extractValuesToTable = (
   dataObject: RealEstate
 ) => {
   return detailsArray.map((detail) => {
-
     return { ...detail,
-
-
       value: dataObject[detail.key as keyof RealEstate]
     }
   })

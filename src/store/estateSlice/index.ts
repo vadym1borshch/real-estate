@@ -215,6 +215,21 @@ export const realEstateSlice = createSlice({
     deleteCurrentEstate: (state) => {
       state.currentEstate = null
     },
+    changeEstate: (state, action: PayloadAction<RealEstate>) => {
+      if (state.data) {
+        state.data = state.data.map((estate) => {
+          if (estate.id === action.payload.id) {
+            return action.payload
+          }
+          return estate
+        })
+      }
+    },
+    addNewEstate: (state, action: PayloadAction<RealEstate>) => {
+      if (state.data) {
+        state.data = [...state.data, action.payload]
+      }
+    },
     changeCurrentEstate: (
       state,
       action: PayloadAction<Partial<RealEstate>>
@@ -257,6 +272,8 @@ export const {
   setListingType,
   refreshFilters,
   deleteCurrentEstate,
+  addNewEstate,
+  changeEstate,
 } = realEstateSlice.actions
 
 export default realEstateSlice.reducer

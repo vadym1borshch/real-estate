@@ -2,7 +2,7 @@ import { cn } from '../../../helpers/ui.ts'
 import Icon from '../icon'
 import { ChangeEvent, HTMLProps, Ref } from 'react'
 
-interface Props extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
+export interface InputProps extends Omit<HTMLProps<HTMLDivElement>, 'size'> {
   label?: string
   value: string
   placeholder?: string
@@ -31,7 +31,7 @@ const Input = ({
   iconSide = 'right',
   ref,
   ...rest
-}: Props) => {
+}: InputProps) => {
   return (
     <div className="relative z-0 flex w-full flex-col">
       {label && (
