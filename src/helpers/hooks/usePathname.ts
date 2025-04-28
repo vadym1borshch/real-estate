@@ -1,8 +1,7 @@
 import { useLocation } from 'react-router-dom'
 
 export const usePathname = () => {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
-  return pathname.replace(/^\/(en|ua|de|fr|es)(\/|$)/, '/');
-};
-
+  return pathname.replace(/^\/(en|ua|de|fr|es)(\/|$)/, '/')
+}

@@ -6,9 +6,11 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof AuthButtons> = (args) => {
-  return <div className="bg-charcoal p-4">
-    <AuthButtons {...args} onClick={()=>{}} />
-  </div>
+  return (
+    <div className="bg-charcoal p-4">
+      <AuthButtons {...args} onClick={() => {}} />
+    </div>
+  )
 }
 
 export const Default = Template.bind({})

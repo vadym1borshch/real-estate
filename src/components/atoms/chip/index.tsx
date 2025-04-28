@@ -10,8 +10,11 @@ const Chip = ({ value, className }: Props) => {
   return (
     <TChip
       value={value}
-      className={cn('w-fit h-[2.5rem] bg-seafoam-green text-md font-700 text-center px-[0.84375rem]', className)} />
-
+      className={cn(
+        'bg-seafoam-green text-md font-700 h-[2.5rem] w-fit px-[0.84375rem] text-center',
+        className
+      )}
+    />
   )
 }
 

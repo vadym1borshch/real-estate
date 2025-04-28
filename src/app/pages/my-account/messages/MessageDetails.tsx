@@ -34,10 +34,10 @@ export const MessageDetails = ({ messages, currentMessageId }: Props) => {
     <>
       <div
         ref={messageContainerRef}
-        className="flex max-h-[500px] h-full flex-col gap-10 overflow-y-auto"
+        className="flex h-full max-h-[500px] flex-col gap-10 overflow-y-auto"
       >
         {orderBy(messages, ['timestamp'], ['asc']).map((reply) => (
-          <div key={reply.id} className="flex flex-col gap-10 mr-3">
+          <div key={reply.id} className="mr-3 flex flex-col gap-10">
             <div className="text-blue-gray flex flex-col justify-between md:flex-row">
               <span>
                 {reply.senderName === user?.name

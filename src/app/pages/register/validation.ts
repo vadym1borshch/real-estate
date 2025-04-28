@@ -15,7 +15,8 @@ export const useValidationRegisterSchema = () => {
       .email(t('validation.email'))
       .required(t('validation.required')),
     password: Yup.string()
-      .required(t('validation.required')).min(8, t('validation.message_min', { value: '8' })),
+      .required(t('validation.required'))
+      .min(8, t('validation.message_min', { value: '8' })),
     termsOfUse: Yup.boolean().oneOf([true], t('validation.required')),
   })
 }

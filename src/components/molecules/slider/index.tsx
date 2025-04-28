@@ -9,12 +9,7 @@ interface Props {
   slideHeight?: number
 }
 
-const Slider = ({
-  children,
-  spacing = 20,
-  slideWidth,
-  slideHeight,
-}: Props) => {
+const Slider = ({ children, spacing = 20, slideWidth, slideHeight }: Props) => {
   const [keenRef] = useKeenSlider({
     loop: true,
     slides: {

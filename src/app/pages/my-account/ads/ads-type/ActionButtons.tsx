@@ -35,9 +35,9 @@ export const ActionButtons = ({ status, adId, callback, ad }: Props) => {
   const { width } = useWindowDimensions()
   const isLarge = width >= BREAKPOINTS.PRE_LG
 
-const deleteHandler = async (id: string) => {
+  const deleteHandler = async (id: string) => {
     await api.delete(`${URL.ESTATES}?id=${id}`)
-}
+  }
 
   const correctDetailsRoute = path.includes(ADS_ROUTES.RENT_ADS)
     ? ADS_ROUTES.RENT_DETAILS

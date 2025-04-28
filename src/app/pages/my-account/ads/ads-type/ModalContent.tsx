@@ -41,7 +41,7 @@ export const ModalContent = ({ id, onClick, status }: Props) => {
   }>(days[0])
 
   useEffect(() => {
-  setOpenDropDown(false)
+    setOpenDropDown(false)
   }, [currentPrice])
 
   return useMemo(() => {
@@ -80,7 +80,7 @@ export const ModalContent = ({ id, onClick, status }: Props) => {
                 <div className="flex flex-col items-start">
                   {days.map((day) => (
                     <span
-                      onClick={()=>setCurrentPrice(day)}
+                      onClick={() => setCurrentPrice(day)}
                       className="hover:bg-seafoam-green w-full py-2 pl-4"
                       key={day.key}
                     >
@@ -91,7 +91,8 @@ export const ModalContent = ({ id, onClick, status }: Props) => {
               </Dropdown>
             </div>
             <span className="border-blue-gray flex w-full max-w-[6.875rem] items-center justify-center rounded-sm border">
-              {initPrice * currentPrice.key} <Icon id="euroCurrencyIcon" className="w-6 h-6"/>
+              {initPrice * currentPrice.key}{' '}
+              <Icon id="euroCurrencyIcon" className="h-6 w-6" />
             </span>
           </div>
 

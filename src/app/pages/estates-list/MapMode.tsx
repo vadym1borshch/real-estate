@@ -122,7 +122,7 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
       </Filters>
       <div
         className={cn(
-          'mt-5 grid w-full grid-cols-1 gap-5 md:grid-cols-[2fr_1fr]  gap-x-3'
+          'mt-5 grid w-full grid-cols-1 gap-5 gap-x-3 md:grid-cols-[2fr_1fr]'
         )}
       >
         <div className="w-full">
@@ -160,10 +160,10 @@ export const MapMode = ({ open, setOpen, changeMode }: Props) => {
               <EstateCard
                 key={estate.id}
                 realEstate={estate}
-                className={cn("max-w-full lg:mr-3", {
-                  "border-2 border-coral rounded-lg !min-h-[27rem]": currentEstateId === estate.id,
+                className={cn('max-w-full lg:mr-3', {
+                  'border-coral !min-h-[27rem] rounded-lg border-2':
+                    currentEstateId === estate.id,
                 })}
-
               />
             )
           })}

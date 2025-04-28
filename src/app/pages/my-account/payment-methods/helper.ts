@@ -1,5 +1,4 @@
 export const useDetectCardSystem = () => {
-
   return (cardNumber: string) => {
     const number = cardNumber.replace(/\s|-/g, '')
 
@@ -9,10 +8,7 @@ export const useDetectCardSystem = () => {
       return 'Visa'
     }
 
-    if (
-      /^5[1-5]/.test(number) ||
-      /^2(2[2-9]|[3-6]|7[01]|720)/.test(number)
-    ) {
+    if (/^5[1-5]/.test(number) || /^2(2[2-9]|[3-6]|7[01]|720)/.test(number)) {
       return 'Mastercard'
     }
 

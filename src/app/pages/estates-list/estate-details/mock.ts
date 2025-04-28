@@ -242,26 +242,37 @@ export const equipments = [
   },
   {
     title: 'real-estate.details.detail-info.equipments.windows',
-    descriptions:
-      'real-estate.details.detail-info.equipments.windows-type',
+    descriptions: 'real-estate.details.detail-info.equipments.windows-type',
   },
   {
     title: 'real-estate.details.detail-info.equipments.extra',
-    descriptions:
-      'real-estate.details.detail-info.equipments.extra-equip',
+    descriptions: 'real-estate.details.detail-info.equipments.extra-equip',
   },
 ]
 
 export const fees = [
-  { title: 'real-estate.details.detail-info.fees.transfer-tax', descriptions: '3,50%' },
-  { title: 'real-estate.details.detail-info.fees.land-registry', descriptions: '1,10%' },
+  {
+    title: 'real-estate.details.detail-info.fees.transfer-tax',
+    descriptions: '3,50%',
+  },
+  {
+    title: 'real-estate.details.detail-info.fees.land-registry',
+    descriptions: '1,10%',
+  },
   {
     title: 'real-estate.details.detail-info.fees.purchase-agreement',
-    descriptions: 'real-estate.details.detail-info.fees.purchase-agreement-descr',
+    descriptions:
+      'real-estate.details.detail-info.fees.purchase-agreement-descr',
   },
 ]
 
 export const monthly_costs = [
-  { title: 'real-estate.details.detail-info.monthly_costs.operating-costs', descriptions: '840,00 zzgl. UST 10%' },
-  { title: 'real-estate.details.detail-info.monthly_costs.heating', descriptions: '454,60' },
+  {
+    title: 'real-estate.details.detail-info.monthly_costs.operating-costs',
+    descriptions: '840,00 zzgl. UST 10%',
+  },
+  {
+    title: 'real-estate.details.detail-info.monthly_costs.heating',
+    descriptions: '454,60',
+  },
 ]

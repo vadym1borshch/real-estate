@@ -2,15 +2,15 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RealEstate } from '../estateSlice'
 import { api } from '../../helpers/hooks/useAxios.ts'
 
-export const fetchAds = createAsyncThunk<RealEstate[], { userId: string | null }>(
-  'ads',
-  async ({ userId }) => {
-    const res = await api.get<{ estates: RealEstate[] }>(
-      `/real-estates/user-ads?id=${userId}`
-    )
-    return res.data.estates
-  }
-)
+export const fetchAds = createAsyncThunk<
+  RealEstate[],
+  { userId: string | null }
+>('ads', async ({ userId }) => {
+  const res = await api.get<{ estates: RealEstate[] }>(
+    `/real-estates/user-ads?id=${userId}`
+  )
+  return res.data.estates
+})
 
 export const adsFilterStatuses = [
   {

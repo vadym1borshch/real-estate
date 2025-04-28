@@ -49,7 +49,9 @@ export const ProfilePage = () => {
         }
       }
     } catch (err) {
-      console.log(err)
+      dispatch(
+        addToast({ type: 'error', message: err.message })
+      )
     }
   }
 

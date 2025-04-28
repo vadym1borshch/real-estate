@@ -41,5 +41,4 @@ export const links = [
     href: '',
     label: 'footer.links.advisory-services',
   },
-
 ]

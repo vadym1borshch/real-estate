@@ -6,9 +6,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof Avatar> = (args) => {
-  return (
-    <Avatar  {...args} />
-  )
+  return <Avatar {...args} />
 }
 
 export const Default = Template.bind({})

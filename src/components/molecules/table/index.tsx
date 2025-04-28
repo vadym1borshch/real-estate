@@ -11,7 +11,7 @@ const Table = ({ tableHead, tableRows, className }: Props) => {
   return (
     <div
       className={cn(
-        'border-blue-gray w-full  table-auto rounded-lg border ',
+        'border-blue-gray w-full table-auto rounded-lg border',
         className
       )}
     >

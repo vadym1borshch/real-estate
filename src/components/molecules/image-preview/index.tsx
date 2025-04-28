@@ -2,12 +2,12 @@ import { useMemo, useState } from 'react'
 import { cn } from '../../../helpers/ui.ts'
 import Icon from '../../atoms/icon'
 import { ButtonsBlock } from './ButtonsBlock.tsx'
-import { estateImage } from '../../../store/estateSlice'
 import { useWindowDimensions } from '../../../helpers/hooks/useWindowDimensions.ts'
 import { BREAKPOINTS } from '../../../@constants'
+import { EstateImage } from '../../../store/estateSlice'
 
 interface IImagePreview {
-  images: estateImage[]
+  images: EstateImage[]
   initialIndex?: number
   width?: number
   height?: number
@@ -27,7 +27,7 @@ const ImagePreview = ({
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length)
   }
-  const {width: windowWidth} = useWindowDimensions()
+  const { width: windowWidth } = useWindowDimensions()
   const isLarge = windowWidth >= BREAKPOINTS.LG
 
   const handlePrev = () => {
@@ -58,7 +58,7 @@ const ImagePreview = ({
             alt={`Image ${currentIndex + 1}`}
             style={{
               width,
-              maxHeight: isLarge ? height: "60vw",
+              maxHeight: isLarge ? height : '60vw',
               height: '60vw',
             }}
             className="h-auto w-full rounded-xl object-cover"

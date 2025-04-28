@@ -27,7 +27,7 @@ export const Messages = () => {
 
   useEffect(() => {
     if (path === `/${ROUTES.MESSAGES}`) {
-      navigate(ROUTES.MESSAGES + `/${MY_ACCOUNT.INBOXES}` )
+      navigate(ROUTES.MESSAGES + `/${MY_ACCOUNT.INBOXES}`)
     }
   }, [path])
 

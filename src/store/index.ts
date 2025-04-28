@@ -8,7 +8,6 @@ import messagesSlice from './messagesSlice'
 import confirmEmailSlice from './ui/confirmEmailSlice'
 import modeSlice from './ui/modeSlice.ts'
 
-
 export const store = configureStore({
   reducer: {
     estates: realEstateSlice,

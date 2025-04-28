@@ -17,9 +17,9 @@ export const ButtonsBlock = ({ handleNext, handlePrev }: Props) => {
       <Button
         variant="outlined"
         className={cn(
-          'absolute top-1/2 left-3 p-0 -translate-y-1/2 transform !rounded-full !border-transparent',
+          'absolute top-1/2 left-3 -translate-y-1/2 transform !rounded-full !border-transparent p-0',
           {
-            'h-12 w-12 !border-white left-6': !isLarge,
+            'left-6 h-12 w-12 !border-white': !isLarge,
           }
         )}
         onClick={handlePrev}
@@ -29,15 +29,15 @@ export const ButtonsBlock = ({ handleNext, handlePrev }: Props) => {
           className={cn('h-6 w-6 text-white', {
             'rotate-90': !isLarge,
           })}
-          onClick={()=>handlePrev()}
+          onClick={() => handlePrev()}
         />
       </Button>
       <Button
         variant="outlined"
         className={cn(
-          'absolute top-1/2 right-3 p-0 -translate-y-1/2 transform !rounded-full !border-transparent',
+          'absolute top-1/2 right-3 -translate-y-1/2 transform !rounded-full !border-transparent p-0',
           {
-            'h-12 w-12 !border-white right-6': !isLarge,
+            'right-6 h-12 w-12 !border-white': !isLarge,
           }
         )}
         onClick={handleNext}
@@ -47,7 +47,7 @@ export const ButtonsBlock = ({ handleNext, handlePrev }: Props) => {
           className={cn('h-6 w-6 rotate-180 text-white', {
             '-rotate-90': !isLarge,
           })}
-          onClick={()=>handleNext()}
+          onClick={() => handleNext()}
         />
       </Button>
     </>

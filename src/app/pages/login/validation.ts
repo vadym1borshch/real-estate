@@ -8,7 +8,6 @@ export const useValidationLoginSchema = () => {
     email: Yup.string()
       .email(t('validation.email'))
       .required(t('validation.required')),
-    password: Yup.string()
-      .required(t('validation.required')),
+    password: Yup.string().required(t('validation.required')),
   })
 }

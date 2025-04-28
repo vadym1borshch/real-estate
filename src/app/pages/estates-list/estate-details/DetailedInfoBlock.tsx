@@ -7,7 +7,10 @@ export const DetailedInfoBlock = () => {
   return (
     <div className="flex w-full flex-col gap-6 md:flex-row md:gap-10">
       <div className="flex w-full flex-col gap-1.5 md:w-[50%]">
-        <H3 text={t('real-estate.details.detail-info.premises.title')} className="pb-6 md:pb-10" />
+        <H3
+          text={t('real-estate.details.detail-info.premises.title')}
+          className="pb-6 md:pb-10"
+        />
         {premises.map((premise, index) => (
           <div
             key={premise.title + index}
@@ -28,9 +31,18 @@ export const DetailedInfoBlock = () => {
         ))}
       </div>
       <div className="flex w-full flex-col gap-6 md:w-[50%] md:gap-10">
-        <Conditions title={t('real-estate.details.detail-info.equipments.title')} detailsArr={equipments} />
-        <Conditions title={t('real-estate.details.detail-info.fees.title')} detailsArr={fees} />
-        <Conditions title={t('real-estate.details.detail-info.monthly_costs.title')} detailsArr={monthly_costs} />
+        <Conditions
+          title={t('real-estate.details.detail-info.equipments.title')}
+          detailsArr={equipments}
+        />
+        <Conditions
+          title={t('real-estate.details.detail-info.fees.title')}
+          detailsArr={fees}
+        />
+        <Conditions
+          title={t('real-estate.details.detail-info.monthly_costs.title')}
+          detailsArr={monthly_costs}
+        />
       </div>
     </div>
   )

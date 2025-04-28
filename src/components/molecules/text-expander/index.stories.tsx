@@ -29,7 +29,6 @@ const Template: StoryFn<typeof TextExpander> = (args) => {
 export const Default = Template.bind({})
 Default.args = {}
 
-
 export const WithParams = Template.bind({})
 WithParams.args = {
   linesToShow: 2,

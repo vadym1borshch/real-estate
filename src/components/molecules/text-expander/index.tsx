@@ -74,8 +74,7 @@ export const TextExpander = ({
   }
 
   if (typeof children !== 'string' || !children) {
-    console.error('Please use children as string')
-    return null
+    throw new Error('children should be a string')
   }
 
   return (
@@ -110,7 +109,7 @@ export const TextExpander = ({
       <div className="button_container pt-3">
         <Button
           variant="text"
-          className="text-expander-button px-0 text-coral hover:text-light-coral"
+          className="text-expander-button text-coral hover:text-light-coral px-0"
           onClick={showMoreHandler}
           iconId="chevronDownIcon"
           iconClassName={cn(isShow ? 'rotate-180' : 'rotate-0')}

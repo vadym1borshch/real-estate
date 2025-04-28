@@ -6,16 +6,8 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof LanguageSwitcher> = (args) => {
-  return (
-    <LanguageSwitcher {...args} />
-  )
+  return <LanguageSwitcher {...args} />
 }
 
 export const Default = Template.bind({})
-Default.args = {
-
-}
-
-
-
-
+Default.args = {}

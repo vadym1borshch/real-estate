@@ -26,8 +26,6 @@ export const DescriptionsParagraph = ({
   children,
   Component,
 }: Props) => {
-
-
   const TitleComponent = useMemo(() => {
     if (Component) {
       return ({ text, className }: ITitleComponent) => (
@@ -40,14 +38,12 @@ export const DescriptionsParagraph = ({
   }, [Component])
 
   return (
-    <div className={cn('flex w-full flex-col gap-6 items-center', className)}>
+    <div className={cn('flex w-full flex-col items-center gap-6', className)}>
       <TitleComponent
         text={title}
         className={cn('w-[200px] text-center', titleClassName)}
       />
-      <p
-        className={cn('max-w-[47.5rem] text-center', descriptionsClassName)}
-      >
+      <p className={cn('max-w-[47.5rem] text-center', descriptionsClassName)}>
         {description}
       </p>
       {children}

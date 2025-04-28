@@ -1,7 +1,7 @@
 import { useRef, ReactNode } from 'react'
 import Input from '../../atoms/input'
 import { useTranslation } from 'react-i18next'
-import { ClickOutsideWrapper } from '../../wrappers/outsideClick'
+import { ClickOutsideWrapper } from '../../wrappers/outside-click'
 import { DropdownMenu } from '../../atoms/dropdown/Menu.tsx'
 
 interface Props {
@@ -42,7 +42,7 @@ const DropdownInput = ({
           iconId="navigationIcon"
           iconClassName="w-6 h-6 bg-transparent text-charcoal"
           placeholder={inputValue || t('filters.address')}
-          className="min-h-12 capitalize placeholder:text-blue-gray"
+          className="placeholder:text-blue-gray min-h-12 capitalize"
           iconSide="left"
           onFocus={() => {
             setOpen(true)

@@ -9,12 +9,15 @@ export const FAQPage = () => {
   const { t } = useTranslation()
   return (
     <FAQ filter={currentFilter}>
-      <div className="pt-[3.75rem] lg:pt-[5.625rem] flex flex-wrap max-w-[42.6875rem] gap-x-6 gap-y-3 w-full items-center text-center justify-center">
+      <div className="flex w-full max-w-[42.6875rem] flex-wrap items-center justify-center gap-x-6 gap-y-3 pt-[3.75rem] text-center lg:pt-[5.625rem]">
         {faqFilters.map((filter) => (
           <span
             key={filter.id}
-            onClick={()=>serCurrentFilter(filter.key)}
-            className={cn("cursor-pointer hover:text-gray transition-hover duration-300",{ 'underline': currentFilter === filter.key })}
+            onClick={() => serCurrentFilter(filter.key)}
+            className={cn(
+              'hover:text-gray transition-hover cursor-pointer duration-300',
+              { underline: currentFilter === filter.key }
+            )}
           >
             {t(filter.value)}
           </span>

@@ -6,15 +6,11 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof Checkbox> = (args) => {
-  return (
-    <Checkbox  {...args} />
-  )
+  return <Checkbox {...args} />
 }
 
 export const Default = Template.bind({})
-Default.args = {
-
-}
+Default.args = {}
 
 export const checked = Template.bind({})
 checked.args = {

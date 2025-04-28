@@ -1,13 +1,13 @@
+import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Field, FieldProps, Form, Formik } from 'formik'
 import Input from '../../../components/atoms/input'
-import { useTranslation } from 'react-i18next'
 import Button from '../../../components/atoms/button'
 import Checkbox from '../../../components/atoms/checkbox'
 import { Agent } from '../service-around/mock.ts'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import { setUser } from '../../../store/userSlice'
 import { selectUser } from '../../../store/userSlice/selectors.ts'
-import { useEffect } from 'react'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { ROUTES } from '../../../@constants/routes.ts'
 import H3 from '../../../components/atoms/typography/h3'
@@ -34,6 +34,18 @@ export const LoginPage = () => {
     }
   }, [user])
 
+  const handleSubmit = async (values: { email: string; password: string }) => {
+    try {
+      const res = await login({
+        data: values,
+      })
+      localStorage.setItem('token', res.data.token)
+      dispatch(setUser(res.data.user))
+    } catch (err) {
+      dispatch(addToast({ type: 'error', message: t('errors.login-failed') }))
+    }
+  }
+
   return (
     <div className="flex h-[calc(100svh-78px)] w-full max-w-[22.5rem] flex-col items-center justify-center lg:h-[calc(100svh-120px)]">
       <div className="flex w-full items-center justify-between pb-10">
@@ -49,24 +61,7 @@ export const LoginPage = () => {
           password: '',
           savePassword: false,
         }}
-        onSubmit={async (values) => {
-          try {
-            const res = await login({
-              data: {
-                email: values.email,
-                password: values.password,
-              },
-            })
-            console.log(res.data)
-            localStorage.setItem('token', res.data.token)
-            dispatch(setUser(res.data.user))
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          } catch (err) {
-            dispatch(
-              addToast({ type: 'error', message: t('errors.login-failed') })
-            )
-          }
-        }}
+        onSubmit={handleSubmit}
         validationSchema={useValidationLoginSchema()}
       >
         {({ isValid, dirty }) => (

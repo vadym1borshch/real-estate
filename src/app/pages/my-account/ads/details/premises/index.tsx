@@ -26,18 +26,16 @@ export const Premises = () => {
       premises: initialFields,
     },
     onSubmit: async (values) => {
-      const ls = values.premises.find((p) => p.key === 'living-space')
-      if (ls) {
-        if (ls.name && ls.value && currentEstate) {
-          const res = await update({
+      if (currentEstate?.id) {
+        try {
+          await update({
             data: {
               id: +currentEstate?.id,
               premises: values.premises,
             },
           })
-          console.log(res)
-        } else {
-          console.log('error')
+        } catch {
+          // Error handling
         }
       }
     },
@@ -130,7 +128,7 @@ export const Premises = () => {
                       ...premise,
                       id: v4(),
                       name: '',
-                      square: '',
+                      value: '',
                     })
                   }
                 />

@@ -3,7 +3,6 @@ import { useSearchParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { ListingType, refreshFilters } from '../../store/estateSlice'
 
-
 export const useQueryParams = () => {
   const [searchParams] = useSearchParams()
   const dispatch = useAppDispatch()

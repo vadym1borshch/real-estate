@@ -12,7 +12,7 @@ interface Props {
   estate: RealEstate
 }
 
-export const MapBlock = ({estate}:Props) => {
+export const MapBlock = ({ estate }: Props) => {
   const { t } = useTranslation()
   const path = usePathname()
   const mapRef = useRef<MapRef | null>(null)
@@ -51,16 +51,12 @@ export const MapBlock = ({estate}:Props) => {
           {t('real-estate.details.contact-provider.p2')}
         </TextExpander>
 
-        <Link
-          href="/buy/details"
-          iconId="playIcon"
-          className="hidden md:flex "
-        >
+        <Link href="/buy/details" iconId="playIcon" className="hidden md:flex">
           {t('real-estate.details.click-here-tour')}
         </Link>
       </div>
 
-      <div className="flex min-w-[calc(50%-1.25rem)] flex-col mb-[6.25rem] lg:mb-[9.375rem] gap-6 pt-6  md:order-1 md:pt-0">
+      <div className="mb-[6.25rem] flex min-w-[calc(50%-1.25rem)] flex-col gap-6 pt-6 md:order-1 md:pt-0 lg:mb-[9.375rem]">
         <Link href="/buy/details" iconId="playIcon" className="md:hidden">
           {t('real-estate.details.click-here-tour')}
         </Link>
@@ -78,8 +74,8 @@ export const MapBlock = ({estate}:Props) => {
           </Source>
         </Map>
         <span className="text-blue-gray -mt-4.5 text-xs">
-            {t('real-estate.details.address-not-published')}
-          </span>
+          {t('real-estate.details.address-not-published')}
+        </span>
       </div>
     </div>
   )

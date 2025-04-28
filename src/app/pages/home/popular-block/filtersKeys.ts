@@ -4,11 +4,11 @@ export const BuyKeys = {
   assets: 'assets',
   businessProperty: 'business-property',
   other: 'other',
-} as const;
+} as const
 
 export const RentKeys = {
   houses: 'houses',
   apartments: 'apartments',
   businessProperty: 'business-property',
   other: 'other',
-} as const;
+} as const

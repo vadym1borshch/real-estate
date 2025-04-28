@@ -17,22 +17,20 @@ export const useAuthInit = () => {
     { url: USER.ME, method: 'GET' },
     { manual: true }
   )
+
   const getUserFromDB = async (id: string) => {
     const res = await getUser({
       params: { id },
     })
     if (res.data.user) {
       dispatch(setUser(res.data.user))
-    } else {
-      console.log('user Not Found')
     }
   }
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    if (!token) {
-      return
-    }
+    if (!token) return
+
     try {
       const decoded: DecodedToken = jwtDecode(token)
       const isExpired = decoded.exp * 1000 < Date.now()
@@ -41,8 +39,7 @@ export const useAuthInit = () => {
         return
       }
       getUserFromDB(decoded.userId)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
+    } catch {
       localStorage.removeItem('token')
     }
   }, [])

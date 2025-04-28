@@ -20,7 +20,7 @@ i18next
       en,
       de,
       ua,
-    }
+    },
   })
 
 export default i18next

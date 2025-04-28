@@ -7,15 +7,28 @@ export interface Service {
 }
 
 export interface ServiceWorkers {
-  id: string,
-  name: string,
+  id: string
+  name: string
   profession: {
-    title: string,
+    title: string
     key: string
-  },
-  description: string,
-  phone: string,
-  email: string,
-  address: string,
+  }
+  description: string
+  phone: string
+  email: string
+  address: string
   photo: string
+}
+
+export type Equipment = {
+  id: string
+  label: string
+  key: string
+}
+
+export type Data = {
+  id: string
+  title: string
+  data: Equipment[]
+  key: string
 }

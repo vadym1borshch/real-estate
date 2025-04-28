@@ -7,14 +7,22 @@ import { BREAKPOINTS } from '../../../../@constants'
 
 export const FavoritesPage = () => {
   const estates = useAppSelector(selectFavoritesEstates)
-  const {width } = useWindowDimensions()
+  const { width } = useWindowDimensions()
   const isLarge = width >= BREAKPOINTS.PRE_LG
   return (
-    <div className={cn("grid grid-cols-1  w-full gap-6 xl:gap-10", {
-      "lg:grid-cols-2": isLarge
-    })}>
+    <div
+      className={cn('grid w-full grid-cols-1 gap-6 xl:gap-10', {
+        'lg:grid-cols-2': isLarge,
+      })}
+    >
       {estates.map((estate) => {
-        return <EstateCard key={estate.id} realEstate={estate} className="!max-w-full"/>
+        return (
+          <EstateCard
+            key={estate.id}
+            realEstate={estate}
+            className="!max-w-full"
+          />
+        )
       })}
     </div>
   )

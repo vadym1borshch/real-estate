@@ -65,7 +65,7 @@ const MobileMenu = ({ open, setOpen }: Props) => {
             {initialButtons.map((button) => (
               <Button
                 key={button.id}
-                className="hover:text-gray focus:!border-seafoam-green focus:!outline-seafoam-green py-0 h-fit text-white focus:!outline-4"
+                className="hover:text-gray focus:!border-seafoam-green focus:!outline-seafoam-green h-fit py-0 text-white focus:!outline-4"
                 size="sm"
                 variant="text"
                 onClick={() => {

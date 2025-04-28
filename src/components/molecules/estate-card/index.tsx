@@ -39,7 +39,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
   const { loading, setFavoriteCallBack, favorite } = useSetFavoriteEstate({
     estateId: id,
     favoredByArr: favoredBy,
-    isFavorite: isFavorite
+    isFavorite: isFavorite,
   })
 
   return (

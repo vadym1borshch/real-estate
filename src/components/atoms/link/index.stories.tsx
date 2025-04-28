@@ -6,11 +6,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof Link> = (args) => {
-  return (
-    <Link {...args} >
-      link
-    </Link>
-  )
+  return <Link {...args}>link</Link>
 }
 
 export const Default = Template.bind({})

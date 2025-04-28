@@ -12,7 +12,12 @@ export const Loader = ({
   className?: string
 }) => {
   return (
-    <div className={cn("flex h-full w-full items-center justify-center", className)}>
+    <div
+      className={cn(
+        'flex h-full w-full items-center justify-center',
+        className
+      )}
+    >
       <div
         style={{
           width: `${size}px`,

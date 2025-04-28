@@ -11,7 +11,7 @@ const Template: StoryFn<typeof Modal> = (args) => {
   const [open, setOpen] = useState(false)
   return (
     <div>
-      <Button onClick={()=>setOpen(true)}>Open</Button>
+      <Button onClick={() => setOpen(true)}>Open</Button>
       <Modal {...args} open={open} setOpen={setOpen}>
         <div>content</div>
       </Modal>

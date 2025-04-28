@@ -55,9 +55,7 @@ const FileUpload = ({
   }
 
   return (
-    <div
-      className="flex h-full w-full flex-col items-center justify-center"
-    >
+    <div className="flex h-full w-full flex-col items-center justify-center">
       <input
         ref={inputRef}
         type="file"
@@ -67,7 +65,10 @@ const FileUpload = ({
         className="hidden"
       />
 
-      <Button onClick={handleButtonClick} className={cn("w-full h-full", className)}>
+      <Button
+        onClick={handleButtonClick}
+        className={cn('h-full w-full', className)}
+      >
         {buttonTitle || (isMultiple ? 'Add files' : 'Add file')}
       </Button>
     </div>

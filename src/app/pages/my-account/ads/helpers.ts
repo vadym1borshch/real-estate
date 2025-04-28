@@ -21,7 +21,7 @@ export const useFetchAds = () => {
 
   useEffect(() => {
     if (user) {
-      dispatch(fetchAds({userId: user.id}))
+      dispatch(fetchAds({ userId: user.id }))
     }
 
     correctStatusAfterRefreshHandler()

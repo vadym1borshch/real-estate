@@ -36,7 +36,7 @@ interface Props {
   }) => void
 }
 
-export const AddCardForm = ({submitHandler}: Props) => {
+export const AddCardForm = ({ submitHandler }: Props) => {
   const { t } = useTranslation()
   const defineCardSystem = useDetectCardSystem()
 
@@ -55,7 +55,7 @@ export const AddCardForm = ({submitHandler}: Props) => {
       }}
     >
       {({ isValid, dirty }) => (
-        <Form className="flex w-full flex-col gap-3 items-center max-w-[20rem]">
+        <Form className="flex w-full max-w-[20rem] flex-col items-center gap-3">
           <Field name="cardNumber">
             {({ field, meta, form }: FieldProps) => {
               return (
@@ -80,7 +80,7 @@ export const AddCardForm = ({submitHandler}: Props) => {
               )
             }}
           </Field>
-          <div className="grid grid-cols-[2fr_1.2fr] w-full gap-3">
+          <div className="grid w-full grid-cols-[2fr_1.2fr] gap-3">
             <Field name="validPeriod">
               {({ field, meta, form }: FieldProps) => (
                 <Input
@@ -93,7 +93,9 @@ export const AddCardForm = ({submitHandler}: Props) => {
                     const input = e.currentTarget.value
                     const currentYear = new Date().getFullYear() % 100
 
-                    const cleaned = input.replace(onlyNumbersReg, '').slice(0, 4)
+                    const cleaned = input
+                      .replace(onlyNumbersReg, '')
+                      .slice(0, 4)
 
                     form.setFieldValue('validPeriod', cleaned)
 
@@ -110,13 +112,19 @@ export const AddCardForm = ({submitHandler}: Props) => {
 
                     if (month < 1 || month > 12) {
                       form.setFieldTouched('validPeriod', true, false)
-                      form.setFieldError('validPeriod', t('payments.invalid-month'))
+                      form.setFieldError(
+                        'validPeriod',
+                        t('payments.invalid-month')
+                      )
                       return
                     }
 
                     if (year < currentYear) {
                       form.setFieldTouched('validPeriod', true, false)
-                      form.setFieldError('validPeriod', t('payments.invalid-year'))
+                      form.setFieldError(
+                        'validPeriod',
+                        t('payments.invalid-year')
+                      )
                       return
                     }
                     form.setFieldValue('validPeriod', `${mm}/${yy}`)
@@ -140,7 +148,11 @@ export const AddCardForm = ({submitHandler}: Props) => {
               )}
             </Field>
           </div>
-          <Button type="submit" className="w-full" disabled={!isValid || !dirty}>
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={!isValid || !dirty}
+          >
             {t('common.add-card')}
           </Button>
         </Form>

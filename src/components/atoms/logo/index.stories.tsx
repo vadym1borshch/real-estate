@@ -9,9 +9,11 @@ export default {
 const Template: StoryFn<typeof Logo> = (args) => {
   return (
     //div wrapper only for presentation
-    <div className={cn(' p-3', {
-      'bg-charcoal': args.variant === 'white',
-    })}>
+    <div
+      className={cn('p-3', {
+        'bg-charcoal': args.variant === 'white',
+      })}
+    >
       <Logo {...args} />
     </div>
   )
@@ -24,4 +26,3 @@ export const white = Template.bind({})
 white.args = {
   variant: 'white',
 }
-

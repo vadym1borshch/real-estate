@@ -6,13 +6,14 @@ export const extractValuesToTable = (
   dataObject: RealEstate
 ) => {
   return detailsArray.map((detail) => {
-    return { ...detail,
-      value: dataObject[detail.key as keyof RealEstate]
-    }
+    return { ...detail, value: dataObject[detail.key as keyof RealEstate] }
   })
 }
 
-export const scrollToPageBlock = (blockId: string, container?: HTMLElement | null) => {
+export const scrollToPageBlock = (
+  blockId: string,
+  container?: HTMLElement | null
+) => {
   const target = document.getElementById(blockId)
   if (!target) return
 

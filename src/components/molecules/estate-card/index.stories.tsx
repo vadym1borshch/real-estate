@@ -58,7 +58,6 @@ const estate = {
   visibleDetailedAddress: false,
   rentFormation: null,
   favoredBy: [],
-
 }
 
 export default {

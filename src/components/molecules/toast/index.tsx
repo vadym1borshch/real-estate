@@ -103,7 +103,10 @@ const Toast = ({ position = 'bottom-right', hiddenTime = 10000 }: IToast) => {
               }, 500)
             }}
           >
-              <Icon id="closeIcon" className={`${getToastColor(toast.type)} h-6 w-6 p-0`} />
+            <Icon
+              id="closeIcon"
+              className={`${getToastColor(toast.type)} h-6 w-6 p-0`}
+            />
           </Button>
         </div>
       ))}

@@ -11,15 +11,15 @@ import { scrollToPageBlock } from './helpers.ts'
 import Modal from '../../../../components/molecules/modal'
 import H3 from '../../../../components/atoms/typography/h3'
 import Input from '../../../../components/atoms/input'
-import { estateImage } from '../../../../store/estateSlice'
+import { EstateImage } from '../../../../store/estateSlice'
 
 interface Props {
   agent: Agent
   ref: RefObject<HTMLDivElement | null>
-  images: estateImage[]
+  images: EstateImage[]
 }
 
-export const ImagesBlock = ({ agent, ref, images}: Props) => {
+export const ImagesBlock = ({ agent, ref, images }: Props) => {
   const { containerDimension } = useElementSizes({
     containerRef: ref,
     containerDimensionProp: 'width',
@@ -32,7 +32,7 @@ export const ImagesBlock = ({ agent, ref, images}: Props) => {
   return (
     <div className="flex flex-col items-center md:grid md:grid-cols-[2fr_1fr] md:items-start md:gap-10">
       <ImagePreview images={images} withButtons width={containerDimension} />
-      <div className="border-blue-gray flex min-w-[18.75rem] w-full flex-col items-center rounded-lg border p-3 md:px-7.5 pt-7.5 md:h-full md:min-w-[22.5rem]">
+      <div className="border-blue-gray flex w-full min-w-[18.75rem] flex-col items-center rounded-lg border p-3 pt-7.5 md:h-full md:min-w-[22.5rem] md:px-7.5">
         <Avatar userName={agent.name} size={10} src={agent.photo} />
         <div className="flex w-full flex-col items-center pt-6">
           <span className="text-[1.125rem]">{agent.name}</span>

@@ -18,18 +18,17 @@ const Accordion = ({ label, children, open, setOpen }: Props) => {
   return (
     <TAccordion
       open={open}
-      className="borer-charcoal rounded-lg border px-6 relative"
+      className="borer-charcoal relative rounded-lg border px-6"
       placeholder={null}
       onPointerEnterCapture={() => {}}
       onPointerLeaveCapture={() => {}}
     >
-
       <AccordionHeader
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         icon={null}
         className={cn(
-          '!font-400 relative cursor-pointer border-0 py-[1.3125rem] text-xl  pr-8',
+          '!font-400 relative cursor-pointer border-0 py-[1.3125rem] pr-8 text-xl',
           { 'border-gray border-b': open }
         )}
         onClick={() => setOpen(!open)}
@@ -38,7 +37,7 @@ const Accordion = ({ label, children, open, setOpen }: Props) => {
         <Icon
           id="chevronDownIcon"
           className={cn(
-            'absolute right-0 top-1/2 -translate-y-1/2 text-charcoal h-6 w-6 self-end transition-transform',
+            'text-charcoal absolute top-1/2 right-0 h-6 w-6 -translate-y-1/2 self-end transition-transform',
             { 'rotate-180 transition-transform': open }
           )}
         />

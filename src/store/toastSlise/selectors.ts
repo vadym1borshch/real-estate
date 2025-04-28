@@ -1,3 +1,3 @@
-import { RootState } from '../index';
+import { RootState } from '../index'
 
-export const selectToast = (state: RootState) => state.toasts;
+export const selectToast = (state: RootState) => state.toasts

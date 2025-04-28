@@ -6,11 +6,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof Button> = (args) => {
-  return (
-    <Button  {...args} >
-      Button
-    </Button>
-  )
+  return <Button {...args}>Button</Button>
 }
 
 export const Default = Template.bind({})
@@ -42,4 +38,3 @@ selected.args = {
   variant: 'outlined',
   selected: true,
 }
-

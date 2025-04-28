@@ -40,7 +40,7 @@ export const ActionButtons = ({ estate }: Props) => {
         }}
         disabled={loading}
       >
-        {loading ? <Loader size={30} className="mx-5"/> : t('buttons.like')}
+        {loading ? <Loader size={30} className="mx-5" /> : t('buttons.like')}
       </Button>
     </div>
   )

@@ -16,26 +16,40 @@ interface Props {
 
 const numberExp = /^\d*$/
 
-export const RangeFilterInputs = ({ minKey, maxKey, searchParams, updateParams, iconId }: Props) => {
+export const RangeFilterInputs = ({
+  minKey,
+  maxKey,
+  searchParams,
+  updateParams,
+  iconId,
+}: Props) => {
   const dispatch = useAppDispatch()
   const activeToasts = useAppSelector(selectToast)
-  const {t} = useTranslation()
+  const { t } = useTranslation()
 
   const [errors, setErrors] = useState<{ [key: string]: boolean }>({})
 
   const handleChange = (key: string, value: string) => {
     if (numberExp.test(value)) {
-      setErrors(prev => ({ ...prev, [key]: false }))
+      setErrors((prev) => ({ ...prev, [key]: false }))
 
       updateParams(key, value)
 
-      const minValue = parseInt(key === minKey ? value : searchParams.get(minKey) || '0', 10)
-      const maxValue = parseInt(key === maxKey ? value : searchParams.get(maxKey) || '0', 10)
+      const minValue = parseInt(
+        key === minKey ? value : searchParams.get(minKey) || '0',
+        10
+      )
+      const maxValue = parseInt(
+        key === maxKey ? value : searchParams.get(maxKey) || '0',
+        10
+      )
 
       if (minValue > maxValue && maxValue !== 0) {
         const errorMessage = t('errors.min-greater-max')
 
-        const isToastActive = activeToasts.some(toast => toast.message === errorMessage)
+        const isToastActive = activeToasts.some(
+          (toast) => toast.message === errorMessage
+        )
 
         if (!isToastActive) {
           dispatch(addToast({ message: errorMessage, type: 'error' }))
@@ -48,39 +62,39 @@ export const RangeFilterInputs = ({ minKey, maxKey, searchParams, updateParams, 
     } else {
       const errorMessage = t('errors.invalid-number')
 
-      const isToastActive = activeToasts.some(toast => toast.message === errorMessage)
+      const isToastActive = activeToasts.some(
+        (toast) => toast.message === errorMessage
+      )
 
       if (!isToastActive) {
         dispatch(addToast({ message: errorMessage, type: 'error' }))
       }
 
-      setErrors(prev => ({ ...prev, [key]: true }))
+      setErrors((prev) => ({ ...prev, [key]: true }))
     }
   }
 
   return (
-    <div className="flex p-3 gap-1.5">
+    <div className="flex gap-1.5 p-3">
       <Input
         iconId={iconId}
         placeholder="von"
-        className={cn(
-          'min-w-[108px] min-h-[35px] ',
-          {
-            'border-red focus:outline focus:outline-red hover:border-red focus:ring-red focus:border-red': errors[minKey],
-          })}
+        className={cn('min-h-[35px] min-w-[108px]', {
+          'border-red focus:outline-red hover:border-red focus:ring-red focus:border-red focus:outline':
+            errors[minKey],
+        })}
         value={searchParams.get(minKey) || ''}
-        onChange={e => handleChange(minKey, e.target.value)}
+        onChange={(e) => handleChange(minKey, e.target.value)}
       />
       <Input
         iconId={iconId}
         placeholder="bis"
-        className={cn(
-          'min-w-[108px] min-h-[35px]',
-          {
-            'border-red focus:outline  focus:outline-red hover:border-red focus:ring-red focus:border-red': errors[maxKey],
-          })}
+        className={cn('min-h-[35px] min-w-[108px]', {
+          'border-red focus:outline-red hover:border-red focus:ring-red focus:border-red focus:outline':
+            errors[maxKey],
+        })}
         value={searchParams.get(maxKey) || ''}
-        onChange={e => handleChange(maxKey, e.target.value)}
+        onChange={(e) => handleChange(maxKey, e.target.value)}
       />
     </div>
   )

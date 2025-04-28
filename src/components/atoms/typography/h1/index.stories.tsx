@@ -6,16 +6,10 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof H1> = (args) => {
-  return (
-    <H1 {...args} />
-  )
+  return <H1 {...args} />
 }
 
 export const Default = Template.bind({})
 Default.args = {
   text: 'text',
 }
-
-
-
-

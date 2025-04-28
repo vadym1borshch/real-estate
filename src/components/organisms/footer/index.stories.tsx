@@ -6,9 +6,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof Footer> = () => {
-  return (
-      <Footer />
-  )
+  return <Footer />
 }
 
 export const Default = Template.bind({})

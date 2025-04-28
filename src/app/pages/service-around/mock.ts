@@ -143,7 +143,7 @@ export type Agent = {
   }
 }
 
-export const realEstateAgents:Agent[] = [
+export const realEstateAgents: Agent[] = [
   {
     id: '1',
     name: 'Johanna',

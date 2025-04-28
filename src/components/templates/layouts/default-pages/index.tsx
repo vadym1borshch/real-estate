@@ -41,7 +41,7 @@ export const DefaultPageLayout = () => {
     <div className="flex w-full flex-col items-center">
       <Header />
       {path !== `/${ROUTES.RENT}` &&
-        path !==`/${ROUTES.BUY}` &&
+        path !== `/${ROUTES.BUY}` &&
         path !== `/${ROUTES.ESTATES}` && <Breadcrumb items={links} />}
       <Outlet />
     </div>

@@ -22,7 +22,3 @@ const Template: StoryFn<typeof LinkCard> = (args) => {
 
 export const Default = Template.bind({})
 Default.args = {}
-
-
-
-

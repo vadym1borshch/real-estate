@@ -8,7 +8,7 @@ import { setCurrentAdsStatus } from '../../../../store/adsSlice'
 export const Ads = () => {
   const navigate = useNavigate()
 
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   const dispatch = useAppDispatch()
   return (
     <div className="flex flex-col gap-3">

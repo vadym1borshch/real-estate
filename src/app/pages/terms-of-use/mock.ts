@@ -1,5 +1,4 @@
 export const termsOfUseData = [
-
   {
     id: '1',
     mainTitle: 'terms-of-use.1.title',
@@ -13,23 +12,28 @@ export const termsOfUseData = [
         id: '1',
         subTitle: 'terms-of-use.2.2.1.title',
         description: 'terms-of-use.2.2.1.descriptions',
-      }, {
+      },
+      {
         id: '2',
         subTitle: 'terms-of-use.2.2.2.title',
         description: 'terms-of-use.2.2.2.descriptions',
-      }, {
+      },
+      {
         id: '3',
         subTitle: 'terms-of-use.2.2.3.title',
         description: 'terms-of-use.2.2.3.descriptions',
-      }, {
+      },
+      {
         id: '4',
         subTitle: 'terms-of-use.2.2.4.title',
         description: 'terms-of-use.2.2.4.descriptions',
-      }, {
+      },
+      {
         id: '5',
         subTitle: 'terms-of-use.2.2.5.title',
         description: 'terms-of-use.2.2.5.descriptions',
-      }, {
+      },
+      {
         id: '6',
         subTitle: 'terms-of-use.2.2.6.title',
         description: 'terms-of-use.2.2.6.descriptions',
@@ -44,15 +48,18 @@ export const termsOfUseData = [
         id: '1',
         subTitle: 'terms-of-use.3.3.1.title',
         description: 'terms-of-use.3.3.1.descriptions',
-      }, {
+      },
+      {
         id: '2',
         subTitle: 'terms-of-use.3.3.2.title',
         description: 'terms-of-use.3.3.2.descriptions',
-      }, {
+      },
+      {
         id: '3',
         subTitle: 'terms-of-use.3.3.3.title',
         description: 'terms-of-use.3.3.3.descriptions',
-      }, {
+      },
+      {
         id: '4',
         subTitle: 'terms-of-use.3.3.4.title',
         description: 'terms-of-use.3.3.4.descriptions',
@@ -228,5 +235,4 @@ export const termsOfUseData = [
       },
     ],
   },
-
 ]

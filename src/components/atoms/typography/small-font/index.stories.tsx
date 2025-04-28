@@ -6,16 +6,10 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof SmallFont> = (args) => {
-  return (
-    <SmallFont {...args} />
-  )
+  return <SmallFont {...args} />
 }
 
 export const Default = Template.bind({})
 Default.args = {
   text: 'text',
 }
-
-
-
-

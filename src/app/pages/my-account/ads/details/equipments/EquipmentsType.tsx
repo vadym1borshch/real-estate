@@ -1,39 +1,45 @@
-import H3 from '../../../../../../components/atoms/typography/h3'
-import { Equipment } from './mock.ts'
-import OutlinedCheckbox from '../../../../../../components/molecules/outlinedCheckbox'
 import { useTranslation } from 'react-i18next'
-import { useState } from 'react'
+import H3 from '../../../../../../components/atoms/typography/h3'
+import OutlinedCheckbox from '../../../../../../components/molecules/outlinedCheckbox'
+import { Equipment } from '../../../../../../@types/index.ts'
 
 interface Props {
   data: Equipment[]
   label: string
+  selectedEquipments: Equipment[]
+  onEquipmentsChange: (newEquipments: Equipment[]) => void
 }
 
-export const EquipmentsType = ({ data, label }: Props) => {
-  const [state, setState] = useState(data)
+export const EquipmentsType = ({
+  data,
+  label,
+  selectedEquipments,
+  onEquipmentsChange,
+}: Props) => {
   const { t } = useTranslation()
+
+  const handleCheckboxChange = (item: Equipment) => {
+    const newEquipments = selectedEquipments.some(
+      (equipment) => equipment.id === item.id
+    )
+      ? selectedEquipments.filter((equipment) => equipment.id !== item.id)
+      : [...selectedEquipments, item]
+
+    onEquipmentsChange(newEquipments)
+  }
+
   return (
     <div className="flex flex-col gap-10">
       <H3 text={t(label)} />
       <div className="grid grid-cols-1 gap-x-10 gap-y-3 lg:grid-cols-2">
-        {state.map((item) => (
+        {data.map((item) => (
           <OutlinedCheckbox
             key={item.id}
             label={t(item.label)}
-            checked={item.checked}
-            setChecked={() =>
-              setState((s) =>
-                s.map((el) => {
-                  if (el.id === item.id) {
-                    return {
-                      ...el,
-                      checked: !el.checked,
-                    }
-                  }
-                  return el
-                })
-              )
-            }
+            checked={selectedEquipments.some(
+              (equipment) => equipment.id === item.id
+            )}
+            setChecked={() => handleCheckboxChange(item)}
           />
         ))}
       </div>

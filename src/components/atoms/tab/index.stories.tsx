@@ -6,9 +6,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof Tab> = (args) => {
-  return (
-    <Tab {...args} />
-  )
+  return <Tab {...args} />
 }
 
 export const Default = Template.bind({})
@@ -19,8 +17,5 @@ Default.args = {
 export const selected = Template.bind({})
 selected.args = {
   label: 'Tab',
-  selected: true
+  selected: true,
 }
-
-
-

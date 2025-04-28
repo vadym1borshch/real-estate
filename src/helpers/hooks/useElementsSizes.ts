@@ -1,24 +1,23 @@
 import { useEffect, useState, RefObject } from 'react'
 
-type Dimensions = 'width' | 'height';
-type Style = 'gap' | Dimensions | string;
+type Dimensions = 'width' | 'height'
+type Style = 'gap' | Dimensions | string
 
 interface IUseElementsSizes {
-  containerRef: RefObject<HTMLElement | null>;
-  childClassName?: string;
-  containerDimensionProp?: Dimensions;
-  childDimensionProp?: Dimensions;
-  styleAttr?: Style;
+  containerRef: RefObject<HTMLElement | null>
+  childClassName?: string
+  containerDimensionProp?: Dimensions
+  childDimensionProp?: Dimensions
+  styleAttr?: Style
 }
 
-export const useElementSizes = (
-  {
-    containerRef,
-    childClassName,
-    styleAttr = 'gap',
-    containerDimensionProp = 'height',
-    childDimensionProp = 'height',
-  }: IUseElementsSizes) => {
+export const useElementSizes = ({
+  containerRef,
+  childClassName,
+  styleAttr = 'gap',
+  containerDimensionProp = 'height',
+  childDimensionProp = 'height',
+}: IUseElementsSizes) => {
   const [containerDimension, setContainerDimension] = useState(0)
   const [childDimension, setChildDimension] = useState(0)
   const [styleProp, setStyleProp] = useState<string | number>(0)

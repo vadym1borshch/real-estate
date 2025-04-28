@@ -70,7 +70,11 @@ export const Step = ({ paragraph, buttonText, onClick, step }: Props) => {
                 />
               )}
             </Field>
-            <Button className="w-full" disabled={!isValid || !dirty} type="submit">
+            <Button
+              className="w-full"
+              disabled={!isValid || !dirty}
+              type="submit"
+            >
               {buttonText}
             </Button>
           </Form>

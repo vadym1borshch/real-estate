@@ -13,6 +13,15 @@ import { ROUTES } from '../../../@constants/routes.ts'
 import { useValidationRegisterSchema } from './validation.ts'
 import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
 import { AUTH } from '../../../@constants/urls.ts'
+import { addToast } from '../../../store/toastSlise'
+
+interface RegisterFormValues {
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+  termsOfUse: boolean
+}
 
 export const RegisterPage = () => {
   const { t } = useTranslation()
@@ -22,6 +31,26 @@ export const RegisterPage = () => {
     user: Agent
     token: string
   }>({ url: AUTH.REGISTER, method: 'POST' }, { manual: true })
+
+  const handleSubmit = async (values: RegisterFormValues) => {
+    try {
+      const res = await register({
+        data: {
+          name: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          password: values.password,
+        },
+      })
+      localStorage.setItem('token', res.data.token)
+      dispatch(setUser(res.data.user))
+      navigate(ROUTES.CONFIRM_REGISTER)
+    } catch (err) {
+      dispatch(
+        addToast({ type: 'error', message: t('errors.register-failed') })
+      )
+    }
+  }
 
   return (
     <div className="flex h-[calc(100svh-78px)] w-full max-w-[22.5rem] flex-col items-center justify-center lg:h-[calc(100svh-120px)]">
@@ -40,24 +69,7 @@ export const RegisterPage = () => {
           password: '',
           termsOfUse: false,
         }}
-        onSubmit={async (values) => {
-          try {
-            const res = await register({
-              data: {
-                name: values.firstName,
-                lastName: values.lastName,
-                email: values.email,
-                password: values.password,
-              },
-            })
-            console.log(res.data)
-            localStorage.setItem('token', res.data.token)
-            navigate(ROUTES.CONFIRM_REGISTER)
-            dispatch(setUser(res.data.user))
-          } catch (err) {
-            console.log(err)
-          }
-        }}
+        onSubmit={handleSubmit}
         validationSchema={useValidationRegisterSchema()}
       >
         {({ isValid, dirty, values }) => (
@@ -73,7 +85,7 @@ export const RegisterPage = () => {
                   className="min-h-[48px]"
                 />
               )}
-            </Field>{' '}
+            </Field>
             <Field name="lastName">
               {({ field, meta }: FieldProps) => (
                 <Input
@@ -85,7 +97,7 @@ export const RegisterPage = () => {
                   className="min-h-[48px]"
                 />
               )}
-            </Field>{' '}
+            </Field>
             <Field name="email">
               {({ field, meta }: FieldProps) => (
                 <Input
@@ -126,7 +138,6 @@ export const RegisterPage = () => {
                       setChecked={(v) => {
                         form.setFieldValue('termsOfUse', v)
                       }}
-                      className="self-start"
                     />
                     <span className="text-xs">
                       <Trans
@@ -156,15 +167,16 @@ export const RegisterPage = () => {
             >
               {t('buttons.register')}
             </Button>
-            <Button
-              type="button"
-              className="w-full"
-              onClick={() => {
-                navigate(ROUTES.LOGIN)
-              }}
-            >
-              {t('buttons.login')}
-            </Button>
+            <div className="mt-3 flex items-center justify-between">
+              <span className="text-xs">{t('register.form.have-account')}</span>
+              <Button
+                className="text-coral p-0"
+                variant="text"
+                onClick={() => navigate(ROUTES.LOGIN)}
+              >
+                {t('buttons.login')}
+              </Button>
+            </div>
           </Form>
         )}
       </Formik>

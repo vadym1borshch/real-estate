@@ -20,7 +20,7 @@ export const ServiceAround = () => {
   const [postalCode, setPostalCode] = useState('')
   const [selectedFields, setSelectedFields] = useState<string[]>([])
   const [currentAssistantId, setCurrentAssistantId] = useState<string | null>(
-    null,
+    null
   )
   const [query, setQuery] = useState('')
 
@@ -30,7 +30,7 @@ export const ServiceAround = () => {
 
   const { execute: updateServices } = useAxiosHook(
     { url: URL.SERVICES, method: 'PATCH' },
-    { manual: true },
+    { manual: true }
   )
 
   const services = servicesData?.services ?? []
@@ -38,7 +38,7 @@ export const ServiceAround = () => {
   const { data: serviceWorkersData, execute: fetchServiceWorkers } =
     useAxiosHook<{ workers: ServiceWorkers[] }>(
       { url: URL.SERVICE_WORKERS, method: 'GET' },
-      { manual: true },
+      { manual: true }
     )
 
   const workers: ServiceWorkers[] = useMemo(() => {
@@ -55,21 +55,18 @@ export const ServiceAround = () => {
       setQuery(value)
     }
   }
-  const checkedHandler = useCallback(
-    async (id: string, checked: boolean) => {
-      await updateServices({
-        data: { id, checked },
-      })
-      await fetchServices()
+  const checkedHandler = useCallback(async (id: string, checked: boolean) => {
+    await updateServices({
+      data: { id, checked },
+    })
+    await fetchServices()
 
-      setSelectedFields((prev) =>
-        checked ? [...prev, id] : prev.filter((field) => field !== id),
-      )
+    setSelectedFields((prev) =>
+      checked ? [...prev, id] : prev.filter((field) => field !== id)
+    )
 
-      setPostalCode('')
-    },
-    [],
-  )
+    setPostalCode('')
+  }, [])
 
   const foundWorkers = useMemo(() => {
     if (!workers) return []
@@ -91,7 +88,6 @@ export const ServiceAround = () => {
     }
     fetchData()
   }, [])
-
 
   if (!services.length) return null
 
@@ -122,8 +118,7 @@ export const ServiceAround = () => {
           <Button onClick={addPostalCode}>{t('buttons.find')}</Button>
         </div>
         {!!foundWorkers?.length && (
-          <div
-            className="border-t-gray mx-auto mt-[3.75rem] grid w-full max-w-[72.5rem] grid-cols-1 gap-5 border-t-1 pt-[3.75rem] sm:grid-cols-2 md:grid-cols-3 lg:mt-[5.625rem] lg:grid-cols-4 lg:gap-10 lg:pt-[5.625rem]">
+          <div className="border-t-gray mx-auto mt-[3.75rem] grid w-full max-w-[72.5rem] grid-cols-1 gap-5 border-t-1 pt-[3.75rem] sm:grid-cols-2 md:grid-cols-3 lg:mt-[5.625rem] lg:grid-cols-4 lg:gap-10 lg:pt-[5.625rem]">
             {foundWorkers?.map((item) => (
               <AssistantCard
                 assistant={item}

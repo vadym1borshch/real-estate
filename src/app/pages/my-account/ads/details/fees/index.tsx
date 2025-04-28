@@ -14,8 +14,7 @@ export const Fees = () => {
     initialValues: {
       fees: initialFields,
     },
-    onSubmit: () => {
-    },
+    onSubmit: () => {},
   })
 
   const nameRef = useRef<HTMLDivElement>(null)
@@ -53,8 +52,8 @@ export const Fees = () => {
           secondColumnLabel: t('details.fees-form.labels.percent'),
           thirdColumnLabel: t('details.fees-form.labels.extra-information'),
         }}
-        handleNext={()=>{}}
-        handleSave={()=>{}}
+        handleNext={() => {}}
+        handleSave={() => {}}
       >
         {({ push, remove }) => (
           <>

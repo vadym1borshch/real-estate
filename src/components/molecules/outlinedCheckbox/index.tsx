@@ -9,37 +9,44 @@ interface Props extends CheckboxProps {
   containerClassName?: string
 }
 
-const OutlinedCheckbox = (
-  {
-    checked,
-    setChecked,
-    className,
-    label,
-    variant = 'outlined',
-    checkboxSide = 'right',
-    labelClassName,
-    containerClassName
-  }: Props) => {
-
+const OutlinedCheckbox = ({
+  checked,
+  setChecked,
+  className,
+  label,
+  variant = 'outlined',
+  checkboxSide = 'right',
+  labelClassName,
+  containerClassName,
+}: Props) => {
   return (
     <div
-      className={cn('w-full h-12 border border-blue-gray rounded-sm flex items-center px-3 justify-between cursor-pointer',
+      className={cn(
+        'border-blue-gray flex h-12 w-full cursor-pointer items-center justify-between rounded-sm border px-3',
         { 'border-0': variant === 'text' },
-        { 'justify-start gap-2 h-fit': checkboxSide === 'left' && variant === 'text' },
+        {
+          'h-fit justify-start gap-2':
+            checkboxSide === 'left' && variant === 'text',
+        },
         { 'justify-start gap-2': checkboxSide === 'left' },
         containerClassName
       )}
       onClick={() => setChecked(!checked)}
     >
-      <label className={cn(
-        'capitalize text-charcoal cursor-pointer',
-        { 'order-2 text-xs': checkboxSide === 'left' },
-        labelClassName,
-      )}
+      <label
+        className={cn(
+          'text-charcoal cursor-pointer capitalize',
+          { 'order-2 text-xs': checkboxSide === 'left' },
+          labelClassName
+        )}
       >
         {label}
       </label>
-      <Checkbox checked={checked} setChecked={setChecked} className={className} />
+      <Checkbox
+        checked={checked}
+        setChecked={setChecked}
+        className={className}
+      />
     </div>
   )
 }

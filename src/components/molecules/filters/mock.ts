@@ -1,11 +1,14 @@
 export interface IFilter {
-  id: string,
-  key: string,
-  title: string,
-  values: ({
-    id: string,
-    value: string,
-  } | number)[],
+  id: string
+  key: string
+  title: string
+  values: (
+    | {
+        id: string
+        value: string
+      }
+    | number
+  )[]
 
   type: 'input' | 'button'
 }

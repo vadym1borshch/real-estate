@@ -15,9 +15,9 @@ export const AllProviderObjects = () => {
     >
       <H3
         text={t('real-estate.details.providers-objects.title')}
-        className="max-w-[220px] self-start pb-6 md:pb-10 text-2xl"
+        className="max-w-[220px] self-start pb-6 text-2xl md:pb-10"
       />
-      <div className="grid w-full grid-cols-1 gap-5 lg:gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
         {estates.slice(0, 4).map((estate) => (
           <EstateCard
             key={estate.id}

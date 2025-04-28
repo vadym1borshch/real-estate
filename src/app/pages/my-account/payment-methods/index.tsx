@@ -24,9 +24,14 @@ export const PaymentMethodsPage = () => {
     'congratulations' | 'error' | null
   >(null)
 
-  const infoModalTitle = infoModal === 'error' ? t('payments.modal.error') : t('payments.modal.success')
+  const infoModalTitle =
+    infoModal === 'error'
+      ? t('payments.modal.error')
+      : t('payments.modal.success')
   const infoModalInfo =
-    infoModal === 'error' ? t('payments.modal.error-info') : t('payments.modal.success-info')
+    infoModal === 'error'
+      ? t('payments.modal.error-info')
+      : t('payments.modal.success-info')
 
   const deleteCardHandler = (id: string) => {
     setCards((cards) => cards.filter((card) => card.id !== id))

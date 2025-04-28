@@ -6,9 +6,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof Chip> = (args) => {
-  return (
-    <Chip  {...args} />
-  )
+  return <Chip {...args} />
 }
 
 export const Default = Template.bind({})

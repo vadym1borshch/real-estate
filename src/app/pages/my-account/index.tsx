@@ -3,7 +3,7 @@ import AuthButtons from '../../../components/molecules/auth-buttons'
 import { usePathname } from '../../../helpers/hooks/usePathname.ts'
 import { useNavigate } from '../../../helpers/hooks/useNavigate.ts'
 import { useEffect } from 'react'
-import { MY_ACCOUNT } from '../../../@constants/routes.ts'
+import { MY_ACCOUNT, ROUTES } from '../../../@constants/routes.ts'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import {
   fetchMessages,
@@ -16,6 +16,13 @@ export const MyAccount = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const user = useAppSelector(selectUser)
+
+  useEffect(() => {
+    if (!user) {
+      navigate(ROUTES.HOME)
+    }
+  }, [user])
+
   useEffect(() => {
     if (path === `/${MY_ACCOUNT.ROOT}`) {
       navigate(MY_ACCOUNT.ROOT + `/${MY_ACCOUNT.PROFILE}`)
@@ -26,7 +33,6 @@ export const MyAccount = () => {
     if (user) {
       dispatch(fetchMessages({ userId: user.id }))
     }
-
   }, [user])
 
   useEffect(() => {
@@ -34,7 +40,7 @@ export const MyAccount = () => {
   }, [path])
 
   return (
-    <div className="grid w-full max-w-[72.5rem] grid-cols-1 items-start gap-10 pb-[6.25rem] lg:pb-[9.375rem] md:grid-cols-[22.5rem_auto]">
+    <div className="grid w-full max-w-[72.5rem] grid-cols-1 items-start gap-10 pb-[6.25rem] md:grid-cols-[22.5rem_auto] lg:pb-[9.375rem]">
       <div className="hidden flex-col md:flex">
         <AuthButtons
           onClick={() => {}}

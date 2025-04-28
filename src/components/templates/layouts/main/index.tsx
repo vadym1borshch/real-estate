@@ -16,7 +16,7 @@ export const MainLayout = () => {
   return (
     <div
       className={cn('w-full overflow-x-hidden p-2.5 xl:px-7.5', {
-        'px-7.5': path !== "/",
+        'px-7.5': path !== '/',
       })}
     >
       <Outlet />

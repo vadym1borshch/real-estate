@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { api } from '../../helpers/hooks/useAxios.ts'
 
-export const fetchMessages = createAsyncThunk<IMessage[], { userId: string | null }>(
-  'messages',
-  async ({ userId }) => {
-    const res = await api.get(`/messages?id=${userId}`)
-    return res.data.newMessages
-  }
-)
+export const fetchMessages = createAsyncThunk<
+  IMessage[],
+  { userId: string | null }
+>('messages', async ({ userId }) => {
+  const res = await api.get(`/messages?id=${userId}`)
+  return res.data.newMessages
+})
 
 export type MessageStatus = 'new' | 'read'
 export type Message = {

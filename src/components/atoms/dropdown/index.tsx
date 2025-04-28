@@ -1,7 +1,7 @@
 import { ReactNode, useRef } from 'react'
 import Button from '../button'
 import { cn } from '../../../helpers/ui.ts'
-import { ClickOutsideWrapper } from '../../wrappers/outsideClick'
+import { ClickOutsideWrapper } from '../../wrappers/outside-click'
 import { DropdownMenu } from './Menu.tsx'
 
 interface Props {

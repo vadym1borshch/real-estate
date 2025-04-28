@@ -36,10 +36,10 @@ const Input = ({
     <div className="relative z-0 flex w-full flex-col">
       {label && (
         <div className="flex w-full items-center justify-between">
-          {label && <label className="w-fit pb-1.5 pr-3">{label}</label>}
+          {label && <label className="w-fit pr-3 pb-1.5">{label}</label>}
           {error && errorPosition === 'top' && (
-            <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end leading-4 text-center">
-              <Icon id="errorIconRed" className="h-6 min-w-6 max-w-6" />
+            <span className="text-red flex items-center justify-end gap-[0.1875rem] self-end text-center leading-4">
+              <Icon id="errorIconRed" className="h-6 max-w-6 min-w-6" />
               {error}
             </span>
           )}
@@ -75,8 +75,8 @@ const Input = ({
       </div>
 
       {error && errorPosition === 'bottom' && (
-        <span className="text-red flex items-center justify-end self-end leading-4 text-center">
-          <Icon id="errorIconRed" className="h-6 min-w-6 max-w-6"  />
+        <span className="text-red flex items-center justify-end self-end text-center leading-4">
+          <Icon id="errorIconRed" className="h-6 max-w-6 min-w-6" />
           {error}
         </span>
       )}

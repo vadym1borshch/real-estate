@@ -17,7 +17,6 @@ export const Rent = () => {
 
   const ads = useAppSelector(selectCurrentAds('rent'))
 
-
   return (
     <AdsLayout onClick={routeHandler} anyAds={!!ads?.length}>
       <Outlet />

@@ -21,8 +21,7 @@ export const MonthlyCosts = () => {
         },
       ],
     },
-    onSubmit: () => {
-    },
+    onSubmit: () => {},
   })
 
   const { width } = useWindowDimensions()

@@ -6,9 +6,7 @@ export default {
 } as Meta
 
 const Template: StoryFn<typeof MapMarker> = (args) => {
-  return (
-    <MapMarker {...args} />
-  )
+  return <MapMarker {...args} />
 }
 
 export const Default = Template.bind({})
@@ -16,7 +14,5 @@ Default.args = {}
 
 export const limited = Template.bind({})
 limited.args = {
-  limited: true
+  limited: true,
 }
-
-

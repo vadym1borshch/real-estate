@@ -1,7 +1,7 @@
 export interface IFaqFilter {
-  id: string;
-  value: string;
-  key: string;
+  id: string
+  value: string
+  key: string
 }
 
 export const faqFilters: IFaqFilter[] = [
@@ -37,9 +37,9 @@ export const faqFilters: IFaqFilter[] = [
   },
 ]
 
-export type Data = { id: string, question: string, answer: string }
+export type Data = { id: string; question: string; answer: string }
 
-export type QuestionsData = { id: string, key: string, data: Data[] }[]
+export type QuestionsData = { id: string; key: string; data: Data[] }[]
 
 export const faqData: QuestionsData = [
   {
@@ -218,7 +218,8 @@ export const faqData: QuestionsData = [
       },
       {
         id: '4',
-        question: 'faq.tech-support.not-receiving-emails-from-platform.question',
+        question:
+          'faq.tech-support.not-receiving-emails-from-platform.question',
         answer: 'faq.tech-support.not-receiving-emails-from-platform.answer',
       },
       {
@@ -228,5 +229,4 @@ export const faqData: QuestionsData = [
       },
     ],
   },
-
 ]

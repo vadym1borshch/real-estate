@@ -1,17 +1,16 @@
 import { PropsWithChildren, useCallback, useEffect, useRef } from 'react'
 
 interface Props extends PropsWithChildren {
-  onClickOutside: () => void;
-  className?: string;
+  onClickOutside: () => void
+  className?: string
 }
 
-export const ClickOutsideWrapper = (
-  {
-    children,
-    onClickOutside,
-    className,
-  }: Props) => {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
+export const ClickOutsideWrapper = ({
+  children,
+  onClickOutside,
+  className,
+}: Props) => {
+  const wrapperRef = useRef<HTMLDivElement | null>(null)
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
       if (
@@ -21,7 +20,7 @@ export const ClickOutsideWrapper = (
         onClickOutside()
       }
     },
-    [onClickOutside],
+    [onClickOutside]
   )
 
   useEffect(() => {

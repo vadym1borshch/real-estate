@@ -28,6 +28,4 @@ export const services = [
     label: 'services.rent-out.title',
     descriptions: 'services.buy.descriptions',
   },
-
 ]
-

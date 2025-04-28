@@ -59,9 +59,7 @@ const Link = ({
       }}
       {...rest}
     >
-      {iconId && (
-        <Icon id={iconId} className={cn('h-6 w-6', iconClassName)} />
-      )}
+      {iconId && <Icon id={iconId} className={cn('h-6 w-6', iconClassName)} />}
       {children}
     </RLink>
   )

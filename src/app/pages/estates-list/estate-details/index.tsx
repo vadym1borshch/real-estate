@@ -42,7 +42,7 @@ export const EstatesDetails = () => {
 
   useEffect(() => {
     if (!estate) {
-     navigate('')
+      navigate('')
     }
   }, [estate])
 
@@ -79,10 +79,7 @@ export const EstatesDetails = () => {
               </span>
               <span className="text-blue-gray flex items-center gap-1.5 self-end">
                 {estate.views}
-                <Icon
-                  id="eyeIcon"
-                  className="h-6 w-6"
-                />
+                <Icon id="eyeIcon" className="h-6 w-6" />
               </span>
             </div>
           </div>

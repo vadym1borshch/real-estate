@@ -12,12 +12,11 @@ export const fetchEstate = createAsyncThunk<RealEstate[], void>(
   'estate',
   async () => {
     const res = await api.get<{ estates: RealEstate[] }>(URL.ESTATES)
-    console.log('res', res.data.estates)
     return res.data.estates
   }
 )
 
-export interface estateImage {
+export interface EstateImage {
   createdAt: string
   estateId: string
   id: string
@@ -26,7 +25,7 @@ export interface estateImage {
 
 export interface RealEstate {
   id: string
-  images: estateImage[]
+  images: EstateImage[]
   label: string
   isTop: boolean
   isFavorite: boolean

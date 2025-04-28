@@ -9,7 +9,7 @@ export const NotFoundPage = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <H2 text="ERROR 404" />
-      <p className="text-center pt-6 pb-[3.75rem] lg:pb-[5.625rem]">
+      <p className="pt-6 pb-[3.75rem] text-center lg:pb-[5.625rem]">
         {t('not-found.description')}
       </p>
       <Button
