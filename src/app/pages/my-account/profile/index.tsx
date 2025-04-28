@@ -48,7 +48,8 @@ export const ProfilePage = () => {
           )
         }
       }
-    } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
       dispatch(
         addToast({ type: 'error', message: err.message })
       )
