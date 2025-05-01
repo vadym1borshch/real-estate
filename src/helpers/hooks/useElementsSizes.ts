@@ -9,6 +9,7 @@ interface IUseElementsSizes {
   containerDimensionProp?: Dimensions
   childDimensionProp?: Dimensions
   styleAttr?: Style
+  shouldRecalculate?: boolean
 }
 
 export const useElementSizes = ({
@@ -17,6 +18,7 @@ export const useElementSizes = ({
   styleAttr = 'gap',
   containerDimensionProp = 'height',
   childDimensionProp = 'height',
+  shouldRecalculate = false,
 }: IUseElementsSizes) => {
   const [containerDimension, setContainerDimension] = useState(0)
   const [childDimension, setChildDimension] = useState(0)
@@ -72,7 +74,7 @@ export const useElementSizes = ({
     return () => {
       resizeObserver.disconnect()
     }
-  }, [containerDimensionProp, childDimensionProp, styleAttr])
+  }, [containerDimensionProp, childDimensionProp, styleAttr, shouldRecalculate])
 
   return { containerDimension, childDimension, styleProp, childrenCount }
 }

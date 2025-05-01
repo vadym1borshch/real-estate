@@ -48,9 +48,22 @@ export const FormInputWrapper = ({
   disabled = false,
 }: FormInputWrapperProps) => {
   const { t } = useTranslation()
+
+  const handleFloorsInput = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    form: any
+  ) => {
+    const value = e.target.value
+    const sanitizedValue = value.replace(/[^0-9\s|]/g, '')
+    const pipeCount = (sanitizedValue.match(/\|/g) || []).length
+    if (pipeCount > 1) return
+
+    form.setFieldValue(fieldName, sanitizedValue)
+  }
+
   return (
     <Field name={fieldName}>
-      {({ field, meta }: FieldProps) => (
+      {({ field, meta, form }: FieldProps) => (
         <Input
           {...field}
           type={type}
@@ -60,6 +73,11 @@ export const FormInputWrapper = ({
           className="min-h-12"
           errorPosition="bottom"
           disabled={disabled}
+          onChange={
+            fieldName === 'floors'
+              ? (e) => handleFloorsInput(e, form)
+              : field.onChange
+          }
         />
       )}
     </Field>
@@ -208,9 +226,6 @@ interface MainFormWrapperProps {
   children: (props: FieldArrayRenderProps) => ReactNode
   onSubmit: () => void
   formHeaderValues: {
-    firstColumnWidth: number
-    secondColumnWidth: number
-    thirdColumnWidth: number
     firstColumnLabel: string
     secondColumnLabel: string
     thirdColumnLabel: string
@@ -218,6 +233,7 @@ interface MainFormWrapperProps {
   name: string
   handleSave: () => void
   handleNext: () => void
+  formClassName?: string
 }
 
 export const MainFormWrapper = ({
@@ -227,26 +243,17 @@ export const MainFormWrapper = ({
   name,
   handleSave,
   handleNext,
+  formClassName,
 }: MainFormWrapperProps) => {
-  const {
-    firstColumnWidth,
-    secondColumnWidth,
-    thirdColumnWidth,
-    firstColumnLabel,
-    secondColumnLabel,
-    thirdColumnLabel,
-  } = formHeaderValues
-
+  const { firstColumnLabel, secondColumnLabel, thirdColumnLabel } =
+    formHeaderValues
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-3">
-      <div
-        className={`-mb-1.5 hidden gap-3 lg:grid`}
-        style={{
-          gridTemplateColumns: `${firstColumnWidth}px ${secondColumnWidth}px ${thirdColumnWidth}px`,
-        }}
-      >
+      <div className={cn('-mb-1.5 hidden gap-3 lg:grid', formClassName)}>
         <label>{firstColumnLabel}</label>
-        <label>{secondColumnLabel}</label>
+        <div>
+          <label>{secondColumnLabel}</label>
+        </div>
         <label>{thirdColumnLabel}</label>
       </div>
 

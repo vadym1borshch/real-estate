@@ -106,7 +106,7 @@ export const permittedSellInfos = [
 
 export const parkingTypes = [
   {
-    value: 'underground-parking',
+    value: 'underground',
     title: 'details.parking.underground',
   },
   {

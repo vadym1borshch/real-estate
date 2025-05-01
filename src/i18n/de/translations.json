@@ -9,7 +9,14 @@
         "at": "Österreich",
         "uk": "Ukraine"
       },
-      "not-found": "Objekte nicht gefunden..."
+      "not-found": "Objekte nicht gefunden...",
+      "toast-messages": {
+        "data-saved": "Daten gespeichert",
+        "something-went-wrong": "Etwas ist schief gelaufen",
+        "upload-failed": "Upload fehlgeschlagen",
+        "upload-success": "Upload erfolgreich",
+        "add-images": "Bilder hinzufügen"
+      }
     },
     "rent": {
       "title": "Mieten "

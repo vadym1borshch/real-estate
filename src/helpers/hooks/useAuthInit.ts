@@ -19,11 +19,15 @@ export const useAuthInit = () => {
   )
 
   const getUserFromDB = async (id: string) => {
-    const res = await getUser({
-      params: { id },
-    })
-    if (res.data.user) {
-      dispatch(setUser(res.data.user))
+    try {
+      const res = await getUser({
+        params: { id },
+      })
+      if (res.data.user) {
+        dispatch(setUser(res.data.user))
+      }
+    } catch {
+      // handle error
     }
   }
 

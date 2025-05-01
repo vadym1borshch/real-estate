@@ -9,7 +9,14 @@
         "at": "Austria",
         "uk": "Ukraine"
       },
-      "not-found": "Objects not found..."
+      "not-found": "Objects not found...",
+      "toast-messages": {
+        "data-saved": "Data saved",
+        "something-went-wrong": "Something went wrong",
+        "upload-failed": "Upload failed",
+        "upload-success": "Upload successful",
+        "add-images": "Please add images"
+      }
     },
     "rent": {
       "title": "Rent "

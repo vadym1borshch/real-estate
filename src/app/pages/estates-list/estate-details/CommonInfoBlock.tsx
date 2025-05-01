@@ -6,7 +6,7 @@ interface Props {
   address: string
   rooms: number
   bathrooms: number | null
-  m2: string
+  m2: number
 }
 
 export const CommonInfoBlock = ({
@@ -33,7 +33,7 @@ export const CommonInfoBlock = ({
         <span>
           {bathrooms} {t('real-estate.bathroom')}
         </span>
-        <span>{m2}</span>
+        <span>{m2} m²</span>
       </p>
     </div>
   )

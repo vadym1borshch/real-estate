@@ -81,7 +81,7 @@ export const EntityManageForm = ({ children }: Props) => {
       validationSchema={useValidationSchema(
         path.includes(ADS_ROUTES.CREATE_AD)
       )}
-      onSubmit={async (_values, { resetForm }) => {
+      onSubmit={async (values, { resetForm }) => {
         if (path.includes(ADS_ROUTES.CREATE_AD)) {
           if (!imgs.length) {
             dispatch(addToast({ type: 'error', message: 'please add images' }))
@@ -89,7 +89,7 @@ export const EntityManageForm = ({ children }: Props) => {
           } else {
             const createRes = await create({
               data: {
-                ..._values,
+                ...values,
                 images: imgs,
                 userId: user?.id,
               },
@@ -111,7 +111,7 @@ export const EntityManageForm = ({ children }: Props) => {
             const res = await update({
               data: {
                 id: +currEstate?.id,
-                ..._values,
+                ...values,
                 images: imgs,
               },
             })
@@ -151,7 +151,7 @@ export const EntityManageForm = ({ children }: Props) => {
             <FormInputWrapper fieldName="city" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.post-code')}>
-            <FormInputWrapper fieldName="postCode" type="number" />
+            <FormInputWrapper fieldName="postCode" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.visible-addresses')}>
             <FormRadioWrapper fieldName="visibleDetailedAddress" />
@@ -185,7 +185,7 @@ export const EntityManageForm = ({ children }: Props) => {
             <FormInputWrapper fieldName="floors" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.living-spase')}>
-            <FormInputWrapper fieldName="livingAreaM2" disabled />
+            <FormInputWrapper fieldName="livingAreaM2" type="number" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.balcony')}>
             <FormInputWrapper fieldName="balcony" />
@@ -194,7 +194,7 @@ export const EntityManageForm = ({ children }: Props) => {
             <FormInputWrapper fieldName="terrace" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.garden')}>
-            <FormInputWrapper fieldName="garden" />
+            <FormInputWrapper fieldName="landAreaM2" type="number" />
           </FieldWrapper>
           <FieldWrapper label={t('details.details-form.heating-type')}>
             <FormInputWrapper fieldName="heating" />

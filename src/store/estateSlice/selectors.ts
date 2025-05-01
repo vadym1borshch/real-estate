@@ -32,7 +32,7 @@ export const selectPaginatedEstates = (itemsPerPage: number) =>
     [selectEstates, selectCurrentPage, selectFilters],
     (estates, currentPage, filters) => {
       const filtered = estates.filter((estate) => {
-        const size = +estate.livingAreaM2.split(' ')[0]
+        const size = estate.livingAreaM2
         const price = parseFormattedPrice(estate.price.split(' ')[0])
 
         if (filters.priceMin && price < +filters.priceMin) return false

@@ -79,7 +79,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
         <img
           src={images[0].url}
           alt="house"
-          className="min-h-[15rem] w-full min-w-[18.75rem] rounded-t-lg object-cover lg:h-[15rem]"
+          className="max-h-[50vw] min-h-[15rem] w-full min-w-[18.75rem] rounded-t-lg object-cover md:h-[15rem]"
         />
       </div>
       <div className="bg-light-gray2 group-hover:bg-gray transition-hover flex min-h-[11.75rem] w-full flex-col gap-3 rounded-b-lg px-6 py-5 duration-300">
@@ -99,7 +99,7 @@ const EstateCard = ({ realEstate, className, disabled }: Props) => {
             <span>
               {bathroomsTotal} {t('real-estate.bathroom')}
             </span>
-            <span>{livingAreaM2}</span>
+            <span>{livingAreaM2} m²</span>
             <span>{t(operationValue)}</span>
           </p>
         </div>

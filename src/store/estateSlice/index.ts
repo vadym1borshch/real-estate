@@ -46,8 +46,8 @@ export interface RealEstate {
   operationKey: ListingType
   operationValue: string
 
-  livingAreaM2: string
-  landAreaM2: string | null
+  livingAreaM2: number
+  landAreaM2: number | null
 
   price: string
   parkPlacePrice: string | null

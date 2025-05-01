@@ -18,10 +18,11 @@ export const MyAccount = () => {
   const user = useAppSelector(selectUser)
 
   useEffect(() => {
-    if (!user) {
+    const token = localStorage.getItem('token')
+    if (!token) {
       navigate(ROUTES.HOME)
     }
-  }, [user])
+  }, [])
 
   useEffect(() => {
     if (path === `/${MY_ACCOUNT.ROOT}`) {

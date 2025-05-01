@@ -1,10 +1,10 @@
+import { useEffect } from 'react'
 import { usePathname } from '../../../../helpers/hooks/usePathname.ts'
 import { ADS_ROUTES } from '../../../../@constants/routes.ts'
 import { ContentLayout } from '../ContentLayout.tsx'
-import { useAppSelector } from '../../../../store/index.ts'
-import { useEffect } from 'react'
 import { selectCurrentEstate } from '../../../../store/estateSlice/selectors.ts'
 import { useNavigate } from '../../../../helpers/hooks/useNavigate.ts'
+import { useAppSelector } from '../../../../store'
 
 export const tabs = [
   {
@@ -33,6 +33,7 @@ export const DetailsLayout = () => {
   const path = usePathname()
   const navigate = useNavigate()
   const currentEstate = useAppSelector(selectCurrentEstate)
+
   const correctRoute = path.includes('rent-ads')
     ? ADS_ROUTES.RENT_ADS
     : ADS_ROUTES.SELL_ADS
