@@ -15,13 +15,14 @@ import Icon from '../../../components/atoms/icon'
 import { useValidationLoginSchema } from './validation.ts'
 import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
 import { AUTH } from '../../../@constants/urls.ts'
-import { addToast } from '../../../store/toastSlise'
+import { useErrorHandler } from '../../../helpers/hooks/useErrorHandler.ts'
 
 export const LoginPage = () => {
   const { t } = useTranslation()
   const user = useAppSelector(selectUser)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const handleError = useErrorHandler()
 
   const { execute: login } = useAxiosHook<{
     user: Agent
@@ -42,7 +43,7 @@ export const LoginPage = () => {
       localStorage.setItem('token', res.data.token)
       dispatch(setUser(res.data.user))
     } catch (err) {
-      dispatch(addToast({ type: 'error', message: t('errors.login-failed') }))
+      handleError(err)
     }
   }
 

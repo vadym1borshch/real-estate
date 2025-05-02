@@ -5,6 +5,7 @@ import { setUser } from '../../store/userSlice'
 import { useAxiosHook } from './useAxios.ts'
 import { Agent } from '../../app/pages/service-around/mock.ts'
 import { USER } from '../../@constants/urls.ts'
+import { useErrorHandler } from './useErrorHandler.ts'
 
 type DecodedToken = {
   exp: number
@@ -13,6 +14,8 @@ type DecodedToken = {
 
 export const useAuthInit = () => {
   const dispatch = useAppDispatch()
+  const handleError = useErrorHandler()
+
   const { execute: getUser } = useAxiosHook<{ user: Agent }>(
     { url: USER.ME, method: 'GET' },
     { manual: true }
@@ -26,8 +29,8 @@ export const useAuthInit = () => {
       if (res.data.user) {
         dispatch(setUser(res.data.user))
       }
-    } catch {
-      // handle error
+    } catch (err) {
+      handleError(err)
     }
   }
 
@@ -43,8 +46,9 @@ export const useAuthInit = () => {
         return
       }
       getUserFromDB(decoded.userId)
-    } catch {
+    } catch (err) {
       localStorage.removeItem('token')
+      handleError(err)
     }
   }, [])
 }

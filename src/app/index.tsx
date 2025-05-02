@@ -30,6 +30,9 @@ const App = () => {
   }, [])
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (!token) return
+    socket.auth = { token }
     socket.connect()
 
     const handler = (data: Message) => {

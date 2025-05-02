@@ -13,6 +13,7 @@ import { useAppDispatch } from '../../../../store'
 import { setUser } from '../../../../store/userSlice'
 import { Loader } from '../../../../components/atoms/loader'
 import { useElementSizes } from '../../../../helpers/hooks/useElementsSizes.ts'
+import { useErrorHandler } from '../../../../helpers/hooks/useErrorHandler.ts'
 
 type User = 'agency' | 'private'
 
@@ -29,6 +30,8 @@ export const ProfileForm = ({ user }: Props) => {
     containerRef: buttonRef,
     containerDimensionProp: 'width',
   })
+  const handleError = useErrorHandler()
+
   const { execute: update, loading } = useAxiosHook<{ user: Agent }>(
     { url: USER.UPDATE, method: 'PATCH' },
     { manual: true }
@@ -69,11 +72,8 @@ export const ProfileForm = ({ user }: Props) => {
           })
           dispatch(setUser(res.data.user))
           dispatch(addToast({ type: 'info', message: t('data saved...') }))
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
-          dispatch(
-            addToast({ type: 'error', message: t('something went wrong...') })
-          )
+          handleError(error)
         }
       }}
       validationSchema={useValidationSchema()}

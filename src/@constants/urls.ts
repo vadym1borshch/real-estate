@@ -20,3 +20,8 @@ export enum ESTATES {
   UPDATE = '/real-estates/update-estate',
   UPDATE_INFO = '/real-estates/update-estate-info',
 }
+
+export enum MESSAGES {
+  ROOT = '/messages',
+  UPDATE = '/messages/update',
+}

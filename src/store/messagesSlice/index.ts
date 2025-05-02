@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { api } from '../../helpers/hooks/useAxios.ts'
+import { MESSAGES } from '../../@constants/urls.ts'
 
 export const fetchMessages = createAsyncThunk<
   IMessage[],
   { userId: string | null }
 >('messages', async ({ userId }) => {
-  const res = await api.get(`/messages?id=${userId}`)
+  const res = await api.get(`${MESSAGES.ROOT}?id=${userId}`)
   return res.data.newMessages
 })
 
@@ -64,6 +65,16 @@ export const messagesSlice = createSlice({
         })
       }
     },
+    moveFromArchive: (state, action: PayloadAction<string>) => {
+      if (state.data) {
+        state.data = state.data.map((item) => {
+          if (item.id === action.payload) {
+            return { ...item, isArchived: false }
+          }
+          return item
+        })
+      }
+    },
     makeAsRead: (state, action: PayloadAction<string>) => {
       if (state.data) {
         state.data = state.data.map((item) => {
@@ -117,6 +128,7 @@ export const {
   moveToArchive,
   makeAsRead,
   addNewMessage,
+  moveFromArchive,
 } = messagesSlice.actions
 
 export default messagesSlice.reducer

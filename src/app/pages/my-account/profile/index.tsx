@@ -17,6 +17,7 @@ import { USER } from '../../../../@constants/urls.ts'
 import { setUser } from '../../../../store/userSlice'
 import { addToast } from '../../../../store/toastSlise'
 import { Loader } from '../../../../components/atoms/loader'
+import { useErrorHandler } from '../../../../helpers/hooks/useErrorHandler.ts'
 
 export const ProfilePage = () => {
   const [openModal, setOpenModal] = useState(false)
@@ -25,6 +26,7 @@ export const ProfilePage = () => {
   const { t } = useTranslation()
   const user = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
+  const handleError = useErrorHandler()
 
   const { execute: update, loading } = useAxiosHook<{ user: Agent }>(
     { url: USER.UPDATE_PHOTO, method: 'PATCH' },
@@ -48,11 +50,8 @@ export const ProfilePage = () => {
           )
         }
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (err: any) {
-      dispatch(
-        addToast({ type: 'error', message: err.message })
-      )
+    } catch (err) {
+      handleError(err)
     }
   }
 

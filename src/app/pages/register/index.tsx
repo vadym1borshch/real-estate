@@ -13,7 +13,7 @@ import { ROUTES } from '../../../@constants/routes.ts'
 import { useValidationRegisterSchema } from './validation.ts'
 import { useAxiosHook } from '../../../helpers/hooks/useAxios.ts'
 import { AUTH } from '../../../@constants/urls.ts'
-import { addToast } from '../../../store/toastSlise'
+import { useErrorHandler } from '../../../helpers/hooks/useErrorHandler.ts'
 
 interface RegisterFormValues {
   firstName: string
@@ -27,6 +27,8 @@ export const RegisterPage = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const handleError = useErrorHandler()
+
   const { execute: register } = useAxiosHook<{
     user: Agent
     token: string
@@ -46,9 +48,7 @@ export const RegisterPage = () => {
       dispatch(setUser(res.data.user))
       navigate(ROUTES.CONFIRM_REGISTER)
     } catch (err) {
-      dispatch(
-        addToast({ type: 'error', message: t('errors.register-failed') })
-      )
+      handleError(err)
     }
   }
 

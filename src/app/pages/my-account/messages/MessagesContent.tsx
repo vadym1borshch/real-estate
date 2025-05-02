@@ -9,6 +9,7 @@ import {
 } from '../../../../store/messagesSlice/selectors.ts'
 import { useMemo } from 'react'
 import { MessageDetails } from './MessageDetails.tsx'
+import { Loader } from '../../../../components/atoms/loader'
 
 export const MessagesContent = () => {
   const path = usePathname().split('/')
@@ -20,7 +21,7 @@ export const MessagesContent = () => {
 
   return useMemo(() => {
     if (isLoading) {
-      return <div>Loading...</div>
+      return <Loader/>
     }
 
     if (!messages) {

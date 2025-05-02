@@ -1,5 +1,7 @@
+import { useEffect, useState, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FormikProvider, useFormik, FormikErrors } from 'formik'
+import * as Yup from 'yup'
 import { v4 } from 'uuid'
 import { ActionsButtonsWrapper, MainFormWrapper } from '../Wrappers.tsx'
 import Input from '../../../../../../components/atoms/input'
@@ -13,10 +15,10 @@ import {
 import { ESTATES } from '../../../../../../@constants/urls.ts'
 import { useAppDispatch, useAppSelector } from '../../../../../../store'
 import { selectCurrentEstate } from '../../../../../../store/estateSlice/selectors.ts'
-import { useEffect, useState, useMemo } from 'react'
-import { Loader } from '../../../../../../components/atoms/loader/index.tsx'
-import * as Yup from 'yup'
-import { addToast } from '../../../../../../store/toastSlise/index.ts'
+
+import { useErrorHandler } from '../../../../../../helpers/hooks/useErrorHandler.ts'
+import { addToast } from '../../../../../../store/toastSlise'
+import { Loader } from '../../../../../../components/atoms/loader'
 
 export type PremisesField = {
   id: string
@@ -65,6 +67,7 @@ export const Premises = () => {
   const { t } = useTranslation()
   const { width } = useWindowDimensions()
   const isLarge = width >= BREAKPOINTS.LG
+  const handleError = useErrorHandler()
 
   const { execute: update } = useAxiosHook<{ estate: RealEstate }>(
     { url: ESTATES.UPDATE_INFO, method: 'PATCH' },
@@ -88,7 +91,7 @@ export const Premises = () => {
           console.log(res.data)
         }
       } catch (error) {
-        //handle error
+        handleError(error)
       }
     }
     fetchFields()
@@ -124,14 +127,8 @@ export const Premises = () => {
               type: 'success',
             })
           )
-        } catch {
-          //handle error
-          dispatch(
-            addToast({
-              message: t('common.toast-messages.something-went-wrong'),
-              type: 'error',
-            })
-          )
+        } catch (error) {
+          handleError(error)
         }
       }
     },

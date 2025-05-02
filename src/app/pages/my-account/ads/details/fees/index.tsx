@@ -10,9 +10,10 @@ import { BREAKPOINTS } from '../../../../../../@constants'
 import { useAxiosHook } from '../../../../../../helpers/hooks/useAxios.ts'
 import { Loader } from '../../../../../../components/atoms/loader'
 import { ESTATES } from '../../../../../../@constants/urls.ts'
-import { RealEstate } from '../../../../../../store/estateSlice/index.ts'
 import { useAppSelector } from '../../../../../../store'
 import { selectCurrentEstate } from '../../../../../../store/estateSlice/selectors.ts'
+import { useErrorHandler } from '../../../../../../helpers/hooks/useErrorHandler.ts'
+import { RealEstate } from '../../../../../../store/estateSlice'
 
 interface FeeField {
   id: string
@@ -61,12 +62,13 @@ export const Fees = () => {
   const validationSchema = useFeesValidationSchema()
   const { width } = useWindowDimensions()
   const isLarge = width >= BREAKPOINTS.LG
+  const handleError = useErrorHandler()
 
   const { execute: getFields, loading } = useAxiosHook<FeeField[]>(
     { url: '/fees-fields', method: 'GET' },
     { manual: true }
   )
-  const { execute: update } = useAxiosHook<{ estate: RealEstate }>(
+  const { execute: updateEstate } = useAxiosHook<{ estate: RealEstate }>(
     { url: ESTATES.UPDATE_INFO, method: 'PATCH' },
     { manual: true }
   )
@@ -79,7 +81,7 @@ export const Fees = () => {
           setFields(res.data)
         }
       } catch (error) {
-        //handle error
+        handleError(error)
       }
     }
     fetchFields()
@@ -93,7 +95,7 @@ export const Fees = () => {
     validationSchema,
     onSubmit: async (values) => {
       if (currentEstate?.id) {
-        const res = await update({
+        const res = await updateEstate({
           data: {
             id: +currentEstate?.id,
             fees: values.fees.map((fee) => {
