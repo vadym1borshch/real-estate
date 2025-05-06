@@ -23,5 +23,4 @@ export enum ESTATES {
 
 export enum MESSAGES {
   ROOT = '/messages',
-  UPDATE = '/messages/update',
 }

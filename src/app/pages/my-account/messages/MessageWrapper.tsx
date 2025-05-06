@@ -29,7 +29,7 @@ export const MessageWrapper = ({ messages }: Props) => {
   const dispatch = useAppDispatch()
 
   const { execute: update } = useAxiosHook(
-    { url: MESSAGES.UPDATE, method: 'PATCH' },
+    { url: MESSAGES.ROOT, method: 'PATCH' },
     { manual: true }
   )
 

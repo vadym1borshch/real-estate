@@ -13,13 +13,14 @@ Vercel: real-estate-wine-seven.vercel.app
 - State management with Redux Toolkit
 - Responsive design with Tailwind CSS
 - Component documentation with Storybook
+- Real-time chat with Socket.IO
 
 ## Tech Stack
 
 - **Frontend Framework**: React 19
 - **Node version**: 22.14.0
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS + Material Tailwind
 - **State Management**: Redux Toolkit
 - **Form Handling**: Formik + Yup
 - **Maps**: Mapbox GL + React Map GL
@@ -27,28 +28,71 @@ Vercel: real-estate-wine-seven.vercel.app
 - **API Client**: Axios
 - **Build Tool**: Vite
 - **Testing**: Storybook
+- **Chat**: Socket.IO
 
 ## Installation
 
-1. Clone the repository:
+1. Clone the frontend repository:
 
 ```bash
 git clone https://github.com/vadym1borshch/real-estate
 ```
 
-2. Install dependencies:
+2. Clone the backend repository:
 
 ```bash
+git clone https://github.com/vadym1borshch/real-estate-back
+```
+
+3. Install frontend dependencies:
+
+```bash
+cd real-estate
 yarn install
 ```
 
-3. Start the development server:
+4. Install backend dependencies:
 
 ```bash
+cd ../real-estate-back
+yarn install
+```
+
+5. Set up environment variables for both frontend and backend:
+
+Frontend (.env):
+
+```
+VITE_API_URL=http://localhost:4000
+```
+
+Backend (.env):
+
+```
+DATABASE_URL=mysql://root:<password>@localhost:3306/real_estate
+JWT_SECRET="your-jwt-secret"
+CLOUDINARY_CLOUD_NAME="your-cloud-name"
+CLOUDINARY_API_KEY="your-api-key"
+CLOUDINARY_API_SECRET="your-api-secret"
+PORT=4000
+NODE_ENV=development
+```
+
+6. Start the backend server:
+
+```bash
+cd real-estate-back
 yarn dev
 ```
 
-4. Build for production:
+7. Start the frontend development server:
+
+```bash
+cd ../real-estate
+yarn dev
+```
+
+8. Build for production:
 
 ```bash
 yarn build
@@ -113,6 +157,12 @@ The platform uses Mapbox GL for interactive maps. Make sure to set up your Mapbo
 - Tailwind CSS for utility-first styling
 - Custom components with Material Tailwind
 - Responsive design
+
+## Chat
+
+- Implemented using Socket.IO
+- Real-time messaging
+- Message history storage
 
 ## Documentation
 
